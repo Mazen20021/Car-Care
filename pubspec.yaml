@@ -21,3 +21,9 @@ flutter:
     - assets/image/skyLogin.png
     - assets/image/loginBackground.png
     - assets/image/password.png
+    - assets/cars/NoCar.png
+    - assets/cars/Hatchback.png
+    - assets/cars/Coupe.png
+    - assets/cars/Sedan.png
+    - assets/cars/SUV.png
+    - assets/cover.png
