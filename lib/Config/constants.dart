@@ -35,7 +35,7 @@ class Height {
   static double xxl() => Screen.size.height * 0.9;
 }
 
-class Radius {
+class CustomRadius {
   static double xs = 4;
   static double sm = 8;
   static double md = 10;
