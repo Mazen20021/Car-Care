@@ -1,14 +1,19 @@
-import 'package:carcare/Config/Constants.dart';
-import 'package:carcare/Pages/SignupPage.dart';
+import 'package:carcare/Config/constants.dart';
+import 'package:carcare/Pages/forgetpasswordpage.dart';
+import 'package:carcare/Pages/signuppage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../Components/Buttons.dart';
 
 class Login extends StatefulWidget
 {
   const Login({super.key});
 
   @override
-  _Login createState() => _Login();
+  State<StatefulWidget> createState() {
+    return _Login();
+  }
 }
 
 class _Login extends State<Login> {
@@ -27,19 +32,16 @@ class _Login extends State<Login> {
   Widget build(BuildContext context) {
     Screen.setSize(context);
     return LayoutBuilder(builder: (context, constrains) {
-
-      final width = Screen.size.width;
-      final height = Screen.size.height;
-
       return Scaffold(
         body:Center(
           child:SingleChildScrollView(child:
-          Column(children: [Stack(
+          Column(children: [
+            Stack(
             children: [Opacity(
         opacity: 0.6,
           child: SizedBox(
-            width: width,
-            height: 250.78,
+            width: Screen.size.width,
+            height: Screen.size.height * 0.25,
             child: const Image(
               image: AssetImage("assets/image/skyLogin.png"),
               fit: BoxFit.cover,
@@ -47,8 +49,8 @@ class _Login extends State<Login> {
           ),
         ),
           Container(
-            width: width,
-            height: height * 0.5,
+            width: Screen.size.width,
+            height: Screen.size.height * 0.5,
             alignment: Alignment.centerLeft,
             child: Transform.translate(
               offset: const Offset(-30, 0), // Move image 50 pixels to the left
@@ -72,20 +74,20 @@ class _Login extends State<Login> {
             key: _formKey,
               child: Column(children: [
                 SizedBox(
-                  width: width * 0.9,
+                  width: Screen.size.width * 0.9,
                   child: TextFormField(
                     textAlign: TextAlign.left,
                     cursorColor:  Colors.black,
                     style: GoogleFonts.mada(
                       color: Colors.black,
-                      fontSize:  width * 0.05,
+                      fontSize:  Screen.size.width * 0.05,
                     ),
                     controller: _emailController,
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                       hintStyle: GoogleFonts.mada(
                         color: Colors.black,
-                        fontSize: width * 0.05,
+                        fontSize: Screen.size.width * 0.05,
                       ),
                       hintText:  'Email',
                       border: OutlineInputBorder(
@@ -109,6 +111,7 @@ class _Login extends State<Login> {
                         borderSide: const BorderSide(color: Colors.redAccent, width: 2.0),
                       ),
                     ),
+
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please Enter Your Email';
@@ -119,7 +122,7 @@ class _Login extends State<Login> {
                 ),
                 const SizedBox(height: 15),
                 SizedBox(
-                  width: width * 0.9,
+                  width: Screen.size.width * 0.9,
                   child: TextFormField(
                     textAlign: TextAlign.left,
                     cursorColor:  Colors.black,
@@ -161,6 +164,7 @@ class _Login extends State<Login> {
                         borderSide: const BorderSide(color: Colors.redAccent, width: 2.0),
                       ),
                     ),
+
                     obscureText: !_isObscured,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -170,35 +174,32 @@ class _Login extends State<Login> {
                     },
                   ),),
                 const SizedBox(height: 15),
-                InkWell(
-                  borderRadius: BorderRadius.circular(Radius.xs),
-                  onTap: (){},
-                    child:
-                    Padding(padding: const EdgeInsets.fromLTRB(20,5,20,0) ,
-                        child: Container(
-                      padding: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    image: const DecorationImage(
-                        alignment: Alignment.bottomLeft,
-                        image: AssetImage("assets/image/loginBackground.png"),opacity: 0.1,fit: BoxFit.cover
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                    gradient: const LinearGradient(colors: [Color.fromARGB(255, 53, 145, 249) , Color.fromARGB(255, 119, 182, 252)],begin: Alignment.centerLeft , end:Alignment.centerRight)
-                  ),
-                  child: Center(child: Text("Login",style: GoogleFonts.rubik(
-                      fontSize: 25,
-                      color: Colors.white
-                  )
-                  )
-                    ,),
-                )
-                ),
+                ButtonClass(
+                    width: Sizes.xxl() ,
+                    height: Sizes.bHeight,
+                    hasGradient: true,
+                    gradientColors: const [Color.fromARGB(255, 53, 145, 249) , Color.fromARGB(255, 119, 182, 252)],
+                    hasImage: true,
+                    imagePath: "assets/image/loginBackground.png",
+                    imageOpacity: 0.1,
+                    begin:Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    normalColor: Colors.transparent,
+                    borderRadius: Radius.sm,
+                    leftPadding: 20,
+                    rightPadding: 20,
+                    topPadding: 5,
+                    bottomPadding: 15,
+                    label: "Login",
+                    fontSize: Fonts.sm(),
+                    textColor: Colors.white,
+                    onPressed: (){}
                 ),
                 const SizedBox(height: 55),
                 Transform.rotate(angle: -3 * (3.14/180) ,child:
                  Container(
-                  width: width ,
-                  height: height * 0.09 ,
+                  width: Screen.size.width ,
+                  height: Screen.size.height * 0.09 ,
                   decoration: BoxDecoration(
                     boxShadow: List.filled(20, growable: true ,const BoxShadow(color: Color.fromARGB(255, 214, 232, 253),blurRadius: 8,)),
                       borderRadius: BorderRadius.circular(5),
@@ -208,7 +209,7 @@ class _Login extends State<Login> {
                      TextButton(onPressed: (){
                        Navigator.push(
                          context,
-                         MaterialPageRoute(builder: (context) => const Signup(userName: "Hasan",)),
+                         MaterialPageRoute(builder: (context) => const Signup()),
                        );
                      }, child: Text("Create a new account" ,style: GoogleFonts.rubik(
                          fontSize: 15,
@@ -218,7 +219,12 @@ class _Login extends State<Login> {
                      ),
                      )),
                      const SizedBox(width: 40),
-                     TextButton(onPressed: (){}, child: Text("Forgot your password?",style: GoogleFonts.rubik(
+                     TextButton(onPressed: (){
+                       Navigator.push(
+                         context,
+                         MaterialPageRoute(builder: (context) =>  const ForgetPass()),
+                       );
+                     }, child: Text("Forgot your password?",style: GoogleFonts.rubik(
                          fontSize: 15,
                          color: Colors.white,
                        decoration: TextDecoration.underline,
