@@ -8,20 +8,23 @@ class Screen
 class Fonts
 {
   static double xs () => Screen.size.width * 0.02;
+  static double cmd () => Screen.size.width * 0.08;
   static double sm () => Screen.size.width * 0.05;
   static double md () => Screen.size.width * 0.07;
   static double lg () => Screen.size.width * 0.1;
   static double xl () => Screen.size.width * 0.12;
   static double xxl () => Screen.size.width * 0.15;
+
 }
 class Sizes
 {
-  static double xs () => Screen.size.width * 0.02;
-  static double sm () => Screen.size.width * 0.05;
-  static double md () => Screen.size.width * 0.07;
-  static double lg () => Screen.size.width * 0.1;
-  static double xl () => Screen.size.width * 0.12;
-  static double xxl () => Screen.size.width * 0.15;
+  static double xs () => Screen.size.width * 0.06;
+  static double sm () => Screen.size.width * 0.09;
+  static double md () => Screen.size.width * 0.3;
+  static double lg () => Screen.size.width * 0.5;
+  static double xl () => Screen.size.width * 0.7;
+  static double xxl () => Screen.size.width * 0.9;
+  static double bHeight = 62;
 }
 class Radius
 {
