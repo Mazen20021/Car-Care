@@ -1,33 +1,41 @@
 import 'package:flutter/material.dart';
 
-class Screen
-{
+class Screen {
   static var size;
-  static void setSize(BuildContext context) => size = MediaQuery.of(context).size;
+  static void setSize(BuildContext context) =>
+      size = MediaQuery.of(context).size;
 }
-class Fonts
-{
-  static double xs () => Screen.size.width * 0.02;
-  static double cmd () => Screen.size.width * 0.08;
-  static double sm () => Screen.size.width * 0.05;
-  static double md () => Screen.size.width * 0.07;
-  static double lg () => Screen.size.width * 0.1;
-  static double xl () => Screen.size.width * 0.12;
-  static double xxl () => Screen.size.width * 0.15;
 
+class Fonts {
+  static double xs() => Screen.size.width * 0.02;
+  static double cmd() => Screen.size.width * 0.08;
+  static double sm() => Screen.size.width * 0.05;
+  static double md() => Screen.size.width * 0.07;
+  static double lg() => Screen.size.width * 0.1;
+  static double xl() => Screen.size.width * 0.12;
+  static double xxl() => Screen.size.width * 0.15;
 }
-class Sizes
-{
-  static double xs () => Screen.size.width * 0.06;
-  static double sm () => Screen.size.width * 0.09;
-  static double md () => Screen.size.width * 0.3;
-  static double lg () => Screen.size.width * 0.5;
-  static double xl () => Screen.size.width * 0.7;
-  static double xxl () => Screen.size.width * 0.9;
+
+class Sizes {
+  static double xs() => Screen.size.width * 0.06;
+  static double sm() => Screen.size.width * 0.09;
+  static double md() => Screen.size.width * 0.3;
+  static double lg() => Screen.size.width * 0.5;
+  static double xl() => Screen.size.width * 0.7;
+  static double xxl() => Screen.size.width * 0.9;
   static double bHeight = 62;
 }
-class Radius
-{
+
+class Height {
+  static double xs() => Screen.size.height * 0.06;
+  static double sm() => Screen.size.height * 0.09;
+  static double md() => Screen.size.height * 0.3;
+  static double lg() => Screen.size.height * 0.5;
+  static double xl() => Screen.size.height * 0.7;
+  static double xxl() => Screen.size.height * 0.9;
+}
+
+class Radius {
   static double xs = 4;
   static double sm = 8;
   static double md = 10;
@@ -35,6 +43,7 @@ class Radius
   static double xl = 16;
   static double xxl = 25;
 }
+
 class MainColors {
   // Primary colors
   static const Color primary = Color(0xFF2A57D0);
