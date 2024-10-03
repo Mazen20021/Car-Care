@@ -186,7 +186,7 @@ class _RestPassword extends State<RestPassword> {
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                         normalColor: Colors.transparent,
-                        borderRadius: Radius.sm,
+                        borderRadius: CustomRadius.sm,
                         leftPadding: 20,
                         rightPadding: 20,
                         topPadding: 5,

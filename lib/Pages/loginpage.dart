@@ -1,10 +1,12 @@
 import 'package:carcare/Config/constants.dart';
 import 'package:carcare/Pages/forgetpasswordpage.dart';
 import 'package:carcare/Pages/signuppage.dart';
+import 'package:carcare/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../Components/Buttons.dart';
+import 'mainpage.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -207,7 +209,7 @@ class _Login extends State<Login> {
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
                           normalColor: Colors.transparent,
-                          borderRadius: Radius.sm,
+                          borderRadius: CustomRadius.sm,
                           leftPadding: 20,
                           rightPadding: 20,
                           topPadding: 5,
@@ -215,7 +217,13 @@ class _Login extends State<Login> {
                           label: "Login",
                           fontSize: Fonts.sm(),
                           textColor: Colors.white,
-                          onPressed: () {}),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MainMenuPage(userName: "Mazen",)),
+                            );
+                          }),
                     ],
                   ),
                 ),
