@@ -30,7 +30,7 @@ class ButtonClass extends StatelessWidget {
     this.rightPadding = 0,
     this.topPadding = 0,
     this.bottomPadding = 0,
-    this.gradientColors = null,
+    this.gradientColors,
     this.normalColor = Colors.transparent,
     this.hasGradient = false,
     this.hasImage = false,
@@ -39,9 +39,9 @@ class ButtonClass extends StatelessWidget {
     this.begin = Alignment.centerLeft,
     this.end = Alignment.centerRight,
     this.label = "",
-    this.fontSize = null,
+    this.fontSize,
     this.textColor = MainColors.textWhite,
-    this.onPressed = null,
+    this.onPressed,
   });
 
   @override
