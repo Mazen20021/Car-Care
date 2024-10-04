@@ -340,8 +340,8 @@ class _signup extends State<Signup>
 
                   const SizedBox(height: 5),
                   ButtonClass(
-                      width: Sizes.xxl() ,
-                      height: Sizes.bHeight,
+                      width: Width.xxl() ,
+                      height: Width.bHeight,
                       hasGradient: true,
                       gradientColors: const [Color.fromARGB(255, 53, 145, 249) , Color.fromARGB(255, 119, 182, 252)],
                       hasImage: true,

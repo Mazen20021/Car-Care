@@ -176,8 +176,8 @@ class _RestPassword extends State<RestPassword> {
                             ),),
                       const SizedBox(height: 25),
                       ButtonClass(
-                        width: Sizes.xxl(),
-                        height: Sizes.bHeight,
+                        width: Width.xxl(),
+                        height: Width.bHeight,
                         hasGradient: true,
                         gradientColors: const [MainColors.primary , MainColors.primary],
                         hasImage: false,
