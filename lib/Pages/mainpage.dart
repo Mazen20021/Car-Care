@@ -1,3 +1,4 @@
+import 'package:carcare/Components/Buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,17 +19,13 @@ class MainMenuPage extends StatefulWidget
 class _MainPage extends State<MainMenuPage>
 {
   final bool _isSub = false;
-  final bool _isCarSelected = true;
+  final bool _isCarSelected = false;
   final List<String> imagesPath = List<String>.empty(growable: true);
   late final PageController _pageController;
   @override
   void initState() {
     super.initState();
     _pageController = PageController(viewportFraction: 2.0 , initialPage: widget.currentIndex);
-    imagesPath.add("assets/cars/Coupe.png");
-    imagesPath.add("assets/cars/Hatchback.png");
-    imagesPath.add("assets/cars/Sedan.png");
-    imagesPath.add("assets/cars/SUV.png");
   }
 
   @override
@@ -106,6 +103,36 @@ class _MainPage extends State<MainMenuPage>
                   ),
                 ),
               ),
+                const SizedBox(height: 5),
+                Row(children: [
+                  GestureDetector(
+                      onTap: (){},
+                      child: Transform.translate(
+                      offset: const Offset(40, -250),
+                      child: Text("View online reports", style: GoogleFonts.rubik(
+                      fontWeight: FontWeight.bold,
+                      color:!_isCarSelected? MainColors.primary.withOpacity(0.5) : MainColors.primary,
+                      decoration: TextDecoration.underline,
+                      decorationColor: MainColors.primary,
+                      fontSize: Fonts.xs())))),
+                  GestureDetector(
+                        onTap: (){},
+                        child: Transform.translate(
+                        offset: const Offset(100, -250),
+                        child: Text("View check log", style: GoogleFonts.rubik(
+                        fontWeight: FontWeight.bold,
+                        color: !_isCarSelected? MainColors.primary.withOpacity(0.5): MainColors.primary,
+                        decoration: TextDecoration.underline,
+                        decorationColor: MainColors.primary,
+                        fontSize: Fonts.xs())))),
+                ],),
+                Transform.translate(
+                    offset: const Offset(20, -150),
+                    child:Container(
+                      width: Screen.size.width * 0.8,
+                      height: Height.sm(),
+                      color: MainColors.primaryLight,
+                    )),
               ],
             ),
           ],
@@ -148,23 +175,20 @@ class _MainPage extends State<MainMenuPage>
                     fontSize: Fonts.md(),
                     shadows: [const Shadow(color: MainColors.black,blurRadius: 25 ,offset: Offset(0, 2))])),
                   const SizedBox(width: 25),
-                   Icon(Icons.error_rounded,color: MainColors.white,size: Sizes.xs(),),
+                   Icon(Icons.error_rounded,color: MainColors.white,size: Width.xs(),),
                   const SizedBox(width: 10),
                   Text("Data",style: GoogleFonts.rubik(
                       fontWeight: FontWeight.bold,
                       color: MainColors.white,
                       fontSize: Fonts.sm(),
                       shadows: [const Shadow(color: MainColors.black,blurRadius: 25 ,offset: Offset(0, 2))]))
-
                 ],),
-
               ),
             ],
           ),
         ),
     ]));
   }
-
   // Helper method to build each car image
   Widget buildCarImage(String imagePath, Size screenSize) {
     return Container(
