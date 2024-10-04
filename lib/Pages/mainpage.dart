@@ -7,7 +7,8 @@ import '../Config/constants.dart';
 class MainMenuPage extends StatefulWidget
 {
   final String userName;
-  const MainMenuPage({required this.userName,super.key});
+  final int currentIndex;
+  const MainMenuPage({required this.userName,required this.currentIndex,super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -17,10 +18,25 @@ class MainMenuPage extends StatefulWidget
 class _MainPage extends State<MainMenuPage>
 {
   final bool _isSub = false;
-  final bool _isCarSelected = false;
+  final bool _isCarSelected = true;
+  final List<String> imagesPath = List<String>.empty(growable: true);
+  late final PageController _pageController;
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(viewportFraction: 2.0 , initialPage: widget.currentIndex);
+    imagesPath.add("assets/cars/Coupe.png");
+    imagesPath.add("assets/cars/Hatchback.png");
+    imagesPath.add("assets/cars/Sedan.png");
+    imagesPath.add("assets/cars/SUV.png");
+  }
 
   @override
   Widget build(BuildContext context) {
+    imagesPath.add("assets/cars/Coupe.png");
+    imagesPath.add("assets/cars/Hatchback.png");
+    imagesPath.add("assets/cars/Sedan.png");
+    imagesPath.add("assets/cars/SUV.png");
     Screen.setSize(context);
     return Scaffold(
       body: Column(children: [
@@ -46,9 +62,7 @@ class _MainPage extends State<MainMenuPage>
         const SizedBox(height: 20),
         !_isCarSelected?
         GestureDetector(
-          onTap: (){
-
-          },
+          onTap: (){},
             child: Stack(
           children: [
             Opacity(
@@ -95,60 +109,78 @@ class _MainPage extends State<MainMenuPage>
               ],
             ),
           ],
-        )):
-        GestureDetector(
-            onTap: (){},
-            child: Stack(
-              children: [
-                Opacity(
-                  opacity: 0.30,
-                  child: SizedBox(
-                      width: Screen.size.width * 0.9,
-                      height: Screen.size.height * 0.25,
-                      child:Transform.translate(
-                        offset: const Offset(
-                            75, 0),
-                        child: const Image(
-                          image: AssetImage("assets/cover.png"),
-                          fit: BoxFit.cover,
-                        ),
-                      )),
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Transform.translate(
-                        offset: const Offset(50, 30),
-                        child: Text("Click To Add Car",style: GoogleFonts.rubik(
-                            fontWeight: FontWeight.bold,
-                            color: MainColors.white,
-                            fontSize: Fonts.md(),
-                            shadows: [const Shadow(color: MainColors.black,blurRadius: 25 ,offset: Offset(0, 2))])
-                        )),
-                    Container(
-                      width: Screen.size.width,
-                      height: Screen.size.height * 0.5,
-                      alignment: Alignment.centerLeft,
-                      child: Transform.translate(
-                        offset: const Offset(10, -102),
-                        child: Transform.scale(
-                          scale: 1.35, // Zoom in the image by 1.5x
-                          child:
-                          const Image(
-                            image: AssetImage("assets/cars/NoCar.png"),
+        )):GestureDetector(
+          onTap: () {},
+          child: Stack(
+            children: [Opacity(
+                opacity: 1,
+                child: SizedBox(
+                  width: Screen.size.width * 0.9,
+                  height: Screen.size.height * 0.25,
+                  child: Transform.translate(
+                    offset: const Offset(75, 0),
+                    child:Container(
+                      decoration: BoxDecoration(
+                        color: MainColors.primary,
+                          borderRadius: BorderRadius.circular(30),
+                          image:const DecorationImage(
+                            image: AssetImage("assets/cover.png"),
+                            opacity: 0.1,
                             fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                          ),),),
+              ))),
+              SizedBox(
+                height: Screen.size.height * 0.68, // Adjust height for images
+                child: PageView.builder(
+                  controller: _pageController,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: imagesPath.length,
+                  itemBuilder: (context, index) {
+                    return buildCarImage(imagesPath[index], Screen.size);
+                  },
                 ),
-              ],
-            ))
-      ],),
+              ),
+              Transform.translate(
+                offset: const Offset(180, 20),
+                child:Row(children: [ Text("Name",style: GoogleFonts.rubik(
+                    fontWeight: FontWeight.bold,
+                    color: MainColors.white,
+                    fontSize: Fonts.md(),
+                    shadows: [const Shadow(color: MainColors.black,blurRadius: 25 ,offset: Offset(0, 2))])),
+                  const SizedBox(width: 25),
+                   Icon(Icons.error_rounded,color: MainColors.white,size: Sizes.xs(),),
+                  const SizedBox(width: 10),
+                  Text("Data",style: GoogleFonts.rubik(
+                      fontWeight: FontWeight.bold,
+                      color: MainColors.white,
+                      fontSize: Fonts.sm(),
+                      shadows: [const Shadow(color: MainColors.black,blurRadius: 25 ,offset: Offset(0, 2))]))
 
-    );
+                ],),
+
+              ),
+            ],
+          ),
+        ),
+    ]));
   }
 
+  // Helper method to build each car image
+  Widget buildCarImage(String imagePath, Size screenSize) {
+    return Container(
+      width: screenSize.width, // Occupy full width
+      height: screenSize.height * 0.68, // Adjust to desired height
+      alignment: Alignment.center,
+      child: Transform.translate(
+        offset: const Offset(10, -140),
+    child:
+    Transform.scale(
+    scale: 0.65,
+        child: Image.asset(
+        imagePath,
+        fit: BoxFit.cover,
+      ),
+    )));
+  }
 }
 
