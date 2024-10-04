@@ -1,7 +1,6 @@
 import 'package:carcare/Config/constants.dart';
 import 'package:carcare/Pages/forgetpasswordpage.dart';
 import 'package:carcare/Pages/signuppage.dart';
-import 'package:carcare/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -221,7 +220,7 @@ class _Login extends State<Login> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const MainMenuPage(userName: "Mazen",)),
+                                  builder: (context) => const MainMenuPage(userName: "Mazen",currentIndex: 0,)),
                             );
                           }),
                     ],
