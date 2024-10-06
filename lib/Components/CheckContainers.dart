@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CheckContainer extends StatelessWidget
+class ChecksChildren extends StatelessWidget
 {
   final IconData containerIcon;
   final String containerTitle;
   final String kmLeft;
   final Color containerBorderColor;
 
-  const CheckContainer({required this.containerIcon , required this.containerTitle , required this.kmLeft , required this.containerBorderColor,super.key});
+  const ChecksChildren({required this.containerIcon , required this.containerTitle , required this.kmLeft , required this.containerBorderColor,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class CheckContainer extends StatelessWidget
           mainAxisSize: MainAxisSize.min,
           children: [
         Icon(containerIcon),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(containerTitle),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(kmLeft),
       ])),
     );

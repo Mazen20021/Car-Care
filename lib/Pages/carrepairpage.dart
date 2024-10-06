@@ -9,7 +9,7 @@ import '../Services/mainpageservice.dart';
 class CarRepairPage extends StatefulWidget {
   final int carIndex;
 
-  CarRepairPage({required this.carIndex, super.key});
+  const CarRepairPage({required this.carIndex, super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -305,7 +305,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                           fontSize: Screen.size.width * 0.05,
                         ),
                         controller: _kmRepair,
-                        keyboardType: TextInputType.numberWithOptions(decimal: true),
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         inputFormatters: [
                           FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*')),
                         ],
@@ -357,7 +357,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                 fontSize: Screen.size.width * 0.05,
                               ),
                               controller: _repairCost,
-                                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                                keyboardType: const TextInputType.numberWithOptions(decimal: true),
                               inputFormatters: [
                                 FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*')),
                               ],
@@ -507,7 +507,6 @@ class _CarRepairPage extends State<CarRepairPage> {
             ))])));
   }
 }
-
 Widget buildCarImage(String imagePath, Size screenSize) {
   return Container(
       width: screenSize.width, // Occupy full width
