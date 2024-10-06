@@ -27,3 +27,5 @@ flutter:
     - assets/cars/Sedan.png
     - assets/cars/SUV.png
     - assets/cover.png
+    - assets/fuelMeter.png
+    - assets/repair.png
