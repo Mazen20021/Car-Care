@@ -29,8 +29,13 @@ class _CarSelectedPage extends State<CarSelectedPage> {
   @override
   void initState() {
     super.initState();
-    _pageController =
-        PageController(viewportFraction: 2.0, initialPage: widget.currentIndex);
+    carIndex = widget.currentIndex;
+    _pageController = PageController(viewportFraction: 2.0, initialPage: widget.currentIndex);
+  }
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -42,6 +47,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
     Screen.setSize(context);
     return Scaffold(
       body: SingleChildScrollView(
+         physics: (_isExpanded1||_isExpanded2) ? const AlwaysScrollableScrollPhysics() : const NeverScrollableScrollPhysics(),
           child: Column(children: [
           const SizedBox(height: 48),
           Row(
@@ -170,46 +176,54 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                 ),
               ],
             )),
-
         const SizedBox(height: 380),
-        Row(
+            Transform.translate(offset: Offset(20, -370),child:
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    print("i am in online repo");
+                  },
+                    child: Text(
+                      "View online reports",
+                      style: GoogleFonts.rubik(
+                        fontWeight: FontWeight.bold,
+                        color: MainColors.primary,
+                        decoration: TextDecoration.underline,
+                        decorationColor: MainColors.primary,
+                        fontSize: Fonts.xs(),
+                      ),
+                    ),
+                ),
+                const SizedBox(width: 65),
+                GestureDetector(
+                  onTap: () {
+                    print("i am in check log");
+                  },
+                    child: Text(
+                      "View check log",
+                      style: GoogleFonts.rubik(
+                        fontWeight: FontWeight.bold,
+                        color: MainColors.primary,
+                        decoration: TextDecoration.underline,
+                        decorationColor: MainColors.primary,
+                        fontSize: Fonts.xs(),
+                      ),
+                    ),
+                  ),
+
+              ],
+            )),
+          Transform.translate(
+              offset: const Offset(15, -360),
+              child:
+            Row(
           children: [
-            GestureDetector(
-                onTap: () {
-                  print("i am in online repo");
-                },
-                child: Transform.translate(
-                    offset: const Offset(40, -365),
-                    child: Text("View online reports",
-                        style: GoogleFonts.rubik(
-                            fontWeight: FontWeight.bold,
-                            color: MainColors.primary,
-                            decoration: TextDecoration.underline,
-                            decorationColor: MainColors.primary,
-                            fontSize: Fonts.xs())))),
-            GestureDetector(
-                onTap: () {
-                  print("i am in check log");
-                },
-                child: Transform.translate(
-                    offset: const Offset(100, -365),
-                    child: Text("View check log",
-                        style: GoogleFonts.rubik(
-                            fontWeight: FontWeight.bold,
-                            color: MainColors.primary,
-                            decoration: TextDecoration.underline,
-                            decorationColor: MainColors.primary,
-                            fontSize: Fonts.xs())))),
-          ],
-        ),
-        Row(
-          children: [
-            Transform.translate(
-              offset: const Offset(15, -350),
-              child: Container(
+            Container(
                 width: 180,
                 height: 50,
                 decoration: BoxDecoration(
+                    boxShadow: [BoxShadow(color: MainColors.black ,blurRadius: 10,offset: Offset(0, 2))],
                     borderRadius: BorderRadius.circular(10),
                     color: MainColors.primary,
                     image: DecorationImage(
@@ -248,12 +262,9 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                   ),
                 ),
               ),
-            ),
-            Transform.translate(
-              offset: const Offset(40, -350),
-              child: InkWell(
+            const SizedBox(width: 25),
+             InkWell(
                 onTap: () {
-                  print("pressed");
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -261,10 +272,12 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                             CarRepairPage(carIndex: carIndex)),
                   );
                 },
+
                 child: Container(
                   width: 180,
                   height: 50,
                   decoration: BoxDecoration(
+                    boxShadow: [BoxShadow(color: MainColors.black ,blurRadius: 10,offset: Offset(0, 2))],
                       borderRadius: BorderRadius.circular(10),
                       color: MainColors.primary,
                       image: DecorationImage(
@@ -299,10 +312,9 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                     ),
                   ),
                 ),
-              ),
             )
           ],
-        ),
+        )),
         Transform.translate(
           offset: const Offset(3, -340),
           child: Container(
