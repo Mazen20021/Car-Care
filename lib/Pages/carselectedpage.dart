@@ -19,7 +19,7 @@ class CarSelectedPage extends StatefulWidget {
 
 class _CarSelectedPage extends State<CarSelectedPage> {
   final bool _isSub = false;
-  final bool _isCarSelected = true;
+
   final List<String> imagesPath = List<String>.empty(growable: true);
   late final PageController _pageController;
   int carIndex = 0;
@@ -427,7 +427,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                 ),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 220),
-                  height: _isExpanded2 ? (!_isCarSelected ? 80 : 250) : 0,
+                  height: _isExpanded2 ? ( 250) : 0,
                   // Adjust the height as needed
                   child: ListView(
                     children: List.generate(5, (index) {
@@ -469,11 +469,13 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                 Padding(
                     padding: const EdgeInsets.all(5),
                     child: BottomButtonsClass(
+                      hasIcon: true,
+                      buttonImage: "",
                       onPressed: () {},
                       title: "Dashboard",
                       width: 65,
                       height: 45,
-                      buttonIcon: Icons.dashboard_rounded,
+                      buttonIcon: Icons.directions_car_filled,
                       currentColor: const Color.fromARGB(255, 42, 87, 208),
                       currentBorderColor:
                           const Color.fromARGB(255, 42, 87, 208),
@@ -481,17 +483,21 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                 Padding(
                     padding: const EdgeInsets.all(10),
                     child: BottomButtonsClass(
+                      hasIcon: false,
+                      buttonImage: "assets/customIcons/garage.png",
                       onPressed: () {},
                       title: "Car List",
                       width: 65,
                       height: 45,
-                      buttonIcon: Icons.garage_outlined,
+                      buttonIcon: Icons.ac_unit_outlined,
                       currentColor: const Color.fromARGB(255, 12, 21, 52),
                       currentBorderColor: MainColors.white,
                     )),
                 Padding(
                     padding: const EdgeInsets.all(10),
                     child: BottomButtonsClass(
+                      buttonImage: "",
+                      hasIcon: true,
                       onPressed: () {},
                       title: "Add Gas",
                       width: 65,
@@ -503,6 +509,8 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                 Padding(
                     padding: const EdgeInsets.all(10),
                     child: BottomButtonsClass(
+                      buttonImage: "",
+                      hasIcon: true,
                       onPressed: () {},
                       title: "Settings",
                       width: 65,
