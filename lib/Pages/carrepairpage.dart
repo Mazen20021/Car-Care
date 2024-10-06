@@ -305,8 +305,10 @@ class _CarRepairPage extends State<CarRepairPage> {
                           fontSize: Screen.size.width * 0.05,
                         ),
                         controller: _kmRepair,
-                        keyboardType: TextInputType.number, // Set the keyboard type to number
-                        inputFormatters: [FilteringTextInputFormatter.allow(".") , FilteringTextInputFormatter.digitsOnly], // Restrict input to digits only
+                        keyboardType: TextInputType.numberWithOptions(decimal: true),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*')),
+                        ],
                         decoration: InputDecoration(
                           label: const Text("KM Of Repair"),
                           contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
@@ -355,8 +357,10 @@ class _CarRepairPage extends State<CarRepairPage> {
                                 fontSize: Screen.size.width * 0.05,
                               ),
                               controller: _repairCost,
-                              keyboardType: TextInputType.number, // Set the keyboard type to number
-                              inputFormatters: [FilteringTextInputFormatter.digitsOnly , FilteringTextInputFormatter.allow(".")], // Restrict input to digits only
+                                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*')),
+                              ],
                               decoration: InputDecoration(
                                 label: const Text("Repair Cost *Optional"),
                                 contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
