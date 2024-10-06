@@ -356,7 +356,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                               ),
                               controller: _repairCost,
                               keyboardType: TextInputType.number, // Set the keyboard type to number
-                              inputFormatters: [FilteringTextInputFormatter.digitsOnly , FilteringTextInputFormatter.allow("." + )], // Restrict input to digits only
+                              inputFormatters: [FilteringTextInputFormatter.digitsOnly , FilteringTextInputFormatter.allow(".")], // Restrict input to digits only
                               decoration: InputDecoration(
                                 label: const Text("Repair Cost *Optional"),
                                 contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
