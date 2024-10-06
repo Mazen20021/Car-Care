@@ -7,12 +7,14 @@ class BottomButtonsClass extends StatelessWidget {
 
   final double width;
   final double height;
-  final IconData buttonIcon;
+  final String buttonImage;
   final String title;
   final Color currentColor;
   final Color currentBorderColor;
   final VoidCallback onPressed;
-  const BottomButtonsClass({required this.width , required this.height , required this.buttonIcon, required this.currentColor, required this.currentBorderColor , required this.title,required this.onPressed , super.key});
+  final bool hasIcon;
+  final IconData buttonIcon;
+  const BottomButtonsClass({required this.width , required this.height , required this.buttonIcon, required this.currentColor, required this.currentBorderColor , required this.title,required this.onPressed, required this.hasIcon ,required this.buttonImage , super.key});
   @override
   Widget build(BuildContext context) {
    return GestureDetector(
@@ -31,10 +33,38 @@ class BottomButtonsClass extends StatelessWidget {
          offset: const Offset(0, 2), // Shadow direction: towards the top
        ),],// Assuming you replace MainColors.primary with actual color
      ),
-     child: Column(
+     child: !hasIcon? Column(
        mainAxisAlignment: MainAxisAlignment.center, // Center the icon and text vertically
        children: [
-         Icon(buttonIcon, color: currentColor),
+         hasIcon? Icon(buttonIcon, color: currentColor):
+         Transform.translate(offset: const Offset(0, -14) ,
+             child: Transform.scale(
+               scale: 0.35,
+               child: Image(image:
+               AssetImage(buttonImage),fit: BoxFit.cover, color: currentColor),
+             )),
+         Transform.translate(offset: const Offset(0, -35) ,
+           child:
+         Text(
+           title,
+           style: GoogleFonts.rubik(
+             fontWeight: FontWeight.bold,
+             color: currentColor,
+             fontSize: Fonts.x3s(), // Adjust size as per your `Fonts.x2s()`
+           ),
+         )),
+       ],
+     )
+     : Column(
+       mainAxisAlignment: MainAxisAlignment.center, // Center the icon and text vertically
+       children: [
+         hasIcon? Icon(buttonIcon, color: currentColor):
+             Transform.translate(offset: const Offset(0, -14) ,
+                 child: Transform.scale(
+         scale: 0.43,
+         child: Image(image:
+         AssetImage(buttonImage),fit: BoxFit.cover, color: currentColor),
+       )),
          Text(
            title,
            style: GoogleFonts.rubik(
