@@ -306,7 +306,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                         ),
                         controller: _kmRepair,
                         keyboardType: TextInputType.number, // Set the keyboard type to number
-                        inputFormatters: [FilteringTextInputFormatter.digitsOnly], // Restrict input to digits only
+                        inputFormatters: [FilteringTextInputFormatter.allow(".") , FilteringTextInputFormatter.digitsOnly], // Restrict input to digits only
                         decoration: InputDecoration(
                           label: const Text("KM Of Repair"),
                           contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
@@ -356,7 +356,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                               ),
                               controller: _repairCost,
                               keyboardType: TextInputType.number, // Set the keyboard type to number
-                              inputFormatters: [FilteringTextInputFormatter.digitsOnly], // Restrict input to digits only
+                              inputFormatters: [FilteringTextInputFormatter.digitsOnly , FilteringTextInputFormatter.allow("." + )], // Restrict input to digits only
                               decoration: InputDecoration(
                                 label: const Text("Repair Cost *Optional"),
                                 contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
@@ -393,14 +393,14 @@ class _CarRepairPage extends State<CarRepairPage> {
                         width:  Screen.size.width * 0.98, // Adjust the width to your preference
                         child: DropdownButtonFormField<String>(
                           decoration: InputDecoration(
-                            label: Text("Selected Repair"),
-                            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                            label: const Text("Selected Repair"),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: Colors.deepPurple, width: 2),
+                              borderSide: const BorderSide(color: Colors.deepPurple, width: 2),
                             ),
                           ),
-                          hint: Text('Select Repair'),
+                          hint: const Text('Select Repair'),
                           value: _selectedValue,
                           items: _items.map((String item) {
                             return DropdownMenuItem<String>(
