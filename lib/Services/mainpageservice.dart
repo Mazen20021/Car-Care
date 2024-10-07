@@ -1,6 +1,6 @@
-import 'package:carcare/Pages/carnotselectedpage.dart';
+import 'package:carcare/Pages/car_not_selected_page.dart';
 import 'package:flutter/material.dart';
-import '../Pages/carselectedpage.dart';
+import '../Pages/car_selected_page.dart';
 
 class MainPageService extends StatelessWidget {
   final bool isCarSelected;

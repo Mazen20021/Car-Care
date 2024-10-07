@@ -1,6 +1,6 @@
 import 'package:carcare/Config/constants.dart';
-import 'package:carcare/Pages/forgetpasswordpage.dart';
-import 'package:carcare/Pages/signuppage.dart';
+import 'package:carcare/Pages/forget_password_page.dart';
+import 'package:carcare/Pages/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/Buttons.dart';

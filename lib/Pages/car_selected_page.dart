@@ -1,4 +1,4 @@
-import 'package:carcare/Pages/carrepairpage.dart';
+import 'package:carcare/Pages/car_repair_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/bottomButtons.dart';
@@ -92,9 +92,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
             ),
             const SizedBox(height: 20),
             GestureDetector(
-                onTap: () {
-                  print("j");
-                },
+                onTap: () => print("j"),
                 child: Stack(
                   children: [
                     Opacity(
@@ -164,34 +162,32 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                 index; // Update carIndex when page changes
                           });
                         },
-                        itemBuilder: (context, index) {
-                          return Container(
-                              width: Screen.size
-                                  .width, // Adjust width to your preference
-                              child: Transform.translate(
-                                offset: Offset(0, 50),
-                                child: Transform.scale(
-                                    scale: 0.65,
-                                    child: FittedBox(
-                                      fit: BoxFit
-                                          .cover, // Adjust how the image fits in the box
-                                      child: Image.asset(imagesPath[index]),
-                                    )),
-                              ));
-                        },
+                        itemBuilder: (context, index) => SizedBox(
+                          width: Screen
+                              .size.width, // Adjust width to your preference
+                          child: Transform.translate(
+                            offset: const Offset(0, 50),
+                            child: Transform.scale(
+                              scale: 0.65,
+                              child: FittedBox(
+                                fit: BoxFit
+                                    .cover, // Adjust how the image fits in the box
+                                child: Image.asset(imagesPath[index]),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
                 )),
             const SizedBox(height: 380),
             Transform.translate(
-                offset: Offset(20, -370),
+                offset: const Offset(20, -370),
                 child: Row(
                   children: [
                     GestureDetector(
-                      onTap: () {
-                        print("i am in online repo");
-                      },
+                      onTap: () => print("i am in online repo"),
                       child: Text(
                         "View online reports",
                         style: GoogleFonts.rubik(
