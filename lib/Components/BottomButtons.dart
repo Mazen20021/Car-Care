@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import '../Config/constants.dart';
 
 class BottomButtonsClass extends StatelessWidget {
-
   final double width;
   final double height;
   final String buttonImage;
@@ -14,70 +13,92 @@ class BottomButtonsClass extends StatelessWidget {
   final VoidCallback onPressed;
   final bool hasIcon;
   final IconData buttonIcon;
-  const BottomButtonsClass({required this.width , required this.height , required this.buttonIcon, required this.currentColor, required this.currentBorderColor , required this.title,required this.onPressed, required this.hasIcon ,required this.buttonImage , super.key});
+  const BottomButtonsClass(
+      {required this.width,
+      required this.height,
+      required this.buttonIcon,
+      required this.currentColor,
+      required this.currentBorderColor,
+      required this.title,
+      required this.onPressed,
+      required this.hasIcon,
+      required this.buttonImage,
+      super.key});
   @override
   Widget build(BuildContext context) {
-   return GestureDetector(
-       onTap: onPressed,
-       child: Container(
-     width: width,
-     height: height,
-     decoration: BoxDecoration(
-       color: MainColors.white,
-       borderRadius: BorderRadius.circular(10),
-       border: Border.all(color: currentBorderColor),
-       boxShadow: [BoxShadow(
-         color: Colors.black.withOpacity(0.2), // Shadow color
-         spreadRadius: 2,
-         blurRadius: 6,
-         offset: const Offset(0, 2), // Shadow direction: towards the top
-       ),],// Assuming you replace MainColors.primary with actual color
-     ),
-     child: !hasIcon? Column(
-       mainAxisAlignment: MainAxisAlignment.center, // Center the icon and text vertically
-       children: [
-         hasIcon? Icon(buttonIcon, color: currentColor):
-         Transform.translate(offset: const Offset(0, -14) ,
-             child: Transform.scale(
-               scale: 0.35,
-               child: Image(image:
-               AssetImage(buttonImage),fit: BoxFit.cover, color: currentColor),
-             )),
-         Transform.translate(offset: const Offset(0, -35) ,
-           child:
-         Text(
-           title,
-           style: GoogleFonts.rubik(
-             fontWeight: FontWeight.bold,
-             color: currentColor,
-             fontSize: Fonts.x3s(), // Adjust size as per your `Fonts.x2s()`
-           ),
-         )),
-       ],
-     )
-     : Column(
-       mainAxisAlignment: MainAxisAlignment.center, // Center the icon and text vertically
-       children: [
-         hasIcon? Icon(buttonIcon, color: currentColor):
-             Transform.translate(offset: const Offset(0, -14) ,
-                 child: Transform.scale(
-         scale: 0.43,
-         child: Image(image:
-         AssetImage(buttonImage),fit: BoxFit.cover, color: currentColor),
-       )),
-         Text(
-           title,
-           style: GoogleFonts.rubik(
-             fontWeight: FontWeight.bold,
-             color: currentColor,
-             fontSize: Fonts.x3s(), // Adjust size as per your `Fonts.x2s()`
-           ),
-         ),
-       ],
-     ),
-   ));
+    return GestureDetector(
+        onTap: onPressed,
+        child: Container(
+          width: width,
+          height: height,
+          decoration: BoxDecoration(
+            color: MainColors.white,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: currentBorderColor),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2), // Shadow color
+                spreadRadius: 2,
+                blurRadius: 6,
+                offset: const Offset(0, 2), // Shadow direction: towards the top
+              ),
+            ], // Assuming you replace MainColors.primary with actual color
+          ),
+          child: !hasIcon
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment
+                      .center, // Center the icon and text vertically
+                  children: [
+                    hasIcon
+                        ? Icon(buttonIcon, color: currentColor)
+                        : Transform.translate(
+                            offset: const Offset(0, -14),
+                            child: Transform.scale(
+                              scale: 0.35,
+                              child: Image(
+                                  image: AssetImage(buttonImage),
+                                  fit: BoxFit.cover,
+                                  color: currentColor),
+                            )),
+                    Transform.translate(
+                        offset: const Offset(0, -35),
+                        child: Text(
+                          title,
+                          style: GoogleFonts.rubik(
+                            fontWeight: FontWeight.bold,
+                            color: currentColor,
+                            fontSize:
+                                Fonts.xs, // Adjust size as per your `Fonts.xs`
+                          ),
+                        )),
+                  ],
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment
+                      .center, // Center the icon and text vertically
+                  children: [
+                    hasIcon
+                        ? Icon(buttonIcon, color: currentColor)
+                        : Transform.translate(
+                            offset: const Offset(0, -14),
+                            child: Transform.scale(
+                              scale: 0.43,
+                              child: Image(
+                                  image: AssetImage(buttonImage),
+                                  fit: BoxFit.cover,
+                                  color: currentColor),
+                            )),
+                    Text(
+                      title,
+                      style: GoogleFonts.rubik(
+                        fontWeight: FontWeight.bold,
+                        color: currentColor,
+                        fontSize:
+                            Fonts.xs, // Adjust size as per your `Fonts.xs`
+                      ),
+                    ),
+                  ],
+                ),
+        ));
   }
-
 }
-
-

@@ -76,13 +76,13 @@ class _Login extends State<Login> {
                   child: Column(
                     children: [
                       SizedBox(
-                        width: Screen.size.width * 0.9,
+                        width: Width.xxl,
                         child: TextFormField(
                           textAlign: TextAlign.left,
                           cursorColor: Colors.black,
                           style: GoogleFonts.mada(
                             color: Colors.black,
-                            fontSize: Screen.size.width * 0.05,
+                            fontSize: Width.xs,
                           ),
                           controller: _emailController,
                           decoration: InputDecoration(
@@ -90,7 +90,7 @@ class _Login extends State<Login> {
                                 vertical: 15, horizontal: 20),
                             hintStyle: GoogleFonts.mada(
                               color: Colors.black,
-                              fontSize: Screen.size.width * 0.05,
+                              fontSize: Width.xs,
                             ),
                             hintText: 'Email',
                             border: OutlineInputBorder(
@@ -101,7 +101,7 @@ class _Login extends State<Login> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Color(0xfff343131), width: 2),
+                                  color: Color(0xFFF34313), width: 2),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -129,13 +129,13 @@ class _Login extends State<Login> {
                       ),
                       const SizedBox(height: 15),
                       SizedBox(
-                        width: Screen.size.width * 0.9,
+                        width: Width.xxl,
                         child: TextFormField(
                           textAlign: TextAlign.left,
                           cursorColor: Colors.black,
                           style: GoogleFonts.mada(
                             color: Colors.black,
-                            fontSize: Fonts.sm(),
+                            fontSize: Fonts.sm,
                           ),
                           controller: _passwordController,
                           decoration: InputDecoration(
@@ -154,7 +154,7 @@ class _Login extends State<Login> {
                                 vertical: 15, horizontal: 20),
                             hintStyle: GoogleFonts.mada(
                               color: Colors.black,
-                              fontSize: Fonts.sm(),
+                              fontSize: Fonts.sm,
                             ),
                             hintText: 'Password',
                             border: OutlineInputBorder(
@@ -165,7 +165,7 @@ class _Login extends State<Login> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Color(0xfff343131), width: 2),
+                                  color: Color(0xFFF34313), width: 2),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -194,7 +194,7 @@ class _Login extends State<Login> {
                       ),
                       const SizedBox(height: 15),
                       ButtonClass(
-                          width: Width.xxl(),
+                          width: Width.xxl,
                           height: Width.bHeight,
                           hasGradient: true,
                           gradientColors: const [
@@ -213,13 +213,17 @@ class _Login extends State<Login> {
                           topPadding: 5,
                           bottomPadding: 15,
                           label: "Login",
-                          fontSize: Fonts.sm(),
+                          fontSize: Fonts.sm,
                           textColor: Colors.white,
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const MainPageService(isCarSelected: false,userName: "Mazen",currentIndex: 0,)),
+                                  builder: (context) => const MainPageService(
+                                        isCarSelected: false,
+                                        userName: "Mazen",
+                                        currentIndex: 0,
+                                      )),
                             );
                           }),
                     ],

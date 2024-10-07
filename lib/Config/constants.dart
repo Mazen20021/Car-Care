@@ -1,40 +1,37 @@
 import 'package:flutter/material.dart';
 
 class Screen {
-  static var size;
+  static late Size size;
   static void setSize(BuildContext context) =>
       size = MediaQuery.of(context).size;
 }
 
 class Fonts {
-  static double x3s() => Screen.size.width * 0.02;
-  static double x2s() => Screen.size.width * 0.03;
-  static double xs() => Screen.size.width * 0.04;
-  static double sm() => Screen.size.width * 0.05;
-  static double cmd() => Screen.size.width * 0.08;
-  static double md() => Screen.size.width * 0.07;
-  static double lg() => Screen.size.width * 0.1;
-  static double xl() => Screen.size.width * 0.12;
-  static double xxl() => Screen.size.width * 0.15;
+  static double xs = Screen.size.width * 0.04;
+  static double sm = Screen.size.width * 0.05;
+  static double md = Screen.size.width * 0.07;
+  static double lg = Screen.size.width * 0.1;
+  static double xl = Screen.size.width * 0.12;
+  static double xxl = Screen.size.width * 0.15;
 }
 
 class Width {
-  static double xs() => Screen.size.width * 0.06;
+  static double xs = Screen.size.width * 0.06;
   static double sm() => Screen.size.width * 0.09;
   static double md() => Screen.size.width * 0.3;
   static double lg() => Screen.size.width * 0.5;
-  static double xl() => Screen.size.width * 0.7;
-  static double xxl() => Screen.size.width * 0.9;
+  static double xl = Screen.size.width * 0.7;
+  static double xxl = Screen.size.width * 0.9;
   static double bHeight = 62;
 }
 
 class Height {
-  static double xs() => Screen.size.height * 0.06;
+  static double xs = Screen.size.height * 0.06;
   static double sm() => Screen.size.height * 0.09;
   static double md() => Screen.size.height * 0.3;
   static double lg() => Screen.size.height * 0.5;
-  static double xl() => Screen.size.height * 0.7;
-  static double xxl() => Screen.size.height * 0.9;
+  static double xl = Screen.size.height * 0.7;
+  static double xxl = Screen.size.height * 0.9;
 }
 
 class CustomRadius {
@@ -65,4 +62,10 @@ class MainColors {
   static const Color textBlack = Color(0xFF000000);
   static const Color textWhite = Color(0xFFFFFFFF);
   static const Color textPrimary = Color(0xFF2A57D0);
+
+  // Border colors
+  static const Color border = Color(0xFFE5E5E5);
+  static const Color borderDark = Color(0xFFD1D1D1);
+  static const Color borderLight = Color(0xFFEDEDED);
+  static const Color borderDanger = Color(0xFFF34313);
 }

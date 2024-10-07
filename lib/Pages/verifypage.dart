@@ -5,18 +5,14 @@ import '../Components/Buttons.dart';
 import '../Config/constants.dart';
 import 'restpassword.dart';
 
-class Verify extends StatefulWidget
-{
+class Verify extends StatefulWidget {
   const Verify({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    return _Verify();
-  }
+  State<StatefulWidget> createState() => _Verify();
 }
 
 class _Verify extends State<Verify> {
-
   final TextEditingController _box1Controller = TextEditingController();
   final TextEditingController _box2Controller = TextEditingController();
   final TextEditingController _box3Controller = TextEditingController();
@@ -27,26 +23,26 @@ class _Verify extends State<Verify> {
   @override
   Widget build(BuildContext context) {
     Screen.setSize(context);
-    return LayoutBuilder(builder: (context, constrains) {
-      return Scaffold(
-          body: Center(
-              child: SingleChildScrollView(child: Column(children: [
+    return LayoutBuilder(
+        builder: (context, constrains) => Scaffold(
+                body: Center(
+                    child: SingleChildScrollView(
+              child: Column(children: [
                 Stack(
-                  children: [Opacity(
-                      opacity: 0.6,
-                      child:
-                      Transform.translate(
-                        offset: const Offset(0, -100),
-                        child:
-                        SizedBox(
-                          width: Screen.size.width,
-                          height: Screen.size.height * 0.4,
-                          child: const Image(
-                            image: AssetImage("assets/image/skyLogin.png"),
-                            fit: BoxFit.cover,
+                  children: [
+                    Opacity(
+                        opacity: 0.6,
+                        child: Transform.translate(
+                          offset: const Offset(0, -100),
+                          child: SizedBox(
+                            width: Screen.size.width,
+                            height: Screen.size.height * 0.4,
+                            child: const Image(
+                              image: AssetImage("assets/image/skyLogin.png"),
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                      )),
+                        )),
                     Container(
                       width: Screen.size.width,
                       height: Screen.size.height * 0.5,
@@ -65,298 +61,293 @@ class _Verify extends State<Verify> {
                     ),
                   ],
                 ),
-                Text("Verification code sent", style: GoogleFonts.rubik(
-                    fontSize: 30,
-                    color: const Color.fromARGB(255, 42, 87, 208)
-                )),
+                Text("Verification code sent",
+                    style: GoogleFonts.rubik(
+                        fontSize: 30,
+                        color: const Color.fromARGB(255, 42, 87, 208))),
                 const SizedBox(height: 48),
                 Form(
                     key: _formKey,
-                    child: Column(children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                        SizedBox(
-                          width: Screen.size.width * 0.15,
-                          child: TextFormField(
-                            maxLength: 1,
-                            textAlign: TextAlign.left,
-                            cursorColor: Colors.black,
-                            style: GoogleFonts.mada(
-                              color: Colors.black,
-                              fontSize: Screen.size.width * 0.05,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(
+                              width: Screen.size.width * 0.15,
+                              child: TextFormField(
+                                maxLength: 1,
+                                textAlign: TextAlign.left,
+                                cursorColor: Colors.black,
+                                style: GoogleFonts.mada(
+                                  color: Colors.black,
+                                  fontSize: Width.xs,
+                                ),
+                                controller: _box1Controller,
+                                decoration: InputDecoration(
+                                  counterText: '',
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 20),
+                                  hintStyle: GoogleFonts.mada(
+                                    color: Colors.black,
+                                    fontSize: Width.xs,
+                                  ),
+                                  hintText: '',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.deepPurple, width: 2.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xFFF34313), width: 2),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.deepPurple, width: 2.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.redAccent, width: 2.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.redAccent, width: 2.0),
+                                  ),
+                                ),
+                                validator: (value) =>
+                                    value == null || value.isEmpty
+                                        ? 'Please Enter Your Email'
+                                        : null,
+                              ),
                             ),
-                            controller: _box1Controller,
-                            decoration: InputDecoration(
-                                counterText: '',
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 15, horizontal: 20),
-                              hintStyle: GoogleFonts.mada(
-                                color: Colors.black,
-                                fontSize: Screen.size.width * 0.05,
-                              ),
-                              hintText: '',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.deepPurple, width: 2.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Color(0xfff343131), width: 2),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.deepPurple, width: 2.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.redAccent, width: 2.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.redAccent, width: 2.0),
+                            const SizedBox(width: 10),
+                            SizedBox(
+                              width: Screen.size.width * 0.15,
+                              child: TextFormField(
+                                maxLength: 1,
+                                textAlign: TextAlign.left,
+                                cursorColor: Colors.black,
+                                style: GoogleFonts.mada(
+                                  color: Colors.black,
+                                  fontSize: Width.xs,
+                                ),
+                                controller: _box2Controller,
+                                decoration: InputDecoration(
+                                  counterText: '',
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 20),
+                                  hintStyle: GoogleFonts.mada(
+                                    color: Colors.black,
+                                    fontSize: Width.xs,
+                                  ),
+                                  hintText: '',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.deepPurple, width: 2.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xFFF34313), width: 2),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.deepPurple, width: 2.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.redAccent, width: 2.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.redAccent, width: 2.0),
+                                  ),
+                                ),
+                                validator: (value) =>
+                                    value == null || value.isEmpty
+                                        ? 'Please Enter Your Email'
+                                        : null,
                               ),
                             ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please Enter Your Email';
-                              }
-                              return null;
-                            },
-                          ),
+                            const SizedBox(width: 10),
+                            SizedBox(
+                              width: Screen.size.width * 0.15,
+                              child: TextFormField(
+                                maxLength: 1,
+                                textAlign: TextAlign.left,
+                                cursorColor: Colors.black,
+                                style: GoogleFonts.mada(
+                                  color: Colors.black,
+                                  fontSize: Width.xs,
+                                ),
+                                controller: _box3Controller,
+                                decoration: InputDecoration(
+                                  counterText: '',
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 20),
+                                  hintStyle: GoogleFonts.mada(
+                                    color: Colors.black,
+                                    fontSize: Width.xs,
+                                  ),
+                                  hintText: '',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.deepPurple, width: 2.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xFFF34313), width: 2),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.deepPurple, width: 2.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.redAccent, width: 2.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.redAccent, width: 2.0),
+                                  ),
+                                ),
+                                validator: (value) =>
+                                    value == null || value.isEmpty
+                                        ? 'Please Enter Your Email'
+                                        : null,
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            SizedBox(
+                              width: Screen.size.width * 0.15,
+                              child: TextFormField(
+                                maxLength: 1,
+                                textAlign: TextAlign.left,
+                                cursorColor: Colors.black,
+                                style: GoogleFonts.mada(
+                                  color: Colors.black,
+                                  fontSize: Width.xs,
+                                ),
+                                controller: _box4Controller,
+                                decoration: InputDecoration(
+                                  counterText: '',
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 20),
+                                  hintStyle: GoogleFonts.mada(
+                                    color: Colors.black,
+                                    fontSize: Width.xs,
+                                  ),
+                                  hintText: '',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.deepPurple, width: 2.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xFFF34313), width: 2),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.deepPurple, width: 2.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.redAccent, width: 2.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.redAccent, width: 2.0),
+                                  ),
+                                ),
+                                validator: (value) =>
+                                    value == null || value.isEmpty
+                                        ? 'Please Enter Your Email'
+                                        : null,
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            SizedBox(
+                              width: Screen.size.width * 0.15,
+                              child: TextFormField(
+                                maxLength: 1,
+                                textAlign: TextAlign.left,
+                                cursorColor: Colors.black,
+                                style: GoogleFonts.mada(
+                                  color: Colors.black,
+                                  fontSize: Width.xs,
+                                ),
+                                controller: _box5Controller,
+                                decoration: InputDecoration(
+                                  counterText: '',
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 20),
+                                  hintStyle: GoogleFonts.mada(
+                                    color: Colors.black,
+                                    fontSize: Width.xs,
+                                  ),
+                                  hintText: '',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.deepPurple, width: 2.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xFFF34313), width: 2),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.deepPurple, width: 2.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.redAccent, width: 2.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(
+                                        color: Colors.redAccent, width: 2.0),
+                                  ),
+                                ),
+                                validator: (value) =>
+                                    value == null || value.isEmpty
+                                        ? 'Please Enter Your Email'
+                                        : null,
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(width: 10),
-                        SizedBox(
-                          width: Screen.size.width * 0.15,
-                          child: TextFormField(
-                            maxLength: 1,
-                            textAlign: TextAlign.left,
-                            cursorColor: Colors.black,
-                            style: GoogleFonts.mada(
-                              color: Colors.black,
-                              fontSize: Screen.size.width * 0.05,
-                            ),
-                            controller: _box2Controller,
-                            decoration: InputDecoration(
-                                counterText: '',
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 15, horizontal: 20),
-                              hintStyle: GoogleFonts.mada(
-                                color: Colors.black,
-                                fontSize: Screen.size.width * 0.05,
-                              ),
-                              hintText: '',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.deepPurple, width: 2.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Color(0xfff343131), width: 2),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.deepPurple, width: 2.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.redAccent, width: 2.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.redAccent, width: 2.0),
-                              ),
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please Enter Your Email';
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
-                          const SizedBox(width: 10),
-                        SizedBox(
-                          width: Screen.size.width * 0.15,
-                          child: TextFormField(
-                            maxLength: 1,
-                            textAlign: TextAlign.left,
-                            cursorColor: Colors.black,
-                            style: GoogleFonts.mada(
-                              color: Colors.black,
-                              fontSize: Screen.size.width * 0.05,
-                            ),
-                            controller: _box3Controller,
-                            decoration: InputDecoration(
-                                counterText: '',
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 15, horizontal: 20),
-                              hintStyle: GoogleFonts.mada(
-                                color: Colors.black,
-                                fontSize: Screen.size.width * 0.05,
-                              ),
-                              hintText: '',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.deepPurple, width: 2.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Color(0xfff343131), width: 2),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.deepPurple, width: 2.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.redAccent, width: 2.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.redAccent, width: 2.0),
-                              ),
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please Enter Your Email';
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
-                          const SizedBox(width: 10),
-                        SizedBox(
-                          width: Screen.size.width * 0.15,
-                          child: TextFormField(
-                            maxLength: 1,
-                            textAlign: TextAlign.left,
-                            cursorColor: Colors.black,
-                            style: GoogleFonts.mada(
-                              color: Colors.black,
-                              fontSize: Screen.size.width * 0.05,
-                            ),
-                            controller: _box4Controller,
-                            decoration: InputDecoration(
-                                counterText: '',
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 15, horizontal: 20),
-                              hintStyle: GoogleFonts.mada(
-                                color: Colors.black,
-                                fontSize: Screen.size.width * 0.05,
-                              ),
-                              hintText: '',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.deepPurple, width: 2.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Color(0xfff343131), width: 2),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.deepPurple, width: 2.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.redAccent, width: 2.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.redAccent, width: 2.0),
-                              ),
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please Enter Your Email';
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
-                          const SizedBox(width: 10),
-                        SizedBox(
-                          width: Screen.size.width * 0.15,
-                          child: TextFormField(
-                            maxLength: 1,
-                            textAlign: TextAlign.left,
-                            cursorColor: Colors.black,
-                            style: GoogleFonts.mada(
-                              color: Colors.black,
-                              fontSize: Screen.size.width * 0.05,
-                            ),
-                            controller: _box5Controller,
-                            decoration: InputDecoration(
-                                counterText: '',
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 15, horizontal: 20),
-                              hintStyle: GoogleFonts.mada(
-                                color: Colors.black,
-                                fontSize: Screen.size.width * 0.05,
-                              ),
-                              hintText: '',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.deepPurple, width: 2.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Color(0xfff343131), width: 2),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.deepPurple, width: 2.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.redAccent, width: 2.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(
-                                    color: Colors.redAccent, width: 2.0),
-                              ),
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please Enter Your Email';
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
-                      ],),
-                      const SizedBox(height: 35),
-                      ButtonClass(
-                          width: Width.xxl(),
+                        const SizedBox(height: 35),
+                        ButtonClass(
+                          width: Width.xxl,
                           height: Width.bHeight,
                           hasGradient: true,
-                          gradientColors: const [MainColors.primary , MainColors.primary],
+                          gradientColors: const [
+                            MainColors.primary,
+                            MainColors.primary
+                          ],
                           hasImage: false,
                           imagePath: "",
                           imageOpacity: 0.1,
@@ -369,20 +360,19 @@ class _Verify extends State<Verify> {
                           topPadding: 5,
                           bottomPadding: 15,
                           label: "Verify",
-                          fontSize: Fonts.sm(),
+                          fontSize: Fonts.sm,
                           textColor: Colors.white,
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const RestPassword()),
+                              MaterialPageRoute(
+                                  builder: (context) => const RestPassword()),
                             );
                           },
-                      ),
-                    ],)
-                ),
+                        ),
+                      ],
+                    )),
               ]),
-              )
-          ));
-    });
+            ))));
   }
 }
