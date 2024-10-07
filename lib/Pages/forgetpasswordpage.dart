@@ -2,7 +2,7 @@ import 'package:carcare/Pages/verifypage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../Components/Buttons.dart';
+import '../Components/buttons.dart';
 import '../Config/constants.dart';
 
 class ForgetPass extends StatefulWidget {

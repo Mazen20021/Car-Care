@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../Components/Buttons.dart';
+import '../Components/buttons.dart';
 import '../Config/constants.dart';
 
 class Signup extends StatefulWidget {

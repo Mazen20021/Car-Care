@@ -1,4 +1,4 @@
-import 'package:carcare/Components/Buttons.dart';
+import 'package:carcare/Components/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
