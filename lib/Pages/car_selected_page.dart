@@ -225,7 +225,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                       width: 180,
                       height: 50,
                       decoration: BoxDecoration(
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                                 color: MainColors.black,
                                 blurRadius: 10,
@@ -282,7 +282,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                         width: 180,
                         height: 50,
                         decoration: BoxDecoration(
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                   color: MainColors.black,
                                   blurRadius: 10,

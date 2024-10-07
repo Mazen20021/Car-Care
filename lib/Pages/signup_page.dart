@@ -7,13 +7,14 @@ import '../Config/constants.dart';
 class Signup extends StatefulWidget {
   const Signup({super.key});
 
-  _signup createState() => _signup();
+  @override
+  SignupState createState() => SignupState();
 }
 
-class _signup extends State<Signup> {
+class SignupState extends State<Signup> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _RpasswordController = TextEditingController();
+  final TextEditingController _rePasswordController = TextEditingController();
   final TextEditingController _fNameController = TextEditingController();
   final TextEditingController _lNameController = TextEditingController();
   late bool _isChecked = false;
@@ -299,7 +300,7 @@ class _signup extends State<Signup> {
                   color: Colors.black,
                   fontSize: Fonts.sm,
                 ),
-                controller: _RpasswordController,
+                controller: _rePasswordController,
                 decoration: InputDecoration(
                   suffixIcon: IconButton(
                     onPressed: () {

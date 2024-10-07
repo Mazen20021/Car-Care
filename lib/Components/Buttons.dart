@@ -22,7 +22,8 @@ class ButtonClass extends StatelessWidget {
   final double? fontSize;
   final Color textColor;
   final VoidCallback? onPressed;
-  ButtonClass({
+  const ButtonClass({
+    super.key,
     this.width = 0,
     this.height = 0,
     this.borderRadius = 0,
