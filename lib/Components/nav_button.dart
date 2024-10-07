@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../Config/constants.dart';
 
-class BottomButtonsClass extends StatelessWidget {
+class NavButton extends StatelessWidget {
   final double width;
   final double height;
   final String buttonImage;
@@ -13,7 +13,7 @@ class BottomButtonsClass extends StatelessWidget {
   final VoidCallback onPressed;
   final bool hasIcon;
   final IconData buttonIcon;
-  const BottomButtonsClass(
+  const NavButton(
       {required this.width,
       required this.height,
       required this.buttonIcon,

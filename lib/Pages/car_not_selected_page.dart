@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../Components/bottomButtons.dart';
+import '../Components/nav_button.dart';
 import '../Config/constants.dart';
 
 class CarNotSelectedPage extends StatefulWidget {
@@ -492,7 +492,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
               children: [
                 Padding(
                     padding: const EdgeInsets.all(5),
-                    child: BottomButtonsClass(
+                    child: NavButton(
                       hasIcon: true,
                       buttonImage: "",
                       onPressed: () {},
@@ -506,7 +506,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                     )),
                 Padding(
                     padding: const EdgeInsets.all(10),
-                    child: BottomButtonsClass(
+                    child: NavButton(
                       hasIcon: false,
                       buttonImage: "assets/customIcons/garage.png",
                       onPressed: () {},
@@ -519,7 +519,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                     )),
                 Padding(
                     padding: const EdgeInsets.all(10),
-                    child: BottomButtonsClass(
+                    child: NavButton(
                       buttonImage: "",
                       hasIcon: true,
                       onPressed: () {},
@@ -532,7 +532,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                     )),
                 Padding(
                     padding: const EdgeInsets.all(10),
-                    child: BottomButtonsClass(
+                    child: NavButton(
                       buttonImage: "",
                       hasIcon: true,
                       onPressed: () {},
