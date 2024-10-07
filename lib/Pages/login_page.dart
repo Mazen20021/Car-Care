@@ -68,7 +68,7 @@ class _Login extends State<Login> {
                 ),
                 Text("Login to your account",
                     style: GoogleFonts.rubik(
-                        fontSize: 30,
+                        fontSize: Fonts.xxl,
                         color: const Color.fromARGB(255, 42, 87, 208))),
                 const SizedBox(height: 48),
                 Form(
@@ -79,24 +79,24 @@ class _Login extends State<Login> {
                         width: Width.xxl,
                         child: TextFormField(
                           textAlign: TextAlign.left,
-                          cursorColor: Colors.black,
+                          cursorColor: MainColors.black,
                           style: GoogleFonts.mada(
-                            color: Colors.black,
-                            fontSize: Width.xs,
+                            color: MainColors.black,
+                            fontSize: Fonts.md,
                           ),
                           controller: _emailController,
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 15, horizontal: 20),
                             hintStyle: GoogleFonts.mada(
-                              color: Colors.black,
-                              fontSize: Width.xs,
+                              color: MainColors.black,
+                              fontSize: Fonts.md,
                             ),
                             hintText: 'Email',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Colors.deepPurple, width: 2.0),
+                                  color: MainColors.deepPurple, width: 2.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -106,17 +106,17 @@ class _Login extends State<Login> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Colors.deepPurple, width: 2.0),
+                                  color: MainColors.deepPurple, width: 2.0),
                             ),
                             errorBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Colors.redAccent, width: 2.0),
+                                  color: MainColors.redAccent, width: 2.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Colors.redAccent, width: 2.0),
+                                  color: MainColors.redAccent, width: 2.0),
                             ),
                           ),
                           validator: (value) {
@@ -132,10 +132,10 @@ class _Login extends State<Login> {
                         width: Width.xxl,
                         child: TextFormField(
                           textAlign: TextAlign.left,
-                          cursorColor: Colors.black,
+                          cursorColor: MainColors.black,
                           style: GoogleFonts.mada(
-                            color: Colors.black,
-                            fontSize: Fonts.sm,
+                            color: MainColors.black,
+                            fontSize: Fonts.md,
                           ),
                           controller: _passwordController,
                           decoration: InputDecoration(
@@ -148,19 +148,19 @@ class _Login extends State<Login> {
                               icon: Icon(_isObscured
                                   ? Icons.visibility
                                   : Icons.visibility_off),
-                              color: Colors.black,
+                              color: MainColors.black,
                             ),
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 15, horizontal: 20),
                             hintStyle: GoogleFonts.mada(
-                              color: Colors.black,
-                              fontSize: Fonts.sm,
+                              color: MainColors.black,
+                              fontSize: Fonts.md,
                             ),
                             hintText: 'Password',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Colors.deepPurple, width: 2.0),
+                                  color: MainColors.deepPurple, width: 2.0),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -170,17 +170,17 @@ class _Login extends State<Login> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Colors.deepPurple, width: 2.0),
+                                  color: MainColors.deepPurple, width: 2.0),
                             ),
                             errorBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Colors.redAccent, width: 2.0),
+                                  color: MainColors.redAccent, width: 2.0),
                             ),
                             focusedErrorBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Colors.redAccent, width: 2.0),
+                                  color: MainColors.redAccent, width: 2.0),
                             ),
                           ),
                           obscureText: !_isObscured,
@@ -193,7 +193,7 @@ class _Login extends State<Login> {
                         ),
                       ),
                       const SizedBox(height: 15),
-                      ButtonClass(
+                      CustomButton(
                           width: Width.xxl,
                           height: Width.bHeight,
                           hasGradient: true,
@@ -206,15 +206,15 @@ class _Login extends State<Login> {
                           imageOpacity: 0.1,
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
-                          normalColor: Colors.transparent,
+                          normalColor: MainColors.transparent,
                           borderRadius: CustomRadius.sm,
                           leftPadding: 20,
                           rightPadding: 20,
                           topPadding: 5,
                           bottomPadding: 15,
                           label: "Login",
-                          fontSize: Fonts.sm,
-                          textColor: Colors.white,
+                          fontSize: Fonts.lg,
+                          textColor: MainColors.white,
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -251,7 +251,7 @@ class _Login extends State<Login> {
                               )),
                           borderRadius: BorderRadius.circular(5),
                           gradient: const LinearGradient(
-                              colors: [
+                              MainColors: [
                                 Color.fromARGB(255, 53, 145, 249),
                                 Color.fromARGB(255, 119, 182, 252)
                               ],
@@ -273,9 +273,9 @@ class _Login extends State<Login> {
                                   "Create a new account",
                                   style: GoogleFonts.rubik(
                                       fontSize: 15,
-                                      color: Colors.white,
+                                      color: MainColors.white,
                                       decoration: TextDecoration.underline,
-                                      decorationColor: Colors.white),
+                                      decorationColor: MainColors.white),
                                 )),
                             const SizedBox(width: 40),
                             TextButton(
@@ -290,9 +290,9 @@ class _Login extends State<Login> {
                                 child: Text("Forgot your password?",
                                     style: GoogleFonts.rubik(
                                         fontSize: 15,
-                                        color: Colors.white,
+                                        color: MainColors.white,
                                         decoration: TextDecoration.underline,
-                                        decorationColor: Colors.white))),
+                                        decorationColor: MainColors.white))),
                           ],
                         ),
                       )),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../Components/buttons.dart';
+import '../Components/custom_button.dart';
 import '../Config/constants.dart';
 
 class RestPassword extends StatefulWidget {
@@ -72,9 +72,9 @@ class _RestPassword extends State<RestPassword> {
                     width: Width.xxl,
                     child: TextFormField(
                       textAlign: TextAlign.left,
-                      cursorColor: Colors.black,
+                      cursorColor: MainColors.black,
                       style: GoogleFonts.mada(
-                        color: Colors.black,
+                        color: MainColors.black,
                         fontSize: Fonts.sm,
                       ),
                       controller: _passController,
@@ -88,19 +88,19 @@ class _RestPassword extends State<RestPassword> {
                           icon: Icon(_pObscured
                               ? Icons.visibility
                               : Icons.visibility_off),
-                          color: Colors.black,
+                          color: MainColors.black,
                         ),
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 15, horizontal: 20),
                         hintStyle: GoogleFonts.mada(
-                          color: Colors.black,
+                          color: MainColors.black,
                           fontSize: Fonts.sm,
                         ),
                         hintText: 'Password',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
-                              color: Colors.deepPurple, width: 2.0),
+                              color: MainColors.deepPurple, width: 2.0),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -110,17 +110,17 @@ class _RestPassword extends State<RestPassword> {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
-                              color: Colors.deepPurple, width: 2.0),
+                              color: MainColors.deepPurple, width: 2.0),
                         ),
                         errorBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
-                              color: Colors.redAccent, width: 2.0),
+                              color: MainColors.redAccent, width: 2.0),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
-                              color: Colors.redAccent, width: 2.0),
+                              color: MainColors.redAccent, width: 2.0),
                         ),
                       ),
                       obscureText: !_pObscured,
@@ -137,9 +137,9 @@ class _RestPassword extends State<RestPassword> {
                     width: Width.xxl,
                     child: TextFormField(
                       textAlign: TextAlign.left,
-                      cursorColor: Colors.black,
+                      cursorColor: MainColors.black,
                       style: GoogleFonts.mada(
-                        color: Colors.black,
+                        color: MainColors.black,
                         fontSize: Fonts.sm,
                       ),
                       controller: _cpassController,
@@ -153,19 +153,19 @@ class _RestPassword extends State<RestPassword> {
                           icon: Icon(_cpObscured
                               ? Icons.visibility
                               : Icons.visibility_off),
-                          color: Colors.black,
+                          color: MainColors.black,
                         ),
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 15, horizontal: 20),
                         hintStyle: GoogleFonts.mada(
-                          color: Colors.black,
+                          color: MainColors.black,
                           fontSize: Fonts.sm,
                         ),
                         hintText: 'Repeat New password',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
-                              color: Colors.deepPurple, width: 2.0),
+                              color: MainColors.deepPurple, width: 2.0),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -175,17 +175,17 @@ class _RestPassword extends State<RestPassword> {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
-                              color: Colors.deepPurple, width: 2.0),
+                              color: MainColors.deepPurple, width: 2.0),
                         ),
                         errorBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
-                              color: Colors.redAccent, width: 2.0),
+                              color: MainColors.redAccent, width: 2.0),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
-                              color: Colors.redAccent, width: 2.0),
+                              color: MainColors.redAccent, width: 2.0),
                         ),
                       ),
                       obscureText: !_cpObscured,
@@ -198,7 +198,7 @@ class _RestPassword extends State<RestPassword> {
                     ),
                   ),
                   const SizedBox(height: 25),
-                  ButtonClass(
+                  CustomButton(
                     width: Width.xxl,
                     height: Width.bHeight,
                     hasGradient: true,
@@ -211,7 +211,7 @@ class _RestPassword extends State<RestPassword> {
                     imageOpacity: 0.1,
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
-                    normalColor: Colors.transparent,
+                    normalColor: MainColors.transparent,
                     borderRadius: CustomRadius.sm,
                     leftPadding: 20,
                     rightPadding: 20,
@@ -219,7 +219,7 @@ class _RestPassword extends State<RestPassword> {
                     bottomPadding: 15,
                     label: "Reset",
                     fontSize: Fonts.sm,
-                    textColor: Colors.white,
+                    textColor: MainColors.white,
                     onPressed: () {},
                   ),
                 ],

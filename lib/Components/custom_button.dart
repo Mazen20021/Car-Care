@@ -2,7 +2,7 @@ import 'package:carcare/Config/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ButtonClass extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final double width;
   final double height;
   final double borderRadius;
@@ -22,7 +22,7 @@ class ButtonClass extends StatelessWidget {
   final double? fontSize;
   final Color textColor;
   final VoidCallback? onPressed;
-  const ButtonClass({
+  const CustomButton({
     super.key,
     this.width = 0,
     this.height = 0,
@@ -32,7 +32,7 @@ class ButtonClass extends StatelessWidget {
     this.topPadding = 0,
     this.bottomPadding = 0,
     this.gradientColors,
-    this.normalColor = Colors.transparent,
+    this.normalColor = MainColors.transparent,
     this.hasGradient = false,
     this.hasImage = false,
     this.imagePath = "",

@@ -37,7 +37,7 @@ class NavButton extends StatelessWidget {
             border: Border.all(color: currentBorderColor),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2), // Shadow color
+                color: MainColors.black.withOpacity(0.2), // Shadow color
                 spreadRadius: 2,
                 blurRadius: 6,
                 offset: const Offset(0, 2), // Shadow direction: towards the top

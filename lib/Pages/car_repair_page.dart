@@ -1,4 +1,4 @@
-import 'package:carcare/Components/buttons.dart';
+import 'package:carcare/Components/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -189,7 +189,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                     width: Screen.size.width,
                     padding: const EdgeInsets.all(16.0),
                     decoration: BoxDecoration(
-                      color: Colors.transparent,
+                      color: MainColors.transparent,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Column(
@@ -257,9 +257,9 @@ class _CarRepairPage extends State<CarRepairPage> {
                                         _selectDate(context);
                                       },
                                       textAlign: TextAlign.left,
-                                      cursorColor: Colors.black,
+                                      cursorColor: MainColors.black,
                                       style: GoogleFonts.mada(
-                                        color: Colors.black,
+                                        color: MainColors.black,
                                         fontSize: Width.xs,
                                       ),
                                       controller: _setDate,
@@ -271,7 +271,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                             const EdgeInsets.symmetric(
                                                 vertical: 15, horizontal: 20),
                                         hintStyle: GoogleFonts.mada(
-                                          color: Colors.black,
+                                          color: MainColors.black,
                                           fontSize: Width.xs,
                                         ),
                                         hintText: 'Select Date',
@@ -279,7 +279,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.deepPurple,
+                                              color: MainColors.deepPurple,
                                               width: 2.0),
                                         ),
                                         enabledBorder: OutlineInputBorder(
@@ -293,21 +293,21 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.deepPurple,
+                                              color: MainColors.deepPurple,
                                               width: 2.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.redAccent,
+                                              color: MainColors.redAccent,
                                               width: 2.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.redAccent,
+                                              color: MainColors.redAccent,
                                               width: 2.0),
                                         ),
                                       ),
@@ -327,9 +327,9 @@ class _CarRepairPage extends State<CarRepairPage> {
                                     width: Screen.size.width * 0.98,
                                     child: TextFormField(
                                       textAlign: TextAlign.left,
-                                      cursorColor: Colors.black,
+                                      cursorColor: MainColors.black,
                                       style: GoogleFonts.mada(
-                                        color: Colors.black,
+                                        color: MainColors.black,
                                         fontSize: Width.xs,
                                       ),
                                       controller: _kmRepair,
@@ -346,7 +346,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                             const EdgeInsets.symmetric(
                                                 vertical: 15, horizontal: 20),
                                         hintStyle: GoogleFonts.mada(
-                                          color: Colors.black,
+                                          color: MainColors.black,
                                           fontSize: Width.xs,
                                         ),
                                         hintText: '0',
@@ -354,7 +354,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.deepPurple,
+                                              color: MainColors.deepPurple,
                                               width: 2.0),
                                         ),
                                         enabledBorder: OutlineInputBorder(
@@ -368,21 +368,21 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.deepPurple,
+                                              color: MainColors.deepPurple,
                                               width: 2.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.redAccent,
+                                              color: MainColors.redAccent,
                                               width: 2.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.redAccent,
+                                              color: MainColors.redAccent,
                                               width: 2.0),
                                         ),
                                       ),
@@ -401,9 +401,9 @@ class _CarRepairPage extends State<CarRepairPage> {
                                     width: Screen.size.width * 0.98,
                                     child: TextFormField(
                                       textAlign: TextAlign.left,
-                                      cursorColor: Colors.black,
+                                      cursorColor: MainColors.black,
                                       style: GoogleFonts.mada(
-                                        color: Colors.black,
+                                        color: MainColors.black,
                                         fontSize: Width.xs,
                                       ),
                                       controller: _repairCost,
@@ -421,7 +421,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                             const EdgeInsets.symmetric(
                                                 vertical: 15, horizontal: 20),
                                         hintStyle: GoogleFonts.mada(
-                                          color: Colors.black,
+                                          color: MainColors.black,
                                           fontSize: Width.xs,
                                         ),
                                         hintText: 'Cost',
@@ -429,7 +429,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.deepPurple,
+                                              color: MainColors.deepPurple,
                                               width: 2.0),
                                         ),
                                         enabledBorder: OutlineInputBorder(
@@ -443,21 +443,21 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.deepPurple,
+                                              color: MainColors.deepPurple,
                                               width: 2.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.redAccent,
+                                              color: MainColors.redAccent,
                                               width: 2.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.redAccent,
+                                              color: MainColors.redAccent,
                                               width: 2.0),
                                         ),
                                       ),
@@ -477,7 +477,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Colors.deepPurple,
+                                              color: MainColors.deepPurple,
                                               width: 2),
                                         ),
                                       ),
@@ -537,7 +537,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       offset: const Offset(-20, -5),
                                       child: Row(
                                         children: [
-                                          ButtonClass(
+                                          CustomButton(
                                               width: 180,
                                               height: 50,
                                               hasGradient: true,
@@ -552,7 +552,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                               imageOpacity: 0.1,
                                               begin: Alignment.centerLeft,
                                               end: Alignment.centerRight,
-                                              normalColor: Colors.transparent,
+                                              normalColor:
+                                                  MainColors.transparent,
                                               borderRadius: CustomRadius.sm,
                                               leftPadding: 20,
                                               rightPadding: 20,
@@ -560,11 +561,11 @@ class _CarRepairPage extends State<CarRepairPage> {
                                               bottomPadding: 15,
                                               label: "Save",
                                               fontSize: Fonts.xs,
-                                              textColor: Colors.white,
+                                              textColor: MainColors.white,
                                               onPressed: () {}),
                                           Transform.translate(
                                             offset: const Offset(-3, 0),
-                                            child: ButtonClass(
+                                            child: CustomButton(
                                                 width: 180,
                                                 height: 50,
                                                 hasGradient: true,
@@ -580,7 +581,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 imageOpacity: 0.1,
                                                 begin: Alignment.centerLeft,
                                                 end: Alignment.centerRight,
-                                                normalColor: Colors.transparent,
+                                                normalColor:
+                                                    MainColors.transparent,
                                                 borderRadius: CustomRadius.sm,
                                                 leftPadding: 0,
                                                 rightPadding: 20,
@@ -588,7 +590,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 bottomPadding: 15,
                                                 label: "Cancel",
                                                 fontSize: Fonts.xs,
-                                                textColor: Colors.white,
+                                                textColor: MainColors.white,
                                                 onPressed: () {
                                                   Navigator.push(
                                                     context,

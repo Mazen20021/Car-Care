@@ -7,12 +7,12 @@ class Screen {
 }
 
 class Fonts {
-  static double xs = Screen.size.width * 0.04;
-  static double sm = Screen.size.width * 0.05;
-  static double md = Screen.size.width * 0.07;
-  static double lg = Screen.size.width * 0.1;
-  static double xl = Screen.size.width * 0.12;
-  static double xxl = Screen.size.width * 0.15;
+  static double xs = Screen.size.width * 0.02;
+  static double sm = Screen.size.width * 0.03;
+  static double md = Screen.size.width * 0.037;
+  static double lg = Screen.size.width * 0.047;
+  static double xl = Screen.size.width * 0.057;
+  static double xxl = Screen.size.width * 0.067;
 }
 
 class Width {
@@ -44,6 +44,7 @@ class CustomRadius {
 }
 
 class MainColors {
+  static const Color transparent = Color(0x00000000);
   // Primary colors
   static const Color primary = Color(0xFF2A57D0);
   static const Color primaryLight = Color(0xFF90BFF7);
@@ -68,4 +69,10 @@ class MainColors {
   static const Color borderDark = Color(0xFFD1D1D1);
   static const Color borderLight = Color(0xFFEDEDED);
   static const Color borderDanger = Color(0xFFF34313);
+
+  // redAccent
+  static const Color redAccent = Color(0xFFD32F2F);
+  static const Color deepPurple = Color(0xFF673AB7);
+  //grey
+  static const Color grey = Color(0xFFE0E0E0);
 }

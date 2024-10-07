@@ -266,7 +266,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                             width: Screen.size.width * 0.94,
                             padding: const EdgeInsets.all(16.0),
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: MainColors.grey,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Column(
@@ -362,7 +362,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                             width: Screen.size.width * 0.95,
                             padding: const EdgeInsets.all(16.0),
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: MainColors.grey,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Column(
@@ -473,7 +473,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
           color: const Color.fromARGB(255, 250, 251, 252),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2), // Shadow color
+              color: MainColors.black.withOpacity(0.2), // Shadow color
               spreadRadius: 2,
               blurRadius: 6,
               offset: const Offset(0, -2), // Shadow direction: towards the top
@@ -482,7 +482,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
         ),
         child: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
+          backgroundColor: MainColors.white,
           title: Padding(
             padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
             child: Row(
