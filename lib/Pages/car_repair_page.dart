@@ -286,8 +286,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Color(0xFFF34313),
-                                              width: 2),
+                                              color: MainColors.black,
+                                              width: 1),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
@@ -361,8 +361,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Color(0xFFF34313),
-                                              width: 2),
+                                              color: MainColors.black,
+                                              width: 1),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
@@ -436,8 +436,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           borderSide: const BorderSide(
-                                              color: Color(0xFFF34313),
-                                              width: 2),
+                                              color: MainColors.black,
+                                              width: 1),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:

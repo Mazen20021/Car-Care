@@ -1,4 +1,5 @@
 import 'package:carcare/Pages/car_repair_page.dart';
+import 'package:carcare/Pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/nav_button.dart';
@@ -522,7 +523,17 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                     child: NavButton(
                       buttonImage: "",
                       hasIcon: true,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                               Settings(
+                                userName:widget.userName,
+                                 isSub: _isSub,
+                              )),
+                        );
+                      },
                       title: "Settings",
                       width: 65,
                       height: 45,

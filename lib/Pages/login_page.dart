@@ -3,7 +3,7 @@ import 'package:carcare/Pages/forget_password_page.dart';
 import 'package:carcare/Pages/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../Components/Buttons.dart';
+import '../Components/custom_button.dart';
 import '../Services/mainpageservice.dart';
 
 class Login extends StatefulWidget {
@@ -101,7 +101,7 @@ class _Login extends State<Login> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Color(0xFFF34313), width: 2),
+                                  color: MainColors.black, width: 1),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -165,7 +165,7 @@ class _Login extends State<Login> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Color(0xFFF34313), width: 2),
+                                  color: MainColors.black, width: 1),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -220,7 +220,7 @@ class _Login extends State<Login> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const MainPageService(
-                                        isCarSelected: false,
+                                        isCarSelected: true,
                                         userName: "Mazen",
                                         currentIndex: 0,
                                       )),
@@ -250,8 +250,8 @@ class _Login extends State<Login> {
                                 blurRadius: 8,
                               )),
                           borderRadius: BorderRadius.circular(5),
-                          gradient: const LinearGradient(
-                              MainColors: [
+                          gradient: LinearGradient(
+                             colors: [
                                 Color.fromARGB(255, 53, 145, 249),
                                 Color.fromARGB(255, 119, 182, 252)
                               ],
