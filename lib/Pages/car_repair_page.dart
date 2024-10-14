@@ -516,7 +516,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                   fontSize: Fonts.xs)),
                                           TextButton(
                                               onPressed: () {
-                                                PopUps.showRepairDialog(context);
+                                                PopUps.showRepairDialog(
+                                                    context);
                                               },
                                               child: const Text(
                                                   "Add new repair part"))
