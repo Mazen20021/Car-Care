@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
 
-// Assuming MainColors and Fonts are defined elsewhere in your code.
 class PopUps  {
 
   static final TextEditingController _repairName = TextEditingController();
