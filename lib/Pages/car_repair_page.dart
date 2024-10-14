@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../Config/constants.dart';
+import '../PopUps/dialogs.dart';
 import '../Services/mainpageservice.dart';
 
 class CarRepairPage extends StatefulWidget {
@@ -25,6 +26,8 @@ class _CarRepairPage extends State<CarRepairPage> {
   final TextEditingController _setDate = TextEditingController();
   final TextEditingController _kmRepair = TextEditingController();
   final TextEditingController _repairCost = TextEditingController();
+  final TextEditingController _repairName = TextEditingController();
+  final TextEditingController _repairKM = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String? _selectedValue;
   final List<String> _items = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
@@ -322,7 +325,6 @@ class _CarRepairPage extends State<CarRepairPage> {
                                   const SizedBox(
                                       height:
                                           13), // Required for input formatting
-
                                   SizedBox(
                                     width: Screen.size.width * 0.98,
                                     child: TextFormField(
@@ -465,8 +467,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                   ),
                                   const SizedBox(height: 13),
                                   SizedBox(
-                                    width: Screen.size.width *
-                                        0.98, // Adjust the width to your preference
+                                    width: Screen.size.width * 0.98,
+                                    // Adjust the width to your preference
                                     child: DropdownButtonFormField<String>(
                                       decoration: InputDecoration(
                                         label: const Text("Selected Repair"),
@@ -513,7 +515,9 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                   color: MainColors.black,
                                                   fontSize: Fonts.xs)),
                                           TextButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                PopUps.showRepairDialog(context);
+                                              },
                                               child: const Text(
                                                   "Add new repair part"))
                                         ],
