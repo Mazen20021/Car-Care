@@ -22,6 +22,10 @@ class CustomButton extends StatelessWidget {
   final double? fontSize;
   final Color textColor;
   final VoidCallback? onPressed;
+  final bool hasIcon;
+  final IconData buttonIcon;
+  final double iconSize;
+  final Color iconColor;
   const CustomButton({
     super.key,
     this.width = 0,
@@ -42,6 +46,10 @@ class CustomButton extends StatelessWidget {
     this.label = "",
     this.fontSize,
     this.textColor = MainColors.textWhite,
+    this.hasIcon = false,
+    this.buttonIcon = Icons.close_rounded,
+    this.iconColor = Colors.white,
+    this.iconSize = 0,
     this.onPressed,
   });
 
@@ -75,15 +83,18 @@ class CustomButton extends StatelessWidget {
             ),
             color: hasGradient ? null : normalColor,
             alignment: Alignment.center,
-            child: Text(
+            child:
+            !hasIcon?
+            Text(
               label,
               style: GoogleFonts.rubik(
                 color: textColor,
                 fontSize: fontSize,
                 fontWeight: FontWeight.bold,
-              ),
+              )):
+              Transform.translate(offset: const Offset(-11, -10),child: Icon(buttonIcon,size: iconSize,color: iconColor)),
             ),
           ),
-        ));
+        );
   }
 }
