@@ -220,7 +220,7 @@ class _Login extends State<Login> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const MainPageService(
-                                        isCarSelected: true,
+                                        isCarSelected: false,
                                         userName: "Mazen",
                                         currentIndex: 0,
                                       )),
@@ -234,7 +234,7 @@ class _Login extends State<Login> {
             Column(
               children: [
                 SizedBox(
-                  height: Height.sm(),
+                  height: Height.xs,
                 ),
                 Transform.rotate(
                   angle: -3 * (3.14 / 180),
@@ -250,7 +250,7 @@ class _Login extends State<Login> {
                                 blurRadius: 8,
                               )),
                           borderRadius: BorderRadius.circular(5),
-                          gradient: LinearGradient(
+                          gradient: const LinearGradient(
                              colors: [
                                 Color.fromARGB(255, 53, 145, 249),
                                 Color.fromARGB(255, 119, 182, 252)
