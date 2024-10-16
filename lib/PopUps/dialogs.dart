@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
 
-class PopUps {
+class RepairClass {
   static final TextEditingController _repairName = TextEditingController();
   static final TextEditingController _repairKM = TextEditingController();
 
@@ -283,3 +283,4 @@ class PopUps {
     );
   }
 }
+
