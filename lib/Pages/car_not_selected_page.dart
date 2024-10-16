@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
+import 'add_new_car.dart';
 
 class CarNotSelectedPage extends StatefulWidget {
   final String userName;
@@ -53,7 +54,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                   "Welcome Back,",
                   style: GoogleFonts.rubik(
                     fontWeight: FontWeight.bold,
-                    fontSize: Fonts.sm,
+                    fontSize: Fonts.md,
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -62,7 +63,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                   style: GoogleFonts.rubik(
                     fontWeight: FontWeight.bold,
                     color: MainColors.primary,
-                    fontSize: Fonts.sm,
+                    fontSize: Fonts.md,
                   ),
                 ),
               ],
@@ -84,7 +85,10 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
             ),
             const SizedBox(height: 20),
             GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  AddCar a = AddCar();
+                  a.newCar(context);
+                },
                 child: Stack(
                   children: [
                     Opacity(
@@ -131,7 +135,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 5),
+                        const SizedBox(height: 20),
                         Row(
                           children: [
                             GestureDetector(
@@ -146,7 +150,8 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                             decoration:
                                                 TextDecoration.underline,
                                             decorationColor: MainColors.primary,
-                                            fontSize: Fonts.xs)))),
+                                            fontSize: Fonts.sm)))),
+                            const SizedBox(width: 80),
                             GestureDetector(
                                 onTap: () {},
                                 child: Transform.translate(
@@ -159,7 +164,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                             decoration:
                                                 TextDecoration.underline,
                                             decorationColor: MainColors.primary,
-                                            fontSize: Fonts.xs)))),
+                                            fontSize: Fonts.sm)))),
                           ],
                         ),
                         Row(
@@ -192,7 +197,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                           style: GoogleFonts.rubik(
                                               fontWeight: FontWeight.bold,
                                               color: MainColors.white,
-                                              fontSize: Fonts.xs)),
+                                              fontSize: Fonts.sm)),
                                       const SizedBox(width: 10),
                                       GestureDetector(
                                           child: Container(
@@ -240,7 +245,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                           style: GoogleFonts.rubik(
                                               fontWeight: FontWeight.bold,
                                               color: MainColors.white,
-                                              fontSize: Fonts.xs)),
+                                              fontSize: Fonts.sm)),
                                       const SizedBox(width: 20),
                                       GestureDetector(
                                           child: Container(
@@ -294,8 +299,8 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                             fontWeight: FontWeight.bold,
                                             color: const Color.fromARGB(
                                                 255, 12, 21, 52),
-                                            fontSize: Fonts.xs)),
-                                    const SizedBox(width: 100),
+                                            fontSize: Fonts.sm)),
+                                    const SizedBox(width: 140),
                                     IconButton(
                                       onPressed: () {
                                         setState(() {
@@ -334,7 +339,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                                               FontWeight.bold,
                                                           color:
                                                               MainColors.black,
-                                                          fontSize: Fonts.xs))),
+                                                          fontSize: Fonts.sm))),
                                               const SizedBox(width: 5),
                                               Transform.translate(
                                                   offset: const Offset(0, -30),
@@ -347,7 +352,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                                               color: MainColors
                                                                   .primary,
                                                               fontSize:
-                                                                  Fonts.xs))))
+                                                                  Fonts.sm))))
                                             ])
                                           ]));
                                     }),
@@ -390,8 +395,8 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                             fontWeight: FontWeight.bold,
                                             color: const Color.fromARGB(
                                                 255, 12, 21, 52),
-                                            fontSize: Fonts.xs)),
-                                    const SizedBox(width: 110),
+                                            fontSize: Fonts.sm)),
+                                    const SizedBox(width: 145),
                                     IconButton(
                                       onPressed: () {
                                         setState(() {
@@ -437,7 +442,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                                                     MainColors
                                                                         .black,
                                                                 fontSize:
-                                                                    Fonts.xs))),
+                                                                    Fonts.sm))),
                                                 const SizedBox(width: 5),
                                                 Transform.translate(
                                                     offset:
@@ -451,7 +456,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                                                 color: MainColors
                                                                     .primary,
                                                                 fontSize:
-                                                                    Fonts.xs))))
+                                                                    Fonts.sm))))
                                               ])
                                             ]),
                                       );
