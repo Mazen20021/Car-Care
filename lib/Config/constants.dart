@@ -26,6 +26,8 @@ class Width {
 }
 
 class Height {
+  static double x3s = Screen.size.height * 0.009;
+  static double x2s = Screen.size.height * 0.03;
   static double xs = Screen.size.height * 0.06;
   static double sm() => Screen.size.height * 0.09;
   static double md() => Screen.size.height * 0.3;
