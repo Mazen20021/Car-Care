@@ -125,7 +125,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                           height: Screen.size.height * 0.5,
                           alignment: Alignment.centerLeft,
                           child: Transform.translate(
-                            offset: const Offset(10, -102),
+                            offset: const Offset(10, -65),
                             child: Transform.scale(
                               scale: 1.35, // Zoom in the image by 1.5x
                               child: const Image(
@@ -141,7 +141,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                             GestureDetector(
                                 onTap: () {},
                                 child: Transform.translate(
-                                    offset: const Offset(40, -250),
+                                    offset: const Offset(40, -200),
                                     child: Text("View online reports",
                                         style: GoogleFonts.rubik(
                                             fontWeight: FontWeight.bold,
@@ -155,7 +155,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                             GestureDetector(
                                 onTap: () {},
                                 child: Transform.translate(
-                                    offset: const Offset(100, -250),
+                                    offset: const Offset(85, -200),
                                     child: Text("View check log",
                                         style: GoogleFonts.rubik(
                                             fontWeight: FontWeight.bold,
@@ -170,7 +170,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                         Row(
                           children: [
                             Transform.translate(
-                              offset: const Offset(15, -240),
+                              offset: const Offset(5, -200),
                               child: Container(
                                 width: 180,
                                 height: 50,
@@ -218,7 +218,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                               ),
                             ),
                             Transform.translate(
-                              offset: const Offset(40, -240),
+                              offset: const Offset(10, -200),
                               child: Container(
                                 width: 180,
                                 height: 50,
