@@ -33,7 +33,9 @@ class _Login extends State<Login> {
       return Scaffold(
         body: Column(
           children: [
+            Expanded(child:
             SingleChildScrollView(
+              physics: const NeverScrollableScrollPhysics(),
               child: Column(children: [
                 Stack(
                   children: [
@@ -53,10 +55,9 @@ class _Login extends State<Login> {
                       height: Screen.size.height * 0.5,
                       alignment: Alignment.centerLeft,
                       child: Transform.translate(
-                        offset: const Offset(
-                            -30, 0), // Move image 50 pixels to the left
+                        offset: const Offset(-30, 0),
                         child: Transform.scale(
-                          scale: 1.2, // Zoom in the image by 1.5x
+                          scale: 1.2,
                           child: const Image(
                             image: AssetImage("assets/image/carLogin.png"),
                             fit: BoxFit.cover,
@@ -69,7 +70,9 @@ class _Login extends State<Login> {
                 Text("Login to your account",
                     style: GoogleFonts.rubik(
                         fontSize: Fonts.xxl,
-                        color: const Color.fromARGB(255, 42, 87, 208))),
+                        color: const Color.fromARGB(255, 42, 87, 208),
+                    ),
+                ),
                 const SizedBox(height: 48),
                 Form(
                   key: _formKey,
@@ -226,15 +229,18 @@ class _Login extends State<Login> {
                                       )),
                             );
                           }),
+
                     ],
                   ),
                 ),
               ]),
             ),
+            ),
+            Transform.translate(offset: const Offset(0, 10) ,child:
             Column(
               children: [
                 SizedBox(
-                  height: Height.xs,
+                  height: Height.x2s,
                 ),
                 Transform.rotate(
                   angle: -3 * (3.14 / 180),
@@ -251,7 +257,7 @@ class _Login extends State<Login> {
                               )),
                           borderRadius: BorderRadius.circular(5),
                           gradient: const LinearGradient(
-                             colors: [
+                              colors: [
                                 Color.fromARGB(255, 53, 145, 249),
                                 Color.fromARGB(255, 119, 182, 252)
                               ],
@@ -272,24 +278,24 @@ class _Login extends State<Login> {
                                 child: Text(
                                   "Create a new account",
                                   style: GoogleFonts.rubik(
-                                      fontSize: 15,
+                                      fontSize: Fonts.sm,
                                       color: MainColors.white,
                                       decoration: TextDecoration.underline,
                                       decorationColor: MainColors.white),
                                 )),
-                            const SizedBox(width: 40),
+                             SizedBox(width: Screen.size.width * 0.2),
                             TextButton(
                                 onPressed: () {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const ForgetPass()),
+                                        const ForgetPass()),
                                   );
                                 },
                                 child: Text("Forgot your password?",
                                     style: GoogleFonts.rubik(
-                                        fontSize: 15,
+                                        fontSize: Fonts.sm,
                                         color: MainColors.white,
                                         decoration: TextDecoration.underline,
                                         decorationColor: MainColors.white))),
@@ -299,6 +305,7 @@ class _Login extends State<Login> {
                 ),
               ],
             ),
+            )
           ],
         ),
       );
