@@ -125,7 +125,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                           height: Screen.size.height * 0.5,
                           alignment: Alignment.centerLeft,
                           child: Transform.translate(
-                            offset: const Offset(10, -65),
+                            offset:  Offset(Width.xs, -Height.s2m),
                             child: Transform.scale(
                               scale: 1.35, // Zoom in the image by 1.5x
                               child: const Image(
@@ -139,9 +139,8 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                         Row(
                           children: [
                             GestureDetector(
-                                onTap: () {},
                                 child: Transform.translate(
-                                    offset: const Offset(40, -200),
+                                    offset:  Offset(Width.xs, -Height.md),
                                     child: Text("View online reports",
                                         style: GoogleFonts.rubik(
                                             fontWeight: FontWeight.bold,
@@ -151,11 +150,9 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                                 TextDecoration.underline,
                                             decorationColor: MainColors.primary,
                                             fontSize: Fonts.sm)))),
-                            const SizedBox(width: 80),
                             GestureDetector(
-                                onTap: () {},
                                 child: Transform.translate(
-                                    offset: const Offset(85, -200),
+                                    offset:  Offset(Width.m3d, -Height.md),
                                     child: Text("View check log",
                                         style: GoogleFonts.rubik(
                                             fontWeight: FontWeight.bold,
@@ -170,10 +167,10 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                         Row(
                           children: [
                             Transform.translate(
-                              offset: const Offset(5, -200),
+                              offset:  Offset(Width.x2s, -Height.md),
                               child: Container(
-                                width: 180,
-                                height: 50,
+                                width: Width.m2d,
+                                height: ButtonHeights.sm,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: MainColors.primary.withOpacity(0.5),
@@ -197,12 +194,12 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                           style: GoogleFonts.rubik(
                                               fontWeight: FontWeight.bold,
                                               color: MainColors.white,
-                                              fontSize: Fonts.sm)),
-                                      const SizedBox(width: 10),
+                                              fontSize: Fonts.xs)),
+                                      const SizedBox(width: 15),
                                       GestureDetector(
                                           child: Container(
-                                        width: 30,
-                                        height: 30,
+                                        width: ButtonWidth.s3m,
+                                        height: ButtonHeights.s3m,
                                         decoration: BoxDecoration(
                                           color: MainColors.white,
                                           borderRadius:
@@ -218,10 +215,10 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                               ),
                             ),
                             Transform.translate(
-                              offset: const Offset(10, -200),
+                              offset:  Offset(Width.s9m, -Height.md),
                               child: Container(
-                                width: 180,
-                                height: 50,
+                                width: Width.m2d,
+                                height: ButtonHeights.sm,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: MainColors.primary.withOpacity(0.5),
@@ -245,12 +242,12 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                           style: GoogleFonts.rubik(
                                               fontWeight: FontWeight.bold,
                                               color: MainColors.white,
-                                              fontSize: Fonts.sm)),
-                                      const SizedBox(width: 20),
+                                              fontSize: Fonts.xs)),
+                                      const SizedBox(width: 15),
                                       GestureDetector(
                                           child: Container(
-                                        width: 30,
-                                        height: 30,
+                                            width: ButtonWidth.s3m,
+                                            height: ButtonHeights.s3m,
                                         decoration: BoxDecoration(
                                             color: MainColors.white,
                                             borderRadius:
@@ -267,7 +264,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                           ],
                         ),
                         Transform.translate(
-                          offset: const Offset(5, -220),
+                          offset:  Offset(Width.x4s, -Height.s8m),
                           child: Container(
                             width: Screen.size.width * 0.94,
                             padding: const EdgeInsets.all(16.0),
@@ -281,8 +278,8 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                 Row(
                                   children: [
                                     Container(
-                                      width: 40,
-                                      height: 40,
+                                      width: ButtonWidth.s2m,
+                                      height: ButtonWidth.s2m,
                                       decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(10),
@@ -300,7 +297,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                             color: const Color.fromARGB(
                                                 255, 12, 21, 52),
                                             fontSize: Fonts.sm)),
-                                    const SizedBox(width: 140),
+                                     SizedBox(width: Width.md),
                                     IconButton(
                                       onPressed: () {
                                         setState(() {
@@ -363,7 +360,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                           ),
                         ),
                         Transform.translate(
-                          offset: const Offset(5, -200),
+                          offset:  Offset(Width.x4s, -Height.s7m),
                           child: Container(
                             width: Screen.size.width * 0.95,
                             padding: const EdgeInsets.all(16.0),
@@ -377,8 +374,8 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                 Row(
                                   children: [
                                     Container(
-                                      width: 40,
-                                      height: 40,
+                                      width: ButtonWidth.s2m,
+                                      height: ButtonWidth.s2m,
                                       decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(10),
@@ -396,7 +393,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                             color: const Color.fromARGB(
                                                 255, 12, 21, 52),
                                             fontSize: Fonts.sm)),
-                                    const SizedBox(width: 145),
+                                    SizedBox(width: Width.md),
                                     IconButton(
                                       onPressed: () {
                                         setState(() {
@@ -490,7 +487,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
           automaticallyImplyLeading: false,
           backgroundColor: MainColors.white,
           title: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+            padding:  const EdgeInsets.fromLTRB(3, 10, 20, 10),
             child: Row(
               crossAxisAlignment:
                   CrossAxisAlignment.center, // Center the content vertically
