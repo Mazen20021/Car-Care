@@ -122,7 +122,7 @@ class _ForgetPass extends State<ForgetPass> {
                   const SizedBox(height: 15),
                   CustomButton(
                       width: Width.xxl,
-                      height: Width.bHeight,
+                      height: ButtonHeights.md,
                       hasGradient: true,
                       gradientColors: const [
                         MainColors.primary,
