@@ -200,7 +200,7 @@ class _RestPassword extends State<RestPassword> {
                   const SizedBox(height: 25),
                   CustomButton(
                     width: Width.xxl,
-                    height: Width.bHeight,
+                    height: ButtonHeights.md,
                     hasGradient: true,
                     gradientColors: const [
                       MainColors.primary,

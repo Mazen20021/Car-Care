@@ -198,7 +198,7 @@ class _Login extends State<Login> {
                       const SizedBox(height: 15),
                       CustomButton(
                           width: Width.xxl,
-                          height: Width.bHeight,
+                          height: ButtonHeights.md,
                           hasGradient: true,
                           gradientColors: const [
                             Color.fromARGB(255, 53, 145, 249),
