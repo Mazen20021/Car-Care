@@ -125,16 +125,17 @@ class AddCar extends State<AddNewCar>{
                 ),
                 const SizedBox(height: 100),
                 SizedBox(
-                    width: Screen.size.width,
+                    width: double.infinity,
                     height: Screen.size.height * 0.7,
                     child: Dialog(
-                      child: Center(
+                  child:
+                       Center(
                         child:
                         Stack(children: [
                           Container(
                             decoration: BoxDecoration(
                                 color: MainColors.white,
-                                borderRadius: BorderRadius.circular(20)),
+                                borderRadius: BorderRadius.circular(15)),
                             child: SingleChildScrollView(child:
                             Column(
                               children: [
@@ -150,12 +151,12 @@ class AddCar extends State<AddNewCar>{
                                     ),
                                     controller: _repairName,
                                     decoration: InputDecoration(
-                                      label: const Text("Car Brand"),
+                                      label: const Text("Car Make"),
                                       contentPadding: const EdgeInsets.symmetric(
-                                          vertical: 5, horizontal: 20),
+                                          vertical: 0, horizontal: 20),
                                       hintStyle: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Width.xs,
+                                        fontSize: Width.x3s,
                                       ),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
@@ -606,12 +607,11 @@ class AddCar extends State<AddNewCar>{
                             image: AssetImage("assets/whiteCar.png"),
                             fit: BoxFit.cover,
                           ),)
-
                         ],),
                       ),
-                    ))
-              ],
-            ));
+                    )
+                ),
+            ]));
       },
     );
   }
