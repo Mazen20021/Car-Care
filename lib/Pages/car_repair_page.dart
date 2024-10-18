@@ -84,7 +84,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                     );
                   },
                   icon: const Icon(Icons.arrow_back_ios_new_rounded)),
-              SizedBox(width: Width.md()),
+              SizedBox(width: Width.md),
               Text(
                 "Add A Car Repair",
                 style: GoogleFonts.rubik(
