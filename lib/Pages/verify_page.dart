@@ -362,7 +362,7 @@ class _Verify extends State<Verify> {
                         const SizedBox(height: 35),
                         CustomButton(
                           width: Width.xxl,
-                          height: Width.bHeight,
+                          height: ButtonHeights.md,
                           hasGradient: true,
                           gradientColors: const [
                             MainColors.primary,
