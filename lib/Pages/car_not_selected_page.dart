@@ -113,7 +113,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                 style: GoogleFonts.rubik(
                                     fontWeight: FontWeight.bold,
                                     color: MainColors.white,
-                                    fontSize: Fonts.md(),
+                                    fontSize: Fonts.xl(),
                                     shadows: [
                                       const Shadow(
                                           color: MainColors.black,
@@ -125,9 +125,9 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                           height: Screen.size.height * 0.5,
                           alignment: Alignment.centerLeft,
                           child: Transform.translate(
-                            offset:  Offset(Width.xs(), -Height.s2m()),
+                            offset:  Offset(Width.x2s(), -Height.s2m()),
                             child: Transform.scale(
-                              scale: 1.35, // Zoom in the image by 1.5x
+                              scale: 1.25, // Zoom in the image by 1.5x
                               child: const Image(
                                 image: AssetImage("assets/cars/NoCar.png"),
                                 fit: BoxFit.cover,
@@ -164,25 +164,23 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                             fontSize: Fonts.sm())))),
                           ],
                         ),
+                        const SizedBox(height: 2,),
                         Row(
                           children: [
                             Transform.translate(
                               offset:  Offset(Width.x2s(), -Height.md()),
                               child: Container(
-                                width: Width.m2d(),
-                                height: ButtonHeights.sm(),
+                                width: Width.m4d(),
+                                height: ButtonHeights.s2m(),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: MainColors.primary.withOpacity(0.5),
                                   image: DecorationImage(
                                     image: const AssetImage(
                                         "assets/fuelMeter.png"),
                                     fit: BoxFit.cover,
                                     colorFilter: ColorFilter.mode(
-                                      MainColors.primary.withOpacity(
-                                          0.8), // Apply the same color as the container
-                                      BlendMode
-                                          .srcATop, // Blends the color with the image
+                                      MainColors.primary.withOpacity(0.85), // Apply the same color as the container
+                                      BlendMode.srcATop, // Blends the color with the image
                                     ),
                                   ),
                                 ),
@@ -194,20 +192,18 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                           style: GoogleFonts.rubik(
                                               fontWeight: FontWeight.bold,
                                               color: MainColors.white,
-                                              fontSize: Fonts.xs())),
-                                      const SizedBox(width: 15),
+                                              fontSize: Fonts.sm())),
+                                      const SizedBox(width: 10),
                                       GestureDetector(
                                           child: Container(
                                         width: ButtonWidth.s3m(),
                                         height: ButtonHeights.s3m(),
                                         decoration: BoxDecoration(
                                           color: MainColors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
+                                          borderRadius: BorderRadius.circular(10),
                                         ),
                                         child: Icon(Icons.add,
-                                            color: MainColors.primary
-                                                .withOpacity(0.5)),
+                                            color: MainColors.primary.withOpacity(0.5)),
                                       )),
                                     ],
                                   ),
@@ -215,20 +211,19 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                               ),
                             ),
                             Transform.translate(
-                              offset:  Offset(Width.s9m(), -Height.md()),
+                              offset:  Offset(Width.xs_2(), -Height.md()),
                               child: Container(
-                                width: Width.m2d(),
-                                height: ButtonHeights.sm(),
+                                width: Width.m4d(),
+                                height: ButtonHeights.s2m(),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: MainColors.primary.withOpacity(0.5),
                                   image: DecorationImage(
                                     image:
                                         const AssetImage("assets/repair.png"),
                                     fit: BoxFit.cover,
                                     colorFilter: ColorFilter.mode(
                                       MainColors.primary.withOpacity(
-                                          0.8), // Apply the same color as the container
+                                          0.85), // Apply the same color as the container
                                       BlendMode
                                           .srcATop, // Blends the color with the image
                                     ),
@@ -242,8 +237,8 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                           style: GoogleFonts.rubik(
                                               fontWeight: FontWeight.bold,
                                               color: MainColors.white,
-                                              fontSize: Fonts.xs())),
-                                      const SizedBox(width: 15),
+                                              fontSize: Fonts.sm())),
+                                      const SizedBox(width: 30),
                                       GestureDetector(
                                           child: Container(
                                             width: ButtonWidth.s3m(),
