@@ -24,11 +24,19 @@ class Width {
   static double x3s() => Screen.size.width * 0.02;
   static double x2s() => Screen.size.width * 0.04;
   static double xs() => Screen.size.width * 0.06;
+  static double xs_1() => Screen.size.width * 0.07;
+  static double xs_2() => Screen.size.width * 0.08;
   static double sm() => Screen.size.width * 0.09;
   static double s2m() => Screen.size.width * 0.1;
+  static double s2_1m() => Screen.size.width * 0.11;
+  static double s2_2m() => Screen.size.width * 0.12;
+  static double s2_3m() => Screen.size.width * 0.13;
+  static double s2_4m() => Screen.size.width * 0.14;
   static double s3m() => Screen.size.width * 0.15;
   static double s4m() => Screen.size.width * 0.16;
   static double s5m() => Screen.size.width * 0.17;
+  static double s5_1m() => Screen.size.width * 0.18;
+  static double s5_2m() => Screen.size.width * 0.19;
   static double s6m() => Screen.size.width * 0.2;
   static double s7m() => Screen.size.width * 0.25;
   static double s8m() => Screen.size.width * 0.26;
@@ -36,6 +44,7 @@ class Width {
   static double md() => Screen.size.width * 0.3;
   static double m2d() => Screen.size.width * 0.35;
   static double m3d() => Screen.size.width * 0.4;
+  static double m4d() => Screen.size.width * 0.45;
   static double lg() => Screen.size.width * 0.5;
   static double xl() => Screen.size.width * 0.7;
   static double xxl() => Screen.size.width * 0.9;
@@ -54,6 +63,8 @@ class ButtonWidth {
   static double l3g() => 90;
   static double l4g() => 100;
   static double l5g() => 110;
+  static double xl() => 120;
+  static double xxl() => 130;
 }
 
 class ButtonHeights {
@@ -134,4 +145,5 @@ class MainColors {
   static const Color deepPurple = Color(0xFF673AB7);
   //grey
   static const Color grey = Color(0xFFE0E0E0);
+  static const Color darkGrey = Color(0x0ff2f4f8);
 }
