@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
+import 'forget_password_page.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -474,7 +475,14 @@ class SignupState extends State<Signup> {
                                     )),
                                 SizedBox(width: Screen.size.width * 0.2),
                                 TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                            const ForgetPass()),
+                                      );
+                                    },
                                     child: Text("Forgot your password?",
                                         style: GoogleFonts.rubik(
                                             fontSize: Fonts.sm(),
