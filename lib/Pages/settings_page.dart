@@ -22,32 +22,15 @@ class _Settings extends State<Settings> {
   final TextEditingController _fName = TextEditingController();
   final TextEditingController _lName = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  FocusNode textFieldFocusNode1 = FocusNode();
-  FocusNode textFieldFocusNode2 = FocusNode();
-
-  bool _isTextFieldApeared1 = false;
-  bool _isTextFieldApeared2 = false;
 
   @override
   void initState()
   {
     super.initState();
-    textFieldFocusNode1.addListener(() {
-      setState(() {
-        _isTextFieldApeared1 = !textFieldFocusNode1.hasFocus;
-      });
-    });
-    textFieldFocusNode2.addListener(() {
-      setState(() {
-        _isTextFieldApeared2 = !textFieldFocusNode2.hasFocus;
-      });
-    });
   }
 
   @override
   void dispose() {
-    textFieldFocusNode1.dispose();
-    textFieldFocusNode2.dispose();
     super.dispose();
   }
 
@@ -64,11 +47,12 @@ class _Settings extends State<Settings> {
                 const SizedBox(height: 65),
                 Row(
                   children: [
-                    SizedBox(width: Width.x2s()),
+                    SizedBox(width: Width.xs()),
                     Text("Settings",
                         style: GoogleFonts.rubik(
+                          fontWeight: FontWeight.bold,
                             fontSize: Fonts.xxl(), color: MainColors.black)),
-                    SizedBox(width: Width.m3d()),
+                    SizedBox(width: Width.m2d()),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -78,7 +62,7 @@ class _Settings extends State<Settings> {
                       },
                       child: Container(
                         width: ButtonWidth.l3g(),
-                        height: ButtonHeights.s2m(),
+                        height: ButtonHeights.s3m(),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                           color: const Color.fromARGB(255, 108, 113, 132),
@@ -105,13 +89,13 @@ class _Settings extends State<Settings> {
                 Padding(
                     padding: const EdgeInsets.all(16),
                     child: Container(
-                        height: Height.xs(),
+                        height: Height.sm(),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: const [
                             BoxShadow(
-                                color: MainColors.black,
-                                blurRadius: 10,
+                                color: MainColors.grey,
+                                blurRadius: 20,
                                 offset: Offset(0, 0))
                           ],
                           color: const Color.fromARGB(255, 254, 247, 255),
@@ -136,7 +120,7 @@ class _Settings extends State<Settings> {
                               onTap: () {},
                               child: Container(
                                 width: ButtonWidth.l5g(),
-                                height: ButtonHeights.s2_5m(),
+                                height: ButtonHeights.s2m(),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: MainColors.primary,
@@ -173,8 +157,8 @@ class _Settings extends State<Settings> {
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: const [
                         BoxShadow(
-                            color: MainColors.black,
-                            blurRadius: 10,
+                            color: MainColors.grey,
+                            blurRadius: 20,
                             offset: Offset(0, 0))
                       ],
                       color: const Color.fromARGB(255, 254, 247, 255),
@@ -188,7 +172,8 @@ class _Settings extends State<Settings> {
                             SizedBox(
                               width: Width.xxl() * 0.88,
                               child: TextFormField(
-                                focusNode: textFieldFocusNode1,
+
+
                                 textAlign: TextAlign.left,
                                 cursorColor: MainColors.black,
                                 style: GoogleFonts.mada(
@@ -198,7 +183,7 @@ class _Settings extends State<Settings> {
                                 controller: _fName,
                                 decoration: InputDecoration(
                                   contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 5, horizontal: 20),
+                                      vertical: 0, horizontal: 20),
                                   hintStyle: GoogleFonts.mada(
                                     color: MainColors.black,
                                     fontSize: Fonts.md(),
@@ -247,7 +232,6 @@ class _Settings extends State<Settings> {
                             SizedBox(
                               width: Width.xxl() * 0.88,
                               child: TextFormField(
-                                focusNode: textFieldFocusNode2,
                                 textAlign: TextAlign.left,
                                 cursorColor: MainColors.black,
                                 style: GoogleFonts.mada(
@@ -257,7 +241,7 @@ class _Settings extends State<Settings> {
                                 controller: _lName,
                                 decoration: InputDecoration(
                                   contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 5, horizontal: 20),
+                                      vertical: 0, horizontal: 20),
                                   hintStyle: GoogleFonts.mada(
                                     color: MainColors.black,
                                     fontSize: Fonts.md(),
@@ -307,8 +291,8 @@ class _Settings extends State<Settings> {
                                 child: Row(
                                   children: [
                                     CustomButton(
-                                        width: 130,
-                                        height: 50,
+                                        width: ButtonWidth.xxl(),
+                                        height: ButtonHeights.s2m(),
                                         hasGradient: true,
                                         gradientColors: const [
                                           Color.fromARGB(255, 48, 95, 215),
@@ -327,14 +311,14 @@ class _Settings extends State<Settings> {
                                         topPadding: 5,
                                         bottomPadding: 15,
                                         label: "Save",
-                                        fontSize: Fonts.sm(),
+                                        fontSize: Fonts.xs(),
                                         textColor: MainColors.white,
                                         onPressed: () {}),
                                     Transform.translate(
                                       offset: Offset(Width.x3s(), Height.x5s()),
                                       child: CustomButton(
-                                          width: 130,
-                                          height: 50,
+                                          width: ButtonWidth.xxl(),
+                                          height: ButtonHeights.s2m(),
                                           hasGradient: true,
                                           gradientColors: const [
                                             Color.fromARGB(255, 180, 74, 80),
@@ -353,7 +337,7 @@ class _Settings extends State<Settings> {
                                           topPadding: 5,
                                           bottomPadding: 15,
                                           label: "Cancel",
-                                          fontSize: Fonts.sm(),
+                                          fontSize: Fonts.xs(),
                                           textColor: MainColors.white,
                                           onPressed: () {
                                             Navigator.pop(context);
@@ -400,10 +384,10 @@ class _Settings extends State<Settings> {
                     onPressed: () {}),
               ],
             ),
-          )
+          ),
         ],
       ),
-      bottomSheet: (_isTextFieldApeared1 || _isTextFieldApeared2) ? Container(
+      bottomSheet: Container(
         width: Screen.size.width,
         height: Screen.size.height * 0.1,
         decoration: BoxDecoration(
@@ -483,7 +467,7 @@ class _Settings extends State<Settings> {
             ),
           ),
         ),
-      ):null
+      )
     );
   }
 }
