@@ -85,7 +85,7 @@ class AddCar extends State<AddNewCar>{
                       style: GoogleFonts.rubik(
                           fontWeight: FontWeight.bold,
                           color: MainColors.white,
-                          fontSize: Fonts.xl,
+                          fontSize: Fonts.xl(),
                           decoration: TextDecoration.none),
                     ),
                     const Spacer(flex: 5),
@@ -105,7 +105,7 @@ class AddCar extends State<AddNewCar>{
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
                           normalColor: MainColors.transparent,
-                          borderRadius: CustomRadius.sm,
+                          borderRadius: CustomRadius.sm(),
                           leftPadding: 0,
                           rightPadding: 0,
                           topPadding: 0,
@@ -147,7 +147,7 @@ class AddCar extends State<AddNewCar>{
                                     cursorColor: MainColors.black,
                                     style: GoogleFonts.mada(
                                       color: MainColors.black,
-                                      fontSize: Fonts.sm,
+                                      fontSize: Fonts.sm(),
                                     ),
                                     controller: _repairName,
                                     decoration: InputDecoration(
@@ -156,7 +156,7 @@ class AddCar extends State<AddNewCar>{
                                           vertical: 0, horizontal: 20),
                                       hintStyle: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Width.x3s,
+                                        fontSize: Width.x3s(),
                                       ),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
@@ -198,7 +198,7 @@ class AddCar extends State<AddNewCar>{
                                     cursorColor: MainColors.black,
                                     style: GoogleFonts.mada(
                                       color: MainColors.black,
-                                      fontSize: Fonts.sm,
+                                      fontSize: Fonts.sm(),
                                     ),
                                     controller: _repairName,
                                     decoration: InputDecoration(
@@ -207,7 +207,7 @@ class AddCar extends State<AddNewCar>{
                                           vertical: 5, horizontal: 20),
                                       hintStyle: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Width.xs,
+                                        fontSize: Width.xs(),
                                       ),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
@@ -379,7 +379,7 @@ class AddCar extends State<AddNewCar>{
                                     cursorColor: MainColors.black,
                                     style: GoogleFonts.mada(
                                       color: MainColors.black,
-                                      fontSize: Width.xs,
+                                      fontSize: Width.xs(),
                                     ),
                                     controller: _setLicenseDate,
                                     decoration: InputDecoration(
@@ -391,7 +391,7 @@ class AddCar extends State<AddNewCar>{
                                           vertical: 5, horizontal: 20),
                                       hintStyle: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Width.xs,
+                                        fontSize: Width.xs(),
                                       ),
                                       border: OutlineInputBorder(
                                         borderRadius:
@@ -452,7 +452,7 @@ class AddCar extends State<AddNewCar>{
                                     cursorColor: MainColors.black,
                                     style: GoogleFonts.mada(
                                       color: MainColors.black,
-                                      fontSize: Width.xs,
+                                      fontSize: Width.xs(),
                                     ),
                                     controller: _setExaminationDate,
                                     decoration: InputDecoration(
@@ -464,7 +464,7 @@ class AddCar extends State<AddNewCar>{
                                           vertical: 5, horizontal: 20),
                                       hintStyle: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Width.xs,
+                                        fontSize: Width.xs(),
                                       ),
                                       hintText: 'Examination date...',
                                       border: OutlineInputBorder(
@@ -545,7 +545,7 @@ class AddCar extends State<AddNewCar>{
                                                     fontWeight: FontWeight.bold,
                                                     color: const Color.fromARGB(
                                                         255, 133, 133, 133),
-                                                    fontSize: Fonts.md,
+                                                    fontSize: Fonts.md(),
                                                   ),
                                                 ),
                                               )),
@@ -585,7 +585,7 @@ class AddCar extends State<AddNewCar>{
                                                 style: GoogleFonts.rubik(
                                                   fontWeight: FontWeight.bold,
                                                   color: MainColors.white,
-                                                  fontSize: Fonts.md,
+                                                  fontSize: Fonts.md(),
                                                 ),
                                               ),
                                               const SizedBox(width: 5),

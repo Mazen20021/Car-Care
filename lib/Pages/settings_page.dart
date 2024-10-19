@@ -64,11 +64,11 @@ class _Settings extends State<Settings> {
                 const SizedBox(height: 65),
                 Row(
                   children: [
-                    SizedBox(width: Width.x2s),
+                    SizedBox(width: Width.x2s()),
                     Text("Settings",
                         style: GoogleFonts.rubik(
-                            fontSize: Fonts.xxl, color: MainColors.black)),
-                    SizedBox(width: Width.m3d),
+                            fontSize: Fonts.xxl(), color: MainColors.black)),
+                    SizedBox(width: Width.m3d()),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -77,8 +77,8 @@ class _Settings extends State<Settings> {
                                 builder: (context) => const Login()));
                       },
                       child: Container(
-                        width: ButtonWidth.l3g,
-                        height: ButtonHeights.s2m,
+                        width: ButtonWidth.l3g(),
+                        height: ButtonHeights.s2m(),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                           color: const Color.fromARGB(255, 108, 113, 132),
@@ -92,7 +92,7 @@ class _Settings extends State<Settings> {
                               const SizedBox(width: 10),
                               Text("Logout",
                                   style: GoogleFonts.rubik(
-                                      fontSize: Fonts.sm,
+                                      fontSize: Fonts.sm(),
                                       color: MainColors.white)),
                             ],
                           ),
@@ -105,7 +105,7 @@ class _Settings extends State<Settings> {
                 Padding(
                     padding: const EdgeInsets.all(16),
                     child: Container(
-                        height: Height.xs,
+                        height: Height.xs(),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: const [
@@ -127,16 +127,16 @@ class _Settings extends State<Settings> {
                             const SizedBox(width: 10),
                             Text("Free trial plan",
                                 style: GoogleFonts.rubik(
-                                    fontSize: Fonts.md,
+                                    fontSize: Fonts.md(),
                                     color: MainColors.primary)),
                             SizedBox(
-                              width: Width.md,
+                              width: Width.md(),
                             ),
                             GestureDetector(
                               onTap: () {},
                               child: Container(
-                                width: ButtonWidth.l5g,
-                                height: ButtonHeights.s2_5m,
+                                width: ButtonWidth.l5g(),
+                                height: ButtonHeights.s2_5m(),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: MainColors.primary,
@@ -147,10 +147,10 @@ class _Settings extends State<Settings> {
                                       Icons.keyboard_double_arrow_up_rounded,
                                       color: MainColors.white,
                                     ),
-                                    SizedBox(width: Width.x3s),
+                                    SizedBox(width: Width.x3s()),
                                     Text("UPGRADE",
                                         style: GoogleFonts.rubik(
-                                            fontSize: Fonts.md,
+                                            fontSize: Fonts.md(),
                                             color: MainColors.white))
                                   ],
                                 ),
@@ -159,10 +159,10 @@ class _Settings extends State<Settings> {
                           ],
                         ))),
                 Transform.translate(
-                  offset: Offset(-Width.m2d, 0),
+                  offset: Offset(-Width.m2d(), 0),
                   child: Text("Information",
                       style: GoogleFonts.rubik(
-                          fontSize: Fonts.md, color: MainColors.black)),
+                          fontSize: Fonts.md(), color: MainColors.black)),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16),
@@ -186,14 +186,14 @@ class _Settings extends State<Settings> {
                           children: [
                             const SizedBox(height: 25),
                             SizedBox(
-                              width: Width.xxl * 0.88,
+                              width: Width.xxl() * 0.88,
                               child: TextFormField(
                                 focusNode: textFieldFocusNode1,
                                 textAlign: TextAlign.left,
                                 cursorColor: MainColors.black,
                                 style: GoogleFonts.mada(
                                   color: MainColors.black,
-                                  fontSize: Fonts.md,
+                                  fontSize: Fonts.md(),
                                 ),
                                 controller: _fName,
                                 decoration: InputDecoration(
@@ -201,7 +201,7 @@ class _Settings extends State<Settings> {
                                       vertical: 5, horizontal: 20),
                                   hintStyle: GoogleFonts.mada(
                                     color: MainColors.black,
-                                    fontSize: Fonts.md,
+                                    fontSize: Fonts.md(),
                                   ),
                                   hintText: 'Enter First Name',
                                   label: const Text("First Name"),
@@ -245,14 +245,14 @@ class _Settings extends State<Settings> {
                             ),
                             const SizedBox(height: 20),
                             SizedBox(
-                              width: Width.xxl * 0.88,
+                              width: Width.xxl() * 0.88,
                               child: TextFormField(
                                 focusNode: textFieldFocusNode2,
                                 textAlign: TextAlign.left,
                                 cursorColor: MainColors.black,
                                 style: GoogleFonts.mada(
                                   color: MainColors.black,
-                                  fontSize: Fonts.md,
+                                  fontSize: Fonts.md(),
                                 ),
                                 controller: _lName,
                                 decoration: InputDecoration(
@@ -260,7 +260,7 @@ class _Settings extends State<Settings> {
                                       vertical: 5, horizontal: 20),
                                   hintStyle: GoogleFonts.mada(
                                     color: MainColors.black,
-                                    fontSize: Fonts.md,
+                                    fontSize: Fonts.md(),
                                   ),
                                   hintText: 'Enter Last Name',
                                   label: const Text("Last Name"),
@@ -303,7 +303,7 @@ class _Settings extends State<Settings> {
                               ),
                             ),
                             Transform.translate(
-                                offset: Offset(Width.x5s, Height.x3s),
+                                offset: Offset(Width.x5s(), Height.x3s()),
                                 child: Row(
                                   children: [
                                     CustomButton(
@@ -321,17 +321,17 @@ class _Settings extends State<Settings> {
                                         begin: Alignment.centerLeft,
                                         end: Alignment.centerRight,
                                         normalColor: MainColors.transparent,
-                                        borderRadius: CustomRadius.sm,
+                                        borderRadius: CustomRadius.sm(),
                                         leftPadding: 20,
                                         rightPadding: 20,
                                         topPadding: 5,
                                         bottomPadding: 15,
                                         label: "Save",
-                                        fontSize: Fonts.sm,
+                                        fontSize: Fonts.sm(),
                                         textColor: MainColors.white,
                                         onPressed: () {}),
                                     Transform.translate(
-                                      offset: Offset(Width.x3s, Height.x5s),
+                                      offset: Offset(Width.x3s(), Height.x5s()),
                                       child: CustomButton(
                                           width: 130,
                                           height: 50,
@@ -347,13 +347,13 @@ class _Settings extends State<Settings> {
                                           begin: Alignment.centerLeft,
                                           end: Alignment.centerRight,
                                           normalColor: MainColors.transparent,
-                                          borderRadius: CustomRadius.sm,
+                                          borderRadius: CustomRadius.sm(),
                                           leftPadding: 0,
                                           rightPadding: 20,
                                           topPadding: 5,
                                           bottomPadding: 15,
                                           label: "Cancel",
-                                          fontSize: Fonts.sm,
+                                          fontSize: Fonts.sm(),
                                           textColor: MainColors.white,
                                           onPressed: () {
                                             Navigator.pop(context);
@@ -369,10 +369,10 @@ class _Settings extends State<Settings> {
                 ),
                 const SizedBox(height: 30),
                 Transform.translate(
-                  offset: Offset(-Width.s8m, 0),
+                  offset: Offset(-Width.s8m(), 0),
                   child: Text("Repairs Configuration",
                       style: GoogleFonts.rubik(
-                          fontSize: Fonts.md, color: MainColors.black)),
+                          fontSize: Fonts.md(), color: MainColors.black)),
                 ),
                 const SizedBox(height: 10),
                 CustomButton(
@@ -389,13 +389,13 @@ class _Settings extends State<Settings> {
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                     normalColor: MainColors.transparent,
-                    borderRadius: CustomRadius.xl,
+                    borderRadius: CustomRadius.xl(),
                     leftPadding: 20,
                     rightPadding: 20,
                     topPadding: 5,
                     bottomPadding: 15,
                     label: "Edit Repairs Configuration",
-                    fontSize: Fonts.sm,
+                    fontSize: Fonts.sm(),
                     textColor: MainColors.white,
                     onPressed: () {}),
               ],

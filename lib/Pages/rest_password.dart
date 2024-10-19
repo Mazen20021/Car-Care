@@ -69,13 +69,13 @@ class _RestPassword extends State<RestPassword> {
               child: Column(
                 children: [
                   SizedBox(
-                    width: Width.xxl,
+                    width: Width.xxl(),
                     child: TextFormField(
                       textAlign: TextAlign.left,
                       cursorColor: MainColors.black,
                       style: GoogleFonts.mada(
                         color: MainColors.black,
-                        fontSize: Fonts.sm,
+                        fontSize: Fonts.sm(),
                       ),
                       controller: _passController,
                       decoration: InputDecoration(
@@ -94,7 +94,7 @@ class _RestPassword extends State<RestPassword> {
                             vertical: 15, horizontal: 20),
                         hintStyle: GoogleFonts.mada(
                           color: MainColors.black,
-                          fontSize: Fonts.sm,
+                          fontSize: Fonts.sm(),
                         ),
                         hintText: 'Password',
                         border: OutlineInputBorder(
@@ -134,13 +134,13 @@ class _RestPassword extends State<RestPassword> {
                   ),
                   const SizedBox(height: 15),
                   SizedBox(
-                    width: Width.xxl,
+                    width: Width.xxl(),
                     child: TextFormField(
                       textAlign: TextAlign.left,
                       cursorColor: MainColors.black,
                       style: GoogleFonts.mada(
                         color: MainColors.black,
-                        fontSize: Fonts.sm,
+                        fontSize: Fonts.sm(),
                       ),
                       controller: _cpassController,
                       decoration: InputDecoration(
@@ -159,7 +159,7 @@ class _RestPassword extends State<RestPassword> {
                             vertical: 15, horizontal: 20),
                         hintStyle: GoogleFonts.mada(
                           color: MainColors.black,
-                          fontSize: Fonts.sm,
+                          fontSize: Fonts.sm(),
                         ),
                         hintText: 'Repeat New password',
                         border: OutlineInputBorder(
@@ -199,8 +199,8 @@ class _RestPassword extends State<RestPassword> {
                   ),
                   const SizedBox(height: 25),
                   CustomButton(
-                    width: Width.xxl,
-                    height: ButtonHeights.md,
+                    width: Width.xxl(),
+                    height: ButtonHeights.md(),
                     hasGradient: true,
                     gradientColors: const [
                       MainColors.primary,
@@ -212,13 +212,13 @@ class _RestPassword extends State<RestPassword> {
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                     normalColor: MainColors.transparent,
-                    borderRadius: CustomRadius.sm,
+                    borderRadius: CustomRadius.sm(),
                     leftPadding: 20,
                     rightPadding: 20,
                     topPadding: 5,
                     bottomPadding: 15,
                     label: "Reset",
-                    fontSize: Fonts.sm,
+                    fontSize: Fonts.sm(),
                     textColor: MainColors.white,
                     onPressed: () {},
                   ),

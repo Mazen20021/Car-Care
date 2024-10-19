@@ -20,6 +20,7 @@ class _Login extends State<Login> {
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _isObscured = false;
+  bool _ispressed = false;
 
   @override
   void initState() {
@@ -28,14 +29,14 @@ class _Login extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    Screen.setSize(context);
     return LayoutBuilder(builder: (context, constrains) {
+      Screen.setSize(context);
+      print(Fonts.xxl);
       return Scaffold(
         body: Column(
           children: [
-            Expanded(child:
-            SingleChildScrollView(
-              physics: const NeverScrollableScrollPhysics(),
+            Expanded(child: SingleChildScrollView(
+              physics: !_ispressed?  const NeverScrollableScrollPhysics() : const AlwaysScrollableScrollPhysics(),
               child: Column(children: [
                 Stack(
                   children: [
@@ -69,7 +70,7 @@ class _Login extends State<Login> {
                 ),
                 Text("Login to your account",
                     style: GoogleFonts.rubik(
-                        fontSize: Fonts.xxl,
+                        fontSize: Fonts.xxl(),
                         color: const Color.fromARGB(255, 42, 87, 208),
                     ),
                 ),
@@ -79,21 +80,26 @@ class _Login extends State<Login> {
                   child: Column(
                     children: [
                       SizedBox(
-                        width: Width.xxl,
+                        width: Width.xxl(),
                         child: TextFormField(
+                          onTap: (){
+                            setState(() {
+                              _ispressed = true;
+                            });
+                          },
                           textAlign: TextAlign.left,
                           cursorColor: MainColors.black,
                           style: GoogleFonts.mada(
                             color: MainColors.black,
-                            fontSize: Fonts.md,
+                            fontSize: Fonts.md(),
                           ),
                           controller: _emailController,
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(
-                                vertical: 15, horizontal: 20),
+                                vertical: 5, horizontal: 20),
                             hintStyle: GoogleFonts.mada(
                               color: MainColors.black,
-                              fontSize: Fonts.md,
+                              fontSize: Fonts.md(),
                             ),
                             hintText: 'Email',
                             border: OutlineInputBorder(
@@ -132,13 +138,13 @@ class _Login extends State<Login> {
                       ),
                       const SizedBox(height: 15),
                       SizedBox(
-                        width: Width.xxl,
+                        width: Width.xxl(),
                         child: TextFormField(
                           textAlign: TextAlign.left,
                           cursorColor: MainColors.black,
                           style: GoogleFonts.mada(
                             color: MainColors.black,
-                            fontSize: Fonts.md,
+                            fontSize: Fonts.md(),
                           ),
                           controller: _passwordController,
                           decoration: InputDecoration(
@@ -154,10 +160,10 @@ class _Login extends State<Login> {
                               color: MainColors.black,
                             ),
                             contentPadding: const EdgeInsets.symmetric(
-                                vertical: 15, horizontal: 20),
+                                vertical: 5, horizontal: 20),
                             hintStyle: GoogleFonts.mada(
                               color: MainColors.black,
-                              fontSize: Fonts.md,
+                              fontSize: Fonts.md(),
                             ),
                             hintText: 'Password',
                             border: OutlineInputBorder(
@@ -197,8 +203,8 @@ class _Login extends State<Login> {
                       ),
                       const SizedBox(height: 15),
                       CustomButton(
-                          width: Width.xxl,
-                          height: ButtonHeights.md,
+                          width: Width.xxl(),
+                          height: ButtonHeights.md(),
                           hasGradient: true,
                           gradientColors: const [
                             Color.fromARGB(255, 53, 145, 249),
@@ -210,13 +216,13 @@ class _Login extends State<Login> {
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
                           normalColor: MainColors.transparent,
-                          borderRadius: CustomRadius.sm,
+                          borderRadius: CustomRadius.sm(),
                           leftPadding: 20,
                           rightPadding: 20,
                           topPadding: 5,
                           bottomPadding: 15,
                           label: "Login",
-                          fontSize: Fonts.lg,
+                          fontSize: Fonts.lg(),
                           textColor: MainColors.white,
                           onPressed: () {
                             Navigator.push(
@@ -240,7 +246,7 @@ class _Login extends State<Login> {
             Column(
               children: [
                 SizedBox(
-                  height: Height.x2s,
+                  height: Height.x2s(),
                 ),
                 Transform.rotate(
                   angle: -3 * (3.14 / 180),
@@ -278,7 +284,7 @@ class _Login extends State<Login> {
                                 child: Text(
                                   "Create a new account",
                                   style: GoogleFonts.rubik(
-                                      fontSize: Fonts.sm,
+                                      fontSize: Fonts.sm(),
                                       color: MainColors.white,
                                       decoration: TextDecoration.underline,
                                       decorationColor: MainColors.white),
@@ -295,7 +301,7 @@ class _Login extends State<Login> {
                                 },
                                 child: Text("Forgot your password?",
                                     style: GoogleFonts.rubik(
-                                        fontSize: Fonts.sm,
+                                        fontSize: Fonts.sm(),
                                         color: MainColors.white,
                                         decoration: TextDecoration.underline,
                                         decorationColor: MainColors.white))),

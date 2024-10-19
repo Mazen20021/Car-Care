@@ -29,7 +29,7 @@ class RepairClass {
                       style: GoogleFonts.rubik(
                           fontWeight: FontWeight.bold,
                           color: MainColors.white,
-                          fontSize: Fonts.xl,
+                          fontSize: Fonts.xl(),
                           decoration: TextDecoration.none),
                     ),
                     const Spacer(flex: 5),
@@ -49,7 +49,7 @@ class RepairClass {
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
                           normalColor: MainColors.transparent,
-                          borderRadius: CustomRadius.sm,
+                          borderRadius: CustomRadius.sm(),
                           leftPadding: 0,
                           rightPadding: 0,
                           topPadding: 0,
@@ -91,7 +91,7 @@ class RepairClass {
                                   cursorColor: MainColors.black,
                                   style: GoogleFonts.mada(
                                     color: MainColors.black,
-                                    fontSize: Fonts.sm,
+                                    fontSize: Fonts.sm(),
                                   ),
                                   controller: _repairName,
                                   decoration: InputDecoration(
@@ -100,7 +100,7 @@ class RepairClass {
                                         vertical: 5, horizontal: 20),
                                     hintStyle: GoogleFonts.mada(
                                       color: MainColors.black,
-                                      fontSize: Width.xs,
+                                      fontSize: Width.xs(),
                                     ),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
@@ -142,7 +142,7 @@ class RepairClass {
                                   cursorColor: MainColors.black,
                                   style: GoogleFonts.mada(
                                     color: MainColors.black,
-                                    fontSize: Fonts.sm,
+                                    fontSize: Fonts.sm(),
                                   ),
                                   controller: _repairKM,
                                   keyboardType:
@@ -158,7 +158,7 @@ class RepairClass {
                                         vertical: 5, horizontal: 20),
                                     hintStyle: GoogleFonts.mada(
                                       color: MainColors.black,
-                                      fontSize: Width.xs,
+                                      fontSize: Width.xs(),
                                     ),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
@@ -225,7 +225,7 @@ class RepairClass {
                                                   fontWeight: FontWeight.bold,
                                                   color: const Color.fromARGB(
                                                       255, 133, 133, 133),
-                                                  fontSize: Fonts.md,
+                                                  fontSize: Fonts.md(),
                                                 ),
                                               ),
                                             )),
@@ -262,7 +262,7 @@ class RepairClass {
                                               style: GoogleFonts.rubik(
                                                 fontWeight: FontWeight.bold,
                                                 color: MainColors.white,
-                                                fontSize: Fonts.md,
+                                                fontSize: Fonts.md(),
                                               ),
                                             ),
                                           ),

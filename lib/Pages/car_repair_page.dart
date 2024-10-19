@@ -84,12 +84,12 @@ class _CarRepairPage extends State<CarRepairPage> {
                     );
                   },
                   icon: const Icon(Icons.arrow_back_ios_new_rounded)),
-              SizedBox(width: Width.md),
+              SizedBox(width: Width.md()),
               Text(
                 "Add A Car Repair",
                 style: GoogleFonts.rubik(
                   fontWeight: FontWeight.bold,
-                  fontSize: Fonts.sm,
+                  fontSize: Fonts.sm(),
                 ),
               ),
             ],
@@ -106,7 +106,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                   Opacity(
                       opacity: 1,
                       child: SizedBox(
-                          width: Width.xxl,
+                          width: Width.xxl(),
                           height: Screen.size.height * 0.25,
                           child: Transform.translate(
                             offset: const Offset(75, 0),
@@ -130,7 +130,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                             style: GoogleFonts.rubik(
                                 fontWeight: FontWeight.bold,
                                 color: MainColors.white,
-                                fontSize: Fonts.md,
+                                fontSize: Fonts.md(),
                                 shadows: [
                                   const Shadow(
                                       color: MainColors.black,
@@ -141,14 +141,14 @@ class _CarRepairPage extends State<CarRepairPage> {
                         Icon(
                           Icons.error_rounded,
                           color: MainColors.white,
-                          size: Width.xs,
+                          size: Width.xs(),
                         ),
                         const SizedBox(width: 10),
                         Text("Data",
                             style: GoogleFonts.rubik(
                                 fontWeight: FontWeight.bold,
                                 color: MainColors.white,
-                                fontSize: Fonts.sm,
+                                fontSize: Fonts.sm(),
                                 shadows: [
                                   const Shadow(
                                       color: MainColors.black,
@@ -218,7 +218,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       fontWeight: FontWeight.bold,
                                       color:
                                           const Color.fromARGB(255, 12, 21, 52),
-                                      fontSize: Fonts.xs)),
+                                      fontSize: Fonts.xs())),
                               const SizedBox(width: 200),
                               IconButton(
                                 onPressed: () {
@@ -263,7 +263,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       cursorColor: MainColors.black,
                                       style: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Width.xs,
+                                        fontSize: Width.xs(),
                                       ),
                                       controller: _setDate,
                                       decoration: InputDecoration(
@@ -275,7 +275,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 vertical: 15, horizontal: 20),
                                         hintStyle: GoogleFonts.mada(
                                           color: MainColors.black,
-                                          fontSize: Width.xs,
+                                          fontSize: Width.xs(),
                                         ),
                                         hintText: 'Select Date',
                                         border: OutlineInputBorder(
@@ -332,7 +332,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       cursorColor: MainColors.black,
                                       style: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Width.xs,
+                                        fontSize: Width.xs(),
                                       ),
                                       controller: _kmRepair,
                                       keyboardType:
@@ -349,7 +349,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 vertical: 15, horizontal: 20),
                                         hintStyle: GoogleFonts.mada(
                                           color: MainColors.black,
-                                          fontSize: Width.xs,
+                                          fontSize: Width.xs(),
                                         ),
                                         hintText: '0',
                                         border: OutlineInputBorder(
@@ -406,7 +406,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       cursorColor: MainColors.black,
                                       style: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Width.xs,
+                                        fontSize: Width.xs(),
                                       ),
                                       controller: _repairCost,
                                       keyboardType:
@@ -424,7 +424,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 vertical: 15, horizontal: 20),
                                         hintStyle: GoogleFonts.mada(
                                           color: MainColors.black,
-                                          fontSize: Width.xs,
+                                          fontSize: Width.xs(),
                                         ),
                                         hintText: 'Cost',
                                         border: OutlineInputBorder(
@@ -513,7 +513,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                               style: GoogleFonts.rubik(
                                                   fontWeight: FontWeight.bold,
                                                   color: MainColors.black,
-                                                  fontSize: Fonts.xs)),
+                                                  fontSize: Fonts.xs())),
                                           TextButton(
                                               onPressed: () {
                                                 RepairClass.showRepairDialog(
@@ -531,7 +531,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                               style: GoogleFonts.rubik(
                                                   fontWeight: FontWeight.bold,
                                                   color: MainColors.black,
-                                                  fontSize: Fonts.xs)),
+                                                  fontSize: Fonts.xs())),
                                           TextButton(
                                               onPressed: () {},
                                               child: const Text(
@@ -559,13 +559,13 @@ class _CarRepairPage extends State<CarRepairPage> {
                                               end: Alignment.centerRight,
                                               normalColor:
                                                   MainColors.transparent,
-                                              borderRadius: CustomRadius.sm,
+                                              borderRadius: CustomRadius.sm(),
                                               leftPadding: 20,
                                               rightPadding: 20,
                                               topPadding: 5,
                                               bottomPadding: 15,
                                               label: "Save",
-                                              fontSize: Fonts.xs,
+                                              fontSize: Fonts.xs(),
                                               textColor: MainColors.white,
                                               onPressed: () {}),
                                           Transform.translate(
@@ -588,13 +588,13 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 end: Alignment.centerRight,
                                                 normalColor:
                                                     MainColors.transparent,
-                                                borderRadius: CustomRadius.sm,
+                                                borderRadius: CustomRadius.sm(),
                                                 leftPadding: 0,
                                                 rightPadding: 20,
                                                 topPadding: 5,
                                                 bottomPadding: 15,
                                                 label: "Cancel",
-                                                fontSize: Fonts.xs,
+                                                fontSize: Fonts.xs(),
                                                 textColor: MainColors.white,
                                                 onPressed: () {
                                                   Navigator.push(

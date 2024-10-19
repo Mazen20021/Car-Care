@@ -68,13 +68,13 @@ class _ForgetPass extends State<ForgetPass> {
               child: Column(
                 children: [
                   SizedBox(
-                    width: Width.xxl,
+                    width: Width.xxl(),
                     child: TextFormField(
                       textAlign: TextAlign.left,
                       cursorColor: MainColors.black,
                       style: GoogleFonts.mada(
                         color: MainColors.black,
-                        fontSize: Width.xs,
+                        fontSize: Width.xs(),
                       ),
                       controller: _emailController,
                       decoration: InputDecoration(
@@ -82,7 +82,7 @@ class _ForgetPass extends State<ForgetPass> {
                             vertical: 15, horizontal: 20),
                         hintStyle: GoogleFonts.mada(
                           color: MainColors.black,
-                          fontSize: Width.xs,
+                          fontSize: Width.xs(),
                         ),
                         hintText: 'Email',
                         border: OutlineInputBorder(
@@ -121,8 +121,8 @@ class _ForgetPass extends State<ForgetPass> {
                   ),
                   const SizedBox(height: 15),
                   CustomButton(
-                      width: Width.xxl,
-                      height: ButtonHeights.md,
+                      width: Width.xxl(),
+                      height: ButtonHeights.md(),
                       hasGradient: true,
                       gradientColors: const [
                         MainColors.primary,
@@ -134,13 +134,13 @@ class _ForgetPass extends State<ForgetPass> {
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                       normalColor: MainColors.transparent,
-                      borderRadius: CustomRadius.sm,
+                      borderRadius: CustomRadius.sm(),
                       leftPadding: 20,
                       rightPadding: 20,
                       topPadding: 5,
                       bottomPadding: 15,
                       label: "Send verification code",
-                      fontSize: Fonts.sm,
+                      fontSize: Fonts.sm(),
                       textColor: MainColors.white,
                       onPressed: () {
                         Navigator.push(

@@ -81,7 +81,7 @@ class _Verify extends State<Verify> {
                                 cursorColor: MainColors.black,
                                 style: GoogleFonts.mada(
                                   color: MainColors.black,
-                                  fontSize: Width.xs,
+                                  fontSize: Width.xs(),
                                 ),
                                 controller: _box1Controller,
                                 decoration: InputDecoration(
@@ -90,7 +90,7 @@ class _Verify extends State<Verify> {
                                       vertical: 15, horizontal: 20),
                                   hintStyle: GoogleFonts.mada(
                                     color: MainColors.black,
-                                    fontSize: Width.xs,
+                                    fontSize: Width.xs(),
                                   ),
                                   hintText: '',
                                   border: OutlineInputBorder(
@@ -138,7 +138,7 @@ class _Verify extends State<Verify> {
                                 cursorColor: MainColors.black,
                                 style: GoogleFonts.mada(
                                   color: MainColors.black,
-                                  fontSize: Width.xs,
+                                  fontSize: Width.xs(),
                                 ),
                                 controller: _box2Controller,
                                 decoration: InputDecoration(
@@ -147,7 +147,7 @@ class _Verify extends State<Verify> {
                                       vertical: 15, horizontal: 20),
                                   hintStyle: GoogleFonts.mada(
                                     color: MainColors.black,
-                                    fontSize: Width.xs,
+                                    fontSize: Width.xs(),
                                   ),
                                   hintText: '',
                                   border: OutlineInputBorder(
@@ -195,7 +195,7 @@ class _Verify extends State<Verify> {
                                 cursorColor: MainColors.black,
                                 style: GoogleFonts.mada(
                                   color: MainColors.black,
-                                  fontSize: Width.xs,
+                                  fontSize: Width.xs(),
                                 ),
                                 controller: _box3Controller,
                                 decoration: InputDecoration(
@@ -204,7 +204,7 @@ class _Verify extends State<Verify> {
                                       vertical: 15, horizontal: 20),
                                   hintStyle: GoogleFonts.mada(
                                     color: MainColors.black,
-                                    fontSize: Width.xs,
+                                    fontSize: Width.xs(),
                                   ),
                                   hintText: '',
                                   border: OutlineInputBorder(
@@ -252,7 +252,7 @@ class _Verify extends State<Verify> {
                                 cursorColor: MainColors.black,
                                 style: GoogleFonts.mada(
                                   color: MainColors.black,
-                                  fontSize: Width.xs,
+                                  fontSize: Width.xs(),
                                 ),
                                 controller: _box4Controller,
                                 decoration: InputDecoration(
@@ -261,7 +261,7 @@ class _Verify extends State<Verify> {
                                       vertical: 15, horizontal: 20),
                                   hintStyle: GoogleFonts.mada(
                                     color: MainColors.black,
-                                    fontSize: Width.xs,
+                                    fontSize: Width.xs(),
                                   ),
                                   hintText: '',
                                   border: OutlineInputBorder(
@@ -309,7 +309,7 @@ class _Verify extends State<Verify> {
                                 cursorColor: MainColors.black,
                                 style: GoogleFonts.mada(
                                   color: MainColors.black,
-                                  fontSize: Width.xs,
+                                  fontSize: Width.xs(),
                                 ),
                                 controller: _box5Controller,
                                 decoration: InputDecoration(
@@ -318,7 +318,7 @@ class _Verify extends State<Verify> {
                                       vertical: 15, horizontal: 20),
                                   hintStyle: GoogleFonts.mada(
                                     color: MainColors.black,
-                                    fontSize: Width.xs,
+                                    fontSize: Width.xs(),
                                   ),
                                   hintText: '',
                                   border: OutlineInputBorder(
@@ -361,8 +361,8 @@ class _Verify extends State<Verify> {
                         ),
                         const SizedBox(height: 35),
                         CustomButton(
-                          width: Width.xxl,
-                          height: ButtonHeights.md,
+                          width: Width.xxl(),
+                          height: ButtonHeights.md(),
                           hasGradient: true,
                           gradientColors: const [
                             MainColors.primary,
@@ -374,13 +374,13 @@ class _Verify extends State<Verify> {
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
                           normalColor: MainColors.transparent,
-                          borderRadius: CustomRadius.sm,
+                          borderRadius: CustomRadius.sm(),
                           leftPadding: 20,
                           rightPadding: 20,
                           topPadding: 5,
                           bottomPadding: 15,
                           label: "Verify",
-                          fontSize: Fonts.sm,
+                          fontSize: Fonts.sm(),
                           textColor: MainColors.white,
                           onPressed: () {
                             Navigator.push(

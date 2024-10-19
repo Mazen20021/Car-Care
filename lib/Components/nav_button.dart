@@ -68,7 +68,7 @@ class NavButton extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: currentColor,
                             fontSize:
-                                Fonts.xs, // Adjust size as per your `Fonts.xs`
+                                Fonts.xs(), // Adjust size as per your `Fonts.xs`
                           ),
                         )),
                   ],
@@ -94,7 +94,7 @@ class NavButton extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: currentColor,
                         fontSize:
-                            Fonts.xs, // Adjust size as per your `Fonts.xs`
+                            Fonts.xs(), // Adjust size as per your `Fonts.xs`
                       ),
                     ),
                   ],

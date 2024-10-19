@@ -68,7 +68,7 @@ class SignupState extends State<Signup> {
           offset: const Offset(0, -35),
           child: Text("Create new account",
               style: GoogleFonts.rubik(
-                  fontSize: Fonts.xl,
+                  fontSize: Fonts.xl(),
                   color: const Color.fromARGB(255, 42, 87, 208))),
         ),
         Transform.translate(
@@ -78,13 +78,13 @@ class SignupState extends State<Signup> {
             child: Column(
               children: [
                 SizedBox(
-                  width: Width.xxl,
+                  width: Width.xxl(),
                   child: TextFormField(
                     textAlign: TextAlign.left,
                     cursorColor: MainColors.black,
                     style: GoogleFonts.mada(
                       color: MainColors.black,
-                      fontSize: Fonts.sm,
+                      fontSize: Fonts.sm(),
                     ),
                     controller: _fNameController,
                     decoration: InputDecoration(
@@ -92,7 +92,7 @@ class SignupState extends State<Signup> {
                           vertical: 15, horizontal: 20),
                       hintStyle: GoogleFonts.mada(
                         color: MainColors.black,
-                        fontSize: Fonts.sm,
+                        fontSize: Fonts.sm(),
                       ),
                       hintText: 'First Name',
                       border: OutlineInputBorder(
@@ -131,13 +131,13 @@ class SignupState extends State<Signup> {
                 ),
                 const SizedBox(height: 10),
                 SizedBox(
-                  width: Width.xxl,
+                  width: Width.xxl(),
                   child: TextFormField(
                     textAlign: TextAlign.left,
                     cursorColor: MainColors.black,
                     style: GoogleFonts.mada(
                       color: MainColors.black,
-                      fontSize: Fonts.sm,
+                      fontSize: Fonts.sm(),
                     ),
                     controller: _lNameController,
                     decoration: InputDecoration(
@@ -145,7 +145,7 @@ class SignupState extends State<Signup> {
                           vertical: 15, horizontal: 20),
                       hintStyle: GoogleFonts.mada(
                         color: MainColors.black,
-                        fontSize: Fonts.sm,
+                        fontSize: Fonts.sm(),
                       ),
                       hintText: 'Last Name',
                       border: OutlineInputBorder(
@@ -184,13 +184,13 @@ class SignupState extends State<Signup> {
                 ),
                 const SizedBox(height: 10),
                 SizedBox(
-                  width: Width.xxl,
+                  width: Width.xxl(),
                   child: TextFormField(
                     textAlign: TextAlign.left,
                     cursorColor: MainColors.black,
                     style: GoogleFonts.mada(
                       color: MainColors.black,
-                      fontSize: Fonts.sm,
+                      fontSize: Fonts.sm(),
                     ),
                     controller: _emailController,
                     decoration: InputDecoration(
@@ -198,7 +198,7 @@ class SignupState extends State<Signup> {
                           vertical: 15, horizontal: 20),
                       hintStyle: GoogleFonts.mada(
                         color: MainColors.black,
-                        fontSize: Fonts.sm,
+                        fontSize: Fonts.sm(),
                       ),
                       hintText: 'Email',
                       border: OutlineInputBorder(
@@ -237,13 +237,13 @@ class SignupState extends State<Signup> {
                 ),
                 const SizedBox(height: 10),
                 SizedBox(
-                  width: Width.xxl,
+                  width: Width.xxl(),
                   child: TextFormField(
                     textAlign: TextAlign.left,
                     cursorColor: MainColors.black,
                     style: GoogleFonts.mada(
                       color: MainColors.black,
-                      fontSize: Fonts.sm,
+                      fontSize: Fonts.sm(),
                     ),
                     controller: _passwordController,
                     decoration: InputDecoration(
@@ -262,7 +262,7 @@ class SignupState extends State<Signup> {
                           vertical: 15, horizontal: 20),
                       hintStyle: GoogleFonts.mada(
                         color: MainColors.black,
-                        fontSize: Fonts.sm,
+                        fontSize: Fonts.sm(),
                       ),
                       hintText: 'Password',
                       border: OutlineInputBorder(
@@ -302,13 +302,13 @@ class SignupState extends State<Signup> {
                 ),
                 const SizedBox(height: 10),
                 SizedBox(
-                  width: Width.xxl,
+                  width: Width.xxl(),
                   child: TextFormField(
                     textAlign: TextAlign.left,
                     cursorColor: MainColors.black,
                     style: GoogleFonts.mada(
                       color: MainColors.black,
-                      fontSize: Fonts.sm,
+                      fontSize: Fonts.sm(),
                     ),
                     controller: _rePasswordController,
                     decoration: InputDecoration(
@@ -327,7 +327,7 @@ class SignupState extends State<Signup> {
                           vertical: 15, horizontal: 20),
                       hintStyle: GoogleFonts.mada(
                         color: MainColors.black,
-                        fontSize: Fonts.sm,
+                        fontSize: Fonts.sm(),
                       ),
                       hintText: 'Repeat Your Password',
                       border: OutlineInputBorder(
@@ -381,7 +381,7 @@ class SignupState extends State<Signup> {
                     Text(
                       "I Agree On Carcare",
                       style: GoogleFonts.rubik(
-                          fontSize: Fonts.sm,
+                          fontSize: Fonts.sm(),
                           fontWeight: FontWeight.bold),
                     ),
                     Transform.translate(
@@ -393,13 +393,13 @@ class SignupState extends State<Signup> {
                               style: GoogleFonts.rubik(
                                   decoration: TextDecoration.underline,
                                   decorationColor: MainColors.primary,
-                                  fontSize: Fonts.sm,
+                                  fontSize: Fonts.sm(),
                                   color: MainColors.primary),
                             )))
                   ],
                 ),
                 CustomButton(
-                    width: Width.xxl,
+                    width: Width.xxl(),
                     height: 50,
                     hasGradient: true,
                     gradientColors: const [
@@ -412,13 +412,13 @@ class SignupState extends State<Signup> {
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                     normalColor: MainColors.transparent,
-                    borderRadius: CustomRadius.sm,
+                    borderRadius: CustomRadius.sm(),
                     leftPadding: 20,
                     rightPadding: 20,
                     topPadding: 5,
                     bottomPadding: 15,
                     label: "Create My Account",
-                    fontSize: Fonts.sm,
+                    fontSize: Fonts.sm(),
                     textColor: MainColors.white,
                     onPressed: () {}),
 
@@ -431,7 +431,7 @@ class SignupState extends State<Signup> {
                 Column(
                   children: [
                     SizedBox(
-                      height: Height.x3s,
+                      height: Height.x3s(),
                     ),
                     Transform.rotate(
                       angle: -3 * (3.14 / 180),
@@ -467,7 +467,7 @@ class SignupState extends State<Signup> {
                                     child: Text(
                                       "Already has an account",
                                       style: GoogleFonts.rubik(
-                                          fontSize: Fonts.sm,
+                                          fontSize: Fonts.sm(),
                                           color: MainColors.white,
                                           decoration: TextDecoration.underline,
                                           decorationColor: MainColors.white),
@@ -477,7 +477,7 @@ class SignupState extends State<Signup> {
                                     onPressed: () {},
                                     child: Text("Forgot your password?",
                                         style: GoogleFonts.rubik(
-                                            fontSize: Fonts.sm,
+                                            fontSize: Fonts.sm(),
                                             color: MainColors.white,
                                             decoration: TextDecoration.underline,
                                             decorationColor: MainColors.white))),

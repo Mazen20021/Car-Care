@@ -61,7 +61,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                   "Welcome Back,",
                   style: GoogleFonts.rubik(
                     fontWeight: FontWeight.bold,
-                    fontSize: Fonts.sm,
+                    fontSize: Fonts.sm(),
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -70,7 +70,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                   style: GoogleFonts.rubik(
                     fontWeight: FontWeight.bold,
                     color: MainColors.primary,
-                    fontSize: Fonts.sm,
+                    fontSize: Fonts.sm(),
                   ),
                 ),
               ],
@@ -84,7 +84,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                         "Free Trial Plan",
                         style: GoogleFonts.rubik(
                           color: const Color.fromARGB(255, 182, 182, 182),
-                          fontSize: Fonts.sm,
+                          fontSize: Fonts.sm(),
                         ),
                       )
                     : const Text("")
@@ -98,7 +98,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                     Opacity(
                         opacity: 1,
                         child: SizedBox(
-                            width: Width.xxl,
+                            width: Width.xxl(),
                             height: Screen.size.height * 0.25,
                             child: Transform.translate(
                               offset: const Offset(75, 0),
@@ -122,7 +122,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                               style: GoogleFonts.rubik(
                                   fontWeight: FontWeight.bold,
                                   color: MainColors.white,
-                                  fontSize: Fonts.md,
+                                  fontSize: Fonts.md(),
                                   shadows: [
                                     const Shadow(
                                         color: MainColors.black,
@@ -133,14 +133,14 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           Icon(
                             Icons.error_rounded,
                             color: MainColors.white,
-                            size: Width.xs,
+                            size: Width.xs(),
                           ),
                           const SizedBox(width: 10),
                           Text("Data",
                               style: GoogleFonts.rubik(
                                   fontWeight: FontWeight.bold,
                                   color: MainColors.white,
-                                  fontSize: Fonts.sm,
+                                  fontSize: Fonts.sm(),
                                   shadows: [
                                     const Shadow(
                                         color: MainColors.black,
@@ -195,7 +195,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           color: MainColors.primary,
                           decoration: TextDecoration.underline,
                           decorationColor: MainColors.primary,
-                          fontSize: Fonts.xs,
+                          fontSize: Fonts.xs(),
                         ),
                       ),
                     ),
@@ -211,7 +211,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           color: MainColors.primary,
                           decoration: TextDecoration.underline,
                           decorationColor: MainColors.primary,
-                          fontSize: Fonts.xs,
+                          fontSize: Fonts.xs(),
                         ),
                       ),
                     ),
@@ -251,7 +251,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                 style: GoogleFonts.rubik(
                                     fontWeight: FontWeight.bold,
                                     color: MainColors.white,
-                                    fontSize: Fonts.xs)),
+                                    fontSize: Fonts.xs())),
                             const SizedBox(width: 10),
                             GestureDetector(
                                 onTap: () {},
@@ -308,7 +308,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                   style: GoogleFonts.rubik(
                                       fontWeight: FontWeight.bold,
                                       color: MainColors.white,
-                                      fontSize: Fonts.xs)),
+                                      fontSize: Fonts.xs())),
                               const SizedBox(width: 20),
                               Container(
                                 width: 30,
@@ -356,7 +356,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                             style: GoogleFonts.rubik(
                                 fontWeight: FontWeight.bold,
                                 color: const Color.fromARGB(255, 12, 21, 52),
-                                fontSize: Fonts.xs)),
+                                fontSize: Fonts.xs())),
                         const SizedBox(width: 100),
                         IconButton(
                           onPressed: () {
@@ -419,7 +419,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                             style: GoogleFonts.rubik(
                                 fontWeight: FontWeight.bold,
                                 color: const Color.fromARGB(255, 12, 21, 52),
-                                fontSize: Fonts.xs)),
+                                fontSize: Fonts.xs())),
                         const SizedBox(width: 100),
                         IconButton(
                           onPressed: () {
