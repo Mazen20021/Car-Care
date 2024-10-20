@@ -136,7 +136,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                             color: MainColors.white,
                             size: Width.xs(),
                           ),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 5),
                           Text("Data",
                               style: GoogleFonts.rubik(
                                   fontWeight: FontWeight.bold,
@@ -152,7 +152,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 225,
+                      height: Height.s7m(),
                       child: PageView.builder(
                         controller: _pageController,
                         scrollDirection: Axis.horizontal,
@@ -164,15 +164,13 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           });
                         },
                         itemBuilder: (context, index) => SizedBox(
-                          width: Screen
-                              .size.width, // Adjust width to your preference
+                          width: Screen.size.width, // Adjust width to your preference
                           child: Transform.translate(
-                            offset: const Offset(0, 50),
+                            offset:  Offset(0, Height.x2_2s()),
                             child: Transform.scale(
-                              scale: 0.65,
+                              scale: 0.7,
                               child: FittedBox(
-                                fit: BoxFit
-                                    .cover, // Adjust how the image fits in the box
+                                fit: BoxFit.cover, // Adjust how the image fits in the box
                                 child: Image.asset(imagesPath[index]),
                               ),
                             ),
@@ -182,9 +180,9 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                     ),
                   ],
                 )),
-            const SizedBox(height: 380),
+            const SizedBox(height: 360),
             Transform.translate(
-                offset: const Offset(20, -370),
+                offset:  Offset(Width.sm(), -Height.lg()),
                 child: Row(
                   children: [
                     GestureDetector(
@@ -200,7 +198,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 150),
+                    const SizedBox(width: 100),
                     GestureDetector(
                       onTap: () {
                         print("i am in check log");
@@ -223,14 +221,14 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                 child: Row(
                   children: [
                     Container(
-                      width: 180,
-                      height: 50,
+                      width: ButtonWidth.x5l(),
+                      height: ButtonHeights.sm(),
                       decoration: BoxDecoration(
                           boxShadow: const [
                             BoxShadow(
-                                color: MainColors.black,
-                                blurRadius: 10,
-                                offset: Offset(0, 2))
+                                color: MainColors.grey,
+                                blurRadius: 20,
+                                offset: Offset(0, 0))
                           ],
                           borderRadius: BorderRadius.circular(10),
                           color: MainColors.primary,
@@ -257,8 +255,8 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                             GestureDetector(
                                 onTap: () {},
                                 child: Container(
-                                  width: 30,
-                                  height: 30,
+                                  width: ButtonWidth.s3m(),
+                                  height: ButtonHeights.s3m(),
                                   decoration: BoxDecoration(
                                       color: MainColors.white,
                                       borderRadius: BorderRadius.circular(10)),
@@ -269,25 +267,24 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 25),
+                    const SizedBox(width: 8),
                     InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  CarRepairPage(carIndex: carIndex)),
+                              builder: (context) => CarRepairPage(carIndex: carIndex)),
                         );
                       },
                       child: Container(
-                        width: 180,
-                        height: 50,
+                        width: ButtonWidth.x4l(),
+                        height: ButtonHeights.sm(),
                         decoration: BoxDecoration(
                             boxShadow: const [
                               BoxShadow(
-                                  color: MainColors.black,
-                                  blurRadius: 10,
-                                  offset: Offset(0, 2))
+                                  color: MainColors.grey,
+                                  blurRadius: 20,
+                                  offset: Offset(0, 0))
                             ],
                             borderRadius: BorderRadius.circular(10),
                             color: MainColors.primary,
@@ -312,8 +309,8 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                       fontSize: Fonts.sm())),
                               const SizedBox(width: 20),
                               Container(
-                                width: 30,
-                                height: 30,
+                                width: ButtonWidth.s3m(),
+                                height: ButtonWidth.s3m(),
                                 decoration: BoxDecoration(
                                     color: MainColors.white,
                                     borderRadius: BorderRadius.circular(10)),
@@ -328,7 +325,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                   ],
                 )),
             Transform.translate(
-              offset: const Offset(3, -340),
+              offset:  Offset(Width.x4s(), -Height.m4d()),
               child: Container(
                 width: Screen.size.width * 0.94,
                 padding: const EdgeInsets.all(16.0),
@@ -342,8 +339,8 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                     Row(
                       children: [
                         Container(
-                          width: 40,
-                          height: 40,
+                          width: ButtonWidth.s2m(),
+                          height: ButtonHeights.s2m(),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: const Color.fromARGB(255, 12, 21, 52)),
@@ -358,7 +355,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                 fontWeight: FontWeight.bold,
                                 color: const Color.fromARGB(255, 12, 21, 52),
                                 fontSize: Fonts.sm())),
-                        const SizedBox(width: 142),
+                        const SizedBox(width: 108),
                         IconButton(
                           onPressed: () {
                             setState(() {
@@ -391,7 +388,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
               ),
             ),
             Transform.translate(
-              offset: const Offset(5, -320),
+              offset:  Offset(Width.x4s(), -Height.m3_1d()),
               child: Container(
                 width: Screen.size.width * 0.94,
                 padding: const EdgeInsets.all(16.0),
@@ -405,8 +402,8 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                     Row(
                       children: [
                         Container(
-                          width: 40,
-                          height: 40,
+                          width: ButtonWidth.s2m(),
+                          height: ButtonHeights.s2m(),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: const Color.fromARGB(255, 12, 21, 52)),
@@ -421,7 +418,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                 fontWeight: FontWeight.bold,
                                 color: const Color.fromARGB(255, 12, 21, 52),
                                 fontSize: Fonts.sm())),
-                        const SizedBox(width: 145),
+                        const SizedBox(width: 108),
                         IconButton(
                           onPressed: () {
                             setState(() {
@@ -472,10 +469,10 @@ class _CarSelectedPage extends State<CarSelectedPage> {
           automaticallyImplyLeading: false,
           backgroundColor: MainColors.white,
           title: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+            padding:  const EdgeInsets.fromLTRB(3, 10, 20, 10),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              // Center the content vertically
+              crossAxisAlignment:
+              CrossAxisAlignment.center, // Center the content vertically
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
@@ -490,7 +487,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                       buttonIcon: Icons.directions_car_filled,
                       currentColor: const Color.fromARGB(255, 42, 87, 208),
                       currentBorderColor:
-                          const Color.fromARGB(255, 42, 87, 208),
+                      const Color.fromARGB(255, 42, 87, 208),
                     )),
                 Padding(
                     padding: const EdgeInsets.all(10),
@@ -528,10 +525,10 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                               Settings(
-                                userName:widget.userName,
-                                 isSub: _isSub,
-                              )),
+                                  Settings(
+                                      userName:widget.userName,
+                                      isSub: _isSub
+                                  )),
                         );
                       },
                       title: "Settings",
