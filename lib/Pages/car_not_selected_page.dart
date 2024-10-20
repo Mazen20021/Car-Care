@@ -86,8 +86,12 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
             const SizedBox(height: 20),
             GestureDetector(
                 onTap: () {
-                  AddCar a = AddCar();
-                  a.newCar(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                        const AddNewCar()),
+                  );
                 },
                 child: Stack(
                   children: [

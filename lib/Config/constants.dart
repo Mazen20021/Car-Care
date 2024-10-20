@@ -18,6 +18,7 @@ class Fonts {
 }
 
 class Width {
+  static double x7s() => Screen.size.width * 0.0009;
   static double x6s() => Screen.size.width * 0.001;
   static double x5s() => Screen.size.width * 0.005;
   static double x4s() => Screen.size.width * 0.01;
@@ -91,6 +92,10 @@ class Height {
   static double sm() => Screen.size.height * 0.09;
   static double s2m() => Screen.size.height * 0.1;
   static double s3m() => Screen.size.height * 0.12;
+  static double s3_1m() => Screen.size.height * 0.14;
+  static double s3_2m() => Screen.size.height * 0.16;
+  static double s3_3m() => Screen.size.height * 0.18;
+  static double s3_4m() => Screen.size.height * 0.2;
   static double s4m() => Screen.size.height * 0.25;
   static double s5m() => Screen.size.height * 0.26;
   static double s6m() => Screen.size.height * 0.27;
