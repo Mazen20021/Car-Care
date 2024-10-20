@@ -419,7 +419,7 @@ class SignupState extends State<Signup> {
                     topPadding: 5,
                     bottomPadding: 15,
                     label: "Create My Account",
-                    fontSize: Fonts.sm(),
+                    fontSize: Fonts.m2d(),
                     textColor: MainColors.white,
                     onPressed: () {}),
 
