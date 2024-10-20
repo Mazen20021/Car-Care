@@ -80,7 +80,8 @@ class _AddCar extends State<AddNewCar>{
         decoration: BoxDecoration(
           color: MainColors.primary.withOpacity(0.8),
         ),
-        child: Column(
+        child: SingleChildScrollView(child:
+        Column(
             children: [
               const SizedBox(height: 30),
               Row(
@@ -129,10 +130,11 @@ class _AddCar extends State<AddNewCar>{
                   )
                 ],
               ),
-              const SizedBox(height: 100),
+              const SizedBox(height: 120),
+              SingleChildScrollView(child:
               SizedBox(
-                  width: Screen.size.width * 0.95,
-                  height: Screen.size.height * 0.75,
+                  width: Screen.size.width * 0.88,
+                  height: Screen.size.height * 0.686,
                   child:
                     Center(
                       child:
@@ -141,10 +143,10 @@ class _AddCar extends State<AddNewCar>{
                             decoration: BoxDecoration(
                                 color: MainColors.white,
                                 borderRadius: BorderRadius.circular(15)),
-                            child: SingleChildScrollView(child:
+                            child:
                             Column(
                               children: [
-                                const SizedBox(height: 60),
+                                const SizedBox(height: 40),
                                 SizedBox(
                                   width: Screen.size.width * 0.8,
                                   child: TextFormField(
@@ -152,7 +154,7 @@ class _AddCar extends State<AddNewCar>{
                                     cursorColor: MainColors.black,
                                     style: GoogleFonts.mada(
                                       color: MainColors.black,
-                                      fontSize: Fonts.sm(),
+                                      fontSize: Fonts.x3s(),
                                     ),
                                     controller: _carMake,
                                     decoration: InputDecoration(
@@ -161,7 +163,7 @@ class _AddCar extends State<AddNewCar>{
                                           vertical: 0, horizontal: 20),
                                       hintStyle: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Fonts.sm(),
+                                        fontSize: Fonts.x3s(),
                                       ),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
@@ -195,7 +197,7 @@ class _AddCar extends State<AddNewCar>{
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 13),
+                                const SizedBox(height: 10),
                                 SizedBox(
                                   width: Screen.size.width * 0.8,
                                   child: TextFormField(
@@ -203,7 +205,7 @@ class _AddCar extends State<AddNewCar>{
                                     cursorColor: MainColors.black,
                                     style: GoogleFonts.mada(
                                       color: MainColors.black,
-                                      fontSize: Fonts.sm(),
+                                      fontSize: Fonts.x3s(),
                                     ),
                                     controller: _carModel,
                                     decoration: InputDecoration(
@@ -212,7 +214,7 @@ class _AddCar extends State<AddNewCar>{
                                           vertical: 0, horizontal: 20),
                                       hintStyle: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Fonts.sm(),
+                                        fontSize: Fonts.x3s(),
                                       ),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
@@ -246,7 +248,7 @@ class _AddCar extends State<AddNewCar>{
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 13),
+                                const SizedBox(height: 10),
                                 SizedBox(
                                   width: Screen.size.width * 0.8,
                                   // Adjust the width to your preference
@@ -287,7 +289,7 @@ class _AddCar extends State<AddNewCar>{
                                     },
                                   ),
                                 ),
-                                const SizedBox(height: 13),
+                                const SizedBox(height: 10),
                                 SizedBox(
                                   width: Screen.size.width * 0.8,
                                   // Adjust the width to your preference
@@ -328,7 +330,7 @@ class _AddCar extends State<AddNewCar>{
                                     },
                                   ),
                                 ),
-                                const SizedBox(height: 13),
+                                const SizedBox(height: 10),
                                 SizedBox(
                                   width: Screen.size.width * 0.8,
                                   // Adjust the width to your preference
@@ -368,7 +370,7 @@ class _AddCar extends State<AddNewCar>{
                                     },
                                   ),
                                 ),
-                                const SizedBox(height: 13),
+                                const SizedBox(height: 10),
                                 SizedBox(
                                   width: Screen.size.width * 0.8,
                                   child: TextFormField(
@@ -380,7 +382,7 @@ class _AddCar extends State<AddNewCar>{
                                     cursorColor: MainColors.black,
                                     style: GoogleFonts.mada(
                                       color: MainColors.black,
-                                      fontSize: Fonts.sm(),
+                                      fontSize: Fonts.x3s(),
                                     ),
                                     controller: _setLicenseDate,
                                     decoration: InputDecoration(
@@ -389,10 +391,10 @@ class _AddCar extends State<AddNewCar>{
                                       labelText: 'License expiration date',
                                       contentPadding:
                                       const EdgeInsets.symmetric(
-                                          vertical: 5, horizontal: 20),
+                                          vertical: 0, horizontal: 20),
                                       hintStyle: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Fonts.sm(),
+                                        fontSize: Fonts.x3s(),
                                       ),
                                       border: OutlineInputBorder(
                                         borderRadius:
@@ -438,22 +440,19 @@ class _AddCar extends State<AddNewCar>{
                                     },
                                   ),
                                 ),
-
-                                const SizedBox(height: 13),
-
+                                const SizedBox(height: 10),
                                 SizedBox(
                                   width: Screen.size.width * 0.8,
                                   child: TextFormField(
                                     readOnly: true,
                                     onTap: () {
-
                                       _selectExaminationDate(context);
                                     },
                                     textAlign: TextAlign.left,
                                     cursorColor: MainColors.black,
                                     style: GoogleFonts.mada(
                                       color: MainColors.black,
-                                      fontSize: Fonts.sm(),
+                                      fontSize: Fonts.x3s(),
                                     ),
                                     controller: _setExaminationDate,
                                     decoration: InputDecoration(
@@ -462,10 +461,10 @@ class _AddCar extends State<AddNewCar>{
                                       labelText: 'Examination date',
                                       contentPadding:
                                       const EdgeInsets.symmetric(
-                                          vertical: 5, horizontal: 20),
+                                          vertical: 0, horizontal: 20),
                                       hintStyle: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Fonts.sm(),
+                                        fontSize: Fonts.x3s(),
                                       ),
                                       hintText: 'Examination date...',
                                       border: OutlineInputBorder(
@@ -556,7 +555,7 @@ class _AddCar extends State<AddNewCar>{
                                           ),
                                         ),
                                         SizedBox(
-                                          width: Screen.size.width * 0.48,
+                                          width: Screen.size.width * 0.412,
                                           child: ElevatedButton(
                                             onPressed: () {
                                               // Add your action for the second button
@@ -598,7 +597,7 @@ class _AddCar extends State<AddNewCar>{
                                 )
                               ],
                             ),
-                            )),
+                            ),
                         Transform.translate(offset:  Offset(0, -Height.s3_3m())
                           ,child: const Image(
                             image: AssetImage("assets/whiteCar.png"),
@@ -607,7 +606,8 @@ class _AddCar extends State<AddNewCar>{
                       ],),
                     ),
                   )
+              )
             ])
-    ));
+    )));
   }
 }
