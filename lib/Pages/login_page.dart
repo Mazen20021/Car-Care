@@ -229,7 +229,7 @@ class _Login extends State<Login> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const MainPageService(
-                                        isCarSelected: false,
+                                        isCarSelected: true,
                                         userName: "Mazen",
                                         currentIndex: 0,
                                       )),
