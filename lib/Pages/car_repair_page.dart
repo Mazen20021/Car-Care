@@ -84,23 +84,20 @@ class _CarRepairPage extends State<CarRepairPage> {
                     );
                   },
                   icon: const Icon(Icons.arrow_back_ios_new_rounded)),
-              SizedBox(width: Width.md()),
+              SizedBox(width: Width.s7m()),
               Text(
                 "Add A Car Repair",
                 style: GoogleFonts.rubik(
                   fontWeight: FontWeight.bold,
-                  fontSize: Fonts.sm(),
+                  fontSize: Fonts.xl(),
                 ),
               ),
             ],
           ),
         ),
         body: SingleChildScrollView(
-            physics: _isExpanded1
-                ? const AlwaysScrollableScrollPhysics()
-                : const NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
             child: Column(children: [
-              const SizedBox(height: 20),
               Stack(
                 children: [
                   Opacity(
@@ -123,7 +120,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                             ),
                           ))),
                   Transform.translate(
-                    offset: const Offset(180, 20),
+                    offset:  const Offset(180, 20),
                     child: Row(
                       children: [
                         Text("Name",
@@ -143,7 +140,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                           color: MainColors.white,
                           size: Width.xs(),
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 5),
                         Text("Data",
                             style: GoogleFonts.rubik(
                                 fontWeight: FontWeight.bold,
@@ -159,7 +156,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 225,
+                    height: 185,
                     child: PageView.builder(
                       controller: _pageController,
                       scrollDirection: Axis.horizontal,
@@ -170,7 +167,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                             width: Screen.size.width,
                             // Adjust width to your preference
                             child: Transform.translate(
-                              offset: const Offset(0, 50),
+                              offset: const Offset(0, 43),
                               child: Transform.scale(
                                   scale: 0.65,
                                   child: FittedBox(
@@ -185,7 +182,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 350),
+              const SizedBox(height: 355),
               Transform.translate(
                   offset: const Offset(3, -370),
                   child: Container(
@@ -218,8 +215,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       fontWeight: FontWeight.bold,
                                       color:
                                           const Color.fromARGB(255, 12, 21, 52),
-                                      fontSize: Fonts.xs())),
-                              const SizedBox(width: 200),
+                                      fontSize: Fonts.sm())),
+                              const SizedBox(width: 165),
                               IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -267,12 +264,11 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       ),
                                       controller: _setDate,
                                       decoration: InputDecoration(
-                                        prefixIcon:
-                                            const Icon(Icons.calendar_today),
+                                        suffixIcon: const Icon(Icons.calendar_month_rounded),
                                         labelText: 'Date',
                                         contentPadding:
                                             const EdgeInsets.symmetric(
-                                                vertical: 15, horizontal: 20),
+                                                vertical: 0, horizontal: 20),
                                         hintStyle: GoogleFonts.mada(
                                           color: MainColors.black,
                                           fontSize: Width.xs(),
@@ -346,7 +342,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                         label: const Text("KM Of Repair"),
                                         contentPadding:
                                             const EdgeInsets.symmetric(
-                                                vertical: 15, horizontal: 20),
+                                                vertical: 0, horizontal: 20),
                                         hintStyle: GoogleFonts.mada(
                                           color: MainColors.black,
                                           fontSize: Width.xs(),
@@ -421,7 +417,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                             const Text("Repair Cost *Optional"),
                                         contentPadding:
                                             const EdgeInsets.symmetric(
-                                                vertical: 15, horizontal: 20),
+                                                vertical: 0, horizontal: 20),
                                         hintStyle: GoogleFonts.mada(
                                           color: MainColors.black,
                                           fontSize: Width.xs(),
@@ -474,7 +470,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                         label: const Text("Selected Repair"),
                                         contentPadding:
                                             const EdgeInsets.symmetric(
-                                                horizontal: 20, vertical: 15),
+                                                horizontal: 20, vertical: 0),
                                         border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
@@ -513,14 +509,20 @@ class _CarRepairPage extends State<CarRepairPage> {
                                               style: GoogleFonts.rubik(
                                                   fontWeight: FontWeight.bold,
                                                   color: MainColors.black,
-                                                  fontSize: Fonts.xs())),
+                                                  fontSize: Fonts.sm())),
+                                      Transform.translate(offset: const Offset(-8, 0),child:
                                           TextButton(
                                               onPressed: () {
                                                 RepairClass.showRepairDialog(
                                                     context);
                                               },
-                                              child: const Text(
-                                                  "Add new repair part"))
+                                              child: Text(
+                                                  "Add new repair part",
+                                                  style: GoogleFonts.rubik(
+                                                      fontWeight: FontWeight.bold,
+                                                      color: MainColors.primary,
+                                                      fontSize: Fonts.sm())
+                                              )))
                                         ],
                                       )),
                                   Transform.translate(
@@ -531,19 +533,25 @@ class _CarRepairPage extends State<CarRepairPage> {
                                               style: GoogleFonts.rubik(
                                                   fontWeight: FontWeight.bold,
                                                   color: MainColors.black,
-                                                  fontSize: Fonts.xs())),
+                                                  fontSize: Fonts.sm())),
+                                          Transform.translate(offset: const Offset(-8, 0),child:
                                           TextButton(
                                               onPressed: () {},
-                                              child: const Text(
-                                                  "Change Repair Milestone"))
+                                              child: Text(
+                                                  "Change Repair Milestone",
+                                                  style: GoogleFonts.rubik(
+                                                      fontWeight: FontWeight.bold,
+                                                      color: MainColors.primary,
+                                                      fontSize: Fonts.sm())
+                                              )))
                                         ],
                                       )),
                                   Transform.translate(
-                                      offset: const Offset(-20, -5),
+                                      offset: const Offset(-20, -30),
                                       child: Row(
                                         children: [
                                           CustomButton(
-                                              width: 180,
+                                              width: 160,
                                               height: 50,
                                               hasGradient: true,
                                               gradientColors: const [
@@ -571,7 +579,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           Transform.translate(
                                             offset: const Offset(-3, 0),
                                             child: CustomButton(
-                                                width: 180,
+                                                width: 150,
                                                 height: 50,
                                                 hasGradient: true,
                                                 gradientColors: const [
@@ -597,18 +605,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 fontSize: Fonts.xs(),
                                                 textColor: MainColors.white,
                                                 onPressed: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            MainPageService(
-                                                              isCarSelected:
-                                                                  true,
-                                                              userName: "Mazen",
-                                                              currentIndex:
-                                                                  widget
-                                                                      .carIndex,
-                                                            )),
+                                                  Navigator.pop(
+                                                   context
                                                   );
                                                 }),
                                           )
