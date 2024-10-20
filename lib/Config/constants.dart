@@ -10,8 +10,11 @@ class Screen {
 
 class Fonts {
   static double xs() => Screen.size.width * 0.02;
+  static double x2s() => Screen.size.width * 0.023;
+  static double x3s() => Screen.size.width * 0.026;
   static double sm() => Screen.size.width * 0.03;
   static double md() => Screen.size.width * 0.037;
+  static double m2d() => Screen.size.width * 0.04;
   static double lg() => Screen.size.width * 0.047;
   static double xl() => Screen.size.width * 0.057;
   static double xxl() => Screen.size.width * 0.067;
@@ -66,6 +69,12 @@ class ButtonWidth {
   static double l5g() => 110;
   static double xl() => 120;
   static double xxl() => 130;
+  static double x2l() => 140;
+  static double x3l() => 150;
+  static double x4l() => 160;
+  static double x5l() => 170;
+  static double x6l() => 180;
+  static double x7l() => 190;
 }
 
 class ButtonHeights {
@@ -88,6 +97,8 @@ class Height {
   static double x4s() => Screen.size.height * 0.005;
   static double x3s() => Screen.size.height * 0.009;
   static double x2s() => Screen.size.height * 0.03;
+  static double x2_1s() => Screen.size.height * 0.04;
+  static double x2_2s() => Screen.size.height * 0.05;
   static double xs() => Screen.size.height * 0.06;
   static double sm() => Screen.size.height * 0.09;
   static double s2m() => Screen.size.height * 0.1;
@@ -104,6 +115,10 @@ class Height {
   static double s9m() => Screen.size.height * 0.295;
   static double md() => Screen.size.height * 0.3;
   static double m2d() => Screen.size.height * 0.35;
+  static double m3d() => Screen.size.height * 0.4;
+  static double m3_1d() => Screen.size.height * 0.42;
+  static double m3_2d() => Screen.size.height * 0.44;
+  static double m4d() => Screen.size.height * 0.45;
   static double lg() => Screen.size.height * 0.5;
   static double xl() => Screen.size.height * 0.7;
   static double xxl() => Screen.size.height * 0.9;
