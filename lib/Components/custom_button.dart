@@ -26,6 +26,8 @@ class CustomButton extends StatelessWidget {
   final IconData buttonIcon;
   final double iconSize;
   final Color iconColor;
+  final double labelLeftRight;
+  final double labelUpDown;
   const CustomButton({
     super.key,
     this.width = 0,
@@ -50,6 +52,8 @@ class CustomButton extends StatelessWidget {
     this.buttonIcon = Icons.close_rounded,
     this.iconColor = Colors.white,
     this.iconSize = 0,
+    this.labelLeftRight = 0,
+    this.labelUpDown = 0,
     this.onPressed,
   });
 
@@ -85,13 +89,14 @@ class CustomButton extends StatelessWidget {
             alignment: Alignment.center,
             child:
             !hasIcon?
+                Transform.translate(offset: Offset(labelLeftRight, labelUpDown),child:
             Text(
               label,
               style: GoogleFonts.rubik(
                 color: textColor,
                 fontSize: fontSize,
                 fontWeight: FontWeight.bold,
-              )):
+              ))):
               Transform.translate(offset: const Offset(-11, -10),child: Icon(buttonIcon,size: iconSize,color: iconColor)),
             ),
           ),
