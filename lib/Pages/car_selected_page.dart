@@ -62,7 +62,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                   "Welcome Back,",
                   style: GoogleFonts.rubik(
                     fontWeight: FontWeight.bold,
-                    fontSize: Fonts.sm(),
+                    fontSize: Fonts.lg(),
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -71,7 +71,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                   style: GoogleFonts.rubik(
                     fontWeight: FontWeight.bold,
                     color: MainColors.primary,
-                    fontSize: Fonts.sm(),
+                    fontSize: Fonts.lg(),
                   ),
                 ),
               ],
@@ -119,18 +119,18 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                       offset: const Offset(180, 20),
                       child: Row(
                         children: [
-                          Text("Name",
+                          Text("XAC",
                               style: GoogleFonts.rubik(
                                   fontWeight: FontWeight.bold,
                                   color: MainColors.white,
-                                  fontSize: Fonts.md(),
+                                  fontSize: Fonts.xl(),
                                   shadows: [
                                     const Shadow(
                                         color: MainColors.black,
                                         blurRadius: 25,
                                         offset: Offset(0, 2))
                                   ])),
-                          const SizedBox(width: 25),
+                          const SizedBox(width: 10),
                           Icon(
                             Icons.error_rounded,
                             color: MainColors.white,
@@ -217,11 +217,11 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                   ],
                 )),
             Transform.translate(
-                offset: const Offset(15, -360),
+                offset: const Offset(20, -360),
                 child: Row(
                   children: [
                     Container(
-                      width: ButtonWidth.x5l(),
+                      width: ButtonWidth.x4l(),
                       height: ButtonHeights.sm(),
                       decoration: BoxDecoration(
                           boxShadow: const [
@@ -236,7 +236,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                             image: const AssetImage("assets/fuelMeter.png"),
                             fit: BoxFit.cover,
                             colorFilter: ColorFilter.mode(
-                              MainColors.primary.withOpacity(0.8),
+                              MainColors.primary.withOpacity(0.95),
                               // Apply the same color as the container
                               BlendMode
                                   .srcATop, // Blends the color with the image
@@ -277,7 +277,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                         );
                       },
                       child: Container(
-                        width: ButtonWidth.x4l(),
+                        width: ButtonWidth.x3_1l(),
                         height: ButtonHeights.sm(),
                         decoration: BoxDecoration(
                             boxShadow: const [
@@ -292,7 +292,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                               image: const AssetImage("assets/repair.png"),
                               fit: BoxFit.cover,
                               colorFilter: ColorFilter.mode(
-                                MainColors.primary.withOpacity(0.8),
+                                MainColors.primaryDark.withOpacity(0.9),
                                 // Apply the same color as the container
                                 BlendMode
                                     .srcATop, // Blends the color with the image
@@ -315,7 +315,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                     color: MainColors.white,
                                     borderRadius: BorderRadius.circular(10)),
                                 child: const Icon(Icons.handyman_rounded,
-                                    color: MainColors.primary),
+                                    color: MainColors.primaryDark),
                               ),
                             ],
                           ),
@@ -325,10 +325,10 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                   ],
                 )),
             Transform.translate(
-              offset:  Offset(Width.x4s(), -Height.m4d()),
+              offset:  Offset(Width.x7s(), -Height.m4d()),
               child: Container(
-                width: Screen.size.width * 0.94,
-                padding: const EdgeInsets.all(16.0),
+                width: Screen.size.width * 0.9,
+                padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: MainColors.grey,
                   borderRadius: BorderRadius.circular(10),
@@ -338,15 +338,17 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                   children: [
                     Row(
                       children: [
+                        const SizedBox(width: 10),
                         Container(
-                          width: ButtonWidth.s2m(),
-                          height: ButtonHeights.s2m(),
+                          width: ButtonWidth.s3m(),
+                          height: ButtonHeights.s3m(),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: const Color.fromARGB(255, 12, 21, 52)),
                           child: const Icon(
                             Icons.handyman_rounded,
                             color: MainColors.white,
+                            size: 18,
                           ),
                         ),
                         const SizedBox(width: 10),
@@ -355,7 +357,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                 fontWeight: FontWeight.bold,
                                 color: const Color.fromARGB(255, 12, 21, 52),
                                 fontSize: Fonts.sm())),
-                        const SizedBox(width: 108),
+                        const SizedBox(width: 106),
                         IconButton(
                           onPressed: () {
                             setState(() {
@@ -388,10 +390,10 @@ class _CarSelectedPage extends State<CarSelectedPage> {
               ),
             ),
             Transform.translate(
-              offset:  Offset(Width.x4s(), -Height.m3_1d()),
+              offset:  Offset(Width.x7s(), -Height.m3_1d()),
               child: Container(
-                width: Screen.size.width * 0.94,
-                padding: const EdgeInsets.all(16.0),
+                width: Screen.size.width * 0.9,
+                padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: MainColors.grey,
                   borderRadius: BorderRadius.circular(10),
@@ -401,15 +403,17 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                   children: [
                     Row(
                       children: [
+                        const SizedBox(width: 10),
                         Container(
-                          width: ButtonWidth.s2m(),
-                          height: ButtonHeights.s2m(),
+                          width: ButtonWidth.s3m(),
+                          height: ButtonHeights.s3m(),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: const Color.fromARGB(255, 12, 21, 52)),
                           child: const Icon(
                             Icons.calendar_month_rounded,
                             color: MainColors.white,
+                            size: 18,
                           ),
                         ),
                         const SizedBox(width: 10),

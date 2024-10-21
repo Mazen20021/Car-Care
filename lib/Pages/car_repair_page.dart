@@ -127,14 +127,14 @@ class _CarRepairPage extends State<CarRepairPage> {
                             style: GoogleFonts.rubik(
                                 fontWeight: FontWeight.bold,
                                 color: MainColors.white,
-                                fontSize: Fonts.md(),
+                                fontSize: Fonts.xl(),
                                 shadows: [
                                   const Shadow(
                                       color: MainColors.black,
                                       blurRadius: 25,
                                       offset: Offset(0, 2))
                                 ])),
-                        const SizedBox(width: 25),
+                        const SizedBox(width: 10),
                         Icon(
                           Icons.error_rounded,
                           color: MainColors.white,
@@ -197,18 +197,6 @@ class _CarRepairPage extends State<CarRepairPage> {
                         children: [
                           Row(
                             children: [
-                              Container(
-                                width: 40,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color:
-                                        const Color.fromARGB(255, 12, 21, 52)),
-                                child: const Icon(
-                                  Icons.handyman_rounded,
-                                  color: MainColors.white,
-                                ),
-                              ),
                               const SizedBox(width: 10),
                               Text("Repair List",
                                   style: GoogleFonts.rubik(
@@ -216,7 +204,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       color:
                                           const Color.fromARGB(255, 12, 21, 52),
                                       fontSize: Fonts.sm())),
-                              const SizedBox(width: 165),
+                              const SizedBox(width: 215),
                               IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -260,7 +248,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       cursorColor: MainColors.black,
                                       style: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Width.xs(),
+                                        fontSize: Width.x2s(),
                                       ),
                                       controller: _setDate,
                                       decoration: InputDecoration(
@@ -271,7 +259,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 vertical: 0, horizontal: 20),
                                         hintStyle: GoogleFonts.mada(
                                           color: MainColors.black,
-                                          fontSize: Width.xs(),
+                                          fontSize: Width.x2s(),
                                         ),
                                         hintText: 'Select Date',
                                         border: OutlineInputBorder(
@@ -328,7 +316,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       cursorColor: MainColors.black,
                                       style: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Width.xs(),
+                                        fontSize: Width.x2s(),
                                       ),
                                       controller: _kmRepair,
                                       keyboardType:
@@ -345,7 +333,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 vertical: 0, horizontal: 20),
                                         hintStyle: GoogleFonts.mada(
                                           color: MainColors.black,
-                                          fontSize: Width.xs(),
+                                          fontSize: Width.x2s(),
                                         ),
                                         hintText: '0',
                                         border: OutlineInputBorder(
@@ -402,7 +390,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       cursorColor: MainColors.black,
                                       style: GoogleFonts.mada(
                                         color: MainColors.black,
-                                        fontSize: Width.xs(),
+                                        fontSize: Width.x2s(),
                                       ),
                                       controller: _repairCost,
                                       keyboardType:
@@ -420,7 +408,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 vertical: 0, horizontal: 20),
                                         hintStyle: GoogleFonts.mada(
                                           color: MainColors.black,
-                                          fontSize: Width.xs(),
+                                          fontSize: Width.x2s(),
                                         ),
                                         hintText: 'Cost',
                                         border: OutlineInputBorder(
@@ -484,13 +472,15 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       items: _items.map((String item) {
                                         return DropdownMenuItem<String>(
                                           value: item,
-                                          child: Text(item),
+                                          child: Text(item,style:  GoogleFonts.mada(
+                                            color: MainColors.black,
+                                            fontSize: Width.x2s(),
+                                          ),),
                                         );
                                       }).toList(),
                                       onChanged: (String? newValue) {
                                         setState(() {
-                                          _selectedValue =
-                                              newValue; // Update the selected value
+                                          _selectedValue = newValue; // Update the selected value
                                         });
                                       },
                                       validator: (value) {
@@ -513,8 +503,11 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       Transform.translate(offset: const Offset(-8, 0),child:
                                           TextButton(
                                               onPressed: () {
-                                                RepairClass.showRepairDialog(
-                                                    context);
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) => RepairClass()),
+                                                );
                                               },
                                               child: Text(
                                                   "Add new repair part",
@@ -552,7 +545,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                         children: [
                                           CustomButton(
                                               width: 160,
-                                              height: 50,
+                                              height: 45,
                                               hasGradient: true,
                                               gradientColors: const [
                                                 Color.fromARGB(
@@ -573,14 +566,14 @@ class _CarRepairPage extends State<CarRepairPage> {
                                               topPadding: 5,
                                               bottomPadding: 15,
                                               label: "Save",
-                                              fontSize: Fonts.xs(),
+                                              fontSize: Fonts.sm(),
                                               textColor: MainColors.white,
                                               onPressed: () {}),
                                           Transform.translate(
                                             offset: const Offset(-3, 0),
                                             child: CustomButton(
                                                 width: 150,
-                                                height: 50,
+                                                height: 45,
                                                 hasGradient: true,
                                                 gradientColors: const [
                                                   Color.fromARGB(
@@ -602,7 +595,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 topPadding: 5,
                                                 bottomPadding: 15,
                                                 label: "Cancel",
-                                                fontSize: Fonts.xs(),
+                                                fontSize: Fonts.sm(),
                                                 textColor: MainColors.white,
                                                 onPressed: () {
                                                   Navigator.pop(

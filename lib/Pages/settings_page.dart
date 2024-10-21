@@ -108,13 +108,13 @@ class _Settings extends State<Settings> {
                         ),
                         child: Row(
                           children: [
-                            const SizedBox(width: 10),
+                            const SizedBox(width: 20),
                             Text("Free trial plan",
                                 style: GoogleFonts.rubik(
                                     fontSize: Fonts.md(),
                                     color: MainColors.primary)),
                             SizedBox(
-                              width: Width.md(),
+                              width: Width.s7m(),
                             ),
                             GestureDetector(
                               onTap: () {},
@@ -127,6 +127,7 @@ class _Settings extends State<Settings> {
                                 ),
                                 child: Row(
                                   children: [
+                                    SizedBox(width: Width.x4s()),
                                     const Icon(
                                       Icons.keyboard_double_arrow_up_rounded,
                                       color: MainColors.white,
@@ -172,8 +173,6 @@ class _Settings extends State<Settings> {
                             SizedBox(
                               width: Width.xxl() * 0.88,
                               child: TextFormField(
-
-
                                 textAlign: TextAlign.left,
                                 cursorColor: MainColors.black,
                                 style: GoogleFonts.mada(
@@ -311,7 +310,7 @@ class _Settings extends State<Settings> {
                                         topPadding: 5,
                                         bottomPadding: 15,
                                         label: "Save",
-                                        fontSize: Fonts.xs(),
+                                        fontSize: Fonts.x2_1s(),
                                         textColor: MainColors.white,
                                         onPressed: () {}),
                                     Transform.translate(
@@ -337,7 +336,7 @@ class _Settings extends State<Settings> {
                                           topPadding: 5,
                                           bottomPadding: 15,
                                           label: "Cancel",
-                                          fontSize: Fonts.xs(),
+                                          fontSize: Fonts.x2_1s(),
                                           textColor: MainColors.white,
                                           onPressed: () {
                                             Navigator.pop(context);
