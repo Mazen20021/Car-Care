@@ -10,6 +10,8 @@ class Screen {
 
 class Fonts {
   static double xs() => Screen.size.width * 0.02;
+  static double x2_1s() => Screen.size.width * 0.021;
+  static double x2_2s() => Screen.size.width * 0.022;
   static double x2s() => Screen.size.width * 0.023;
   static double x3s() => Screen.size.width * 0.026;
   static double sm() => Screen.size.width * 0.03;
@@ -65,12 +67,15 @@ class ButtonWidth {
   static double lg() => 70;
   static double l2g() => 80;
   static double l3g() => 90;
+  static double l3_1g() => 95;
   static double l4g() => 100;
   static double l5g() => 110;
   static double xl() => 120;
+  static double x_1l() => 125;
   static double xxl() => 130;
   static double x2l() => 140;
   static double x3l() => 150;
+  static double x3_1l() => 155;
   static double x4l() => 160;
   static double x5l() => 170;
   static double x6l() => 180;
@@ -137,6 +142,7 @@ class MainColors {
   static const Color transparent = Color(0x00000000);
   // Primary colors
   static const Color primary = Color(0xFF2A57D0);
+  static const Color primaryDark = Color.fromARGB(255, 48, 70, 131);
   static const Color primaryLight = Color(0xFF90BFF7);
   static const Color background = Color(0xFFFCFCFC);
 
