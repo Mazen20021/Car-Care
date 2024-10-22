@@ -27,11 +27,11 @@ class _CarRepairPage extends State<CarRepairPage> {
   final TextEditingController _kmRepair = TextEditingController();
   final TextEditingController _repairCost = TextEditingController();
   final TextEditingController _repairName = TextEditingController();
-  final TextEditingController _repairKM = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String? _selectedValue;
   final List<String> _items = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
-
+  List<Widget> repairList = List.empty(growable: true);
+  int addedItems = 0;
   @override
   void initState() {
     super.initState();
@@ -43,6 +43,58 @@ class _CarRepairPage extends State<CarRepairPage> {
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+  void addRepairRow() {
+    setState(() {
+      addedItems ++;
+      repairList.add(
+          Container(
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 12, 21, 52),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(2),
+                bottomLeft: Radius.circular(2),
+                bottomRight: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+            ),
+          child:
+          Row(
+            children: [
+              Transform.translate(offset: const Offset(3, 0),child:
+              Container(
+                width: Width.x3l(),
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: MainColors.borderLight,
+                  ),
+                  child:  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(_repairName.text, style: GoogleFonts.rubik(
+                        fontSize: Fonts.xs(),
+                      ),
+                      ),
+                      Icon(Icons.calendar_month,size: 13,),
+                      Text(_setDate.text,style: GoogleFonts.rubik(
+                        fontSize: Fonts.xs(),
+                      ),),
+                      Icon(Icons.speed_rounded,size: 13,),
+                      Text(_kmRepair.text,style: GoogleFonts.rubik(
+                        fontSize: Fonts.xs(),
+                      ),),
+                      Icon(Icons.monetization_on_rounded,size: 13),
+                      Text(_repairCost.text,style: GoogleFonts.rubik(
+                        fontSize: Fonts.xs(),
+                      ),),
+                      Icon(Icons.delete_forever,size: 13,color: MainColors.danger,),
+                    ],
+                  ),
+                )),
+            ],
+          )));
+    });
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -225,9 +277,9 @@ class _CarRepairPage extends State<CarRepairPage> {
                             height: _isExpanded1 ? 150 : 0,
                             // Adjust the height as needed
                             child: ListView(
-                              children: List.generate(5, (index) {
+                              children: List.generate(addedItems, (index) {
                                 return ListTile(
-                                  title: Text("Item ${index + 1}"),
+                                  title: repairList[index]
                                 );
                               }),
                             ),
@@ -470,6 +522,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       hint: const Text('Select Repair'),
                                       value: _selectedValue,
                                       items: _items.map((String item) {
+                                        _repairName.text = item;
                                         return DropdownMenuItem<String>(
                                           value: item,
                                           child: Text(item,style:  GoogleFonts.mada(
@@ -568,7 +621,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                               label: "Save",
                                               fontSize: Fonts.sm(),
                                               textColor: MainColors.white,
-                                              onPressed: () {}),
+                                              onPressed: addRepairRow,
+                                              ),
                                           Transform.translate(
                                             offset: const Offset(-3, 0),
                                             child: CustomButton(

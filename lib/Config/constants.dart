@@ -53,6 +53,9 @@ class Width {
   static double m4d() => Screen.size.width * 0.45;
   static double lg() => Screen.size.width * 0.5;
   static double xl() => Screen.size.width * 0.7;
+  static double x2l() => Screen.size.width * 0.75;
+  static double x3l() => Screen.size.width * 0.8;
+  static double x4l() => Screen.size.width * 0.85;
   static double xxl() => Screen.size.width * 0.9;
 }
 
@@ -164,6 +167,7 @@ class MainColors {
   static const Color border = Color(0xFFE5E5E5);
   static const Color borderDark = Color(0xFFD1D1D1);
   static const Color borderLight = Color(0xFFEDEDED);
+  static const Color borderBrighter = Color.fromARGB(255, 248, 248, 248);
   static const Color borderDanger = Color(0xFFF34313);
 
   // redAccent
