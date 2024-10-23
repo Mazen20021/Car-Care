@@ -183,7 +183,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                         "assets/fuelMeter.png"),
                                     fit: BoxFit.cover,
                                     colorFilter: ColorFilter.mode(
-                                      MainColors.primary.withOpacity(0.85), // Apply the same color as the container
+                                      Color.fromARGB(255, 190, 202, 236).withOpacity(0.9), // Apply the same color as the container
                                       BlendMode.srcATop, // Blends the color with the image
                                     ),
                                   ),
@@ -226,8 +226,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                         const AssetImage("assets/repair.png"),
                                     fit: BoxFit.cover,
                                     colorFilter: ColorFilter.mode(
-                                      MainColors.primary.withOpacity(
-                                          0.85), // Apply the same color as the container
+                                      Color.fromARGB(255, 190, 196, 214).withOpacity(0.9), // Apply the same color as the container
                                       BlendMode
                                           .srcATop, // Blends the color with the image
                                     ),
@@ -481,83 +480,82 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
           ],
         ),
         child: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: MainColors.white,
-          title: Padding(
-            padding:  const EdgeInsets.fromLTRB(3, 10, 20, 10),
-            child: Row(
-              crossAxisAlignment:
-                  CrossAxisAlignment.center, // Center the content vertically
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: NavButton(
-                      hasIcon: true,
-                      buttonImage: "",
-                      onPressed: () {},
-                      title: "Dashboard",
-                      width: 65,
-                      height: 45,
-                      buttonIcon: Icons.directions_car_filled,
-                      currentColor: const Color.fromARGB(255, 42, 87, 208),
-                      currentBorderColor:
-                          const Color.fromARGB(255, 42, 87, 208),
-                    )),
-                Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: NavButton(
-                      hasIcon: false,
-                      buttonImage: "assets/customIcons/garage.png",
-                      onPressed: () {},
-                      title: "Car List",
-                      width: 65,
-                      height: 45,
-                      buttonIcon: Icons.ac_unit_outlined,
-                      currentColor: const Color.fromARGB(255, 12, 21, 52),
-                      currentBorderColor: MainColors.white,
-                    )),
-                Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: NavButton(
-                      buttonImage: "",
-                      hasIcon: true,
-                      onPressed: () {},
-                      title: "Add Gas",
-                      width: 65,
-                      height: 45,
-                      buttonIcon: Icons.local_gas_station_rounded,
-                      currentColor: const Color.fromARGB(255, 12, 21, 52),
-                      currentBorderColor: MainColors.white,
-                    )),
-                Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: NavButton(
-                      buttonImage: "",
-                      hasIcon: true,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                               Settings(
-                                 userName:widget.userName,
-                                isSub: _isSub
-                               )),
-                        );
-                      },
-                      title: "Settings",
-                      width: 65,
-                      height: 45,
-                      buttonIcon: Icons.settings,
-                      currentColor: const Color.fromARGB(255, 12, 21, 52),
-                      currentBorderColor: MainColors.white,
-                    )),
-              ],
-            ),
-          ),
-        ),
+            automaticallyImplyLeading: false,
+            backgroundColor: MainColors.white,
+            title: Padding(
+              padding:  const EdgeInsets.fromLTRB(3, 10, 20, 10),
+              child: Row(
+                crossAxisAlignment:
+                CrossAxisAlignment.center, // Center the content vertically
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: NavButton(
+                        hasIcon: true,
+                        buttonImage: "",
+                        onPressed: () {},
+                        title: "Dashboard",
+                        width: 65,
+                        height: 45,
+                        buttonIcon: Icons.directions_car_filled,
+                        currentColor: const Color.fromARGB(255, 42, 87, 208),
+                        currentBorderColor:
+                        const Color.fromARGB(255, 42, 87, 208),
+                      )),
+                  Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: NavButton(
+                        hasIcon: false,
+                        buttonImage: "assets/customIcons/garage.png",
+                        onPressed: () {},
+                        title: "Car List",
+                        width: 65,
+                        height: 45,
+                        buttonIcon: Icons.ac_unit_outlined,
+                        currentColor: const Color.fromARGB(255, 12, 21, 52),
+                        currentBorderColor: MainColors.white,
+                      )),
+                  Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: NavButton(
+                        buttonImage: "",
+                        hasIcon: true,
+                        onPressed: () {},
+                        title: "Add Gas",
+                        width: 65,
+                        height: 45,
+                        buttonIcon: Icons.local_gas_station_rounded,
+                        currentColor: const Color.fromARGB(255, 12, 21, 52),
+                        currentBorderColor: MainColors.white,
+                      )),
+                  Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: NavButton(
+                        buttonImage: "",
+                        hasIcon: true,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    Settings(
+                                        userName:widget.userName,
+                                        isSub: _isSub
+                                    )),
+                          );
+                        },
+                        title: "Settings",
+                        width: 65,
+                        height: 45,
+                        buttonIcon: Icons.settings,
+                        currentColor: const Color.fromARGB(255, 12, 21, 52),
+                        currentBorderColor: MainColors.white,
+                      )),
+                ],
+              ),
+
       ),
-    );
+    )));
   }
 }
