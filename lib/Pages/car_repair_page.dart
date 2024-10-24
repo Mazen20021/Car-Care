@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../Config/constants.dart';
+import '../Config/repair_list_data.dart';
 import '../PopUps/dialogs.dart';
 import '../Services/mainpageservice.dart';
 
@@ -30,8 +31,11 @@ class _CarRepairPage extends State<CarRepairPage> {
   final _formKey = GlobalKey<FormState>();
   String? _selectedValue;
   final List<String> _items = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
-  List<Widget> repairList = List.empty(growable: true);
+  List<RepairItem> repairDataList = [];
   int addedItems = 0;
+  double itemIndex = 50;
+  int pressedIndex = 0;
+
   @override
   void initState() {
     super.initState();
@@ -44,56 +48,19 @@ class _CarRepairPage extends State<CarRepairPage> {
     _pageController.dispose();
     super.dispose();
   }
+
   void addRepairRow() {
     setState(() {
-      addedItems ++;
-      repairList.add(
-          Container(
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 12, 21, 52),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(2),
-                bottomLeft: Radius.circular(2),
-                bottomRight: Radius.circular(10),
-                topRight: Radius.circular(10),
-              ),
-            ),
-          child:
-          Row(
-            children: [
-              Transform.translate(offset: const Offset(3, 0),child:
-              Container(
-                width: Width.x3l(),
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: MainColors.borderLight,
-                  ),
-                  child:  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(_repairName.text, style: GoogleFonts.rubik(
-                        fontSize: Fonts.xs(),
-                      ),
-                      ),
-                      Icon(Icons.calendar_month,size: 13,),
-                      Text(_setDate.text,style: GoogleFonts.rubik(
-                        fontSize: Fonts.xs(),
-                      ),),
-                      Icon(Icons.speed_rounded,size: 13,),
-                      Text(_kmRepair.text,style: GoogleFonts.rubik(
-                        fontSize: Fonts.xs(),
-                      ),),
-                      Icon(Icons.monetization_on_rounded,size: 13),
-                      Text(_repairCost.text,style: GoogleFonts.rubik(
-                        fontSize: Fonts.xs(),
-                      ),),
-                      Icon(Icons.delete_forever,size: 13,color: MainColors.danger,),
-                    ],
-                  ),
-                )),
-            ],
-          )));
+      addedItems++;
+      itemIndex += 10;
+      repairDataList.add(
+        RepairItem(
+          name: _repairName.text,
+          date: _setDate.text,
+          km: _kmRepair.text,
+          cost: _repairCost.text,
+        ),
+      );
     });
   }
 
@@ -148,7 +115,7 @@ class _CarRepairPage extends State<CarRepairPage> {
           ),
         ),
         body: SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
+            physics: (_isExpanded1 && repairDataList.isNotEmpty)?const AlwaysScrollableScrollPhysics():const NeverScrollableScrollPhysics(),
             child: Column(children: [
               Stack(
                 children: [
@@ -172,7 +139,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                             ),
                           ))),
                   Transform.translate(
-                    offset:  const Offset(180, 20),
+                    offset: const Offset(180, 20),
                     child: Row(
                       children: [
                         Text("Name",
@@ -273,17 +240,79 @@ class _CarRepairPage extends State<CarRepairPage> {
                             ],
                           ),
                           AnimatedContainer(
-                            duration: const Duration(milliseconds: 220),
-                            height: _isExpanded1 ? 150 : 0,
-                            // Adjust the height as needed
-                            child: ListView(
-                              children: List.generate(addedItems, (index) {
-                                return ListTile(
-                                  title: repairList[index]
-                                );
-                              }),
-                            ),
-                          ),
+                              duration: const Duration(milliseconds: 220),
+                              height: _isExpanded1
+                                  ? (repairDataList.isEmpty ? 0 : itemIndex)
+                                  : 0,
+                              // Adjust the height as needed
+                              child: ListView.builder(
+                                itemCount: repairDataList.length,
+                                itemBuilder: (context, index) {
+                                  RepairItem item = repairDataList[index];
+                                  return ListTile(
+                                    title: Container(
+                                      decoration: const BoxDecoration(
+                                        color: Color.fromARGB(255, 12, 21, 52),
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(2),
+                                          bottomLeft: Radius.circular(2),
+                                          bottomRight: Radius.circular(10),
+                                          topRight: Radius.circular(10),
+                                        ),
+                                      ),
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          children: [
+                                            Transform.translate(
+                                              offset: const Offset(3, 0),
+                                              child: IntrinsicWidth(
+                                                child: Container(
+                                                  padding: const EdgeInsets.all(5),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.circular(5),
+                                                    color: MainColors.borderLight,
+                                                  ),
+                                                  child: Row(
+                                                    children: [
+                                                      Text(item.name, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
+                                                      const SizedBox(width: 15),
+                                                      const Icon(Icons.calendar_month, size: 15),
+                                                      const SizedBox(width: 5),
+                                                      Text(item.date, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
+                                                      const SizedBox(width: 15),
+                                                      const Icon(Icons.speed_rounded, size: 15),
+                                                      const SizedBox(width: 5),
+                                                      Text(item.km, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
+                                                      const SizedBox(width: 15),
+                                                      const Icon(Icons.monetization_on_rounded, size: 15),
+                                                      const SizedBox(width: 5),
+                                                      Text(item.cost, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
+                                                      const SizedBox(width: 5),
+                                                       IconButton(
+                                                          icon: const Icon(
+                                                            Icons.delete_forever,
+                                                            size: 15,
+                                                            color: MainColors.danger,
+                                                          ),
+                                                          onPressed: () {
+                                                            setState(() {
+                                                              repairDataList.removeAt(index);
+                                                            });
+                                                          },
+                                                        ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              )),
                           const SizedBox(height: 13),
                           Form(
                               key: _formKey,
@@ -304,7 +333,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       ),
                                       controller: _setDate,
                                       decoration: InputDecoration(
-                                        suffixIcon: const Icon(Icons.calendar_month_rounded),
+                                        suffixIcon: const Icon(
+                                            Icons.calendar_month_rounded),
                                         labelText: 'Date',
                                         contentPadding:
                                             const EdgeInsets.symmetric(
@@ -525,15 +555,19 @@ class _CarRepairPage extends State<CarRepairPage> {
                                         _repairName.text = item;
                                         return DropdownMenuItem<String>(
                                           value: item,
-                                          child: Text(item,style:  GoogleFonts.mada(
-                                            color: MainColors.black,
-                                            fontSize: Width.x2s(),
-                                          ),),
+                                          child: Text(
+                                            item,
+                                            style: GoogleFonts.mada(
+                                              color: MainColors.black,
+                                              fontSize: Width.x2s(),
+                                            ),
+                                          ),
                                         );
                                       }).toList(),
                                       onChanged: (String? newValue) {
                                         setState(() {
-                                          _selectedValue = newValue; // Update the selected value
+                                          _selectedValue =
+                                              newValue; // Update the selected value
                                         });
                                       },
                                       validator: (value) {
@@ -553,22 +587,26 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                   fontWeight: FontWeight.bold,
                                                   color: MainColors.black,
                                                   fontSize: Fonts.sm())),
-                                      Transform.translate(offset: const Offset(-8, 0),child:
-                                          TextButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) => RepairClass()),
-                                                );
-                                              },
-                                              child: Text(
-                                                  "Add new repair part",
-                                                  style: GoogleFonts.rubik(
-                                                      fontWeight: FontWeight.bold,
-                                                      color: MainColors.primary,
-                                                      fontSize: Fonts.sm())
-                                              )))
+                                          Transform.translate(
+                                              offset: const Offset(-8, 0),
+                                              child: TextButton(
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              RepairClass()),
+                                                    );
+                                                  },
+                                                  child: Text(
+                                                      "Add new repair part",
+                                                      style: GoogleFonts.rubik(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: MainColors
+                                                              .primary,
+                                                          fontSize:
+                                                              Fonts.sm()))))
                                         ],
                                       )),
                                   Transform.translate(
@@ -580,16 +618,19 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                   fontWeight: FontWeight.bold,
                                                   color: MainColors.black,
                                                   fontSize: Fonts.sm())),
-                                          Transform.translate(offset: const Offset(-8, 0),child:
-                                          TextButton(
-                                              onPressed: () {},
-                                              child: Text(
-                                                  "Change Repair Milestone",
-                                                  style: GoogleFonts.rubik(
-                                                      fontWeight: FontWeight.bold,
-                                                      color: MainColors.primary,
-                                                      fontSize: Fonts.sm())
-                                              )))
+                                          Transform.translate(
+                                              offset: const Offset(-8, 0),
+                                              child: TextButton(
+                                                  onPressed: () {},
+                                                  child: Text(
+                                                      "Change Repair Milestone",
+                                                      style: GoogleFonts.rubik(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: MainColors
+                                                              .primary,
+                                                          fontSize:
+                                                              Fonts.sm()))))
                                         ],
                                       )),
                                   Transform.translate(
@@ -597,32 +638,30 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       child: Row(
                                         children: [
                                           CustomButton(
-                                              width: 160,
-                                              height: 45,
-                                              hasGradient: true,
-                                              gradientColors: const [
-                                                Color.fromARGB(
-                                                    255, 48, 95, 215),
-                                                Color.fromARGB(255, 48, 95, 215)
-                                              ],
-                                              hasImage: true,
-                                              imagePath:
-                                                  "assets/image/loginBackground.png",
-                                              imageOpacity: 0.1,
-                                              begin: Alignment.centerLeft,
-                                              end: Alignment.centerRight,
-                                              normalColor:
-                                                  MainColors.transparent,
-                                              borderRadius: CustomRadius.sm(),
-                                              leftPadding: 20,
-                                              rightPadding: 20,
-                                              topPadding: 5,
-                                              bottomPadding: 15,
-                                              label: "Save",
-                                              fontSize: Fonts.sm(),
-                                              textColor: MainColors.white,
-                                              onPressed: addRepairRow,
-                                              ),
+                                            width: 160,
+                                            height: 45,
+                                            hasGradient: true,
+                                            gradientColors: const [
+                                              Color.fromARGB(255, 48, 95, 215),
+                                              Color.fromARGB(255, 48, 95, 215)
+                                            ],
+                                            hasImage: true,
+                                            imagePath:
+                                                "assets/image/loginBackground.png",
+                                            imageOpacity: 0.1,
+                                            begin: Alignment.centerLeft,
+                                            end: Alignment.centerRight,
+                                            normalColor: MainColors.transparent,
+                                            borderRadius: CustomRadius.sm(),
+                                            leftPadding: 20,
+                                            rightPadding: 20,
+                                            topPadding: 5,
+                                            bottomPadding: 15,
+                                            label: "Save",
+                                            fontSize: Fonts.sm(),
+                                            textColor: MainColors.white,
+                                            onPressed: addRepairRow,
+                                          ),
                                           Transform.translate(
                                             offset: const Offset(-3, 0),
                                             child: CustomButton(
@@ -652,9 +691,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 fontSize: Fonts.sm(),
                                                 textColor: MainColors.white,
                                                 onPressed: () {
-                                                  Navigator.pop(
-                                                   context
-                                                  );
+                                                  Navigator.pop(context);
                                                 }),
                                           )
                                         ],
