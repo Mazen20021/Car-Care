@@ -15,6 +15,8 @@ class Fonts {
   static double x2s() => Screen.size.width * 0.023;
   static double x3s() => Screen.size.width * 0.026;
   static double sm() => Screen.size.width * 0.03;
+  static double s2m() => Screen.size.width * 0.033;
+  static double s3m() => Screen.size.width * 0.035;
   static double md() => Screen.size.width * 0.037;
   static double m2d() => Screen.size.width * 0.04;
   static double lg() => Screen.size.width * 0.047;
@@ -92,6 +94,7 @@ class ButtonHeights {
   static double s3m() => 30;
   static double s2_5m() => 35;
   static double s2m() => 40;
+  static double s3_1m() => 45;
   static double sm() => 50;
   static double md() => 60;
   static double lg() => 70;
