@@ -291,7 +291,7 @@ class _Settings extends State<Settings> {
                                   children: [
                                     CustomButton(
                                         width: ButtonWidth.xxl(),
-                                        height: ButtonHeights.s2m(),
+                                        height: ButtonHeights.s3_1m(),
                                         hasGradient: true,
                                         gradientColors: const [
                                           Color.fromARGB(255, 48, 95, 215),
@@ -310,14 +310,14 @@ class _Settings extends State<Settings> {
                                         topPadding: 5,
                                         bottomPadding: 15,
                                         label: "Save",
-                                        fontSize: Fonts.x2_1s(),
+                                        fontSize:Fonts.s3m(),
                                         textColor: MainColors.white,
                                         onPressed: () {}),
                                     Transform.translate(
                                       offset: Offset(Width.x3s(), Height.x5s()),
                                       child: CustomButton(
                                           width: ButtonWidth.xxl(),
-                                          height: ButtonHeights.s2m(),
+                                          height: ButtonHeights.s3_1m(),
                                           hasGradient: true,
                                           gradientColors: const [
                                             Color.fromARGB(255, 180, 74, 80),
@@ -336,7 +336,7 @@ class _Settings extends State<Settings> {
                                           topPadding: 5,
                                           bottomPadding: 15,
                                           label: "Cancel",
-                                          fontSize: Fonts.x2_1s(),
+                                          fontSize: Fonts.s3m(),
                                           textColor: MainColors.white,
                                           onPressed: () {
                                             Navigator.pop(context);
