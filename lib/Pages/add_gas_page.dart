@@ -230,12 +230,12 @@ class _CarRepairPage extends State<CarGasPage> {
                                 offset: Offset(0, 0))
                           ],
                           borderRadius: BorderRadius.circular(10),
-                          color: MainColors.primary,
+                          color: MainColors.primarySemiLight,
                           image: DecorationImage(
-                            image: const AssetImage("assets/fuelMeter.png"),
+                            image: const AssetImage("assets/gasPic.jpg"),
                             fit: BoxFit.cover,
                             colorFilter: ColorFilter.mode(
-                              MainColors.primary.withOpacity(0.8),
+                              MainColors.primary.withOpacity(0.9),
                               // Apply the same color as the container
                               BlendMode
                                   .srcATop, // Blends the color with the image
@@ -281,13 +281,10 @@ class _CarRepairPage extends State<CarGasPage> {
                                       fontSize: Fonts.m2d())),
                             ],
                           )),
-                Transform.translate(offset: const Offset(-15, 100),child:
+                        Transform.translate(offset: const Offset(-15, 100),child:
                           AnimatedContainer(
                               duration: const Duration(milliseconds: 220),
-                              height: _isExpanded1
-                                  ? (repairDataList.isEmpty ? 0 : itemIndex)
-                                  : 0,
-                              // Adjust the height as needed
+                              height: _isExpanded1 ? (repairDataList.isEmpty ? 0 : itemIndex) : 0,
                               child: ListView.builder(
                                 itemCount: repairDataList.length,
                                 itemBuilder: (context, index) {
@@ -332,7 +329,7 @@ class _CarRepairPage extends State<CarGasPage> {
                                                       const Icon(Icons.monetization_on_rounded, size: 15),
                                                       const SizedBox(width: 5),
                                                       Text(item.cost, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
-                                                      Transform.translate(offset: Offset(-8, 0),child:
+                                                      Transform.translate(offset: const Offset(-8, 0),child:
                                                       IconButton(
                                                         icon: const Icon(
                                                           Icons.delete_forever,

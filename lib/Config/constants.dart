@@ -151,6 +151,7 @@ class MainColors {
   // Primary colors
   static const Color primary = Color(0xFF2A57D0);
   static const Color primaryDark = Color.fromARGB(255, 48, 70, 131);
+  static const Color primarySemiLight = Color.fromARGB(255, 44, 85, 198);
   static const Color primaryLight = Color(0xFF90BFF7);
   static const Color background = Color(0xFFFCFCFC);
 
