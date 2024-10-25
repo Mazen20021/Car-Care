@@ -4,13 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
+import 'add_gas_page.dart';
 
 class CarSelectedPage extends StatefulWidget {
   final String userName;
   final int currentIndex;
-
+  final String petrolName;
+  final String date;
+  final String liters;
+  final String costs;
+  final int itemsNumber;
   const CarSelectedPage(
-      {required this.userName, required this.currentIndex, super.key});
+      {required this.userName,
+        required this.currentIndex,
+        required this.costs,
+        required this.date,
+        required this.liters,
+        required this.petrolName,
+        required this.itemsNumber,
+        super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -273,7 +285,15 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CarRepairPage(carIndex: carIndex)),
+                              builder: (context) => CarRepairPage(
+                                carIndex: carIndex,
+                                costs: widget.costs,
+                                date:widget.date ,
+                                itemsNumber: widget.itemsNumber,
+                                liters: widget.liters,
+                                petrolName: widget.petrolName,
+                                userName: widget.userName,
+                              )),
                         );
                       },
                       child: Container(
@@ -511,7 +531,24 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                     child: NavButton(
                       buttonImage: "",
                       hasIcon: true,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  CarGasPage(
+                                    userName:widget.userName,
+                                    isSub: _isSub,
+                                    carIndex: carIndex,
+                                    onPressed: (){},
+                                    costs: widget.costs,
+                                    date:widget.date ,
+                                    itemsNumber: widget.itemsNumber,
+                                    liters: widget.liters,
+                                    petrolName: widget.petrolName,
+                                  )),
+                        );
+                      },
                       title: "Add Gas",
                       width: 65,
                       height: 45,
@@ -531,7 +568,13 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                               builder: (context) =>
                                   Settings(
                                       userName:widget.userName,
-                                      isSub: _isSub
+                                      isSub: _isSub,
+                                      carIndex: carIndex,
+                                      costs: widget.costs,
+                                      date:widget.date ,
+                                      itemsNumber: widget.itemsNumber,
+                                      liters: widget.liters,
+                                      petrolName: widget.petrolName,
                                   )),
                         );
                       },

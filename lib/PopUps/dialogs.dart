@@ -4,11 +4,26 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
+import '../Pages/car_repair_page.dart';
 
 class RepairClass extends StatelessWidget {
   static final TextEditingController _repairName = TextEditingController();
   static final TextEditingController _repairKM = TextEditingController();
-
+  final String userName;
+  final String petrolName;
+  final String date;
+  final String liters;
+  final String costs;
+  final int itemsNumber;
+  final int carIndex;
+  const RepairClass({required this.userName,
+    required this.carIndex,
+    required this.costs,
+    required this.date,
+    required this.liters,
+    required this.petrolName,
+    required this.itemsNumber,
+    super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +79,20 @@ class RepairClass extends StatelessWidget {
                                 iconColor: MainColors.primary,
                                 iconSize: 30,
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            CarRepairPage(
+                                                userName: userName,
+                                                costs: costs,
+                                                date:date ,
+                                                itemsNumber: itemsNumber,
+                                                liters: liters,
+                                                petrolName:petrolName,
+                                                carIndex:carIndex ,
+                                            )),
+                                  );
                                 }),
                           )
                         ],

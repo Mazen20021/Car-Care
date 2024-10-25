@@ -1,16 +1,31 @@
+import 'package:carcare/Pages/add_gas_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../Components/custom_button.dart';
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
+import 'car_selected_page.dart';
 import 'login_page.dart';
 
 class Settings extends StatefulWidget {
   final bool isSub;
   final String userName;
-
-  const Settings({required this.isSub, required this.userName, super.key});
+  final int carIndex;
+  final String petrolName;
+  final String date;
+  final String liters;
+  final String costs;
+  final int itemsNumber;
+  const Settings({required this.isSub,
+    required this.userName,
+    required this.carIndex,
+    required this.costs,
+    required this.date,
+    required this.liters,
+    required this.petrolName,
+    required this.itemsNumber,
+    super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -413,7 +428,20 @@ class _Settings extends State<Settings> {
                       hasIcon: true,
                       buttonImage: "",
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  CarSelectedPage(
+                                    userName:widget.userName,
+                                    currentIndex: widget.carIndex,
+                                    costs: widget.costs,
+                                    date:widget.date ,
+                                    itemsNumber: widget.itemsNumber,
+                                    liters: widget.liters,
+                                    petrolName: widget.petrolName,
+                                  )),
+                        );
                       },
                       title: "Dashboard",
                       width: 65,
@@ -440,7 +468,24 @@ class _Settings extends State<Settings> {
                     child: NavButton(
                       buttonImage: "",
                       hasIcon: true,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  CarGasPage(
+                                    userName:widget.userName,
+                                    isSub: widget.isSub,
+                                    carIndex: widget.carIndex,
+                                    onPressed: (){},
+                                    costs: widget.costs,
+                                    date:widget.date ,
+                                    itemsNumber: widget.itemsNumber,
+                                    liters: widget.liters,
+                                    petrolName: widget.petrolName,
+                                  )),
+                        );
+                      },
                       title: "Add Gas",
                       width: 65,
                       height: 45,

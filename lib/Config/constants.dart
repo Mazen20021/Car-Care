@@ -59,6 +59,8 @@ class Width {
   static double x3l() => Screen.size.width * 0.8;
   static double x4l() => Screen.size.width * 0.85;
   static double xxl() => Screen.size.width * 0.9;
+  static double x2xl() => Screen.size.width * 0.95;
+  static double x3xl() => Screen.size.width ;
 }
 
 class ButtonWidth {

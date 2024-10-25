@@ -541,7 +541,13 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                 builder: (context) =>
                                     Settings(
                                         userName:widget.userName,
-                                        isSub: _isSub
+                                        isSub: _isSub,
+                                        carIndex: 0,
+                                      costs: "",
+                                      date: "" ,
+                                      itemsNumber: 0,
+                                      liters: "",
+                                      petrolName: "",
                                     )),
                           );
                         },

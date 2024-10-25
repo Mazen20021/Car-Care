@@ -7,9 +7,20 @@ import '../Config/constants.dart';
 class CarSelectedPage extends StatefulWidget {
   final String userName;
   final int currentIndex;
-
+  final String petrolName;
+  final String date;
+  final String liters;
+  final String costs;
+  final int itemsNumber;
   const CarSelectedPage(
-      {required this.userName, required this.currentIndex, super.key});
+      {required this.userName,
+        required this.currentIndex,
+        required this.costs,
+        required this.date,
+        required this.liters,
+        required this.petrolName,
+        required this.itemsNumber,
+        super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -275,7 +286,15 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  CarRepairPage(carIndex: carIndex)),
+                                  CarRepairPage(
+                                      costs: widget.costs,
+                                      date:widget.date ,
+                                      itemsNumber: widget.itemsNumber,
+                                      liters: widget.liters,
+                                      petrolName: widget.petrolName,
+                                      carIndex: carIndex,
+                                    userName: widget.userName,
+                                  )),
                         );
                       },
                       child: Container(

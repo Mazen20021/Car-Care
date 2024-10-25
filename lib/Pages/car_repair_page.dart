@@ -7,11 +7,24 @@ import '../Config/constants.dart';
 import '../Config/repair_list_data.dart';
 import '../PopUps/dialogs.dart';
 import '../Services/mainpageservice.dart';
+import 'car_selected_page.dart';
 
 class CarRepairPage extends StatefulWidget {
   final int carIndex;
-
-  const CarRepairPage({required this.carIndex, super.key});
+  final String userName;
+  final String petrolName;
+  final String date;
+  final String liters;
+  final String costs;
+  final int itemsNumber;
+  const CarRepairPage({required this.carIndex,
+    required this.userName,
+    required this.costs,
+    required this.date,
+    required this.liters,
+    required this.petrolName,
+    required this.itemsNumber,
+    super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -95,10 +108,15 @@ class _CarRepairPage extends State<CarRepairPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => MainPageService(
-                                isCarSelected: true,
-                                userName: "Mazen",
+                          builder: (context) =>
+                              CarSelectedPage(
+                                userName:widget.userName,
                                 currentIndex: widget.carIndex,
+                                costs: widget.costs,
+                                date:widget.date ,
+                                itemsNumber: widget.itemsNumber,
+                                liters: widget.liters,
+                                petrolName: widget.petrolName,
                               )),
                     );
                   },
@@ -254,8 +272,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                       decoration: const BoxDecoration(
                                         color: Color.fromARGB(255, 12, 21, 52),
                                         borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(2),
-                                          bottomLeft: Radius.circular(2),
+                                          topLeft: Radius.circular(5),
+                                          bottomLeft: Radius.circular(5),
                                           bottomRight: Radius.circular(10),
                                           topRight: Radius.circular(10),
                                         ),
@@ -268,7 +286,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                               offset: const Offset(3, 0),
                                               child: IntrinsicWidth(
                                                 child: Container(
-                                                  padding: const EdgeInsets.all(5),
+                                                  padding: const EdgeInsets.all(0),
                                                   decoration: BoxDecoration(
                                                     borderRadius: BorderRadius.circular(5),
                                                     color: MainColors.borderLight,
@@ -276,19 +294,19 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                   child: Row(
                                                     children: [
                                                       Text(item.name, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
-                                                      const SizedBox(width: 15),
+                                                      const SizedBox(width: 10),
                                                       const Icon(Icons.calendar_month, size: 15),
                                                       const SizedBox(width: 5),
                                                       Text(item.date, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
-                                                      const SizedBox(width: 15),
+                                                      const SizedBox(width: 10),
                                                       const Icon(Icons.speed_rounded, size: 15),
                                                       const SizedBox(width: 5),
                                                       Text(item.km, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
-                                                      const SizedBox(width: 15),
+                                                      const SizedBox(width: 10),
                                                       const Icon(Icons.monetization_on_rounded, size: 15),
                                                       const SizedBox(width: 5),
                                                       Text(item.cost, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
-                                                      const SizedBox(width: 5),
+                                                       Transform.translate(offset: Offset(-8, 0),child:
                                                        IconButton(
                                                           icon: const Icon(
                                                             Icons.delete_forever,
@@ -301,7 +319,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                             });
                                                           },
                                                         ),
-                                                    ],
+                                                       )],
                                                   ),
                                                 ),
                                               ),
@@ -595,7 +613,15 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              RepairClass()),
+                                                              RepairClass(
+                                                                userName: widget.userName,
+                                                                  costs: widget.costs,
+                                                                  date:widget.date ,
+                                                                  itemsNumber: widget.itemsNumber,
+                                                                  liters: widget.liters,
+                                                                  petrolName:widget. petrolName,
+                                                                carIndex: widget.carIndex,
+                                                              )),
                                                     );
                                                   },
                                                   child: Text(
@@ -691,7 +717,20 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                 fontSize: Fonts.sm(),
                                                 textColor: MainColors.white,
                                                 onPressed: () {
-                                                  Navigator.pop(context);
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            CarSelectedPage(
+                                                              userName:widget.userName,
+                                                              currentIndex: widget.carIndex,
+                                                              costs: widget.costs,
+                                                              date:widget.date ,
+                                                              itemsNumber: widget.itemsNumber,
+                                                              liters: widget.liters,
+                                                              petrolName: widget.petrolName,
+                                                            )),
+                                                  );
                                                 }),
                                           )
                                         ],
