@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import '../Config/constants.dart';
 import '../Config/repair_list_data.dart';
 import '../PopUps/dialogs.dart';
-import '../Services/mainpageservice.dart';
 import 'car_selected_page.dart';
 
 class CarRepairPage extends StatefulWidget {
@@ -17,14 +16,16 @@ class CarRepairPage extends StatefulWidget {
   final String liters;
   final String costs;
   final int itemsNumber;
-  const CarRepairPage({required this.carIndex,
-    required this.userName,
-    required this.costs,
-    required this.date,
-    required this.liters,
-    required this.petrolName,
-    required this.itemsNumber,
-    super.key});
+
+  const CarRepairPage(
+      {required this.carIndex,
+      required this.userName,
+      required this.costs,
+      required this.date,
+      required this.liters,
+      required this.petrolName,
+      required this.itemsNumber,
+      super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -70,7 +71,7 @@ class _CarRepairPage extends State<CarRepairPage> {
         RepairItem(
           name: _repairName.text,
           date: _setDate.text,
-          km: _kmRepair.text,
+          km: "${_kmRepair.text} KM",
           cost: _repairCost.text,
         ),
       );
@@ -108,12 +109,11 @@ class _CarRepairPage extends State<CarRepairPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              CarSelectedPage(
-                                userName:widget.userName,
+                          builder: (context) => CarSelectedPage(
+                                userName: widget.userName,
                                 currentIndex: widget.carIndex,
                                 costs: widget.costs,
-                                date:widget.date ,
+                                date: widget.date,
                                 itemsNumber: widget.itemsNumber,
                                 liters: widget.liters,
                                 petrolName: widget.petrolName,
@@ -133,7 +133,9 @@ class _CarRepairPage extends State<CarRepairPage> {
           ),
         ),
         body: SingleChildScrollView(
-            physics: (_isExpanded1 && repairDataList.isNotEmpty)?const AlwaysScrollableScrollPhysics():const NeverScrollableScrollPhysics(),
+            physics: (_isExpanded1 && repairDataList.isNotEmpty)
+                ? const AlwaysScrollableScrollPhysics()
+                : const NeverScrollableScrollPhysics(),
             child: Column(children: [
               Stack(
                 children: [
@@ -219,526 +221,487 @@ class _CarRepairPage extends State<CarRepairPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 355),
-              Transform.translate(
-                  offset: const Offset(3, -370),
-                  child: Container(
-                    width: Screen.size.width,
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: MainColors.transparent,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Row(
-                            children: [
-                              const SizedBox(width: 10),
-                              Text("Repair List",
-                                  style: GoogleFonts.rubik(
-                                      fontWeight: FontWeight.bold,
-                                      color:
-                                          const Color.fromARGB(255, 12, 21, 52),
-                                      fontSize: Fonts.sm())),
-                              const SizedBox(width: 215),
-                              IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _isExpanded1 = !_isExpanded1;
-                                  });
-                                },
-                                icon: Icon(
-                                  !_isExpanded1
-                                      ? Icons.keyboard_arrow_down_rounded
-                                      : Icons.keyboard_arrow_up_rounded,
-                                  size: 30,
+              Container(
+                width: Width.x3xl(),
+                decoration: BoxDecoration(
+                  color: MainColors.transparent,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(mainAxisSize: MainAxisSize.min, children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text("Repair List",
+                          style: GoogleFonts.rubik(
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromARGB(255, 12, 21, 52),
+                              fontSize: Fonts.sm())),
+                      const SizedBox(width: 219),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _isExpanded1 = !_isExpanded1;
+                          });
+                        },
+                        icon: Icon(
+                          !_isExpanded1
+                              ? Icons.keyboard_arrow_down_rounded
+                              : Icons.keyboard_arrow_up_rounded,
+                          size: 30,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Transform.translate(
+                      offset: const Offset(15, 0),
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 220),
+                        height: _isExpanded1
+                            ? (repairDataList.isEmpty ? 0 : itemIndex)
+                            : 0,
+                        child: ListView.builder(
+                          itemCount: repairDataList.length,
+                          itemBuilder: (context, index) {
+                            RepairItem item = repairDataList[index];
+                            return ListTile(
+                                title: Transform.translate(
+                              offset: const Offset(-16.5, 0),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  color: Color.fromARGB(255, 12, 21, 52),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5),
+                                    bottomLeft: Radius.circular(5),
+                                    bottomRight: Radius.circular(5),
+                                    topRight: Radius.circular(5),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          AnimatedContainer(
-                              duration: const Duration(milliseconds: 220),
-                              height: _isExpanded1
-                                  ? (repairDataList.isEmpty ? 0 : itemIndex)
-                                  : 0,
-                              // Adjust the height as needed
-                              child: ListView.builder(
-                                itemCount: repairDataList.length,
-                                itemBuilder: (context, index) {
-                                  RepairItem item = repairDataList[index];
-                                  return ListTile(
-                                    title: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Color.fromARGB(255, 12, 21, 52),
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(5),
-                                          bottomLeft: Radius.circular(5),
-                                          bottomRight: Radius.circular(10),
-                                          topRight: Radius.circular(10),
-                                        ),
-                                      ),
-                                      child: SingleChildScrollView(
-                                        scrollDirection: Axis.horizontal,
-                                        child: Row(
-                                          children: [
-                                            Transform.translate(
-                                              offset: const Offset(3, 0),
-                                              child: IntrinsicWidth(
-                                                child: Container(
-                                                  padding: const EdgeInsets.all(0),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(5),
-                                                    color: MainColors.borderLight,
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: [
+                                      Transform.translate(
+                                        offset: const Offset(3, 0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            color: MainColors.borderLight,
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              const SizedBox(width: 5),
+                                              Text(item.name,
+                                                  style: GoogleFonts.rubik(
+                                                      fontSize: Fonts.x2s())),
+                                              const SizedBox(width: 5),
+                                              const Icon(Icons.calendar_month,
+                                                  size: 15),
+                                              const SizedBox(width: 5),
+                                              Text(item.date,
+                                                  style: GoogleFonts.rubik(
+                                                      fontSize: Fonts.x2s())),
+                                              const SizedBox(width: 5),
+                                              const Icon(Icons.speed_rounded,
+                                                  size: 15),
+                                              const SizedBox(width: 5),
+                                              Text(item.km,
+                                                  style: GoogleFonts.rubik(
+                                                      fontSize: Fonts.x2s())),
+                                              const SizedBox(width: 5),
+                                              const Icon(
+                                                  Icons.monetization_on_rounded,
+                                                  size: 15),
+                                              const SizedBox(width: 5),
+                                              Text(item.cost,
+                                                  style: GoogleFonts.rubik(
+                                                      fontSize: Fonts.x2s())),
+                                              Transform.translate(
+                                                offset: const Offset(-8, 0),
+                                                child: IconButton(
+                                                  icon: const Icon(
+                                                    Icons.delete_forever,
+                                                    size: 15,
+                                                    color: MainColors.danger,
                                                   ),
-                                                  child: Row(
-                                                    children: [
-                                                      Text(item.name, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
-                                                      const SizedBox(width: 10),
-                                                      const Icon(Icons.calendar_month, size: 15),
-                                                      const SizedBox(width: 5),
-                                                      Text(item.date, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
-                                                      const SizedBox(width: 10),
-                                                      const Icon(Icons.speed_rounded, size: 15),
-                                                      const SizedBox(width: 5),
-                                                      Text(item.km, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
-                                                      const SizedBox(width: 10),
-                                                      const Icon(Icons.monetization_on_rounded, size: 15),
-                                                      const SizedBox(width: 5),
-                                                      Text(item.cost, style: GoogleFonts.rubik(fontSize: Fonts.sm())),
-                                                       Transform.translate(offset: Offset(-8, 0),child:
-                                                       IconButton(
-                                                          icon: const Icon(
-                                                            Icons.delete_forever,
-                                                            size: 15,
-                                                            color: MainColors.danger,
-                                                          ),
-                                                          onPressed: () {
-                                                            setState(() {
-                                                              repairDataList.removeAt(index);
-                                                            });
-                                                          },
-                                                        ),
-                                                       )],
-                                                  ),
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      repairDataList
+                                                          .removeAt(index);
+                                                    });
+                                                  },
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              )),
-                          const SizedBox(height: 13),
-                          Form(
-                              key: _formKey,
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    width: Screen.size.width * 0.98,
-                                    child: TextFormField(
-                                      readOnly: true,
-                                      onTap: () {
-                                        _selectDate(context);
-                                      },
-                                      textAlign: TextAlign.left,
-                                      cursorColor: MainColors.black,
-                                      style: GoogleFonts.mada(
-                                        color: MainColors.black,
-                                        fontSize: Width.x2s(),
-                                      ),
-                                      controller: _setDate,
-                                      decoration: InputDecoration(
-                                        suffixIcon: const Icon(
-                                            Icons.calendar_month_rounded),
-                                        labelText: 'Date',
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 0, horizontal: 20),
-                                        hintStyle: GoogleFonts.mada(
-                                          color: MainColors.black,
-                                          fontSize: Width.x2s(),
-                                        ),
-                                        hintText: 'Select Date',
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.deepPurple,
-                                              width: 2.0),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.black,
-                                              width: 1),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.deepPurple,
-                                              width: 2.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.redAccent,
-                                              width: 2.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.redAccent,
-                                              width: 2.0),
-                                        ),
-                                      ),
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Please Choose a date';
-                                        }
-                                        return null;
-                                      },
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                      height:
-                                          13), // Required for input formatting
-                                  SizedBox(
-                                    width: Screen.size.width * 0.98,
-                                    child: TextFormField(
-                                      textAlign: TextAlign.left,
-                                      cursorColor: MainColors.black,
-                                      style: GoogleFonts.mada(
-                                        color: MainColors.black,
-                                        fontSize: Width.x2s(),
-                                      ),
-                                      controller: _kmRepair,
-                                      keyboardType:
-                                          const TextInputType.numberWithOptions(
-                                              decimal: true),
-                                      inputFormatters: [
-                                        FilteringTextInputFormatter.allow(
-                                            RegExp(r'^\d*\.?\d*')),
-                                      ],
-                                      decoration: InputDecoration(
-                                        label: const Text("KM Of Repair"),
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 0, horizontal: 20),
-                                        hintStyle: GoogleFonts.mada(
-                                          color: MainColors.black,
-                                          fontSize: Width.x2s(),
-                                        ),
-                                        hintText: '0',
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.deepPurple,
-                                              width: 2.0),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.black,
-                                              width: 1),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.deepPurple,
-                                              width: 2.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.redAccent,
-                                              width: 2.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.redAccent,
-                                              width: 2.0),
-                                        ),
-                                      ),
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Please Enter the KM Of Repair';
-                                        }
-                                        return null;
-                                      },
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                      height:
-                                          13), // Required for input formatting
-                                  SizedBox(
-                                    width: Screen.size.width * 0.98,
-                                    child: TextFormField(
-                                      textAlign: TextAlign.left,
-                                      cursorColor: MainColors.black,
-                                      style: GoogleFonts.mada(
-                                        color: MainColors.black,
-                                        fontSize: Width.x2s(),
-                                      ),
-                                      controller: _repairCost,
-                                      keyboardType:
-                                          const TextInputType.numberWithOptions(
-                                              decimal: true),
-                                      inputFormatters: [
-                                        FilteringTextInputFormatter.allow(
-                                            RegExp(r'^\d*\.?\d*')),
-                                      ],
-                                      decoration: InputDecoration(
-                                        label:
-                                            const Text("Repair Cost *Optional"),
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 0, horizontal: 20),
-                                        hintStyle: GoogleFonts.mada(
-                                          color: MainColors.black,
-                                          fontSize: Width.x2s(),
-                                        ),
-                                        hintText: 'Cost',
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.deepPurple,
-                                              width: 2.0),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.black,
-                                              width: 1),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.deepPurple,
-                                              width: 2.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.redAccent,
-                                              width: 2.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.redAccent,
-                                              width: 2.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 13),
-                                  SizedBox(
-                                    width: Screen.size.width * 0.98,
-                                    // Adjust the width to your preference
-                                    child: DropdownButtonFormField<String>(
-                                      decoration: InputDecoration(
-                                        label: const Text("Selected Repair"),
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                horizontal: 20, vertical: 0),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: const BorderSide(
-                                              color: MainColors.deepPurple,
-                                              width: 2),
-                                        ),
-                                      ),
-                                      hint: const Text('Select Repair'),
-                                      value: _selectedValue,
-                                      items: _items.map((String item) {
-                                        _repairName.text = item;
-                                        return DropdownMenuItem<String>(
-                                          value: item,
-                                          child: Text(
-                                            item,
-                                            style: GoogleFonts.mada(
-                                              color: MainColors.black,
-                                              fontSize: Width.x2s(),
-                                            ),
-                                          ),
-                                        );
-                                      }).toList(),
-                                      onChanged: (String? newValue) {
-                                        setState(() {
-                                          _selectedValue =
-                                              newValue; // Update the selected value
-                                        });
-                                      },
-                                      validator: (value) {
-                                        if (value == null) {
-                                          return 'Please select an option';
-                                        }
-                                        return null;
-                                      },
-                                    ),
-                                  ),
-                                  Transform.translate(
-                                      offset: const Offset(2, 0),
-                                      child: Row(
-                                        children: [
-                                          Text("Cant find your repair",
-                                              style: GoogleFonts.rubik(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: MainColors.black,
-                                                  fontSize: Fonts.sm())),
-                                          Transform.translate(
-                                              offset: const Offset(-8, 0),
-                                              child: TextButton(
-                                                  onPressed: () {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              RepairClass(
-                                                                userName: widget.userName,
-                                                                  costs: widget.costs,
-                                                                  date:widget.date ,
-                                                                  itemsNumber: widget.itemsNumber,
-                                                                  liters: widget.liters,
-                                                                  petrolName:widget. petrolName,
-                                                                carIndex: widget.carIndex,
-                                                              )),
-                                                    );
-                                                  },
-                                                  child: Text(
-                                                      "Add new repair part",
-                                                      style: GoogleFonts.rubik(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: MainColors
-                                                              .primary,
-                                                          fontSize:
-                                                              Fonts.sm()))))
-                                        ],
-                                      )),
-                                  Transform.translate(
-                                      offset: const Offset(2, -20),
-                                      child: Row(
-                                        children: [
-                                          Text("Want to configure car repair",
-                                              style: GoogleFonts.rubik(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: MainColors.black,
-                                                  fontSize: Fonts.sm())),
-                                          Transform.translate(
-                                              offset: const Offset(-8, 0),
-                                              child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                      "Change Repair Milestone",
-                                                      style: GoogleFonts.rubik(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: MainColors
-                                                              .primary,
-                                                          fontSize:
-                                                              Fonts.sm()))))
-                                        ],
-                                      )),
-                                  Transform.translate(
-                                      offset: const Offset(-20, -30),
-                                      child: Row(
-                                        children: [
-                                          CustomButton(
-                                            width: 160,
-                                            height: 45,
-                                            hasGradient: true,
-                                            gradientColors: const [
-                                              Color.fromARGB(255, 48, 95, 215),
-                                              Color.fromARGB(255, 48, 95, 215)
                                             ],
-                                            hasImage: true,
-                                            imagePath:
-                                                "assets/image/loginBackground.png",
-                                            imageOpacity: 0.1,
-                                            begin: Alignment.centerLeft,
-                                            end: Alignment.centerRight,
-                                            normalColor: MainColors.transparent,
-                                            borderRadius: CustomRadius.sm(),
-                                            leftPadding: 20,
-                                            rightPadding: 20,
-                                            topPadding: 5,
-                                            bottomPadding: 15,
-                                            label: "Save",
-                                            fontSize: Fonts.sm(),
-                                            textColor: MainColors.white,
-                                            onPressed: addRepairRow,
                                           ),
-                                          Transform.translate(
-                                            offset: const Offset(-3, 0),
-                                            child: CustomButton(
-                                                width: 150,
-                                                height: 45,
-                                                hasGradient: true,
-                                                gradientColors: const [
-                                                  Color.fromARGB(
-                                                      255, 180, 74, 80),
-                                                  Color.fromARGB(
-                                                      255, 181, 74, 80)
-                                                ],
-                                                hasImage: true,
-                                                imagePath:
-                                                    "assets/image/loginBackground.png",
-                                                imageOpacity: 0.1,
-                                                begin: Alignment.centerLeft,
-                                                end: Alignment.centerRight,
-                                                normalColor:
-                                                    MainColors.transparent,
-                                                borderRadius: CustomRadius.sm(),
-                                                leftPadding: 0,
-                                                rightPadding: 20,
-                                                topPadding: 5,
-                                                bottomPadding: 15,
-                                                label: "Cancel",
-                                                fontSize: Fonts.sm(),
-                                                textColor: MainColors.white,
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            CarSelectedPage(
-                                                              userName:widget.userName,
-                                                              currentIndex: widget.carIndex,
-                                                              costs: widget.costs,
-                                                              date:widget.date ,
-                                                              itemsNumber: widget.itemsNumber,
-                                                              liters: widget.liters,
-                                                              petrolName: widget.petrolName,
-                                                            )),
-                                                  );
-                                                }),
-                                          )
-                                        ],
-                                      ))
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ));
+                          },
+                        ),
+                      )),
+                  SizedBox(height: 5),
+                  Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            width: Screen.size.width * 0.93,
+                            child: TextFormField(
+                              readOnly: true,
+                              onTap: () {
+                                _selectDate(context);
+                              },
+                              textAlign: TextAlign.left,
+                              cursorColor: MainColors.black,
+                              style: GoogleFonts.mada(
+                                color: MainColors.black,
+                                fontSize: Width.x2s(),
+                              ),
+                              controller: _setDate,
+                              decoration: InputDecoration(
+                                suffixIcon:
+                                    const Icon(Icons.calendar_month_rounded),
+                                labelText: 'Date',
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 0, horizontal: 20),
+                                hintStyle: GoogleFonts.mada(
+                                  color: MainColors.black,
+                                  fontSize: Width.x2s(),
+                                ),
+                                hintText: 'Select Date',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.deepPurple, width: 2.0),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.black, width: 1),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.deepPurple, width: 2.0),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.redAccent, width: 2.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.redAccent, width: 2.0),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Choose a date';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                          const SizedBox(
+                              height: 13), // Required for input formatting
+                          SizedBox(
+                            width: Screen.size.width * 0.93,
+                            child: TextFormField(
+                              textAlign: TextAlign.left,
+                              cursorColor: MainColors.black,
+                              style: GoogleFonts.mada(
+                                color: MainColors.black,
+                                fontSize: Width.x2s(),
+                              ),
+                              controller: _kmRepair,
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(
+                                      decimal: true),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                    RegExp(r'^\d*\.?\d*')),
+                              ],
+                              decoration: InputDecoration(
+                                label: const Text("KM Of Repair"),
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 0, horizontal: 20),
+                                hintStyle: GoogleFonts.mada(
+                                  color: MainColors.black,
+                                  fontSize: Width.x2s(),
+                                ),
+                                hintText: '0',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.deepPurple, width: 2.0),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.black, width: 1),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.deepPurple, width: 2.0),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.redAccent, width: 2.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.redAccent, width: 2.0),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Enter the KM Of Repair';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                          const SizedBox(
+                              height: 13), // Required for input formatting
+                          SizedBox(
+                            width: Screen.size.width * 0.93,
+                            child: TextFormField(
+                              textAlign: TextAlign.left,
+                              cursorColor: MainColors.black,
+                              style: GoogleFonts.mada(
+                                color: MainColors.black,
+                                fontSize: Width.x2s(),
+                              ),
+                              controller: _repairCost,
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(
+                                      decimal: true),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                    RegExp(r'^\d*\.?\d*')),
+                              ],
+                              decoration: InputDecoration(
+                                label: const Text("Repair Cost *Optional"),
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 0, horizontal: 20),
+                                hintStyle: GoogleFonts.mada(
+                                  color: MainColors.black,
+                                  fontSize: Width.x2s(),
+                                ),
+                                hintText: 'Cost',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.deepPurple, width: 2.0),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.black, width: 1),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.deepPurple, width: 2.0),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.redAccent, width: 2.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.redAccent, width: 2.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 13),
+                          SizedBox(
+                            width: Screen.size.width * 0.93,
+                            // Adjust the width to your preference
+                            child: DropdownButtonFormField<String>(
+                              decoration: InputDecoration(
+                                label: const Text("Selected Repair"),
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 0),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                      color: MainColors.deepPurple, width: 2),
+                                ),
+                              ),
+                              hint: const Text('Select Repair'),
+                              value: _selectedValue,
+                              items: _items.map((String item) {
+                                _repairName.text = item;
+                                return DropdownMenuItem<String>(
+                                  value: item,
+                                  child: Text(
+                                    item,
+                                    style: GoogleFonts.mada(
+                                      color: MainColors.black,
+                                      fontSize: Width.x2s(),
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  _selectedValue =
+                                      newValue; // Update the selected value
+                                });
+                              },
+                              validator: (value) {
+                                if (value == null) {
+                                  return 'Please select an option';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              const SizedBox(width: 20),
+                              Text("Cant find your repair",
+                                  style: GoogleFonts.rubik(
+                                      fontWeight: FontWeight.bold,
+                                      color: MainColors.black,
+                                      fontSize: Fonts.sm())),
+                              Transform.translate(
+                                  offset: const Offset(-8, 0),
+                                  child: TextButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => RepairClass(
+                                                    userName: widget.userName,
+                                                    costs: widget.costs,
+                                                    date: widget.date,
+                                                    itemsNumber:
+                                                        widget.itemsNumber,
+                                                    liters: widget.liters,
+                                                    petrolName:
+                                                        widget.petrolName,
+                                                    carIndex: widget.carIndex,
+                                                  )),
+                                        );
+                                      },
+                                      child: Text("Add new repair part",
+                                          style: GoogleFonts.rubik(
+                                              fontWeight: FontWeight.bold,
+                                              color: MainColors.primary,
+                                              fontSize: Fonts.sm()))))
+                            ],
+                          ),
+                          Transform.translate(offset: const Offset(15, -30),child:
+                          Row(
+                            children: [
+                              const SizedBox(width: 5),
+                              Text("Want to configure car repair",
+                                  style: GoogleFonts.rubik(
+                                      fontWeight: FontWeight.bold,
+                                      color: MainColors.black,
+                                      fontSize: Fonts.sm())),
+                              Transform.translate(
+                                  offset: const Offset(-8, 0),
+                                  child: TextButton(
+                                      onPressed: () {},
+                                      child: Text("Change Repair Milestone",
+                                          style: GoogleFonts.rubik(
+                                              fontWeight: FontWeight.bold,
+                                              color: MainColors.primary,
+                                              fontSize: Fonts.sm()))))
+                            ],
+                          )),
+                      Transform.translate(offset: const Offset(-1, -30),child:
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CustomButton(
+                                width: 160,
+                                height: 45,
+                                hasGradient: true,
+                                gradientColors: const [
+                                  Color.fromARGB(255, 48, 95, 215),
+                                  Color.fromARGB(255, 48, 95, 215)
                                 ],
-                              )),
-                        ]),
-                  ))
+                                hasImage: true,
+                                imagePath: "assets/image/loginBackground.png",
+                                imageOpacity: 0.1,
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                normalColor: MainColors.transparent,
+                                borderRadius: CustomRadius.sm(),
+                                leftPadding: 20,
+                                rightPadding: 20,
+                                topPadding: 5,
+                                bottomPadding: 15,
+                                label: "Save",
+                                fontSize: Fonts.sm(),
+                                textColor: MainColors.white,
+                                onPressed: addRepairRow,
+                              ),
+                              Transform.translate(
+                                offset: const Offset(-6, 0),
+                                child: CustomButton(
+                                    width: 150,
+                                    height: 45,
+                                    hasGradient: true,
+                                    gradientColors: const [
+                                      Color.fromARGB(255, 180, 74, 80),
+                                      Color.fromARGB(255, 181, 74, 80)
+                                    ],
+                                    hasImage: true,
+                                    imagePath:
+                                        "assets/image/loginBackground.png",
+                                    imageOpacity: 0.1,
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
+                                    normalColor: MainColors.transparent,
+                                    borderRadius: CustomRadius.sm(),
+                                    leftPadding: 0,
+                                    rightPadding: 20,
+                                    topPadding: 5,
+                                    bottomPadding: 15,
+                                    label: "Cancel",
+                                    fontSize: Fonts.sm(),
+                                    textColor: MainColors.white,
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                CarSelectedPage(
+                                                  userName: widget.userName,
+                                                  currentIndex: widget.carIndex,
+                                                  costs: widget.costs,
+                                                  date: widget.date,
+                                                  itemsNumber:
+                                                      widget.itemsNumber,
+                                                  liters: widget.liters,
+                                                  petrolName: widget.petrolName,
+                                                )),
+                                      );
+                                    }),
+                              )
+                            ],
+                          )
+                      )],
+                      )),
+                ]),
+              )
             ])));
   }
 }

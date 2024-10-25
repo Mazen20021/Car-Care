@@ -232,7 +232,7 @@ class _CarRepairPage extends State<CarGasPage> {
                           borderRadius: BorderRadius.circular(10),
                           color: MainColors.primarySemiLight,
                           image: DecorationImage(
-                            image: const AssetImage("assets/gasPic.jpg"),
+                            image: const AssetImage(""),
                             fit: BoxFit.cover,
                             colorFilter: ColorFilter.mode(
                               MainColors.primary.withOpacity(0.9),

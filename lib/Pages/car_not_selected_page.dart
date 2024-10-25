@@ -183,7 +183,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                         "assets/fuelMeter.png"),
                                     fit: BoxFit.cover,
                                     colorFilter: ColorFilter.mode(
-                                      Color.fromARGB(255, 190, 202, 236).withOpacity(0.9), // Apply the same color as the container
+                                      const Color.fromARGB(255, 190, 202, 236).withOpacity(0.9), // Apply the same color as the container
                                       BlendMode.srcATop, // Blends the color with the image
                                     ),
                                   ),
@@ -226,7 +226,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                                         const AssetImage("assets/repair.png"),
                                     fit: BoxFit.cover,
                                     colorFilter: ColorFilter.mode(
-                                      Color.fromARGB(255, 190, 196, 214).withOpacity(0.9), // Apply the same color as the container
+                                      const Color.fromARGB(255, 190, 196, 214).withOpacity(0.9), // Apply the same color as the container
                                       BlendMode
                                           .srcATop, // Blends the color with the image
                                     ),
