@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../Components/custom_button.dart';
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
-import 'add_gas_page.dart';
+import 'gas_tracking_page.dart';
 import 'car_selected_page.dart';
 import 'login_page.dart';
 

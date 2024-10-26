@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
-import 'add_gas_page.dart';
+import 'gas_tracking_page.dart';
 
 class CarSelectedPage extends StatefulWidget {
   final String userName;
@@ -543,7 +543,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                     onPressed: (){},
                                     costs: widget.costs,
                                     date:widget.date ,
-                                    itemsNumber: widget.itemsNumber,
+                                    itemsNumber: 0,
                                     liters: widget.liters,
                                     petrolName: widget.petrolName,
                                   )),
