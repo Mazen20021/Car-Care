@@ -71,6 +71,7 @@ class ButtonWidth {
   static double s2m() => 40;
   static double sm() => 50;
   static double md() => 60;
+  static double m2d() => 65;
   static double lg() => 70;
   static double l2g() => 80;
   static double l3g() => 90;
@@ -160,6 +161,8 @@ class MainColors {
   static const Color success = Color(0xFF28A745);
   static const Color warning = Color(0xFFFC9E0F);
 
+  static const Color listBackground = Color.fromARGB(255, 12, 21, 52);
+  static const Color navShadow = Color.fromARGB(255, 250, 251, 252);
   // Neutral colors
   static const Color black = Color(0xFF0C1534);
   static const Color white = Color(0xFFFCFCFC);

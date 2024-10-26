@@ -119,9 +119,7 @@ class _CarRepairPage extends State<CarGasPage> {
             ],
           ),
         ),
-        body: SingleChildScrollView(
-            physics: (_isExpanded1 && repairDataList.isNotEmpty)?const AlwaysScrollableScrollPhysics():const NeverScrollableScrollPhysics(),
-            child: Column(children: [
+        body: Column(children: [
               Stack(
                 children: [
                   Opacity(
@@ -206,9 +204,8 @@ class _CarRepairPage extends State<CarGasPage> {
                   ),
                 ],
               ),
-               SizedBox(height: Height.lg()),
               Transform.translate(
-                  offset:  Offset(0, Height.s5m()),
+                  offset:  Offset(0, Height.x2s()),
                   child: Container(
                     width: Screen.size.width,
                     padding: const EdgeInsets.all(16.0),
@@ -232,13 +229,12 @@ class _CarRepairPage extends State<CarGasPage> {
                           borderRadius: BorderRadius.circular(10),
                           color: MainColors.primarySemiLight,
                           image: DecorationImage(
-                            image: const AssetImage(""),
+                            image: const AssetImage("assets/gasPic.jpg"),
                             fit: BoxFit.cover,
                             colorFilter: ColorFilter.mode(
                               MainColors.primary.withOpacity(0.9),
                               // Apply the same color as the container
-                              BlendMode
-                                  .srcATop, // Blends the color with the image
+                              BlendMode.srcATop, // Blends the color with the image
                             ),
                           )),
                       child: Center(
@@ -250,12 +246,12 @@ class _CarRepairPage extends State<CarGasPage> {
                                     fontWeight: FontWeight.bold,
                                     color: MainColors.white,
                                     fontSize: Fonts.md())),
-                            const SizedBox(width: 130),
+                             SizedBox(width:Width.m2d()),
                             GestureDetector(
                                 onTap: () {},
                                 child: Container(
-                                  width: 30,
-                                  height: 30,
+                                  width: ButtonWidth.s2m(),
+                                  height: ButtonHeights.s2m(),
                                   decoration: BoxDecoration(
                                       color: MainColors.white,
                                       borderRadius: BorderRadius.circular(10)),
@@ -265,24 +261,25 @@ class _CarRepairPage extends State<CarGasPage> {
                           ],
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 25),
+                    ), SizedBox(width: Width.x2s()),
                     InkWell(
                         onTap: () {
-                        }),
-                          Transform.translate(offset: const Offset(-10, 80),child:
-                          Row(
+
+                        }
+                    ),
+                          Transform.translate(offset:  Offset(-Width.x3s(), Height.s2m()),
+                              child: Row(
                             children: [
                               const SizedBox(width: 10),
                               Text("Gas History",
                                   style: GoogleFonts.rubik(
                                       fontWeight: FontWeight.bold,
-                                      color: const Color.fromARGB(255, 12, 21, 52),
+                                      color: MainColors.listBackground,
                                       fontSize: Fonts.m2d())),
                             ],
                           )),
-                        Transform.translate(offset: const Offset(-15, 100),child:
-                          AnimatedContainer(
+                        Transform.translate(offset:  Offset(-Width.x3s(), Height.s3_1m()),
+                          child: AnimatedContainer(
                               duration: const Duration(milliseconds: 220),
                               height: _isExpanded1 ? (repairDataList.isEmpty ? 0 : itemIndex) : 0,
                               child: ListView.builder(
@@ -291,8 +288,8 @@ class _CarRepairPage extends State<CarGasPage> {
                                   RepairItem item = repairDataList[index];
                                   return ListTile(
                                     title: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Color.fromARGB(255, 12, 21, 52),
+                                      decoration:  const BoxDecoration(
+                                        color: MainColors.listBackground,
                                         borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(5),
                                           bottomLeft: Radius.circular(5),
@@ -355,13 +352,14 @@ class _CarRepairPage extends State<CarGasPage> {
                                 },
                               )),
                 )]),
-                  ))
-            ])),
+                  )
+              )
+            ]),
       bottomSheet: Container(
         width: Screen.size.width,
         height: Screen.size.height * 0.1,
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 250, 251, 252),
+          color: MainColors.navShadow,
           boxShadow: [
             BoxShadow(
               color: MainColors.black.withOpacity(0.2), // Shadow color
@@ -403,8 +401,8 @@ class _CarRepairPage extends State<CarGasPage> {
                         );
                       },
                       title: "Dashboard",
-                      width: 65,
-                      height: 45,
+                      width: ButtonWidth.m2d(),
+                      height: ButtonHeights.s3_1m(),
                       buttonIcon: Icons.directions_car_filled,
                       currentColor: const Color.fromARGB(255, 12, 21, 52),
                       currentBorderColor: MainColors.white,
@@ -416,8 +414,8 @@ class _CarRepairPage extends State<CarGasPage> {
                       buttonImage: "assets/customIcons/garage.png",
                       onPressed: () {},
                       title: "Car List",
-                      width: 65,
-                      height: 45,
+                      width: ButtonWidth.m2d(),
+                      height: ButtonHeights.s3_1m(),
                       buttonIcon: Icons.ac_unit_outlined,
                       currentColor: const Color.fromARGB(255, 12, 21, 52),
                       currentBorderColor: MainColors.white,
@@ -429,8 +427,8 @@ class _CarRepairPage extends State<CarGasPage> {
                       hasIcon: true,
                       onPressed: () {},
                       title: "Add Gas",
-                      width: 65,
-                      height: 45,
+                      width: ButtonWidth.m2d(),
+                      height: ButtonHeights.s3_1m(),
                       buttonIcon: Icons.local_gas_station_rounded,
                       currentColor: const Color.fromARGB(255, 42, 87, 208),
                       currentBorderColor: const Color.fromARGB(255, 42, 87, 208),
@@ -458,8 +456,8 @@ class _CarRepairPage extends State<CarGasPage> {
                         );
                       },
                       title: "Settings",
-                      width: 65,
-                      height: 45,
+                      width: ButtonWidth.m2d(),
+                      height: ButtonHeights.s3_1m(),
                       buttonIcon: Icons.settings,
                       currentColor: const Color.fromARGB(255, 12, 21, 52),
                       currentBorderColor: MainColors.white,
