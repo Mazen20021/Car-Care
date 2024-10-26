@@ -44,7 +44,7 @@ class _CarRepairPage extends State<CarRepairPage> {
   final TextEditingController _repairName = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String? _selectedValue;
-  final List<String> _items = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
+  final List<String> _items = ['Gas', 'Fix', 'Dox', 'Lox'];
   List<RepairItem> repairDataList = [];
   int addedItems = 0;
   double itemIndex = 50;
@@ -69,7 +69,7 @@ class _CarRepairPage extends State<CarRepairPage> {
       itemIndex += 10;
       repairDataList.add(
         RepairItem(
-          name: _repairName.text,
+          name: _selectedValue.toString(),
           date: _setDate.text,
           km: "${_kmRepair.text} KM",
           cost: _repairCost.text,
@@ -88,7 +88,7 @@ class _CarRepairPage extends State<CarRepairPage> {
     if (picked != null && picked != _selectedDate) {
       setState(() {
         _selectedDate = picked;
-        _setDate.text = DateFormat('dd-MM-yyy').format(_selectedDate!);
+        _setDate.text = DateFormat('dd/MM/yyy').format(_selectedDate!);
       });
     }
   }
@@ -290,25 +290,28 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           ),
                                           child: Row(
                                             children: [
-                                              const SizedBox(width: 5),
+                                              const SizedBox(width: 5 ),
                                               Text(item.name,
                                                   style: GoogleFonts.rubik(
                                                       fontSize: Fonts.x2s())),
-                                              const SizedBox(width: 5),
+                                              (item.date.toString().length < 10)? const SizedBox(width: 5 ):
+                                              const SizedBox(width: 10 ),
                                               const Icon(Icons.calendar_month,
                                                   size: 15),
                                               const SizedBox(width: 5),
                                               Text(item.date,
                                                   style: GoogleFonts.rubik(
                                                       fontSize: Fonts.x2s())),
-                                              const SizedBox(width: 5),
+                                              (item.km.toString().length < 15)?const SizedBox(width: 15 ):
+                                              const SizedBox(width: 5 ),
                                               const Icon(Icons.speed_rounded,
                                                   size: 15),
                                               const SizedBox(width: 5),
                                               Text(item.km,
                                                   style: GoogleFonts.rubik(
                                                       fontSize: Fonts.x2s())),
-                                              const SizedBox(width: 5),
+                                              (item.cost.toString().length < 10)?const SizedBox(width: 20.5 ):
+                                              const SizedBox(width: 5 ),
                                               const Icon(
                                                   Icons.monetization_on_rounded,
                                                   size: 15),
@@ -544,7 +547,6 @@ class _CarRepairPage extends State<CarRepairPage> {
                               hint: const Text('Select Repair'),
                               value: _selectedValue,
                               items: _items.map((String item) {
-                                _repairName.text = item;
                                 return DropdownMenuItem<String>(
                                   value: item,
                                   child: Text(
