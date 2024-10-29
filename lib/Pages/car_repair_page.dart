@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import '../Config/constants.dart';
 import '../Config/repair_list_data.dart';
 import '../PopUps/dialogs.dart';
+import '../PopUps/popUps.dart';
 import 'car_selected_page.dart';
 
 class CarRepairPage extends StatefulWidget {
@@ -587,17 +588,44 @@ class _CarRepairPage extends State<CarRepairPage> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => RepairClass(
-                                                    userName: widget.userName,
-                                                    costs: widget.costs,
-                                                    date: widget.date,
-                                                    itemsNumber:
-                                                        widget.itemsNumber,
-                                                    liters: widget.liters,
-                                                    petrolName:
-                                                        widget.petrolName,
-                                                    carIndex: widget.carIndex,
-                                                  )),
+                                              builder: (context) =>
+                                                  // RepairClass(
+                                                  //   userName: widget.userName,
+                                                  //   costs: widget.costs,
+                                                  //   date: widget.date,
+                                                  //   itemsNumber:
+                                                  //       widget.itemsNumber,
+                                                  //   liters: widget.liters,
+                                                  //   petrolName:
+                                                  //       widget.petrolName,
+                                                  //   carIndex: widget.carIndex,
+                                                  // )
+                                              PopUpDialogs(
+                                                  userName: widget.userName,
+                                                  costs: widget.costs,
+                                                  date: widget.date,
+                                                  itemsNumber:
+                                                      widget.itemsNumber,
+                                                  liters: widget.liters,
+                                                  petrolName:
+                                                      widget.petrolName,
+                                                  carIndex: widget.carIndex,
+                                                addNewCar: false,
+                                                addNewRecord: false,
+                                                addNewRepair: true,
+                                                hasLowerImage: true,
+                                                hasLowerText: true,
+                                                lowerText:  "The number of km that will make a reminder for you to check",
+                                                hasUpperImage: false,
+                                                headerText: "Add a new repair part",
+                                                hasTextField: true,
+                                                leftButtonText: "Cancel",
+                                                lowerImage: "assets/manWithCar.png",
+                                                numberOfTextFields: 0,
+                                                rightButtonText: "Submit",
+                                                upperImage: "",
+                                              )
+                                          ),
                                         );
                                       },
                                       child: Text("Add new repair part",
@@ -607,7 +635,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                               fontSize: Fonts.sm()))))
                             ],
                           ),
-                          Transform.translate(offset: const Offset(15, -30),child:
+                          Transform.translate(offset: const Offset(15, -22),child:
                           Row(
                             children: [
                               const SizedBox(width: 5),
