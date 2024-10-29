@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
+import '../PopUps/popUps.dart';
 import 'gas_tracking_page.dart';
 
 class CarSelectedPage extends StatefulWidget {
@@ -265,7 +266,50 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                     fontSize: Fonts.sm())),
                             const SizedBox(width: 10),
                             GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                        // RepairClass(
+                                        //   userName: widget.userName,
+                                        //   costs: widget.costs,
+                                        //   date: widget.date,
+                                        //   itemsNumber:
+                                        //       widget.itemsNumber,
+                                        //   liters: widget.liters,
+                                        //   petrolName:
+                                        //       widget.petrolName,
+                                        //   carIndex: widget.carIndex,
+                                        // )
+                                        PopUpDialogs(
+                                          userName: widget.userName,
+                                          costs: widget.costs,
+                                          date: widget.date,
+                                          itemsNumber:
+                                          widget.itemsNumber,
+                                          liters: widget.liters,
+                                          petrolName:
+                                          widget.petrolName,
+                                          carIndex: widget.currentIndex,
+                                          addNewCar: false,
+                                          addNewRecord: true,
+                                          addNewRepair: false,
+                                          hasLowerImage: false,
+                                          hasLowerText: false,
+                                          lowerText:  "",
+                                          hasUpperImage: true,
+                                          headerText: "Add kilometers",
+                                          hasTextField: true,
+                                          leftButtonText: "Skip",
+                                          lowerImage: "assets/manWithCar.png",
+                                          numberOfTextFields: 0,
+                                          rightButtonText: "Submit",
+                                          upperImage: "assets/whiteCar.png",
+                                        )
+                                    ),
+                                  );
+                                },
                                 child: Container(
                                   width: ButtonWidth.s3m(),
                                   height: ButtonHeights.s3m(),
