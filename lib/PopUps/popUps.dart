@@ -515,14 +515,15 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                           children: [
                             widget.addNewRecord
                                 ? Transform.translate(
-                                    offset: Offset(25, Screen.size.height * 0.3),
+                                    offset:
+                                        Offset(25, Screen.size.height * 0.3),
                                     child: Container(
                                         width: Screen.size.width * 0.88,
-                                        height: Screen.size.height * 0.35,
+                                        height: Screen.size.height * 0.3,
                                         decoration: BoxDecoration(
                                             color: MainColors.white,
                                             borderRadius:
-                                                BorderRadius.circular(15)),
+                                                BorderRadius.circular(28)),
                                         child: Center(
                                             child: Column(
                                           mainAxisSize: MainAxisSize.min,
@@ -643,9 +644,7 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                                       child: Container(
                                                         decoration: BoxDecoration(
                                                             borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        30)),
+                                                                BorderRadius.circular(30)),
                                                         child: Text(item),
                                                       ));
                                                 }).toList(),
@@ -710,14 +709,9 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                                             shape:
                                                                 const RoundedRectangleBorder(
                                                               borderRadius:
-                                                                  BorderRadius
-                                                                      .only(
-                                                                topLeft: Radius
-                                                                    .circular(
-                                                                        0),
-                                                                bottomLeft: Radius
-                                                                    .circular(
-                                                                        15),
+                                                                  BorderRadius.only(
+                                                                topLeft: Radius.circular(0),
+                                                                bottomLeft: Radius.circular(28),
                                                               ),
                                                             ),
                                                           ),
@@ -771,14 +765,9 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                                           shape:
                                                               const RoundedRectangleBorder(
                                                             borderRadius:
-                                                                BorderRadius
-                                                                    .only(
-                                                              topRight: Radius
-                                                                  .circular(0),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          15),
+                                                                BorderRadius.only(
+                                                              topRight: Radius.circular(0),
+                                                              bottomRight: Radius.circular(28),
                                                             ),
                                                           ),
                                                         ),
