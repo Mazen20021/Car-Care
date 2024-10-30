@@ -1,3 +1,4 @@
+import 'package:carcare/Services/signup_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -421,8 +422,17 @@ class SignupState extends State<Signup> {
                     label: "Create My Account",
                     fontSize: Fonts.m2d(),
                     textColor: MainColors.white,
-                    onPressed: () {}),
-
+                    onPressed: () async {
+                      SignupService ss = SignupService();
+                      final result = await ss.registerUser(
+                        firstName: _fNameController.text,
+                        lastName: _lNameController.text,
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                        myContext: context
+                      );
+                    }
+                    )
               ],
             ),
           ),
@@ -475,7 +485,7 @@ class SignupState extends State<Signup> {
                                     )),
                                 SizedBox(width: Screen.size.width * 0.2),
                                 TextButton(
-                                    onPressed: () {
+                                    onPressed: () async {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -501,4 +511,44 @@ class SignupState extends State<Signup> {
     )
     );
   }
+}
+void showSuccessDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Success'),
+        content: Text('You have successfully signed up!'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the success dialog
+            },
+            child: Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+// Error dialog
+void showErrorDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Error'),
+        content: Text('Sign-up failed. Please try again.'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the error dialog
+            },
+            child: Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
 }

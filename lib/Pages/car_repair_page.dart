@@ -347,7 +347,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                           },
                         ),
                       )),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Form(
                       key: _formKey,
                       child: Column(

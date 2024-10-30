@@ -1,10 +1,11 @@
 import 'package:carcare/Config/constants.dart';
 import 'package:carcare/Pages/forget_password_page.dart';
-import 'package:carcare/Pages/signup_page.dart';
+import 'package:carcare/Pages/server_services.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/custom_button.dart';
 import '../Services/mainpageservice.dart';
+import '../Services/signup_service.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -225,10 +226,32 @@ class _Login extends State<Login> {
                           fontSize: Fonts.lg(),
                           textColor: MainColors.white,
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const MainPageService(
+                            GetUserInfoService guis = GetUserInfoService();
+                            guis.auth(myContext: context);
+                            if(GetUserInfoService.isAuth)
+                              {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const MainPageService(
+                                            isCarSelected: true,
+                                            userName: "Mazen",
+                                            currentIndex: 0,
+                                            costs: "",
+                                            date:"",
+                                            itemsNumber: 0,
+                                            liters: "",
+                                            petrolName: "",
+                                          )),
+                                );
+                              }else{
+                              LoginService ls = LoginService();
+                              ls.loginUser(email: _emailController.text, password:_passwordController.text, myContext: context);
+                              guis.auth(myContext: context);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const MainPageService(
                                         isCarSelected: true,
                                         userName: "Mazen",
                                         currentIndex: 0,
@@ -238,7 +261,9 @@ class _Login extends State<Login> {
                                         liters: "",
                                         petrolName: "",
                                       )),
-                            );
+                                );
+
+                            }
                           }),
                     ],
                   ),
