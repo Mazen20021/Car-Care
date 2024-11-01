@@ -73,7 +73,11 @@ class AuthActions with ChangeNotifier {
       });
       user = User.fromJson(response.data['user']);
       error = null;
-      showSuccessDialog(context, "Successfully registered!");
+      Navigator.push(
+          context,
+      MaterialPageRoute(
+          builder: (context) => const Login()));
+      showSuccessDialog(context, "Successfully registered! confirmation mail was sent. Please Confirm your email");
     } on DioError catch (e) {
       error = e.response?.data['error'] ?? 'Failed to register';
       showErrorDialog(context, error!);
