@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../Components/custom_button.dart';
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
+import '../Services/APIs.dart';
 import 'gas_tracking_page.dart';
 import 'car_selected_page.dart';
 import 'login_page.dart';
@@ -37,10 +38,11 @@ class _Settings extends State<Settings> {
   final TextEditingController _fName = TextEditingController();
   final TextEditingController _lName = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-
+  late AuthActions aa;
   @override
   void initState()
   {
+    aa = AuthActions(context);
     super.initState();
   }
 
@@ -50,7 +52,6 @@ class _Settings extends State<Settings> {
   }
 
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
@@ -70,10 +71,7 @@ class _Settings extends State<Settings> {
                     SizedBox(width: Width.m2d()),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Login()));
+                       aa.logout();
                       },
                       child: Container(
                         width: ButtonWidth.l3g(),

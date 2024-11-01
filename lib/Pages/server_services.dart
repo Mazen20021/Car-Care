@@ -423,14 +423,14 @@ class SignupState extends State<Signup> {
                     fontSize: Fonts.m2d(),
                     textColor: MainColors.white,
                     onPressed: () async {
-                      SignupService ss = SignupService();
-                      final result = await ss.registerUser(
-                        firstName: _fNameController.text,
-                        lastName: _lNameController.text,
-                        email: _emailController.text,
-                        password: _passwordController.text,
-                        myContext: context
-                      );
+                     // SignupService ss = SignupService();
+                     //  final result = await ss.registerUser(
+                     //    firstName: _fNameController.text,
+                     //    lastName: _lNameController.text,
+                     //    email: _emailController.text,
+                     //    password: _passwordController.text,
+                     //    myContext: context
+                     //  );
                     }
                     )
               ],

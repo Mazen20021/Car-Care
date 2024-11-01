@@ -4,6 +4,7 @@ import 'package:carcare/Pages/server_services.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/custom_button.dart';
+import '../Services/APIs.dart';
 import '../Services/mainpageservice.dart';
 import '../Services/signup_service.dart';
 
@@ -22,17 +23,25 @@ class _Login extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   bool _isObscured = false;
   bool _ispressed = false;
+  late AuthActions aa;
+  // GetUserInfoService guis = GetUserInfoService();
+  // LoginService ls = LoginService();
 
   @override
   void initState() {
+    aa = AuthActions(context);
+    aa.me();
     super.initState();
   }
 
+void login(String email,String password)
+{
+  aa.login(email: email, password: password);
+}
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constrains) {
       Screen.setSize(context);
-      print(Fonts.xxl);
       return Scaffold(
         body: Column(
           children: [
@@ -226,45 +235,9 @@ class _Login extends State<Login> {
                           fontSize: Fonts.lg(),
                           textColor: MainColors.white,
                           onPressed: () {
-                            GetUserInfoService guis = GetUserInfoService();
-                            guis.auth(myContext: context);
-                            if(GetUserInfoService.isAuth)
-                              {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const MainPageService(
-                                            isCarSelected: true,
-                                            userName: "Mazen",
-                                            currentIndex: 0,
-                                            costs: "",
-                                            date:"",
-                                            itemsNumber: 0,
-                                            liters: "",
-                                            petrolName: "",
-                                          )),
-                                );
-                              }else{
-                              LoginService ls = LoginService();
-                              ls.loginUser(email: _emailController.text, password:_passwordController.text, myContext: context);
-                              guis.auth(myContext: context);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const MainPageService(
-                                        isCarSelected: true,
-                                        userName: "Mazen",
-                                        currentIndex: 0,
-                                        costs: "",
-                                        date:"",
-                                        itemsNumber: 0,
-                                        liters: "",
-                                        petrolName: "",
-                                      )),
-                                );
-
+                            login( _emailController.text, _passwordController.text);
                             }
-                          }),
+                          ),
                     ],
                   ),
                 ),
