@@ -1,3 +1,4 @@
+import 'package:carcare/PopUps/delete_account.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -39,6 +40,7 @@ class _Settings extends State<Settings> {
   final TextEditingController _lName = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   late AuthActions aa;
+  bool _isClosed = false;
   @override
   void initState()
   {
@@ -166,7 +168,7 @@ class _Settings extends State<Settings> {
                   padding: const EdgeInsets.all(16),
                   child: Container(
                     width: Screen.size.width,
-                    height: Screen.size.height * 0.3,
+                    height:!_isClosed ?Screen.size.height * 0.2 : Screen.size.height * 0.3,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: const [
@@ -178,7 +180,62 @@ class _Settings extends State<Settings> {
                       color: const Color.fromARGB(255, 254, 247, 255),
                     ),
                     child: Center(
-                      child: Form(
+                      child: !_isClosed ?
+                      Column(children: [
+                        const SizedBox(height: 20),
+                        Row(
+                          children: [
+                            SizedBox(width: 10),
+                            Text("First Name: "),
+                            SizedBox(width: 1),
+                            Text(widget.userName,style: GoogleFonts.rubik(
+                                color: MainColors.primary)),
+                            SizedBox(width: 25),
+                            Text("Last Name: "),
+                            SizedBox(width: 1),
+                            Text(widget.userName,style: GoogleFonts.rubik(
+                              color: MainColors.primary
+                            ),),
+                          ]),
+                        const SizedBox(height: 5),
+                        Row(children: [
+                          SizedBox(width: 10),
+                          Text("Email: "),
+                          SizedBox(width: 1),
+                          Text(widget.userName,style: GoogleFonts.rubik(
+                              color: MainColors.primary
+                          ),),
+                        ],),
+                        CustomButton(
+                            width: Screen.size.width,
+                            height: 50,
+                            hasGradient: true,
+                            gradientColors: const [
+                              Color.fromARGB(255, 48, 95, 215),
+                              Color.fromARGB(255, 48, 95, 215)
+                            ],
+                            hasImage: true,
+                            imagePath: "assets/image/loginBackground.png",
+                            imageOpacity: 0.1,
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            normalColor: MainColors.transparent,
+                            borderRadius: CustomRadius.md(),
+                            leftPadding: 10,
+                            rightPadding: 10,
+                            topPadding: 15,
+                            bottomPadding: 10,
+                            label: "Edit Profile",
+                            fontSize: Fonts.sm(),
+                            textColor: MainColors.white,
+                            onPressed: () {
+                              setState(() {
+                                _isClosed = true;
+                              });
+                            }),
+                      ],)
+                      :
+                      Form(
                         key: _formKey,
                         child: Column(
                           children: [
@@ -325,7 +382,11 @@ class _Settings extends State<Settings> {
                                         label: "Save",
                                         fontSize:Fonts.s3m(),
                                         textColor: MainColors.white,
-                                        onPressed: () {}),
+                                        onPressed: () {
+                                          setState(() {
+                                            _isClosed = false;
+                                          });
+                                        }),
                                     Transform.translate(
                                       offset: Offset(Width.x3s(), Height.x5s()),
                                       child: CustomButton(
@@ -352,7 +413,9 @@ class _Settings extends State<Settings> {
                                           fontSize: Fonts.s3m(),
                                           textColor: MainColors.white,
                                           onPressed: () {
-                                            Navigator.pop(context);
+                                            setState(() {
+                                              _isClosed = false;
+                                            });
                                           }),
                                     )
                                   ],
@@ -363,9 +426,9 @@ class _Settings extends State<Settings> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 5),
                 Transform.translate(
-                  offset: Offset(-Width.s8m(), 0),
+                  offset: Offset(-Width.s7m(), 0),
                   child: Text("Repairs Configuration",
                       style: GoogleFonts.rubik(
                           fontSize: Fonts.md(), color: MainColors.black)),
@@ -385,7 +448,7 @@ class _Settings extends State<Settings> {
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                     normalColor: MainColors.transparent,
-                    borderRadius: CustomRadius.xl(),
+                    borderRadius: CustomRadius.md(),
                     leftPadding: 20,
                     rightPadding: 20,
                     topPadding: 5,
@@ -394,7 +457,64 @@ class _Settings extends State<Settings> {
                     fontSize: Fonts.sm(),
                     textColor: MainColors.white,
                     onPressed: () {}),
-              ],
+                const SizedBox(height: 15),
+                Transform.translate(
+                  offset: Offset(-Width.s9m(), 0),
+                  child: Text("Account Settings",
+                      style: GoogleFonts.rubik(
+                          fontSize: Fonts.md(), color: MainColors.black)),
+                ),
+                const SizedBox(height: 10),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              DeleteAccount(
+                                userName:widget.userName,
+                                isSub: widget.isSub,
+                                carIndex: widget.carIndex,
+                                costs: widget.costs,
+                                date:widget.date ,
+                                itemsNumber: widget.itemsNumber,
+                                liters: widget.liters,
+                                petrolName: widget.petrolName,
+                              )),
+                    );
+                  },
+                    child: Container(
+                  width: Width.xxl(),
+                  height: 67,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: MainColors.danger.withOpacity(0.5)), // Red border
+                    borderRadius: BorderRadius.circular(CustomRadius.md()),
+
+                  ),
+                  child: CustomButton(
+                    width: Screen.size.width,
+                    height: 50,
+                    hasGradient: true,
+                    gradientColors: const [
+                      Color.fromARGB(255, 254, 246, 254),
+                      Color.fromARGB(255, 254, 246, 254)
+                    ],
+                    hasImage: false,
+                    imagePath: "",
+                    imageOpacity: 0.1,
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    normalColor: MainColors.transparent,
+                    borderRadius: CustomRadius.md(),
+                    leftPadding: 20,
+                    rightPadding: 20,
+                    topPadding: 5,
+                    bottomPadding: 15,
+                    label: "Delete My Account",
+                    fontSize: Fonts.sm(),
+                    textColor: MainColors.danger.withOpacity(0.5),
+                    ),
+                ))],
             ),
           ),
         ],

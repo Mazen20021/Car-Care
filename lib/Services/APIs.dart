@@ -5,9 +5,10 @@ import '../Utilities/dto.dart';
 import 'mainpageservice.dart';
 
 class AuthActions with ChangeNotifier {
-  bool loading = false;
+  static bool loading = false;
+  static bool hasError = false;
   String? error;
-  User? user;
+  static User? user;
   final DTO dto = DTO();  // Replace with your token management logic
   final Dio api = Dio(BaseOptions(
     baseUrl: DTO.BACKEND_API,
@@ -56,7 +57,21 @@ class AuthActions with ChangeNotifier {
       await setLoading(false);
     }
   }
-
+  Future<void> deleteAccount() async {
+    await setLoading(true);
+    try {
+      final response = await api.delete('/auth', options: Options(
+          headers: {"Authorization": "Bearer ${await dto.getToken()}"}
+      ));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const Login()));
+      error = null;
+    } on DioError catch (e) {
+      user = null;
+      error = e.response?.data['error'] ?? 'Failed to delete user';
+    } finally {
+      await setLoading(false);
+    }
+  }
   Future<void> register({
     required String firstName,
     required String lastName,
@@ -100,6 +115,7 @@ class AuthActions with ChangeNotifier {
       if (accessToken != null) {
         await dto.saveToken(accessToken);
         user = User.fromJson(response.data['user']);
+        hasError = false;
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -115,10 +131,13 @@ class AuthActions with ChangeNotifier {
               )),
         );
         error = null;
+
       } else {
+        hasError = true;
         throw Exception("Access token not found in response");
       }
     } on DioException catch (e) {
+      hasError = true;
       error = e.response?.data['error'] ?? 'Failed to log in';
       print("Dio error data: ${e.response?.data}"); // Added for debugging
       print("Dio error status: ${e.response?.statusCode}"); // Added for debugging
@@ -211,6 +230,7 @@ void showSuccessDialog(BuildContext context, String message) {
         actions: [
           TextButton(
             onPressed: () {
+              AuthActions.hasError = false;
               Navigator.of(context).pop();
             },
             child: Text('OK'),
@@ -231,6 +251,7 @@ void showErrorDialog(BuildContext context, String error) {
         actions: [
           TextButton(
             onPressed: () {
+              AuthActions.hasError = true;
               Navigator.of(context).pop();
             },
             child: Text('OK'),

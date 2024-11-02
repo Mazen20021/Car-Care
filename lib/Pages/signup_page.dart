@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,6 +22,7 @@ class SignupState extends State<Signup> {
   final TextEditingController _fNameController = TextEditingController();
   final TextEditingController _lNameController = TextEditingController();
   late bool _isChecked = false;
+  bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
   bool _pObscured = false;
   bool _cPObscured = false;
@@ -408,7 +411,7 @@ class SignupState extends State<Signup> {
                                           color: MainColors.primary),
                                     )))
                           ],
-                        ),
+                        ),!_isLoading?
                         CustomButton(
                             width: Width.xxl(),
                             height: 50,
@@ -432,12 +435,23 @@ class SignupState extends State<Signup> {
                             fontSize: Fonts.m2d(),
                             textColor: MainColors.white,
                             onPressed: () async {
+                              setState(() {
+                                _isLoading = true;
+                              });
                               aa.register(
                                   firstName: _fNameController.text,
                                   lastName: _lNameController.text,
                                   email: _emailController.text,
                                   password: _passwordController.text);
-                            })
+                              Timer(const Duration(seconds: 2), () {
+                                setState(() {
+                                  _isLoading = false;
+                                });
+                              });
+                            }):const CircularProgressIndicator(
+                          color: MainColors.primary,
+                          backgroundColor: MainColors.background,
+                        )
                       ],
                     ),
                   ),

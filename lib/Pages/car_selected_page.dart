@@ -271,17 +271,6 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                        // RepairClass(
-                                        //   userName: widget.userName,
-                                        //   costs: widget.costs,
-                                        //   date: widget.date,
-                                        //   itemsNumber:
-                                        //       widget.itemsNumber,
-                                        //   liters: widget.liters,
-                                        //   petrolName:
-                                        //       widget.petrolName,
-                                        //   carIndex: widget.carIndex,
-                                        // )
                                         PopUpDialogs(
                                           userName: widget.userName,
                                           costs: widget.costs,

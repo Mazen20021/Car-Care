@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:carcare/Config/constants.dart';
 import 'package:carcare/Pages/forget_password_page.dart';
 import 'package:carcare/Pages/signup_page.dart';
@@ -22,8 +24,7 @@ class _Login extends State<Login> {
   bool _isObscured = false;
   bool _ispressed = false;
   late AuthActions aa;
-  // GetUserInfoService guis = GetUserInfoService();
-  // LoginService ls = LoginService();
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -210,6 +211,7 @@ void login(String email,String password)
                         ),
                       ),
                       const SizedBox(height: 15),
+                      !_isLoading?
                       CustomButton(
                           width: Width.xxl(),
                           height: ButtonHeights.md(),
@@ -233,9 +235,20 @@ void login(String email,String password)
                           fontSize: Fonts.lg(),
                           textColor: MainColors.white,
                           onPressed: () {
+                            setState(() {
+                              _isLoading = true;
+                            });
                             login( _emailController.text, _passwordController.text);
+                            Timer(const Duration(seconds: 2), () {
+                              setState(() {
+                                _isLoading = false;
+                              });
+                            });
                             }
-                          ),
+                          ):const CircularProgressIndicator(
+                        color: MainColors.primary,
+                        backgroundColor: MainColors.background,
+                      )
                     ],
                   ),
                 ),

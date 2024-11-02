@@ -16,7 +16,6 @@ class PopUpDialogs extends StatefulWidget {
   final String costs;
   final int itemsNumber;
   final int carIndex;
-
   final String headerText;
   final String upperImage;
   final String lowerImage;
@@ -76,15 +75,11 @@ class _PopUpDialogs extends State<PopUpDialogs> {
   String? _selectedCar;
   String? _selectedNotify;
   DateTime? _selectedLicenseDate;
-
   late final List<String> _years;
-
   late final List<String> _classList;
   late final List<String> _carList;
   late final List<String> _notifyList;
-
   final int currentYear = DateTime.now().year;
-
   Future<void> _selectLicenseDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -242,15 +237,16 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                     padding: const EdgeInsets.all(16),
                                     child: Column(
                                       children: [
-                                        widget.hasLowerImage
-                                            ? Transform.scale(
+                                        widget.hasLowerImage ?
+                                        Transform.scale(
                                                 scale: 0.8,
                                                 child: Image(
                                                   image: AssetImage(
                                                       widget.lowerImage),
                                                   fit: BoxFit.cover,
-                                                ))
-                                            : const SizedBox(height: 20),
+                                                )
+                                        ):
+                                        const SizedBox(height: 20),
                                         SizedBox(
                                           width: Screen.size.width * 0.8,
                                           child: TextFormField(
