@@ -16,7 +16,8 @@ class DeleteAccount extends StatefulWidget {
   final String liters;
   final String costs;
   final int itemsNumber;
-
+  final String userLastName;
+  final String userEmail;
   const DeleteAccount(
       {required this.isSub,
       required this.userName,
@@ -26,6 +27,7 @@ class DeleteAccount extends StatefulWidget {
       required this.liters,
       required this.petrolName,
       required this.itemsNumber,
+        required this.userEmail , required this.userLastName,
       super.key});
 
   @override
@@ -100,6 +102,8 @@ class _DeleteAccount extends State<DeleteAccount> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Settings(
+                                    userEmail: widget.userEmail ,
+                                    userLastName: widget.userLastName ,
                                         carIndex: widget.carIndex,
                                         userName: widget.userName,
                                         costs: widget.costs,
@@ -162,6 +166,8 @@ class _DeleteAccount extends State<DeleteAccount> {
                                                           context,
                                                           MaterialPageRoute(
                                                               builder: (context) => Settings(
+                                                                userEmail: widget.userEmail ,
+                                                                userLastName: widget.userLastName ,
                                                                 carIndex: widget.carIndex,
                                                                 userName: widget.userName,
                                                                 costs: widget.costs,

@@ -30,6 +30,8 @@ class PopUpDialogs extends StatefulWidget {
   final int numberOfTextFields;
   final String rightButtonText;
   final String leftButtonText;
+  final String userLastName;
+  final String userEmail;
 
   const PopUpDialogs(
       {required this.userName,
@@ -53,6 +55,7 @@ class PopUpDialogs extends StatefulWidget {
       this.numberOfTextFields = 0,
       this.leftButtonText = "Cancel",
       this.rightButtonText = "Submit",
+        required this.userEmail , required this.userLastName,
       super.key});
 
   @override
@@ -195,6 +198,8 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => CarRepairPage(
+                                            userEmail: widget.userEmail ,
+                                            userLastName: widget.userLastName ,
                                                 userName: widget.userName,
                                                 costs: widget.costs,
                                                 date: widget.date,
@@ -208,6 +213,8 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => CarSelectedPage(
+                                            userEmail: widget.userEmail ,
+                                            userLastName: widget.userLastName ,
                                                 userName: widget.userName,
                                                 costs: widget.costs,
                                                 date: widget.date,
@@ -676,6 +683,8 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                                                   builder:
                                                                       (context) =>
                                                                           CarSelectedPage(
+                                                                            userEmail: widget.userEmail ,
+                                                                            userLastName: widget.userLastName ,
                                                                             userName:
                                                                                 widget.userName,
                                                                             costs:
@@ -1253,6 +1262,8 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                                           MaterialPageRoute(
                                                               builder: (context) =>
                                                                   CarSelectedPage(
+                                                                    userEmail: widget.userEmail ,
+                                                                    userLastName: widget.userLastName ,
                                                                     userName: widget
                                                                         .userName,
                                                                     costs: widget

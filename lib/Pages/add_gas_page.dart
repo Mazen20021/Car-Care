@@ -20,6 +20,8 @@ class CarADDGasPage extends StatefulWidget {
   final String liters;
   final String costs;
   final int itemsNumber;
+  final String userLastName;
+  final String userEmail;
   final VoidCallback onPressed;
 
   const CarADDGasPage(
@@ -32,6 +34,7 @@ class CarADDGasPage extends StatefulWidget {
       required this.petrolName,
       required this.itemsNumber,
       required this.onPressed,
+        required this.userEmail , required this.userLastName,
       super.key});
 
   @override
@@ -97,6 +100,8 @@ class _CarRepairPage extends State<CarADDGasPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => CarGasPage(
+                          userEmail: widget.userEmail ,
+                          userLastName: widget.userLastName ,
                               userName: widget.userName,
                               isSub: widget.isSub,
                               onPressed: (){},
@@ -507,6 +512,8 @@ class _CarRepairPage extends State<CarADDGasPage> {
                       MaterialPageRoute(
                           builder: (context) =>
                               CarGasPage(
+                                userEmail: widget.userEmail ,
+                                userLastName: widget.userLastName ,
                                 userName: widget.userName,
                                 isSub: widget.isSub,
                                 onPressed: (){},
@@ -551,6 +558,8 @@ class _CarRepairPage extends State<CarADDGasPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarGasPage(
+                                    userEmail: widget.userEmail ,
+                                    userLastName: widget.userLastName ,
                                     userName: widget.userName,
                                     carIndex: widget.carIndex,
                                     onPressed: (){},
@@ -603,6 +612,8 @@ class _CarRepairPage extends State<CarADDGasPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => CarSelectedPage(
+                                userEmail: widget.userEmail ,
+                                userLastName: widget.userLastName ,
                                     userName: widget.userName,
                                     currentIndex: widget.carIndex,
                                     costs: widget.costs,
@@ -657,6 +668,8 @@ class _CarRepairPage extends State<CarADDGasPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => Settings(
+                                userEmail: widget.userEmail ,
+                                userLastName: widget.userLastName ,
                                     userName: widget.userName,
                                     isSub: widget.isSub,
                                     carIndex: widget.carIndex,

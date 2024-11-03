@@ -15,6 +15,8 @@ class CarSelectedPage extends StatefulWidget {
   final String liters;
   final String costs;
   final int itemsNumber;
+  final String userLastName;
+  final String userEmail;
   const CarSelectedPage(
       {required this.userName,
         required this.currentIndex,
@@ -23,6 +25,8 @@ class CarSelectedPage extends StatefulWidget {
         required this.liters,
         required this.petrolName,
         required this.itemsNumber,
+        required this.userEmail,
+        required this.userLastName,
         super.key});
 
   @override
@@ -272,6 +276,8 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                     MaterialPageRoute(
                                         builder: (context) =>
                                         PopUpDialogs(
+                                          userEmail: widget.userEmail ,
+                                          userLastName: widget.userLastName ,
                                           userName: widget.userName,
                                           costs: widget.costs,
                                           date: widget.date,
@@ -319,6 +325,8 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => CarRepairPage(
+                                userEmail: widget.userEmail ,
+                                userLastName: widget.userLastName ,
                                 carIndex: carIndex,
                                 costs: widget.costs,
                                 date:widget.date ,
@@ -570,6 +578,8 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarGasPage(
+                                    userLastName: widget.userLastName,
+                                    userEmail: widget.userEmail,
                                     userName:widget.userName,
                                     isSub: _isSub,
                                     carIndex: carIndex,
@@ -600,6 +610,8 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   Settings(
+                                    userLastName: widget.userLastName,
+                                    userEmail: widget.userEmail,
                                       userName:widget.userName,
                                       isSub: _isSub,
                                       carIndex: carIndex,

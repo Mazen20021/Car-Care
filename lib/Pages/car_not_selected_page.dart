@@ -9,8 +9,11 @@ import 'add_new_car.dart';
 class CarNotSelectedPage extends StatefulWidget {
   final String userName;
   final int currentIndex;
+  final String profileID;
+  final String userLastName;
+  final String userEmail;
   const CarNotSelectedPage(
-      {required this.userName, required this.currentIndex, super.key});
+      {required this.userEmail , required this.userLastName, required this.profileID,required this.userName, required this.currentIndex, super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -90,7 +93,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                        const AddNewCar()),
+                         AddNewCar(profileID: widget.profileID)),
                   );
                 },
                 child: Stack(
@@ -540,6 +543,8 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                             MaterialPageRoute(
                                 builder: (context) =>
                                     Settings(
+                                      userLastName: widget.userLastName,
+                                      userEmail: widget.userEmail,
                                         userName:widget.userName,
                                         isSub: _isSub,
                                         carIndex: 0,

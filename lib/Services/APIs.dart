@@ -9,11 +9,11 @@ class AuthActions with ChangeNotifier {
   static bool hasError = false;
   String? error;
   static User? user;
-  final DTO dto = DTO();  // Replace with your token management logic
+  final DTO dto = DTO(); // Replace with your token management logic
   final Dio api = Dio(BaseOptions(
     baseUrl: DTO.BACKEND_API,
-    connectTimeout: const Duration(seconds: 5),  // 5 seconds
-    receiveTimeout: const Duration(seconds: 3),  // 3 seconds
+    connectTimeout: const Duration(seconds: 5), // 5 seconds
+    receiveTimeout: const Duration(seconds: 5), // 3 seconds
   ));
 
   static bool isAuth = false;
@@ -27,7 +27,7 @@ class AuthActions with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> me() async {
+  Future<void> authorization() async {
     await setLoading(true);
     try {
       final response = await api.get('/auth', options: Options(
@@ -38,12 +38,15 @@ class AuthActions with ChangeNotifier {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const MainPageService(
-                  isCarSelected: true,
-                  userName: "Mazen",
+                builder: (context) =>
+                 MainPageService(
+                   profileID: user!.id.toString(),
+                  userName: user!.firstName.toString(),
+                  userEmail: user!.email.toString(),
+                  userLastName: user!.lastName.toString(),
                   currentIndex: 0,
                   costs: "",
-                  date:"",
+                  date: "",
                   itemsNumber: 0,
                   liters: "",
                   petrolName: "",
@@ -57,13 +60,15 @@ class AuthActions with ChangeNotifier {
       await setLoading(false);
     }
   }
+
   Future<void> deleteAccount() async {
     await setLoading(true);
     try {
       final response = await api.delete('/auth', options: Options(
           headers: {"Authorization": "Bearer ${await dto.getToken()}"}
       ));
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const Login()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const Login()));
       error = null;
     } on DioError catch (e) {
       user = null;
@@ -72,6 +77,7 @@ class AuthActions with ChangeNotifier {
       await setLoading(false);
     }
   }
+
   Future<void> register({
     required String firstName,
     required String lastName,
@@ -90,9 +96,10 @@ class AuthActions with ChangeNotifier {
       error = null;
       Navigator.push(
           context,
-      MaterialPageRoute(
-          builder: (context) => const Login()));
-      showSuccessDialog(context, "Successfully registered! confirmation mail was sent. Please Confirm your email");
+          MaterialPageRoute(
+              builder: (context) => const Login()));
+      showSuccessDialog(context,
+          "Successfully registered! confirmation mail was sent. Please Confirm your email");
     } on DioError catch (e) {
       error = e.response?.data['error'] ?? 'Failed to register';
       showErrorDialog(context, error!);
@@ -119,19 +126,21 @@ class AuthActions with ChangeNotifier {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => const MainPageService(
-                isCarSelected: true,
-                userName: "Mazen",
+              builder: (context) =>
+               MainPageService(
+                 profileID: user!.id.toString(),
+                userName: user!.firstName.toString(),
+                 userEmail: user!.email.toString(),
+                 userLastName: user!.lastName.toString(),
                 currentIndex: 0,
                 costs: "",
-                date:"",
+                date: "",
                 itemsNumber: 0,
                 liters: "",
                 petrolName: "",
               )),
         );
         error = null;
-
       } else {
         hasError = true;
         throw Exception("Access token not found in response");
@@ -140,7 +149,8 @@ class AuthActions with ChangeNotifier {
       hasError = true;
       error = e.response?.data['error'] ?? 'Failed to log in';
       print("Dio error data: ${e.response?.data}"); // Added for debugging
-      print("Dio error status: ${e.response?.statusCode}"); // Added for debugging
+      print(
+          "Dio error status: ${e.response?.statusCode}"); // Added for debugging
       showErrorDialog(context, "$error - ${e.response?.toString()}");
     } finally {
       await setLoading(false);
@@ -182,15 +192,163 @@ class AuthActions with ChangeNotifier {
   Future<void> resetPassword(String email) async {
     await setLoading(true);
     try {
-      await api.post('/auth/reset-password', data: {'email': email});
+      await api.post('/auth/cars', data: {'email': email});
       error = null;
-      print("Verification code sent to $email");
     } on DioError catch (e) {
       error = e.response?.data['error'] ?? 'Failed to send verification code';
       print("Error: $error");
     } finally {
       await setLoading(false);
     }
+  }
+
+  Future<FetchCarsResult> fetchCars() async {
+    await setLoading(true);
+    try {
+      final token = await dto.getToken();
+      print("here1");
+      final response = await api.get(
+        '/cars',
+        options: Options(
+          headers: {"Authorization": "Bearer $token"},
+        ),
+      );
+print("here");
+      // Extract the data from the response
+      final carsData = response.data['cars'] ?? [];
+      final carClasses = response.data['carClasses'] ?? [];
+      final repairTypes = response.data['repairTypes'] ?? [];
+
+      // Parse the cars list
+      final carsList = (carsData as List).map((item) => Cars.fromJson(item)).toList();
+      final carClassesList = (carClasses as List).map((item) => CarClass.fromJson(item)).toList();
+      final repairTypesList = (repairTypes as List).map((item) => RepairType.fromJson(item)).toList();
+
+      final success = carsList.isNotEmpty;
+      print(success ? "Cars list has data: ${carsList.length} items" : "Cars list is empty.");
+
+      return FetchCarsResult(success: success, cars: carsList, error: null);
+    } on DioException catch (e) {
+      final errorResponse = e.response?.data ?? 'Unknown error'; // Log the whole response
+      final statusCode = e.response?.statusCode ?? 'No Status Code'; // Log status code
+      print("Failed to fetch cars: $errorResponse");
+      print("Status code: $statusCode");
+      print("Dio error message: ${e.message}"); // Print the specific error message
+
+      return FetchCarsResult(success: false, cars: [], error: errorResponse.toString());
+    } finally {
+      await setLoading(false);
+    }
+  }
+
+
+  Future<void> createCar(Cars car) async {
+    try {
+      final jsonData = car.toJson();
+      print("Request payload: $jsonData");  // Log to confirm structure
+
+      await api.post(
+        '/cars',
+        data: jsonData,
+        options: Options(
+          headers: {"Authorization": "Bearer ${await dto.getToken()}"},
+        ),
+      );
+      print("Car created successfully");
+    } on DioError catch (e) {
+      final errorResponse = e.response?.data['error'] ?? 'Unknown error';
+      print("Failed to create car: $errorResponse");
+      print("Status code: ${e.response?.statusCode}");
+    }
+  }
+
+
+}
+class FetchCarsResult {
+  final bool success;
+  final List<Cars> cars;
+  final String? error;
+
+  FetchCarsResult({required this.success, required this.cars, this.error});
+}
+class Cars {
+  final String make;
+  final String model;
+  final String year;
+  final String carClass;
+  final String notifyme;
+  final String profileID;
+  final String led;
+  final String ed;
+  Cars({
+    required this.make,
+    required this.model,
+    required this.year,
+    required this.carClass,
+    required this.notifyme,
+    required this.profileID,
+    required this.led,
+    required this.ed,
+  });
+  factory Cars.fromJson(Map<String, dynamic> json) {
+    return Cars(
+      make: json['make'] ?? '', // Use a default value if necessary
+      model: json['model'] ?? '',
+      year: json['year'].toString(), // Ensure year is a string
+      carClass: json['classId'] ?? '', // Map to classId
+      notifyme: json['notify_every'] ?? '', // Map to notify_every
+      profileID: json['profileId'] ?? '', // Map to profileId
+      led: json['license_expiration_date'] ?? '', // Assuming license expiration date
+      ed: json['examination_date'] ?? '', // Assuming examination date
+    );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      'make': make,
+      'model': model,
+      'year': year,
+      'classId':carClass,
+      'notify_every':notifyme,
+      'profileId': profileID,
+      'km' : "0",
+    };
+  }
+}
+
+class CarClass {
+  final String id;
+  final String name;
+
+  CarClass({required this.id, required this.name});
+
+  factory CarClass.fromJson(Map<String, dynamic> json) {
+    return CarClass(
+      id: json['id'],
+      name: json['name'],
+    );
+  }
+}
+
+class RepairType {
+  final String id;
+  final String name;
+  final int reminderKm;
+  final String? profileId;
+
+  RepairType({
+    required this.id,
+    required this.name,
+    required this.reminderKm,
+    this.profileId,
+  });
+
+  factory RepairType.fromJson(Map<String, dynamic> json) {
+    return RepairType(
+      id: json['id'],
+      name: json['name'],
+      reminderKm: json['reminder_km'],
+      profileId: json['profileId'],
+    );
   }
 }
 
@@ -217,6 +375,10 @@ class User {
     'last_name': lastName,
     'email': email,
   };
+   String getUserID ()
+  {
+    return id;
+  }
 }
 
 // Helper functions for success and error dialogs

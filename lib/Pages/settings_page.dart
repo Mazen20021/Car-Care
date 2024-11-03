@@ -13,6 +13,8 @@ import 'login_page.dart';
 class Settings extends StatefulWidget {
   final bool isSub;
   final String userName;
+  final String userLastName;
+  final String userEmail;
   final int carIndex;
   final String petrolName;
   final String date;
@@ -27,6 +29,8 @@ class Settings extends StatefulWidget {
     required this.liters,
     required this.petrolName,
     required this.itemsNumber,
+    required this.userEmail,
+    required this.userLastName,
     super.key});
 
   @override
@@ -189,12 +193,13 @@ class _Settings extends State<Settings> {
                             Text("First Name: "),
                             SizedBox(width: 1),
                             Text(widget.userName,style: GoogleFonts.rubik(
-                                color: MainColors.primary)),
-                            SizedBox(width: 25),
+                                color: MainColors.primary,fontSize: 12)),
+                            SizedBox(width: 5),
                             Text("Last Name: "),
                             SizedBox(width: 1),
-                            Text(widget.userName,style: GoogleFonts.rubik(
-                              color: MainColors.primary
+                            Text(widget.userLastName,style: GoogleFonts.rubik(
+                              color: MainColors.primary,
+                              fontSize: 12
                             ),),
                           ]),
                         const SizedBox(height: 5),
@@ -202,8 +207,9 @@ class _Settings extends State<Settings> {
                           SizedBox(width: 10),
                           Text("Email: "),
                           SizedBox(width: 1),
-                          Text(widget.userName,style: GoogleFonts.rubik(
-                              color: MainColors.primary
+                          Text(widget.userEmail,style: GoogleFonts.rubik(
+                              color: MainColors.primary,
+                              fontSize: 12
                           ),),
                         ],),
                         CustomButton(
@@ -472,6 +478,8 @@ class _Settings extends State<Settings> {
                       MaterialPageRoute(
                           builder: (context) =>
                               DeleteAccount(
+                                userEmail: widget.userEmail ,
+                                userLastName: widget.userLastName ,
                                 userName:widget.userName,
                                 isSub: widget.isSub,
                                 carIndex: widget.carIndex,
@@ -551,6 +559,8 @@ class _Settings extends State<Settings> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarSelectedPage(
+                                    userLastName: widget.userLastName,
+                                    userEmail: widget.userEmail,
                                     userName:widget.userName,
                                     currentIndex: widget.carIndex,
                                     costs: widget.costs,
@@ -592,6 +602,8 @@ class _Settings extends State<Settings> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarGasPage(
+                                    userLastName: widget.userLastName,
+                                    userEmail: widget.userEmail,
                                     userName:widget.userName,
                                     isSub: widget.isSub,
                                     carIndex: widget.carIndex,

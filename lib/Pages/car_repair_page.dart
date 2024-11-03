@@ -16,7 +16,8 @@ class CarRepairPage extends StatefulWidget {
   final String liters;
   final String costs;
   final int itemsNumber;
-
+  final String userLastName;
+  final String userEmail;
   const CarRepairPage(
       {required this.carIndex,
       required this.userName,
@@ -25,6 +26,7 @@ class CarRepairPage extends StatefulWidget {
       required this.liters,
       required this.petrolName,
       required this.itemsNumber,
+        required this.userEmail , required this.userLastName,
       super.key});
 
   @override
@@ -110,6 +112,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => CarSelectedPage(
+                            userLastName: widget.userLastName,
+                            userEmail: widget.userEmail,
                                 userName: widget.userName,
                                 currentIndex: widget.carIndex,
                                 costs: widget.costs,
@@ -600,6 +604,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                                   //   carIndex: widget.carIndex,
                                                   // )
                                               PopUpDialogs(
+                                                userEmail: widget.userEmail ,
+                                                userLastName: widget.userLastName ,
                                                   userName: widget.userName,
                                                   costs: widget.costs,
                                                   date: widget.date,
@@ -713,6 +719,8 @@ class _CarRepairPage extends State<CarRepairPage> {
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 CarSelectedPage(
+                                                  userEmail: widget.userEmail ,
+                                                  userLastName: widget.userLastName ,
                                                   userName: widget.userName,
                                                   currentIndex: widget.carIndex,
                                                   costs: widget.costs,

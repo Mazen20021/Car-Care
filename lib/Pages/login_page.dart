@@ -29,7 +29,7 @@ class _Login extends State<Login> {
   @override
   void initState() {
     aa = AuthActions(context);
-    aa.me();
+    aa.authorization();
     super.initState();
   }
 
