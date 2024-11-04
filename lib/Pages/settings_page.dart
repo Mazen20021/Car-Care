@@ -21,6 +21,7 @@ class Settings extends StatefulWidget {
   final String liters;
   final String costs;
   final int itemsNumber;
+  final List<Cars> myCars;
   const Settings({required this.isSub,
     required this.userName,
     required this.carIndex,
@@ -31,6 +32,7 @@ class Settings extends StatefulWidget {
     required this.itemsNumber,
     required this.userEmail,
     required this.userLastName,
+    required this.myCars,
     super.key});
 
   @override
@@ -478,6 +480,7 @@ class _Settings extends State<Settings> {
                       MaterialPageRoute(
                           builder: (context) =>
                               DeleteAccount(
+                                myCars: widget.myCars,
                                 userEmail: widget.userEmail ,
                                 userLastName: widget.userLastName ,
                                 userName:widget.userName,
@@ -559,6 +562,7 @@ class _Settings extends State<Settings> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarSelectedPage(
+                                    myCars: widget.myCars,
                                     userLastName: widget.userLastName,
                                     userEmail: widget.userEmail,
                                     userName:widget.userName,
@@ -602,6 +606,7 @@ class _Settings extends State<Settings> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarGasPage(
+                                    myCars: widget.myCars,
                                     userLastName: widget.userLastName,
                                     userEmail: widget.userEmail,
                                     userName:widget.userName,

@@ -1,7 +1,8 @@
-import 'package:carcare/Pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'Config/constants.dart';
+import 'Pages/login_page.dart';
+
 
 void main() {
   runApp( MainPage());
@@ -15,6 +16,6 @@ class MainPage extends StatelessWidget {
       await initLocalStorage();
       Screen.setSize(context);
     });
-    return const MaterialApp(home: Login());
+    return MaterialApp(home: Login());
   }
 }

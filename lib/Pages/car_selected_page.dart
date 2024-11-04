@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
 import '../PopUps/popUps.dart';
+import '../Services/APIs.dart';
 import 'gas_tracking_page.dart';
 
 class CarSelectedPage extends StatefulWidget {
@@ -17,6 +18,7 @@ class CarSelectedPage extends StatefulWidget {
   final int itemsNumber;
   final String userLastName;
   final String userEmail;
+  final List<Cars> myCars;
   const CarSelectedPage(
       {required this.userName,
         required this.currentIndex,
@@ -27,6 +29,7 @@ class CarSelectedPage extends StatefulWidget {
         required this.itemsNumber,
         required this.userEmail,
         required this.userLastName,
+        required this.myCars,
         super.key});
 
   @override
@@ -43,13 +46,13 @@ class _CarSelectedPage extends State<CarSelectedPage> {
   int carIndex = 0;
   bool _isExpanded1 = false;
   bool _isExpanded2 = false;
-
   @override
   void initState() {
     super.initState();
     carIndex = widget.currentIndex;
     _pageController =
         PageController(viewportFraction: 2.0, initialPage: widget.currentIndex);
+    loadMyCars();
   }
 
   @override
@@ -57,13 +60,33 @@ class _CarSelectedPage extends State<CarSelectedPage> {
     _pageController.dispose();
     super.dispose();
   }
+  void loadMyCars()
+  {
+    if (widget.myCars.isEmpty) {
+      imagesPath.add("assets/cars/SUV.png");
+      imagesPath.add("assets/cars/Sedan.png");
+      imagesPath.add("assets/cars/Hatchback.png");
+    }else{
+      for(int i =0 ; i< widget.myCars.length  ;i++)
+      {
+        if(widget.myCars[i].carClass == "1")
+        {
+          imagesPath.add("assets/cars/SUV.png");
+        }else if(widget.myCars[i].carClass == "2")
+        {
+          imagesPath.add("assets/cars/Sedan.png");
+        }else if(widget.myCars[i].carClass == "3")
+        {
+          imagesPath.add("assets/cars/Coupe.png");
+        }else{
+          imagesPath.add("assets/cars/Hatchback.png");
+        }
+      }
+    }
 
+  }
   @override
   Widget build(BuildContext context) {
-    imagesPath.add("assets/cars/Coupe.png");
-    imagesPath.add("assets/cars/Hatchback.png");
-    imagesPath.add("assets/cars/Sedan.png");
-    imagesPath.add("assets/cars/SUV.png");
     Screen.setSize(context);
     return Scaffold(
       body: SingleChildScrollView(
@@ -136,7 +159,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                       offset: const Offset(180, 20),
                       child: Row(
                         children: [
-                          Text("XAC",
+                          Text(widget.myCars[carIndex].make,
                               style: GoogleFonts.rubik(
                                   fontWeight: FontWeight.bold,
                                   color: MainColors.white,
@@ -154,7 +177,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                             size: Width.xs(),
                           ),
                           const SizedBox(width: 5),
-                          Text("Data",
+                          Text("${widget.myCars[carIndex].movedDistance} KM",
                               style: GoogleFonts.rubik(
                                   fontWeight: FontWeight.bold,
                                   color: MainColors.white,
@@ -276,6 +299,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                     MaterialPageRoute(
                                         builder: (context) =>
                                         PopUpDialogs(
+                                          myCars: widget.myCars,
                                           userEmail: widget.userEmail ,
                                           userLastName: widget.userLastName ,
                                           userName: widget.userName,
@@ -325,6 +349,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => CarRepairPage(
+                                myCars: widget.myCars,
                                 userEmail: widget.userEmail ,
                                 userLastName: widget.userLastName ,
                                 carIndex: carIndex,
@@ -578,6 +603,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarGasPage(
+                                    myCars: widget.myCars,
                                     userLastName: widget.userLastName,
                                     userEmail: widget.userEmail,
                                     userName:widget.userName,
@@ -610,6 +636,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   Settings(
+                                    myCars: widget.myCars,
                                     userLastName: widget.userLastName,
                                     userEmail: widget.userEmail,
                                       userName:widget.userName,

@@ -23,7 +23,7 @@ class _AddCar extends State<AddNewCar> {
   final TextEditingController _carModel = TextEditingController();
   final formKey = GlobalKey<FormState>();
   List<String> _years = [];
-  final List<String> _classList = ['option 1', 'option 2'];
+  final List<String> _classList = ['SUV', 'Sedan','Coupe','Hatchback'];
   final List<String> _notifyList = ['daily', 'weekly', 'monthly'];
   final int currentYear = DateTime.now().year;
   DateTime? _selectedExaminationDate;
@@ -44,11 +44,10 @@ class _AddCar extends State<AddNewCar> {
     if (picked != null && picked != _selectedLicenseDate) {
       setState(() {
         _selectedLicenseDate = picked;
-        _setLicenseDate.text = DateFormat('dd/MM/yyyy').format(_selectedLicenseDate!);  // Display format
+        _setLicenseDate.text = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(_selectedLicenseDate!);  // Display format
       });
     }
   }
-
   Future<void> _selectExaminationDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -59,7 +58,7 @@ class _AddCar extends State<AddNewCar> {
     if (picked != null && picked != _selectedExaminationDate) {
       setState(() {
         _selectedExaminationDate = picked;
-        _setExaminationDate.text = DateFormat('dd/MM/yyyy').format(_selectedExaminationDate!);  // Display format
+        _setExaminationDate.text = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(_selectedExaminationDate!);  // Display format
       });
     }
   }
@@ -557,13 +556,15 @@ class _AddCar extends State<AddNewCar> {
                                             make: _carMake.text,
                                             model: _carModel.text,
                                             year: _selectedYear.toString(),
-                                            carClass: "1",
+                                            carClass: (_selectedClass!.indexOf(_selectedClass.toString())+1).toString(),
                                             notifyme: _selectedNotify.toString(),
                                             profileID: widget.profileID,
-                                            ed: "",
-                                            led:"",
+                                            ed: _setExaminationDate.text,
+                                            led:_setLicenseDate.text,
+                                            movedDistance: 0,
                                           );
                                           aa.createCar(car);
+
                                         },
 
                                         style: ElevatedButton.styleFrom(

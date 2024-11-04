@@ -1,5 +1,6 @@
 import 'package:carcare/Config/constants.dart';
 import 'package:carcare/Pages/car_not_selected_page.dart';
+import 'package:carcare/Pages/login_page.dart';
 import 'package:carcare/Services/APIs.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +17,7 @@ class MainPageService extends StatefulWidget{
   final String profileID;
   final String userLastName;
   final String userEmail;
-  MainPageService({
+  const MainPageService({
     required this.userName,
     required this.currentIndex,
     required this.costs,
@@ -30,18 +31,14 @@ class MainPageService extends StatefulWidget{
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
    return _MainPageService();
   }
-
 }
 class _MainPageService extends State<MainPageService> {
   Future<FetchCarsResult>? _fetchCarsResult;
-
   @override
   void initState() {
     super.initState();
-    // Start fetching cars when the widget is initialized
     _fetchCarsResult = getCars();
   }
 
@@ -78,12 +75,10 @@ class _MainPageService extends State<MainPageService> {
           // If an error occurred, handle it
           return Center(child: Text("Error: ${snapshot.error}"));
         } else {
-          // Once the data is fetched, check the result
           final result = snapshot.data!;
           if (result.success) {
-            print("Fetched cars successfully: ${result.cars.length} items");
-            // Return the CarSelectedPage with the data
             return CarSelectedPage(
+              myCars: result.cars,
               userEmail: widget.userEmail ,
               userLastName: widget.userLastName ,
               currentIndex: widget.currentIndex,
@@ -94,7 +89,7 @@ class _MainPageService extends State<MainPageService> {
               liters: widget.liters,
               petrolName: widget.petrolName,
             );
-          } else {
+          } else if(result.error == null){
             print("Failed to fetch cars: ${result.error}");
             return CarNotSelectedPage(
               userEmail: widget.userEmail ,
@@ -103,6 +98,8 @@ class _MainPageService extends State<MainPageService> {
               currentIndex: widget.currentIndex,
               profileID: widget.profileID,
             );
+          }else{
+            return const Login();
           }
         }
       },

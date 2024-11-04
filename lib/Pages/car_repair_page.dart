@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import '../Config/constants.dart';
 import '../Config/repair_list_data.dart';
 import '../PopUps/popUps.dart';
+import '../Services/APIs.dart';
 import 'car_selected_page.dart';
 
 class CarRepairPage extends StatefulWidget {
@@ -18,6 +19,7 @@ class CarRepairPage extends StatefulWidget {
   final int itemsNumber;
   final String userLastName;
   final String userEmail;
+  final List<Cars> myCars;
   const CarRepairPage(
       {required this.carIndex,
       required this.userName,
@@ -27,6 +29,7 @@ class CarRepairPage extends StatefulWidget {
       required this.petrolName,
       required this.itemsNumber,
         required this.userEmail , required this.userLastName,
+        required this.myCars,
       super.key});
 
   @override
@@ -112,6 +115,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => CarSelectedPage(
+                            myCars: widget.myCars,
                             userLastName: widget.userLastName,
                             userEmail: widget.userEmail,
                                 userName: widget.userName,
@@ -592,18 +596,9 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  // RepairClass(
-                                                  //   userName: widget.userName,
-                                                  //   costs: widget.costs,
-                                                  //   date: widget.date,
-                                                  //   itemsNumber:
-                                                  //       widget.itemsNumber,
-                                                  //   liters: widget.liters,
-                                                  //   petrolName:
-                                                  //       widget.petrolName,
-                                                  //   carIndex: widget.carIndex,
-                                                  // )
+
                                               PopUpDialogs(
+                                                myCars: widget.myCars,
                                                 userEmail: widget.userEmail ,
                                                 userLastName: widget.userLastName ,
                                                   userName: widget.userName,
@@ -719,6 +714,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 CarSelectedPage(
+                                                  myCars: widget.myCars,
                                                   userEmail: widget.userEmail ,
                                                   userLastName: widget.userLastName ,
                                                   userName: widget.userName,

@@ -543,6 +543,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                             MaterialPageRoute(
                                 builder: (context) =>
                                     Settings(
+                                      myCars: [],
                                       userLastName: widget.userLastName,
                                       userEmail: widget.userEmail,
                                         userName:widget.userName,
