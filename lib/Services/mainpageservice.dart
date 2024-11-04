@@ -5,6 +5,7 @@ import 'package:carcare/Services/APIs.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Pages/car_selected_page.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class MainPageService extends StatefulWidget{
   final String userName;
@@ -66,7 +67,7 @@ class _MainPageService extends State<MainPageService> {
             ),),
             const SizedBox(width: 10),
             const CircularProgressIndicator(
-              color: MainColors.primary,
+              color: Color.fromARGB(255, 42, 87, 208),
               backgroundColor: MainColors.background,
             )
           ],)

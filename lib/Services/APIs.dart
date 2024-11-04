@@ -19,7 +19,7 @@ class AuthActions with ChangeNotifier {
       : api = Dio(BaseOptions(
     baseUrl: DTO.BACKEND_API,
     connectTimeout: const Duration(seconds: 5),
-    receiveTimeout: const Duration(seconds: 5),
+    receiveTimeout: const Duration(seconds: 10),
   ));
 
   Future<void> setLoading(bool value) async {
