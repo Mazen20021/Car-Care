@@ -228,6 +228,21 @@ class AuthActions with ChangeNotifier {
       await setLoading(false);
     }
   }
+  Future<void> deleteCars({required String carID}) async {
+    await setLoading(true);
+    try {
+      final token = await dto.getToken();
+      final response = await api.delete(
+        '/cars/$carID',
+        options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      print("Car Deleted successfully");
+    } on DioError catch (e) {
+      logError(e);
+    } finally {
+      await setLoading(false);
+    }
+  }
   Future<void> updateCars({required String carID , required Cars car}) async {
     await setLoading(true);
     try {

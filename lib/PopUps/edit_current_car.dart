@@ -518,6 +518,37 @@ class _EditCars extends State<EditCars> {
                                       ),
                                     ),
                                     const SizedBox(height: 13),
+                                    SizedBox(
+                                      width: Screen.size.width * 0.8,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          aa.deleteCars(carID: widget.car.id);
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: const Color.fromARGB(255,181, 74, 80),
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                                          ),
+                                        ),
+                                        child: Padding(
+                                            padding: const EdgeInsets.all(16),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text(
+                                                  'Delete Car',
+                                                  style: GoogleFonts.rubik(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: MainColors.white,
+                                                    fontSize: Fonts.md(),
+                                                  ),
+                                                ),
+
+                                              ]
+                                            )),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 13),
                                     Transform.translate(
                                       offset: const Offset(-0.08, 0),
                                       child: Center(
