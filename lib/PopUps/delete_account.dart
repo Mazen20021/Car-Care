@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
-import '../Pages/car_selected_page.dart';
+
 
 class DeleteAccount extends StatefulWidget {
   final bool isSub;
@@ -19,8 +19,10 @@ class DeleteAccount extends StatefulWidget {
   final String userLastName;
   final String userEmail;
   final List<Cars> myCars;
+  final String profileID;
   const DeleteAccount(
       {required this.isSub,
+        required this.profileID,
       required this.userName,
       required this.carIndex,
       required this.costs,
@@ -104,6 +106,7 @@ class _DeleteAccount extends State<DeleteAccount> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Settings(
+                                    profileID: widget.profileID,
                                     myCars: widget.myCars,
                                     userEmail: widget.userEmail ,
                                     userLastName: widget.userLastName ,
@@ -169,6 +172,7 @@ class _DeleteAccount extends State<DeleteAccount> {
                                                           context,
                                                           MaterialPageRoute(
                                                               builder: (context) => Settings(
+                                                                profileID: widget.profileID,
                                                                 myCars: widget.myCars,
                                                                 userEmail: widget.userEmail ,
                                                                 userLastName: widget.userLastName ,

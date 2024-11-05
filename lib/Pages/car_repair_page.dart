@@ -20,6 +20,7 @@ class CarRepairPage extends StatefulWidget {
   final String userLastName;
   final String userEmail;
   final List<Cars> myCars;
+  final String profileID;
   const CarRepairPage(
       {required this.carIndex,
       required this.userName,
@@ -30,6 +31,7 @@ class CarRepairPage extends StatefulWidget {
       required this.itemsNumber,
         required this.userEmail , required this.userLastName,
         required this.myCars,
+        required this.profileID,
       super.key});
 
   @override
@@ -115,6 +117,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => CarSelectedPage(
+                            profileID: widget.profileID,
                             myCars: widget.myCars,
                             userLastName: widget.userLastName,
                             userEmail: widget.userEmail,
@@ -598,6 +601,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                               builder: (context) =>
 
                                               PopUpDialogs(
+                                                profileID: widget.profileID,
                                                 myCars: widget.myCars,
                                                 userEmail: widget.userEmail ,
                                                 userLastName: widget.userLastName ,
@@ -714,6 +718,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 CarSelectedPage(
+                                                  profileID: widget.profileID,
                                                   myCars: widget.myCars,
                                                   userEmail: widget.userEmail ,
                                                   userLastName: widget.userLastName ,

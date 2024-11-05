@@ -8,7 +8,7 @@ import '../Config/constants.dart';
 import '../Services/APIs.dart';
 import 'gas_tracking_page.dart';
 import 'car_selected_page.dart';
-import 'login_page.dart';
+
 
 class Settings extends StatefulWidget {
   final bool isSub;
@@ -22,6 +22,7 @@ class Settings extends StatefulWidget {
   final String costs;
   final int itemsNumber;
   final List<Cars> myCars;
+  final String profileID;
   const Settings({required this.isSub,
     required this.userName,
     required this.carIndex,
@@ -33,6 +34,7 @@ class Settings extends StatefulWidget {
     required this.userEmail,
     required this.userLastName,
     required this.myCars,
+    required this.profileID,
     super.key});
 
   @override
@@ -480,6 +482,7 @@ class _Settings extends State<Settings> {
                       MaterialPageRoute(
                           builder: (context) =>
                               DeleteAccount(
+                                profileID: widget.profileID,
                                 myCars: widget.myCars,
                                 userEmail: widget.userEmail ,
                                 userLastName: widget.userLastName ,
@@ -572,6 +575,7 @@ class _Settings extends State<Settings> {
                                     itemsNumber: widget.itemsNumber,
                                     liters: widget.liters,
                                     petrolName: widget.petrolName,
+                                    profileID: widget.profileID,
                                   )),
                         );
                       },
@@ -606,6 +610,7 @@ class _Settings extends State<Settings> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarGasPage(
+                                    profileID: widget.profileID,
                                     myCars: widget.myCars,
                                     userLastName: widget.userLastName,
                                     userEmail: widget.userEmail,

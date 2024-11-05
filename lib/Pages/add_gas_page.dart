@@ -9,7 +9,6 @@ import '../Components/nav_button.dart';
 import '../Config/constants.dart';
 import '../Config/repair_list_data.dart';
 import '../Services/APIs.dart';
-import '../Services/mainpageservice.dart';
 import 'car_selected_page.dart';
 
 class CarADDGasPage extends StatefulWidget {
@@ -25,6 +24,7 @@ class CarADDGasPage extends StatefulWidget {
   final String userEmail;
   final VoidCallback onPressed;
   final List<Cars> myCars;
+  final String profileID;
   const CarADDGasPage(
       {required this.carIndex,
       required this.userName,
@@ -37,6 +37,7 @@ class CarADDGasPage extends StatefulWidget {
       required this.onPressed,
         required this.myCars,
         required this.userEmail , required this.userLastName,
+        required this.profileID,
       super.key});
 
   @override
@@ -102,6 +103,7 @@ class _CarRepairPage extends State<CarADDGasPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => CarGasPage(
+                          profileID: widget.profileID,
                           myCars: widget.myCars,
                           userEmail: widget.userEmail ,
                           userLastName: widget.userLastName ,
@@ -515,6 +517,7 @@ class _CarRepairPage extends State<CarADDGasPage> {
                       MaterialPageRoute(
                           builder: (context) =>
                               CarGasPage(
+                                profileID: widget.profileID,
                                 myCars: widget.myCars,
                                 userEmail: widget.userEmail ,
                                 userLastName: widget.userLastName ,
@@ -562,6 +565,7 @@ class _CarRepairPage extends State<CarADDGasPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarGasPage(
+                                    profileID: widget.profileID,
                                     myCars: widget.myCars,
                                     userEmail: widget.userEmail ,
                                     userLastName: widget.userLastName ,
@@ -617,6 +621,7 @@ class _CarRepairPage extends State<CarADDGasPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => CarSelectedPage(
+                                profileID: widget.profileID,
                                 myCars: widget.myCars,
                                 userEmail: widget.userEmail ,
                                 userLastName: widget.userLastName ,
@@ -674,6 +679,7 @@ class _CarRepairPage extends State<CarADDGasPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => Settings(
+                                profileID: widget.profileID,
                                 myCars: widget.myCars,
                                 userEmail: widget.userEmail ,
                                 userLastName: widget.userLastName ,

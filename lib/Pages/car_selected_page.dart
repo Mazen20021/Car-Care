@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
+import '../PopUps/edit_current_car.dart';
 import '../PopUps/popUps.dart';
 import '../Services/APIs.dart';
 import 'gas_tracking_page.dart';
@@ -19,6 +20,7 @@ class CarSelectedPage extends StatefulWidget {
   final String userLastName;
   final String userEmail;
   final List<Cars> myCars;
+  final String profileID;
   const CarSelectedPage(
       {required this.userName,
         required this.currentIndex,
@@ -30,6 +32,7 @@ class CarSelectedPage extends StatefulWidget {
         required this.userEmail,
         required this.userLastName,
         required this.myCars,
+        required this.profileID,
         super.key});
 
   @override
@@ -89,7 +92,10 @@ class _CarSelectedPage extends State<CarSelectedPage> {
   Widget build(BuildContext context) {
     Screen.setSize(context);
     return Scaffold(
-      body: SingleChildScrollView(
+      body: Flexible(
+          flex:  10,
+          fit: FlexFit.loose,
+          child: SingleChildScrollView(
           physics: (_isExpanded1 || _isExpanded2)
               ? const AlwaysScrollableScrollPhysics()
               : const NeverScrollableScrollPhysics(),
@@ -133,7 +139,20 @@ class _CarSelectedPage extends State<CarSelectedPage> {
             ),
             const SizedBox(height: 20),
             GestureDetector(
-                onTap: () => print("j"),
+                onTap: () => {
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                builder: (context) =>
+                EditCars(
+                  car: widget.myCars[carIndex],
+                  carName: widget.myCars[carIndex].make,
+                  carModel: widget.myCars[carIndex].model,
+                  profileID: widget.profileID,
+                )
+                ),
+                )
+                },
                 child: Stack(
                   children: [
                     Opacity(
@@ -299,6 +318,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                     MaterialPageRoute(
                                         builder: (context) =>
                                         PopUpDialogs(
+                                          profileID: widget.profileID,
                                           myCars: widget.myCars,
                                           userEmail: widget.userEmail ,
                                           userLastName: widget.userLastName ,
@@ -349,6 +369,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => CarRepairPage(
+                                profileID: widget.profileID,
                                 myCars: widget.myCars,
                                 userEmail: widget.userEmail ,
                                 userLastName: widget.userLastName ,
@@ -540,8 +561,11 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                 ),
               ),
             ),
-          ])),
-      bottomSheet: Container(
+          ]))),
+      bottomSheet:Flexible(
+        flex:  10,
+        fit: FlexFit.loose,
+        child:  Container(
         width: Screen.size.width,
         height: Screen.size.height * 0.1,
         decoration: BoxDecoration(
@@ -603,6 +627,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarGasPage(
+                                    profileID: widget.profileID,
                                     myCars: widget.myCars,
                                     userLastName: widget.userLastName,
                                     userEmail: widget.userEmail,
@@ -636,6 +661,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   Settings(
+                                    profileID: widget.profileID,
                                     myCars: widget.myCars,
                                     userLastName: widget.userLastName,
                                     userEmail: widget.userEmail,
@@ -662,7 +688,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
           ),
         ),
       ),
-    );
+    ));
   }
 
   // Helper method to build each car image

@@ -228,7 +228,24 @@ class AuthActions with ChangeNotifier {
       await setLoading(false);
     }
   }
-
+  Future<void> updateCars({required String carID , required Cars car}) async {
+    await setLoading(true);
+    try {
+      final token = await dto.getToken();
+      final response = await api.get(
+        '/cars/$carID',
+          data: {
+        'Car': car,
+      },
+        options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      print("Car updated successfully");
+    } on DioError catch (e) {
+      logError(e);
+    } finally {
+      await setLoading(false);
+    }
+  }
   Future<FetchCarsResult> fetchCars() async {
     await setLoading(true);
     try {
@@ -309,6 +326,7 @@ class Cars {
   final String led;
   final String ed;
   final int movedDistance;
+  final String id;
   Cars({
     required this.make,
     required this.model,
@@ -319,6 +337,7 @@ class Cars {
     required this.led,
     required this.ed,
     required this.movedDistance,
+    this.id ="",
   });
   factory Cars.fromJson(Map<String, dynamic> json) {
     return Cars(
@@ -331,6 +350,7 @@ class Cars {
       led: json['license_expiration_date'] ?? '', // Assuming license expiration date
       ed: json['examination_date'] ?? '', // Assuming examination date
       movedDistance: json['km'],
+      id:json['id'],
     );
   }
   Map<String, dynamic> toJson() {
