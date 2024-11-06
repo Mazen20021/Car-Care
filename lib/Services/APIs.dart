@@ -244,21 +244,18 @@ class AuthActions with ChangeNotifier {
     }
   }
   Future<void> updateCars({required String carID , required Cars car}) async {
-    await setLoading(true);
     try {
       final token = await dto.getToken();
-      final response = await api.get(
+      final response = await api.head(
         '/cars/$carID',
           data: {
         'Car': car,
       },
         options: Options(headers: {"Authorization": "Bearer $token"}),
       );
-      print("Car updated successfully");
+      print("Car updated successfully$response");
     } on DioError catch (e) {
       logError(e);
-    } finally {
-      await setLoading(false);
     }
   }
   Future<FetchCarsResult> fetchCars() async {

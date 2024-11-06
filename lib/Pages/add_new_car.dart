@@ -5,11 +5,15 @@ import 'package:intl/intl.dart';
 
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
+import 'car_selected_page.dart';
 
 class AddNewCar extends StatefulWidget {
   final String profileID;
-
-  const AddNewCar({required this.profileID, super.key});
+  final String userName;
+  final int currentIndex;
+  final String userLastName;
+  final String userEmail;
+  const AddNewCar({required this.userEmail , required this.userLastName, required this.profileID,required this.userName, required this.currentIndex, super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -33,7 +37,7 @@ class _AddCar extends State<AddNewCar> {
   DateTime? _selectedLicenseDate;
   final TextEditingController _setLicenseDate = TextEditingController();
   late AuthActions aa;
-
+  List<Cars> myCars = List.empty(growable: true);
   Future<void> _selectLicenseDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -565,6 +569,26 @@ class _AddCar extends State<AddNewCar> {
                                           );
                                           aa.createCar(car);
 
+                                          myCars.add(car);
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    CarSelectedPage(
+                                                      userLastName: widget.userLastName,
+                                                      userEmail: widget.userEmail,
+                                                      userName: widget.userName,
+                                                      petrolName: "",
+                                                      liters: "",
+                                                      itemsNumber:0,
+                                                      date:"" ,
+                                                      costs:"",
+                                                      currentIndex: widget.currentIndex,
+                                                      myCars:  myCars,
+                                                      profileID: widget.profileID,
+                                                    )
+                                            ),
+                                          );
                                         },
 
                                         style: ElevatedButton.styleFrom(

@@ -93,7 +93,12 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                         AddNewCar(profileID: widget.profileID)),
+                         AddNewCar(profileID: widget.profileID,
+                           userLastName: widget.userLastName,
+                           userEmail: widget.userEmail,
+                           userName: widget.userName,
+                           currentIndex: widget.currentIndex,
+                         )),
                   );
                 },
                 child: Stack(

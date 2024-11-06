@@ -7,6 +7,7 @@ import '../Config/constants.dart';
 import '../PopUps/edit_current_car.dart';
 import '../PopUps/popUps.dart';
 import '../Services/APIs.dart';
+import 'car_not_selected_page.dart';
 import 'gas_tracking_page.dart';
 
 class CarSelectedPage extends StatefulWidget {
@@ -65,28 +66,19 @@ class _CarSelectedPage extends State<CarSelectedPage> {
   }
   void loadMyCars()
   {
-    if (widget.myCars.isEmpty) {
-      imagesPath.add("assets/cars/SUV.png");
-      imagesPath.add("assets/cars/Sedan.png");
-      imagesPath.add("assets/cars/Hatchback.png");
-    }else{
-      for(int i =0 ; i< widget.myCars.length  ;i++)
-      {
-        if(widget.myCars[i].carClass == "1")
-        {
+    if (widget.myCars.isNotEmpty) {
+      for (int i = 0; i < widget.myCars.length; i++) {
+        if (widget.myCars[i].carClass == "1") {
           imagesPath.add("assets/cars/SUV.png");
-        }else if(widget.myCars[i].carClass == "2")
-        {
+        } else if (widget.myCars[i].carClass == "2") {
           imagesPath.add("assets/cars/Sedan.png");
-        }else if(widget.myCars[i].carClass == "3")
-        {
+        } else if (widget.myCars[i].carClass == "3") {
           imagesPath.add("assets/cars/Coupe.png");
-        }else{
+        } else {
           imagesPath.add("assets/cars/Hatchback.png");
         }
       }
     }
-
   }
   @override
   Widget build(BuildContext context) {
@@ -145,6 +137,16 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                 MaterialPageRoute(
                 builder: (context) =>
                 EditCars(
+                  currentIndex: widget.currentIndex,
+                  costs: widget.costs,
+                  date: widget.date,
+                  itemsNumber: widget.itemsNumber,
+                  liters: widget.liters,
+                  petrolName: widget.petrolName,
+                  userName: widget.userName,
+                  userEmail: widget.userEmail,
+                  userLastName: widget.userLastName,
+                  myCars: widget.myCars,
                   car: widget.myCars[carIndex],
                   carName: widget.myCars[carIndex].make,
                   carModel: widget.myCars[carIndex].model,

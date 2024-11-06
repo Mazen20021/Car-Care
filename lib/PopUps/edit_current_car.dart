@@ -5,13 +5,40 @@ import 'package:intl/intl.dart';
 
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
+import '../Pages/car_not_selected_page.dart';
+import '../Pages/car_selected_page.dart';
 
 class EditCars extends StatefulWidget {
   final String profileID;
   final String carName;
   final String carModel;
   final Cars car;
-  const EditCars({required this.car,required this.profileID,required this.carModel,required this.carName, super.key});
+  final List<Cars> myCars;
+  final String userName;
+  final int currentIndex;
+  final String petrolName;
+  final String date;
+  final String liters;
+  final String costs;
+  final int itemsNumber;
+  final String userLastName;
+  final String userEmail;
+  const EditCars({
+    required this.car,
+    required this.profileID,
+    required this.carModel,
+    required this.carName,
+    required this.myCars,
+    required this.userName,
+    required this.currentIndex,
+    required this.costs,
+    required this.date,
+    required this.liters,
+    required this.petrolName,
+    required this.itemsNumber,
+    required this.userEmail,
+    required this.userLastName,
+    super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -35,7 +62,8 @@ class _EditCars extends State<EditCars> {
   DateTime? _selectedLicenseDate;
   final TextEditingController _setLicenseDate = TextEditingController();
   late AuthActions aa;
-
+bool _isLoading = false;
+bool _isLoading2 = false;
   Future<void> _selectLicenseDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -144,7 +172,25 @@ class _EditCars extends State<EditCars> {
                             iconColor: MainColors.primary,
                             iconSize: 30,
                             onPressed: () {
-                              Navigator.pop(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        CarSelectedPage(
+                                          userLastName: widget.userLastName,
+                                          userEmail: widget.userEmail,
+                                          userName: widget.userName,
+                                          petrolName: widget.petrolName,
+                                          liters: widget.liters,
+                                          itemsNumber:widget.itemsNumber ,
+                                          date:widget.date ,
+                                          costs:widget.costs ,
+                                          currentIndex: widget.currentIndex,
+                                          myCars:  widget.myCars,
+                                          profileID: widget.profileID,
+                                        )
+                                ),
+                              );
                             }),
                       )
                     ],
@@ -518,11 +564,59 @@ class _EditCars extends State<EditCars> {
                                       ),
                                     ),
                                     const SizedBox(height: 13),
+                                    !_isLoading ?
                                     SizedBox(
                                       width: Screen.size.width * 0.8,
                                       child: ElevatedButton(
-                                        onPressed: () {
-                                          aa.deleteCars(carID: widget.car.id);
+                                        onPressed: () async{
+                                          setState(() {
+                                            _isLoading = true;
+                                          });
+                                          try{
+                                            await aa.deleteCars(carID: widget.car.id);
+                                            int index = widget.myCars.indexWhere((c) => c.id == widget.car.id);
+                                            widget.myCars.removeAt(index);
+                                            if(widget.myCars.isEmpty)
+                                            {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        CarNotSelectedPage(
+                                                          userLastName: widget.userLastName,
+                                                          userEmail: widget.userEmail,
+                                                          userName: widget.userName,
+                                                          currentIndex: widget.currentIndex,
+                                                          profileID: widget.profileID,
+                                                        )
+                                                ),
+                                              );
+                                            }else{
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        CarSelectedPage(
+                                                          userLastName: widget.userLastName,
+                                                          userEmail: widget.userEmail,
+                                                          userName: widget.userName,
+                                                          petrolName: widget.petrolName,
+                                                          liters: widget.liters,
+                                                          itemsNumber:widget.itemsNumber ,
+                                                          date:widget.date ,
+                                                          costs:widget.costs ,
+                                                          currentIndex: widget.currentIndex,
+                                                          myCars:  widget.myCars,
+                                                          profileID: widget.profileID,
+                                                        )
+                                                ),
+                                              );
+                                            }
+                                          }catch(e) {}finally{
+                                            setState(() {
+                                              _isLoading = false;
+                                            });
+                                          }
                                         },
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: const Color.fromARGB(255,181, 74, 80),
@@ -547,6 +641,9 @@ class _EditCars extends State<EditCars> {
                                               ]
                                             )),
                                       ),
+                                    ):const CircularProgressIndicator(
+                                      color: MainColors.danger,
+                                      backgroundColor: MainColors.background,
                                     ),
                                     const SizedBox(height: 13),
                                     Transform.translate(
@@ -559,7 +656,25 @@ class _EditCars extends State<EditCars> {
                                               width: Screen.size.width * 0.465,
                                               child: ElevatedButton(
                                                   onPressed: () {
-                                                    Navigator.pop(context);
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              CarSelectedPage(
+                                                                userLastName: widget.userLastName,
+                                                                userEmail: widget.userEmail,
+                                                                userName: widget.userName,
+                                                                petrolName: widget.petrolName,
+                                                                liters: widget.liters,
+                                                                itemsNumber:widget.itemsNumber ,
+                                                                date:widget.date ,
+                                                                costs:widget.costs ,
+                                                                currentIndex: widget.currentIndex,
+                                                                myCars:  widget.myCars,
+                                                                profileID: widget.profileID,
+                                                              )
+                                                      ),
+                                                    );
                                                   },
                                                   style: ElevatedButton.styleFrom(
                                                     backgroundColor:
@@ -593,22 +708,75 @@ class _EditCars extends State<EditCars> {
                                                     .black, // Color of the divider
                                               ),
                                             ),
+                                            !_isLoading2 ?
                                             SizedBox(
                                               width: Screen.size.width * 0.412,
                                               child: ElevatedButton(
-                                                onPressed: () {
-                                                  Cars car = Cars(
-                                                    make: _carMake.text,
-                                                    model: _carModel.text,
-                                                    year: _selectedYear.toString(),
-                                                    carClass: (_classList.indexOf(_selectedClass.toString())+1).toString(),
-                                                    notifyme: _selectedNotify.toString(),
-                                                    profileID: widget.profileID,
-                                                    ed: _setExaminationDate.text,
-                                                    led:_setLicenseDate.text,
-                                                    movedDistance: 0,
-                                                  );
-                                                  aa.updateCars(car: car,carID: widget.car.id);
+                                                onPressed: () async{
+                                                  setState(() {
+                                                    _isLoading2 = true;
+                                                  });
+                                                  try{
+                                                    Cars car = Cars(
+                                                      make: _carMake.text,
+                                                      model: _carModel.text,
+                                                      year: _selectedYear.toString(),
+                                                      carClass: (_classList.indexOf(_selectedClass.toString())+1).toString(),
+                                                      notifyme: _selectedNotify.toString(),
+                                                      profileID: widget.profileID,
+                                                      ed: _setExaminationDate.text,
+                                                      led:_setLicenseDate.text,
+                                                      movedDistance: 0,
+                                                    );
+                                                    await aa.updateCars(car: car,carID: widget.car.id);
+                                                    int index = widget.myCars.indexWhere((c) => c.id == widget.car.id);
+                                                    if (index != -1) {
+                                                      // Replace the car at the found index
+                                                      widget.myCars[index] = car;
+                                                    } else {
+                                                      // If the car is not found in the list, you could add it if needed
+                                                      widget.myCars.add(car);
+                                                    }
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              CarSelectedPage(
+                                                                userLastName: widget.userLastName,
+                                                                userEmail: widget.userEmail,
+                                                                userName: widget.userName,
+                                                                petrolName: widget.petrolName,
+                                                                liters: widget.liters,
+                                                                itemsNumber:widget.itemsNumber ,
+                                                                date:widget.date ,
+                                                                costs:widget.costs ,
+                                                                currentIndex: widget.currentIndex,
+                                                                myCars:  widget.myCars,
+                                                                profileID: widget.profileID,
+                                                              )
+                                                      ),
+                                                    );
+                                                  }catch(e)
+                                                  {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return AlertDialog(
+                                                          title: const Text("Failed To Update"),
+                                                          content: const Text("Could not Update this car"),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () => Navigator.of(context).pop(),
+                                                              child: const Text('OK'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                  }
+setState(() {
+  _isLoading2 = false;
+});
                                                 },
                                                 style: ElevatedButton.styleFrom(
                                                   backgroundColor: const Color.fromARGB(
@@ -626,7 +794,7 @@ class _EditCars extends State<EditCars> {
                                                       mainAxisSize: MainAxisSize.min,
                                                       children: [
                                                         Text(
-                                                          'Create',
+                                                          'Update',
                                                           style: GoogleFonts.rubik(
                                                             fontWeight: FontWeight.bold,
                                                             color: MainColors.white,
@@ -634,11 +802,14 @@ class _EditCars extends State<EditCars> {
                                                           ),
                                                         ),
                                                         const SizedBox(width: 5),
-                                                        const Icon(Icons.add,
+                                                        const Icon(Icons.update_rounded,
                                                             color: MainColors.white),
                                                       ],
                                                     )),
                                               ),
+                                            ):const CircularProgressIndicator(
+                                              color: MainColors.primary,
+                                              backgroundColor: MainColors.background,
                                             ),
                                           ],
                                         ),
