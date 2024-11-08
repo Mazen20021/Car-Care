@@ -118,8 +118,7 @@ class _EditCars extends State<EditCars> {
             decoration: BoxDecoration(
               color: MainColors.primary.withOpacity(0.8),
             ),
-            child: SingleChildScrollView(
-                child: Column(children: [
+            child: Column(children: [
               const SizedBox(height: 30),
               Row(
                 children: [
@@ -202,8 +201,7 @@ class _EditCars extends State<EditCars> {
                 ],
               ),
               const SizedBox(height: 120),
-              SingleChildScrollView(
-                  child: SizedBox(
+            SizedBox(
                 width: Screen.size.width * 0.88,
                 height: Screen.size.height * 0.686,
                 child: Center(
@@ -213,7 +211,8 @@ class _EditCars extends State<EditCars> {
                         decoration: BoxDecoration(
                             color: MainColors.white,
                             borderRadius: BorderRadius.circular(15)),
-                        child: Column(
+                        child: SingleChildScrollView(child:
+                        Column(
                           children: [
                             const SizedBox(height: 40),
                             SizedBox(
@@ -882,7 +881,7 @@ class _EditCars extends State<EditCars> {
                             )
                           ],
                         ),
-                      ),
+                      )),
                       Transform.translate(
                         offset: Offset(0, -Height.s3_3m()),
                         child: const Image(
@@ -893,7 +892,7 @@ class _EditCars extends State<EditCars> {
                     ],
                   ),
                 ),
-              ))
-            ]))));
+              )
+            ])));
   }
 }

@@ -177,7 +177,7 @@ class _Settings extends State<Settings> {
                   padding: const EdgeInsets.all(16),
                   child: Container(
                     width: Screen.size.width,
-                    height:!_isClosed ?Screen.size.height * 0.17 : Screen.size.height * 0.3,
+                    height:!_isClosed ?Screen.size.height * 0.2 : Screen.size.height * 0.3,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: const [

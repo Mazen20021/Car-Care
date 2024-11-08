@@ -3,7 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class DTO {
   static const String BACKEND_API = 'https://carcareapi.elitesx.work/api';
-  
+
   final Dio api = Dio(BaseOptions(baseUrl: BACKEND_API));
   final _secureStorage = const FlutterSecureStorage();
 

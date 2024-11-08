@@ -7,6 +7,7 @@ import '../Config/constants.dart';
 import '../PopUps/edit_current_car.dart';
 import '../PopUps/popUps.dart';
 import '../Services/car_api.dart';
+import '../Services/check_list_api.dart';
 import 'gas_tracking_page.dart';
 
 class CarSelectedPage extends StatefulWidget {
@@ -21,6 +22,7 @@ class CarSelectedPage extends StatefulWidget {
   final String userEmail;
   final List<Cars> myCars;
   final String profileID;
+  final List<CheckList> upComingChecks;
   const CarSelectedPage(
       {required this.userName,
         required this.currentIndex,
@@ -33,6 +35,7 @@ class CarSelectedPage extends StatefulWidget {
         required this.userLastName,
         required this.myCars,
         required this.profileID,
+        required this.upComingChecks,
         super.key});
 
   @override
@@ -78,6 +81,10 @@ class _CarSelectedPage extends State<CarSelectedPage> {
         }
       }
     }
+  }
+  void loadChecks()
+  {
+
   }
   @override
   Widget build(BuildContext context) {
@@ -484,11 +491,26 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                     AnimatedContainer(
                       duration: const Duration(milliseconds: 220),
                       height: _isExpanded1 ? 250 : 0,
-                      // Adjust the height as needed
                       child: ListView(
                         children: List.generate(5, (index) {
                           return ListTile(
-                            title: Text("Item ${index + 1}"),
+                            title: Column(children: [
+                              Container(
+                                  width: Screen.size.width,
+                                  height: 150,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: MainColors.primary.withOpacity(0.7)), // Red border
+                                    borderRadius: BorderRadius.circular(CustomRadius.xl()),
+                                  ),
+                                  child: Column(children: [
+                                    const SizedBox(height: 10),
+                                   Icon(Icons.handyman_rounded,size: 50,color: MainColors.primary.withOpacity(0.7)),
+                                    Text(""),
+                                    Text(""),
+                                    Text(" Km Left")
+                                  ],)
+                              ),
+                            ],),
                           );
                         }),
                       ),
