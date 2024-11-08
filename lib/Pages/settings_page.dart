@@ -194,14 +194,14 @@ class _Settings extends State<Settings> {
                         const SizedBox(height: 20),
                         Row(
                           children: [
-                            SizedBox(width: 10),
-                            Text("First Name: "),
-                            SizedBox(width: 1),
+                            const SizedBox(width: 10),
+                            const Text("First Name: "),
+                            const SizedBox(width: 1),
                             Text(_changed?_fName.text: widget.userName,style: GoogleFonts.rubik(
                                 color: MainColors.primary,fontSize: 12)),
-                            SizedBox(width: 5),
-                            Text("Last Name: "),
-                            SizedBox(width: 1),
+                            const SizedBox(width: 5),
+                            const Text("Last Name: "),
+                            const SizedBox(width: 1),
                             Text(_changed?_lName.text:widget.userLastName,style: GoogleFonts.rubik(
                               color: MainColors.primary,
                               fontSize: 12
@@ -209,9 +209,9 @@ class _Settings extends State<Settings> {
                           ]),
                         const SizedBox(height: 10),
                         Row(children: [
-                          SizedBox(width: 10),
-                          Text("Email: "),
-                          SizedBox(width: 1),
+                          const SizedBox(width: 10),
+                          const Text("Email: "),
+                          const SizedBox(width: 1),
                           Text(widget.userEmail,style: GoogleFonts.rubik(
                               color: MainColors.primary,
                               fontSize: 12
@@ -231,14 +231,14 @@ class _Settings extends State<Settings> {
                                 ),
                               ),
                             ),
-                            Container(
+                            SizedBox(
                                 width: Screen.size.width,
                                 height: 50,
                                 child: ElevatedButton.icon(
                                     style: ButtonStyle(
-                                      foregroundColor: MaterialStateProperty.all<Color>(Colors.white), // Text color
-                                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 48, 95, 215).withOpacity(0.8)),
-                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                      foregroundColor: WidgetStateProperty.all<Color>(Colors.white), // Text color
+                                      backgroundColor: WidgetStateProperty.all<Color>(const Color.fromARGB(255, 48, 95, 215).withOpacity(0.8)),
+                                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                                         RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(10), // Border radius
                                         ),
@@ -467,14 +467,14 @@ class _Settings extends State<Settings> {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                     width: Screen.size.width,
                         height: 50,
                         child: ElevatedButton.icon(
                             style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white), // Text color
-                              backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 48, 95, 215).withOpacity(0.8)),
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              foregroundColor: WidgetStateProperty.all<Color>(Colors.white), // Text color
+                              backgroundColor: WidgetStateProperty.all<Color>(const Color.fromARGB(255, 48, 95, 215).withOpacity(0.8)),
+                              shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10), // Border radius
                                 ),
@@ -501,9 +501,9 @@ class _Settings extends State<Settings> {
                         ),
                         child: ElevatedButton.icon(
                             style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white), // Text color
-                              backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 254, 246, 254)),
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              foregroundColor: WidgetStateProperty.all<Color>(Colors.white), // Text color
+                              backgroundColor: WidgetStateProperty.all<Color>(const Color.fromARGB(255, 254, 246, 254)),
+                              shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10), // Border radius
                                 ),

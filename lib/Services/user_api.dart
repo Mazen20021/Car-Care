@@ -213,7 +213,6 @@ class UserAPI with ChangeNotifier {
       final token = await dto.getToken();
       await api.put('/auth', data: userInfo.toJson(), options: Options(headers: {"Authorization": "Bearer $token"}),);
       user = userInfo;
-      print("User Updated");
       error = null;
     } on DioError catch (e) {
       error = e.response?.data['error'] ?? 'Failed to update user';
