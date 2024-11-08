@@ -1,11 +1,9 @@
 import 'dart:async';
-
+import 'package:carcare/Services/user_api.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
-import '../Services/APIs.dart';
 import 'forget_password_page.dart';
 
 class Signup extends StatefulWidget {
@@ -26,11 +24,11 @@ class SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
   bool _pObscured = false;
   bool _cPObscured = false;
-  late AuthActions aa;
+  late UserAPI userApi;
 
   @override
   void initState() {
-    aa = AuthActions(context);
+    userApi = UserAPI(context);
     super.initState();
   }
 
@@ -438,7 +436,7 @@ class SignupState extends State<Signup> {
                               setState(() {
                                 _isLoading = true;
                               });
-                              aa.register(
+                              userApi.register(
                                   firstName: _fNameController.text,
                                   lastName: _lNameController.text,
                                   email: _emailController.text,

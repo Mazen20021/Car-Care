@@ -6,8 +6,7 @@ import '../Components/nav_button.dart';
 import '../Config/constants.dart';
 import '../PopUps/edit_current_car.dart';
 import '../PopUps/popUps.dart';
-import '../Services/APIs.dart';
-import 'car_not_selected_page.dart';
+import '../Services/car_api.dart';
 import 'gas_tracking_page.dart';
 
 class CarSelectedPage extends StatefulWidget {

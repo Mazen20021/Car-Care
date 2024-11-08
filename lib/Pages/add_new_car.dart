@@ -1,10 +1,10 @@
-import 'package:carcare/Services/APIs.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
+import '../Services/car_api.dart';
 import 'car_selected_page.dart';
 
 class AddNewCar extends StatefulWidget {
@@ -36,7 +36,7 @@ class _AddCar extends State<AddNewCar> {
   String? _selectedNotify;
   DateTime? _selectedLicenseDate;
   final TextEditingController _setLicenseDate = TextEditingController();
-  late AuthActions aa;
+  late CarAPI carApi;
   List<Cars> myCars = List.empty(growable: true);
   Future<void> _selectLicenseDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -71,7 +71,7 @@ class _AddCar extends State<AddNewCar> {
 
   @override
   void initState() {
-    aa = AuthActions(context);
+    carApi = CarAPI(context);
     super.initState();
   }
 
@@ -567,7 +567,7 @@ class _AddCar extends State<AddNewCar> {
                                             led:_setLicenseDate.text,
                                             movedDistance: 0,
                                           );
-                                          aa.createCar(car);
+                                          carApi.createCar(car);
 
                                           myCars.add(car);
                                           Navigator.push(

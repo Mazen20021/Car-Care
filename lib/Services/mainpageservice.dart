@@ -1,11 +1,12 @@
 import 'package:carcare/Config/constants.dart';
 import 'package:carcare/Pages/car_not_selected_page.dart';
 import 'package:carcare/Pages/login_page.dart';
-import 'package:carcare/Services/APIs.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Pages/car_selected_page.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+
+import 'car_api.dart';
 
 class MainPageService extends StatefulWidget{
   final String userName;
@@ -44,8 +45,8 @@ class _MainPageService extends State<MainPageService> {
   }
 
   Future<FetchCarsResult> getCars() async {
-    AuthActions aa = AuthActions(context);
-    return await aa.fetchCars();
+    CarAPI carApi = CarAPI(context);
+    return await carApi.fetchCars();
   }
 
   @override

@@ -1,12 +1,11 @@
 import 'dart:async';
-
 import 'package:carcare/Config/constants.dart';
 import 'package:carcare/Pages/forget_password_page.dart';
 import 'package:carcare/Pages/signup_page.dart';
+import 'package:carcare/Services/user_api.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/custom_button.dart';
-import '../Services/APIs.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -23,19 +22,19 @@ class _Login extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   bool _isObscured = false;
   bool _ispressed = false;
-  late AuthActions aa;
+  late UserAPI userApi;
   bool _isLoading = false;
 
   @override
   void initState() {
-    aa = AuthActions(context);
-    aa.authorization();
+    userApi = UserAPI(context);
+    userApi.authorization();
     super.initState();
   }
 
 void login(String email,String password)
 {
-  aa.login(email: email, password: password);
+  userApi.login(email: email, password: password);
 }
   @override
   Widget build(BuildContext context) {

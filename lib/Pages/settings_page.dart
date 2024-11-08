@@ -1,11 +1,11 @@
 import 'package:carcare/PopUps/delete_account.dart';
+import 'package:carcare/Services/user_api.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../Components/custom_button.dart';
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
-import '../Services/APIs.dart';
+import '../Services/car_api.dart';
 import 'gas_tracking_page.dart';
 import 'car_selected_page.dart';
 
@@ -47,12 +47,13 @@ class _Settings extends State<Settings> {
   final TextEditingController _fName = TextEditingController();
   final TextEditingController _lName = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  late AuthActions aa;
+  late UserAPI userApi;
   bool _isClosed = false;
+  bool _changed = false;
   @override
   void initState()
   {
-    aa = AuthActions(context);
+    userApi = UserAPI(context);
     super.initState();
   }
 
@@ -81,7 +82,7 @@ class _Settings extends State<Settings> {
                     SizedBox(width: Width.m2d()),
                     GestureDetector(
                       onTap: () {
-                       aa.logout();
+                       userApi.logout();
                       },
                       child: Container(
                         width: ButtonWidth.l3g(),
@@ -176,7 +177,7 @@ class _Settings extends State<Settings> {
                   padding: const EdgeInsets.all(16),
                   child: Container(
                     width: Screen.size.width,
-                    height:!_isClosed ?Screen.size.height * 0.2 : Screen.size.height * 0.3,
+                    height:!_isClosed ?Screen.size.height * 0.17 : Screen.size.height * 0.3,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: const [
@@ -196,17 +197,17 @@ class _Settings extends State<Settings> {
                             SizedBox(width: 10),
                             Text("First Name: "),
                             SizedBox(width: 1),
-                            Text(widget.userName,style: GoogleFonts.rubik(
+                            Text(_changed?_fName.text: widget.userName,style: GoogleFonts.rubik(
                                 color: MainColors.primary,fontSize: 12)),
                             SizedBox(width: 5),
                             Text("Last Name: "),
                             SizedBox(width: 1),
-                            Text(widget.userLastName,style: GoogleFonts.rubik(
+                            Text(_changed?_lName.text:widget.userLastName,style: GoogleFonts.rubik(
                               color: MainColors.primary,
                               fontSize: 12
                             ),),
                           ]),
-                        const SizedBox(height: 5),
+                        const SizedBox(height: 10),
                         Row(children: [
                           SizedBox(width: 10),
                           Text("Email: "),
@@ -216,35 +217,40 @@ class _Settings extends State<Settings> {
                               fontSize: 12
                           ),),
                         ],),
-                        CustomButton(
-                            width: Screen.size.width,
-                            height: 50,
-                            hasGradient: true,
-                            gradientColors: const [
-                              Color.fromARGB(255, 48, 95, 215),
-                              Color.fromARGB(255, 48, 95, 215)
-                            ],
-                            hasImage: true,
-                            imagePath: "assets/image/loginBackground.png",
-                            imageOpacity: 0.1,
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            normalColor: MainColors.transparent,
-                            borderRadius: CustomRadius.md(),
-                            leftPadding: 10,
-                            rightPadding: 10,
-                            topPadding: 15,
-                            bottomPadding: 10,
-                            label: "Edit Profile",
-                            fontSize: Fonts.sm(),
-                            textColor: MainColors.white,
-                            onPressed: () {
-                              setState(() {
-                                _isClosed = true;
-                              });
-                            }),
-                      ],)
-                      :
+                        Padding(padding: const EdgeInsets.fromLTRB(10, 15, 10, 10),
+                          child:Stack(children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10), // Border radius for the image
+                              child: Opacity(
+                                opacity: 0.7, // Adjust opacity as needed
+                                child: Image.asset(
+                                  'assets/image/loginBackground.png', // Replace with your image asset path
+                                  fit: BoxFit.cover,
+                                  width: double.infinity, // Make sure the image covers the button area
+                                  height: 50, // Adjust height as needed for the button size
+                                ),
+                              ),
+                            ),
+                            Container(
+                                width: Screen.size.width,
+                                height: 50,
+                                child: ElevatedButton.icon(
+                                    style: ButtonStyle(
+                                      foregroundColor: MaterialStateProperty.all<Color>(Colors.white), // Text color
+                                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 48, 95, 215).withOpacity(0.8)),
+                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10), // Border radius
+                                        ),
+                                      ),
+                                    ),
+                                    icon: const Icon(Icons.edit),
+                                    label: Text("Edit Profile",style:TextStyle(fontSize: Fonts.sm(), color: MainColors.white,)),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isClosed = true;
+                                      });
+                                    }))],),)]):
                       Form(
                         key: _formKey,
                         child: Column(
@@ -392,8 +398,11 @@ class _Settings extends State<Settings> {
                                         label: "Save",
                                         fontSize:Fonts.s3m(),
                                         textColor: MainColors.white,
-                                        onPressed: () {
+                                        onPressed: () async {
+                                          User user = User(id: widget.profileID, email: widget.userEmail , firstName: _fName.text,lastName: _lName.text);
+                                          await userApi.updateMe(user);
                                           setState(() {
+                                            _changed = true;
                                             _isClosed = false;
                                           });
                                         }),
@@ -444,29 +453,35 @@ class _Settings extends State<Settings> {
                           fontSize: Fonts.md(), color: MainColors.black)),
                 ),
                 const SizedBox(height: 10),
-                CustomButton(
+                Padding(padding: const EdgeInsets.fromLTRB(20, 5, 20, 15),
+                    child:Stack(children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10), // Border radius for the image
+                        child: Opacity(
+                          opacity: 0.7, // Adjust opacity as needed
+                          child: Image.asset(
+                            'assets/image/loginBackground.png', // Replace with your image asset path
+                            fit: BoxFit.cover,
+                            width: double.infinity, // Make sure the image covers the button area
+                            height: 50, // Adjust height as needed for the button size
+                          ),
+                        ),
+                      ),
+                      Container(
                     width: Screen.size.width,
-                    height: 50,
-                    hasGradient: true,
-                    gradientColors: const [
-                      Color.fromARGB(255, 48, 95, 215),
-                      Color.fromARGB(255, 48, 95, 215)
-                    ],
-                    hasImage: true,
-                    imagePath: "assets/image/loginBackground.png",
-                    imageOpacity: 0.1,
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    normalColor: MainColors.transparent,
-                    borderRadius: CustomRadius.md(),
-                    leftPadding: 20,
-                    rightPadding: 20,
-                    topPadding: 5,
-                    bottomPadding: 15,
-                    label: "Edit Repairs Configuration",
-                    fontSize: Fonts.sm(),
-                    textColor: MainColors.white,
-                    onPressed: () {}),
+                        height: 50,
+                        child: ElevatedButton.icon(
+                            style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white), // Text color
+                              backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 48, 95, 215).withOpacity(0.8)),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10), // Border radius
+                                ),
+                              ),
+                            ),
+                            label: Text("Edit Repairs Configuration",style:TextStyle(fontSize: Fonts.sm(), color: MainColors.white,)),
+                            onPressed: () {}))],),),
                 const SizedBox(height: 15),
                 Transform.translate(
                   offset: Offset(-Width.s9m(), 0),
@@ -475,60 +490,49 @@ class _Settings extends State<Settings> {
                           fontSize: Fonts.md(), color: MainColors.black)),
                 ),
                 const SizedBox(height: 10),
-                GestureDetector(
-                  onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              DeleteAccount(
-                                profileID: widget.profileID,
-                                myCars: widget.myCars,
-                                userEmail: widget.userEmail ,
-                                userLastName: widget.userLastName ,
-                                userName:widget.userName,
-                                isSub: widget.isSub,
-                                carIndex: widget.carIndex,
-                                costs: widget.costs,
-                                date:widget.date ,
-                                itemsNumber: widget.itemsNumber,
-                                liters: widget.liters,
-                                petrolName: widget.petrolName,
-                              )),
-                    );
-                  },
-                    child: Container(
-                  width: Width.xxl(),
-                  height: 67,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: MainColors.danger.withOpacity(0.5)), // Red border
-                    borderRadius: BorderRadius.circular(CustomRadius.md()),
-
-                  ),
-                  child: CustomButton(
-                    width: Screen.size.width,
-                    height: 50,
-                    hasGradient: true,
-                    gradientColors: const [
-                      Color.fromARGB(255, 254, 246, 254),
-                      Color.fromARGB(255, 254, 246, 254)
-                    ],
-                    hasImage: false,
-                    imagePath: "",
-                    imageOpacity: 0.1,
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    normalColor: MainColors.transparent,
-                    borderRadius: CustomRadius.md(),
-                    leftPadding: 20,
-                    rightPadding: 20,
-                    topPadding: 5,
-                    bottomPadding: 15,
-                    label: "Delete My Account",
-                    fontSize: Fonts.sm(),
-                    textColor: MainColors.danger.withOpacity(0.5),
-                    ),
-                ))],
+                Padding(padding: const EdgeInsets.fromLTRB(20, 5, 20, 15),
+                  child:
+                    Container(
+                        width: Screen.size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: MainColors.danger.withOpacity(0.5)), // Red border
+                          borderRadius: BorderRadius.circular(CustomRadius.md()),
+                        ),
+                        child: ElevatedButton.icon(
+                            style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white), // Text color
+                              backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 254, 246, 254)),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10), // Border radius
+                                ),
+                              ),
+                            ),
+                            icon:  Icon(Icons.delete_rounded,color: MainColors.danger.withOpacity(0.5)),
+                            label: Text("Delete My Account",style:TextStyle(fontSize: Fonts.sm(), color: MainColors.danger.withOpacity(0.5),)),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        DeleteAccount(
+                                          profileID: widget.profileID,
+                                          myCars: widget.myCars,
+                                          userEmail: widget.userEmail ,
+                                          userLastName: widget.userLastName ,
+                                          userName:widget.userName,
+                                          isSub: widget.isSub,
+                                          carIndex: widget.carIndex,
+                                          costs: widget.costs,
+                                          date:widget.date ,
+                                          itemsNumber: widget.itemsNumber,
+                                          liters: widget.liters,
+                                          petrolName: widget.petrolName,
+                                        )),
+                              );
+                            }),),),
+              ],
             ),
           ),
         ],
@@ -566,9 +570,9 @@ class _Settings extends State<Settings> {
                               builder: (context) =>
                                   CarSelectedPage(
                                     myCars: widget.myCars,
-                                    userLastName: widget.userLastName,
+                                    userLastName:_changed?_lName.text: widget.userLastName,
                                     userEmail: widget.userEmail,
-                                    userName:widget.userName,
+                                    userName:_changed?_fName.text:widget.userName,
                                     currentIndex: widget.carIndex,
                                     costs: widget.costs,
                                     date:widget.date ,

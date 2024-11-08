@@ -1,10 +1,11 @@
 import 'package:carcare/Pages/settings_page.dart';
-import 'package:carcare/Services/APIs.dart';
+import 'package:carcare/Services/user_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
+import '../Services/car_api.dart';
 
 
 class DeleteAccount extends StatefulWidget {
@@ -41,11 +42,11 @@ class DeleteAccount extends StatefulWidget {
 }
 
 class _DeleteAccount extends State<DeleteAccount> {
-  late AuthActions aa;
+  late UserAPI userApi;
   @override
   void initState()
   {
-    aa = AuthActions(context);
+    userApi = UserAPI(context);
     super.initState();
   }
   @override
@@ -220,7 +221,7 @@ class _DeleteAccount extends State<DeleteAccount> {
                                                       Screen.size.width * 0.425,
                                                   child: ElevatedButton(
                                                     onPressed: () {
-                                                      aa.deleteAccount();
+                                                      userApi.deleteAccount();
                                                     },
                                                     style: ElevatedButton
                                                         .styleFrom(
