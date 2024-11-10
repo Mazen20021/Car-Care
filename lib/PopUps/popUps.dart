@@ -7,6 +7,7 @@ import '../Config/constants.dart';
 import '../Pages/car_repair_page.dart';
 import '../Pages/car_selected_page.dart';
 import '../Services/car_api.dart';
+import '../Services/repair_api.dart';
 
 
 class PopUpDialogs extends StatefulWidget {
@@ -35,6 +36,8 @@ class PopUpDialogs extends StatefulWidget {
   final String userEmail;
   final List<Cars> myCars;
   final String profileID;
+  final List<RepairType> upComingChecks;
+  final List<String> repairItems;
   const PopUpDialogs(
       {required this.userName,
         required this.profileID,
@@ -60,6 +63,8 @@ class PopUpDialogs extends StatefulWidget {
       this.rightButtonText = "Submit",
         required this.userEmail , required this.userLastName,
         required this.myCars,
+        required this.upComingChecks,
+        required this.repairItems,
       super.key});
 
   @override
@@ -202,6 +207,8 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => CarRepairPage(
+                                            repairItems: widget.repairItems,
+                                            upComingChecks: widget.upComingChecks,
                                             profileID: widget.profileID,
                                             myCars: widget.myCars,
                                             userEmail: widget.userEmail ,
@@ -219,6 +226,7 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => CarSelectedPage(
+                                            upComingChecks: widget.upComingChecks,
                                             profileID: widget.profileID,
                                             myCars: widget.myCars,
                                             userEmail: widget.userEmail ,
@@ -410,7 +418,25 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                                       Screen.size.width * 0.43,
                                                   child: ElevatedButton(
                                                       onPressed: () {
-                                                        Navigator.pop(context);
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) => CarRepairPage(
+                                                                repairItems: widget.repairItems,
+                                                                upComingChecks: widget.upComingChecks,
+                                                                profileID: widget.profileID,
+                                                                myCars: widget.myCars,
+                                                                userEmail: widget.userEmail ,
+                                                                userLastName: widget.userLastName ,
+                                                                userName: widget.userName,
+                                                                costs: widget.costs,
+                                                                date: widget.date,
+                                                                itemsNumber: widget.itemsNumber,
+                                                                liters: widget.liters,
+                                                                petrolName: widget.petrolName,
+                                                                carIndex: widget.carIndex,
+                                                              )),
+                                                        );
                                                       },
                                                       style: ElevatedButton
                                                           .styleFrom(
@@ -464,7 +490,30 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                                       Screen.size.width * 0.413,
                                                   child: ElevatedButton(
                                                     onPressed: () {
-                                                      // Add your action for the second button
+                                                      List<String> myRepairs = widget.repairItems;
+                                                      if(!myRepairs.contains(_repairName.text))
+                                                        {
+                                                          myRepairs.add(_repairName.text);
+                                                        }
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) => CarRepairPage(
+                                                              repairItems: myRepairs,
+                                                              upComingChecks: widget.upComingChecks,
+                                                              profileID: widget.profileID,
+                                                              myCars: widget.myCars,
+                                                              userEmail: widget.userEmail ,
+                                                              userLastName: widget.userLastName ,
+                                                              userName: widget.userName,
+                                                              costs: widget.costs,
+                                                              date: widget.date,
+                                                              itemsNumber: widget.itemsNumber,
+                                                              liters: widget.liters,
+                                                              petrolName: widget.petrolName,
+                                                              carIndex: widget.carIndex,
+                                                            )),
+                                                      );
                                                     },
                                                     style: ElevatedButton
                                                         .styleFrom(
@@ -691,6 +740,7 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                                                   builder:
                                                                       (context) =>
                                                                           CarSelectedPage(
+                                                                            upComingChecks: widget.upComingChecks,
                                                                             profileID: widget.profileID,
                                                                             myCars: widget.myCars,
                                                                             userEmail: widget.userEmail ,
@@ -1272,6 +1322,7 @@ class _PopUpDialogs extends State<PopUpDialogs> {
                                                           MaterialPageRoute(
                                                               builder: (context) =>
                                                                   CarSelectedPage(
+                                                                    upComingChecks: widget.upComingChecks,
                                                                     profileID: widget.profileID,
                                                                     myCars: widget.myCars,
                                                                     userEmail: widget.userEmail ,

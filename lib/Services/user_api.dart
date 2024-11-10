@@ -1,5 +1,6 @@
 import 'package:carcare/Pages/login_page.dart';
 import 'package:carcare/Services/car_api.dart';
+import 'package:carcare/Services/repair_api.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import '../Utilities/dto.dart';
@@ -17,7 +18,7 @@ class UserAPI with ChangeNotifier {
   final Dio api;
   final BuildContext context;
   late CarAPI carApi ;
-
+  late RepairApi repairApi;
   UserAPI(this.context)
       : api = Dio(BaseOptions(
     baseUrl: DTO.BACKEND_API,
@@ -56,6 +57,7 @@ class UserAPI with ChangeNotifier {
 
   Future<void> authorization() async {
     carApi = CarAPI(context);
+    repairApi = RepairApi(context);
     await setLoading(true);
     try {
       final response = await api.get('/auth', options: Options(

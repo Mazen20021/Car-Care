@@ -6,6 +6,7 @@ import '../Components/nav_button.dart';
 import '../Config/constants.dart';
 import '../Config/repair_list_data.dart';
 import '../Services/car_api.dart';
+import '../Services/repair_api.dart';
 import 'car_selected_page.dart';
 
 class CarGasPage extends StatefulWidget {
@@ -22,6 +23,7 @@ class CarGasPage extends StatefulWidget {
   final VoidCallback onPressed;
   final List<Cars> myCars;
   final String profileID;
+  final List<RepairType> upComingChecks;
   const CarGasPage({
     required this.carIndex ,
     required this.userName ,
@@ -35,6 +37,7 @@ class CarGasPage extends StatefulWidget {
     required this.userEmail , required this.userLastName,
     required this.myCars,
     required this.profileID,
+    required this.upComingChecks,
     super.key});
 
   @override
@@ -47,7 +50,7 @@ class _CarRepairPage extends State<CarGasPage> {
   final List<String> imagesPath = List<String>.empty(growable: true);
   late final PageController _pageController;
   bool _isExpanded1 = false;
-  List<RepairItem> repairDataList = [];
+  List<GasItem> gasDataList = [];
   double itemIndex = 50;
   int pressedIndex = 0;
 
@@ -70,8 +73,8 @@ class _CarRepairPage extends State<CarGasPage> {
       for(int i =0 ; i<widget.itemsNumber;i++)
         {
           itemIndex += 28;
-          repairDataList.add(
-            RepairItem(
+          gasDataList.add(
+            GasItem(
               name: widget.petrolName,
               date: widget.date,
               km: widget.liters,
@@ -79,7 +82,7 @@ class _CarRepairPage extends State<CarGasPage> {
             ),
           );
         }
-      _isExpanded1 = repairDataList.isNotEmpty;
+      _isExpanded1 = gasDataList.isNotEmpty;
     });
   }
 
@@ -101,6 +104,7 @@ class _CarRepairPage extends State<CarGasPage> {
                       MaterialPageRoute(
                           builder: (context) =>
                               CarSelectedPage(
+                                upComingChecks: widget.upComingChecks,
                                 profileID: widget.profileID,
                                 myCars: widget.myCars,
                                 userEmail: widget.userEmail ,
@@ -276,6 +280,7 @@ class _CarRepairPage extends State<CarGasPage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>  CarADDGasPage(
+                                  upComingChecks: widget.upComingChecks,
                                   profileID: widget.profileID,
                                   myCars: widget.myCars,
                                   userEmail: widget.userEmail ,
@@ -307,11 +312,11 @@ class _CarRepairPage extends State<CarGasPage> {
                         Transform.translate(offset:  Offset(-Width.x3s(), Height.s3_1m()),
                           child: AnimatedContainer(
                               duration: const Duration(milliseconds: 220),
-                              height: _isExpanded1 ? (repairDataList.isEmpty ? 0 : itemIndex) : 0,
+                              height: _isExpanded1 ? (gasDataList.isEmpty ? 0 : itemIndex) : 0,
                               child: ListView.builder(
-                                itemCount: repairDataList.length,
+                                itemCount: gasDataList.length,
                                 itemBuilder: (context, index) {
-                                  RepairItem item = repairDataList[index];
+                                  GasItem item = gasDataList[index];
                                   return ListTile(
                                     title: Container(
                                       decoration:  const BoxDecoration(
@@ -361,7 +366,7 @@ class _CarRepairPage extends State<CarGasPage> {
                                                         ),
                                                         onPressed: () {
                                                           setState(() {
-                                                            repairDataList.removeAt(index);
+                                                            gasDataList.removeAt(index);
                                                           });
                                                         },
                                                       ),
@@ -416,6 +421,7 @@ class _CarRepairPage extends State<CarGasPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarSelectedPage(
+                                    upComingChecks: widget.upComingChecks,
                                     profileID: widget.profileID,
                                     myCars: widget.myCars,
                                     userEmail: widget.userEmail ,
@@ -474,6 +480,7 @@ class _CarRepairPage extends State<CarGasPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   Settings(
+                                    upComingChecks: widget.upComingChecks,
                                     profileID: widget.profileID,
                                     myCars: widget.myCars,
                                     userEmail: widget.userEmail ,

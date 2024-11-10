@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
+import '../Config/repair_list_data.dart';
 import '../PopUps/edit_current_car.dart';
 import '../PopUps/popUps.dart';
 import '../Services/car_api.dart';
-import '../Services/check_list_api.dart';
+import '../Services/repair_api.dart';
 import 'gas_tracking_page.dart';
 
 class CarSelectedPage extends StatefulWidget {
@@ -22,7 +23,7 @@ class CarSelectedPage extends StatefulWidget {
   final String userEmail;
   final List<Cars> myCars;
   final String profileID;
-  final List<CheckList> upComingChecks;
+  final List<RepairType> upComingChecks;
   const CarSelectedPage(
       {required this.userName,
         required this.currentIndex,
@@ -52,6 +53,28 @@ class _CarSelectedPage extends State<CarSelectedPage> {
   int carIndex = 0;
   bool _isExpanded1 = false;
   bool _isExpanded2 = false;
+  List<RepairItem> repairDataList = [];
+  double itemIndex = 50;
+  int pressedIndex = 0;
+
+  void addRepairColumn() {
+    setState(() {
+      for(int i = 0 ; i < widget.upComingChecks.length; i++)
+      {
+        itemIndex += 28;
+        repairDataList.add(
+          RepairItem(
+            name: widget.upComingChecks[i].name,
+            id:  widget.upComingChecks[i].id,
+            profileId: widget.profileID,
+            reminderKm:  widget.upComingChecks[i].reminderKm,
+          ),
+        );
+      }
+      _isExpanded1 = repairDataList.isNotEmpty;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -59,6 +82,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
     _pageController =
         PageController(viewportFraction: 2.0, initialPage: widget.currentIndex);
     loadMyCars();
+    addRepairColumn();
   }
 
   @override
@@ -143,6 +167,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                 MaterialPageRoute(
                 builder: (context) =>
                 EditCars(
+                  upComingChecks: widget.upComingChecks,
                   currentIndex: widget.currentIndex,
                   costs: widget.costs,
                   date: widget.date,
@@ -326,6 +351,8 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                     MaterialPageRoute(
                                         builder: (context) =>
                                         PopUpDialogs(
+                                          repairItems: [],
+                                          upComingChecks: widget.upComingChecks,
                                           profileID: widget.profileID,
                                           myCars: widget.myCars,
                                           userEmail: widget.userEmail ,
@@ -377,6 +404,8 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => CarRepairPage(
+                                repairItems: const [],
+                                upComingChecks: widget.upComingChecks,
                                 profileID: widget.profileID,
                                 myCars: widget.myCars,
                                 userEmail: widget.userEmail ,
@@ -489,32 +518,47 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                       ],
                     ),
                     AnimatedContainer(
-                      duration: const Duration(milliseconds: 220),
-                      height: _isExpanded1 ? 250 : 0,
-                      child: ListView(
-                        children: List.generate(5, (index) {
-                          return ListTile(
-                            title: Column(children: [
-                              Container(
-                                  width: Screen.size.width,
-                                  height: 150,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: MainColors.primary.withOpacity(0.7)), // Red border
-                                    borderRadius: BorderRadius.circular(CustomRadius.xl()),
+                        duration: const Duration(milliseconds: 220),
+                        height: _isExpanded1 ? (repairDataList.isEmpty ? 0 : itemIndex) : 0,
+                        child: ListView.builder(
+                          itemCount: repairDataList.length,
+                          itemBuilder: (context, index) {
+                            RepairItem item = repairDataList[index];
+                            return ListTile(
+                              title: Container(
+                                decoration:  const BoxDecoration(
+                                  color: MainColors.listBackground,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5),
+                                    bottomLeft: Radius.circular(5),
+                                    bottomRight: Radius.circular(10),
+                                    topRight: Radius.circular(10),
                                   ),
-                                  child: Column(children: [
-                                    const SizedBox(height: 10),
-                                   Icon(Icons.handyman_rounded,size: 50,color: MainColors.primary.withOpacity(0.7)),
-                                    Text(""),
-                                    Text(""),
-                                    Text(" Km Left")
-                                  ],)
+                                ),
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child:  Column(children: [
+                                    Container(
+                                        width: Screen.size.width,
+                                        height: 150,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: MainColors.primary.withOpacity(0.7)), // Red border
+                                          borderRadius: BorderRadius.circular(CustomRadius.xl()),
+                                        ),
+                                        child: Column(children: [
+                                          const SizedBox(height: 10),
+                                          Icon(Icons.handyman_rounded,size: 50,color: MainColors.primary.withOpacity(0.7)),
+                                          Text(""),
+                                          Text(""),
+                                          Text(" Km Left")
+                                        ],)
+                                    ),
+                                  ],),
+                                ),
                               ),
-                            ],),
-                          );
-                        }),
-                      ),
-                    ),
+                            );
+                          },
+                        )),
                   ],
                 ),
               ),
@@ -650,6 +694,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarGasPage(
+                                    upComingChecks: widget.upComingChecks,
                                     profileID: widget.profileID,
                                     myCars: widget.myCars,
                                     userLastName: widget.userLastName,
@@ -684,6 +729,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   Settings(
+                                    upComingChecks: widget.upComingChecks,
                                     profileID: widget.profileID,
                                     myCars: widget.myCars,
                                     userLastName: widget.userLastName,

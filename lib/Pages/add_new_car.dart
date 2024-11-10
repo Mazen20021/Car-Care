@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
 import '../Services/car_api.dart';
+import '../Services/repair_api.dart';
 import 'car_selected_page.dart';
 
 class AddNewCar extends StatefulWidget {
@@ -13,7 +14,8 @@ class AddNewCar extends StatefulWidget {
   final int currentIndex;
   final String userLastName;
   final String userEmail;
-  const AddNewCar({required this.userEmail , required this.userLastName, required this.profileID,required this.userName, required this.currentIndex, super.key});
+  final List<RepairType> upComingChecks;
+  const AddNewCar({required this.userEmail ,required this.upComingChecks, required this.userLastName, required this.profileID,required this.userName, required this.currentIndex, super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -48,7 +50,7 @@ class _AddCar extends State<AddNewCar> {
     if (picked != null && picked != _selectedLicenseDate) {
       setState(() {
         _selectedLicenseDate = picked;
-        _setLicenseDate.text = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(_selectedLicenseDate!);  // Display format
+        _setLicenseDate.text = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(_selectedLicenseDate!.toLocal());  // Display format
       });
     }
   }
@@ -62,7 +64,7 @@ class _AddCar extends State<AddNewCar> {
     if (picked != null && picked != _selectedExaminationDate) {
       setState(() {
         _selectedExaminationDate = picked;
-        _setExaminationDate.text = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(_selectedExaminationDate!);  // Display format
+        _setExaminationDate.text = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(_selectedExaminationDate!.toLocal());  // Display format
       });
     }
   }
@@ -575,6 +577,7 @@ class _AddCar extends State<AddNewCar> {
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     CarSelectedPage(
+                                                      upComingChecks: widget.upComingChecks,
                                                       userLastName: widget.userLastName,
                                                       userEmail: widget.userEmail,
                                                       userName: widget.userName,

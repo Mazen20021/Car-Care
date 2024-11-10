@@ -28,6 +28,7 @@ class CarAPI with ChangeNotifier {
     print("Status code: ${e.response?.statusCode ?? 'No Status Code'}");
     print("Dio error message: ${e.message}");
   }
+
   Future<void> deleteCars({required String carID}) async {
     await setLoading(true);
     try {
@@ -213,28 +214,6 @@ class CarClass {
   }
 }
 
-class RepairType {
-  final String id;
-  final String name;
-  final int reminderKm;
-  final String? profileId;
-
-  RepairType({
-    required this.id,
-    required this.name,
-    required this.reminderKm,
-    this.profileId,
-  });
-
-  factory RepairType.fromJson(Map<String, dynamic> json) {
-    return RepairType(
-      id: json['id'],
-      name: json['name'],
-      reminderKm: json['reminder_km'],
-      profileId: json['profileId'],
-    );
-  }
-}
 
 void showErrorDialog(BuildContext context, String error) {
   showDialog(

@@ -94,6 +94,7 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                     MaterialPageRoute(
                         builder: (context) =>
                          AddNewCar(profileID: widget.profileID,
+                           upComingChecks: const [],
                            userLastName: widget.userLastName,
                            userEmail: widget.userEmail,
                            userName: widget.userName,
@@ -548,8 +549,9 @@ class _CarNotSelectedPage extends State<CarNotSelectedPage> {
                             MaterialPageRoute(
                                 builder: (context) =>
                                     Settings(
+                                      upComingChecks: const [],
                                       profileID: widget.profileID,
-                                      myCars: [],
+                                      myCars: const [],
                                       userLastName: widget.userLastName,
                                       userEmail: widget.userEmail,
                                         userName:widget.userName,

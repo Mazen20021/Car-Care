@@ -9,6 +9,7 @@ import '../Components/nav_button.dart';
 import '../Config/constants.dart';
 import '../Config/repair_list_data.dart';
 import '../Services/car_api.dart';
+import '../Services/repair_api.dart';
 import 'car_selected_page.dart';
 
 class CarADDGasPage extends StatefulWidget {
@@ -25,6 +26,7 @@ class CarADDGasPage extends StatefulWidget {
   final VoidCallback onPressed;
   final List<Cars> myCars;
   final String profileID;
+  final List<RepairType> upComingChecks;
   const CarADDGasPage(
       {required this.carIndex,
       required this.userName,
@@ -38,6 +40,7 @@ class CarADDGasPage extends StatefulWidget {
         required this.myCars,
         required this.userEmail , required this.userLastName,
         required this.profileID,
+        required this.upComingChecks,
       super.key});
 
   @override
@@ -49,7 +52,7 @@ class CarADDGasPage extends StatefulWidget {
 class _CarRepairPage extends State<CarADDGasPage> {
   final List<String> imagesPath = List<String>.empty(growable: true);
   late final PageController _pageController;
-  List<RepairItem> repairDataList = [];
+  List<GasItem> repairDataList = [];
   DateTime? _selectedDate;
   final TextEditingController _setDate = TextEditingController();
   final TextEditingController _gasLiter = TextEditingController();
@@ -103,6 +106,7 @@ class _CarRepairPage extends State<CarADDGasPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => CarGasPage(
+                          upComingChecks: widget.upComingChecks,
                           profileID: widget.profileID,
                           myCars: widget.myCars,
                           userEmail: widget.userEmail ,
@@ -517,6 +521,7 @@ class _CarRepairPage extends State<CarADDGasPage> {
                       MaterialPageRoute(
                           builder: (context) =>
                               CarGasPage(
+                                upComingChecks: widget.upComingChecks,
                                 profileID: widget.profileID,
                                 myCars: widget.myCars,
                                 userEmail: widget.userEmail ,
@@ -565,6 +570,7 @@ class _CarRepairPage extends State<CarADDGasPage> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarGasPage(
+                                    upComingChecks: widget.upComingChecks,
                                     profileID: widget.profileID,
                                     myCars: widget.myCars,
                                     userEmail: widget.userEmail ,
@@ -621,6 +627,7 @@ class _CarRepairPage extends State<CarADDGasPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => CarSelectedPage(
+                                upComingChecks: widget.upComingChecks,
                                 profileID: widget.profileID,
                                 myCars: widget.myCars,
                                 userEmail: widget.userEmail ,
@@ -679,6 +686,7 @@ class _CarRepairPage extends State<CarADDGasPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => Settings(
+                                upComingChecks: widget.upComingChecks,
                                 profileID: widget.profileID,
                                 myCars: widget.myCars,
                                 userEmail: widget.userEmail ,

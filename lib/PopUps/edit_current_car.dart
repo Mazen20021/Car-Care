@@ -1,13 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
 import '../Pages/car_not_selected_page.dart';
 import '../Pages/car_selected_page.dart';
 import '../Services/car_api.dart';
+import '../Services/repair_api.dart';
 
 class EditCars extends StatefulWidget {
   final String profileID;
@@ -24,7 +23,7 @@ class EditCars extends StatefulWidget {
   final int itemsNumber;
   final String userLastName;
   final String userEmail;
-
+  final List<RepairType> upComingChecks;
   const EditCars(
       {required this.car,
       required this.profileID,
@@ -40,6 +39,7 @@ class EditCars extends StatefulWidget {
       required this.itemsNumber,
       required this.userEmail,
       required this.userLastName,
+        required this.upComingChecks,
       super.key});
 
   @override
@@ -183,6 +183,7 @@ class _EditCars extends State<EditCars> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => CarSelectedPage(
+                                  upComingChecks: widget.upComingChecks,
                                       userLastName: widget.userLastName,
                                       userEmail: widget.userEmail,
                                       userName: widget.userName,
@@ -607,6 +608,7 @@ class _EditCars extends State<EditCars> {
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       CarSelectedPage(
+                                                        upComingChecks: widget.upComingChecks,
                                                         userLastName:
                                                             widget.userLastName,
                                                         userEmail:
@@ -679,6 +681,7 @@ class _EditCars extends State<EditCars> {
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       CarSelectedPage(
+                                                        upComingChecks: widget.upComingChecks,
                                                         userLastName:
                                                             widget.userLastName,
                                                         userEmail:
@@ -778,6 +781,7 @@ class _EditCars extends State<EditCars> {
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             CarSelectedPage(
+                                                              upComingChecks: widget.upComingChecks,
                                                               userLastName: widget
                                                                   .userLastName,
                                                               userEmail: widget

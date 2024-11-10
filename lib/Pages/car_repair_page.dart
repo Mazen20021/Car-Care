@@ -7,6 +7,7 @@ import '../Config/constants.dart';
 import '../Config/repair_list_data.dart';
 import '../PopUps/popUps.dart';
 import '../Services/car_api.dart';
+import '../Services/repair_api.dart';
 import 'car_selected_page.dart';
 
 class CarRepairPage extends StatefulWidget {
@@ -21,6 +22,8 @@ class CarRepairPage extends StatefulWidget {
   final String userEmail;
   final List<Cars> myCars;
   final String profileID;
+  final List<RepairType> upComingChecks;
+  final List<String> repairItems;
   const CarRepairPage(
       {required this.carIndex,
       required this.userName,
@@ -32,6 +35,8 @@ class CarRepairPage extends StatefulWidget {
         required this.userEmail , required this.userLastName,
         required this.myCars,
         required this.profileID,
+        required this.upComingChecks,
+        required this.repairItems,
       super.key});
 
   @override
@@ -51,8 +56,22 @@ class _CarRepairPage extends State<CarRepairPage> {
   final TextEditingController _repairName = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String? _selectedValue;
-  final List<String> _items = ['Gas', 'Fix', 'Dox', 'Lox'];
-  List<RepairItem> repairDataList = [];
+  late List<String> _items = ['Oil Change',
+    'Brake Repair',
+    'Tire Replacement',
+    'Battery Replacement',
+    'Transmission Repair',
+    'Engine Repair',
+    'Suspension Repair',
+    'Alignment',
+    'Radiator Repair',
+    'Air Conditioning Service',
+    'Fuel System Repair',
+    'Exhaust System Repair',
+    'Electrical System Repair',
+    'Clutch Replacement',
+    'Timing Belt Replacement'];
+  List<GasItem> repairDataList = [];
   int addedItems = 0;
   double itemIndex = 50;
   int pressedIndex = 0;
@@ -62,6 +81,11 @@ class _CarRepairPage extends State<CarRepairPage> {
     super.initState();
     _pageController =
         PageController(viewportFraction: 2.0, initialPage: widget.carIndex);
+    if(widget.repairItems.isNotEmpty)
+      {
+        print("is not empty");
+      _items = widget.repairItems;
+      }
   }
 
   @override
@@ -75,7 +99,7 @@ class _CarRepairPage extends State<CarRepairPage> {
       addedItems++;
       itemIndex += 10;
       repairDataList.add(
-        RepairItem(
+        GasItem(
           name: _selectedValue.toString(),
           date: _setDate.text,
           km: "${_kmRepair.text} KM",
@@ -117,6 +141,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => CarSelectedPage(
+                            upComingChecks: widget.upComingChecks,
                             profileID: widget.profileID,
                             myCars: widget.myCars,
                             userLastName: widget.userLastName,
@@ -273,7 +298,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                         child: ListView.builder(
                           itemCount: repairDataList.length,
                           itemBuilder: (context, index) {
-                            RepairItem item = repairDataList[index];
+                            GasItem item = repairDataList[index];
                             return ListTile(
                                 title: Transform.translate(
                               offset: const Offset(-16.5, 0),
@@ -543,7 +568,6 @@ class _CarRepairPage extends State<CarRepairPage> {
                           const SizedBox(height: 13),
                           SizedBox(
                             width: Screen.size.width * 0.93,
-                            // Adjust the width to your preference
                             child: DropdownButtonFormField<String>(
                               decoration: InputDecoration(
                                 label: const Text("Selected Repair"),
@@ -571,8 +595,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                               }).toList(),
                               onChanged: (String? newValue) {
                                 setState(() {
-                                  _selectedValue =
-                                      newValue; // Update the selected value
+                                  _selectedValue = newValue; // Update the selected value
                                 });
                               },
                               validator: (value) {
@@ -599,8 +622,9 @@ class _CarRepairPage extends State<CarRepairPage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-
                                               PopUpDialogs(
+                                                repairItems: _items,
+                                                upComingChecks: widget.upComingChecks,
                                                 profileID: widget.profileID,
                                                 myCars: widget.myCars,
                                                 userEmail: widget.userEmail ,
@@ -718,6 +742,7 @@ class _CarRepairPage extends State<CarRepairPage> {
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 CarSelectedPage(
+                                                  upComingChecks: widget.upComingChecks,
                                                   profileID: widget.profileID,
                                                   myCars: widget.myCars,
                                                   userEmail: widget.userEmail ,

@@ -1,11 +1,11 @@
 import 'package:carcare/Pages/settings_page.dart';
 import 'package:carcare/Services/user_api.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/custom_button.dart';
 import '../Config/constants.dart';
 import '../Services/car_api.dart';
+import '../Services/repair_api.dart';
 
 
 class DeleteAccount extends StatefulWidget {
@@ -21,6 +21,7 @@ class DeleteAccount extends StatefulWidget {
   final String userEmail;
   final List<Cars> myCars;
   final String profileID;
+  final List<RepairType> upComingChecks;
   const DeleteAccount(
       {required this.isSub,
         required this.profileID,
@@ -33,6 +34,7 @@ class DeleteAccount extends StatefulWidget {
       required this.itemsNumber,
         required this.userEmail , required this.userLastName,
         required this.myCars,
+        required this.upComingChecks,
       super.key});
 
   @override
@@ -107,6 +109,7 @@ class _DeleteAccount extends State<DeleteAccount> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Settings(
+                                    upComingChecks: widget.upComingChecks,
                                     profileID: widget.profileID,
                                     myCars: widget.myCars,
                                     userEmail: widget.userEmail ,
@@ -173,6 +176,7 @@ class _DeleteAccount extends State<DeleteAccount> {
                                                           context,
                                                           MaterialPageRoute(
                                                               builder: (context) => Settings(
+                                                                upComingChecks: widget.upComingChecks,
                                                                 profileID: widget.profileID,
                                                                 myCars: widget.myCars,
                                                                 userEmail: widget.userEmail ,

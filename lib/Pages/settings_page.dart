@@ -6,6 +6,7 @@ import '../Components/custom_button.dart';
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
 import '../Services/car_api.dart';
+import '../Services/repair_api.dart';
 import 'gas_tracking_page.dart';
 import 'car_selected_page.dart';
 
@@ -23,6 +24,7 @@ class Settings extends StatefulWidget {
   final int itemsNumber;
   final List<Cars> myCars;
   final String profileID;
+  final List<RepairType> upComingChecks;
   const Settings({required this.isSub,
     required this.userName,
     required this.carIndex,
@@ -35,6 +37,7 @@ class Settings extends StatefulWidget {
     required this.userLastName,
     required this.myCars,
     required this.profileID,
+    required this.upComingChecks,
     super.key});
 
   @override
@@ -517,6 +520,7 @@ class _Settings extends State<Settings> {
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         DeleteAccount(
+                                          upComingChecks: widget.upComingChecks,
                                           profileID: widget.profileID,
                                           myCars: widget.myCars,
                                           userEmail: widget.userEmail ,
@@ -569,6 +573,7 @@ class _Settings extends State<Settings> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarSelectedPage(
+                                    upComingChecks: widget.upComingChecks,
                                     myCars: widget.myCars,
                                     userLastName:_changed?_lName.text: widget.userLastName,
                                     userEmail: widget.userEmail,
@@ -614,6 +619,7 @@ class _Settings extends State<Settings> {
                           MaterialPageRoute(
                               builder: (context) =>
                                   CarGasPage(
+                                    upComingChecks: widget.upComingChecks,
                                     profileID: widget.profileID,
                                     myCars: widget.myCars,
                                     userLastName: widget.userLastName,
