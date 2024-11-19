@@ -24,7 +24,7 @@ class _Login extends State<Login> {
   bool _ispressed = false;
   late UserAPI userApi;
   bool _isLoading = false;
-
+  bool _isFilled = false;
   @override
   void initState() {
     userApi = UserAPI(context);
@@ -138,6 +138,7 @@ void login(String email,String password)
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
+                              _isFilled = false;
                               return 'Please Enter Your Email';
                             }
                             return null;
@@ -203,6 +204,7 @@ void login(String email,String password)
                           obscureText: !_isObscured,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
+                              _isFilled = false;
                               return 'Please Enter Your Password';
                             }
                             return null;
@@ -234,16 +236,18 @@ void login(String email,String password)
                           fontSize: Fonts.lg(),
                           textColor: MainColors.white,
                           onPressed: () {
-                            setState(() {
-                              _isLoading = true;
-                            });
-                            login( _emailController.text, _passwordController.text);
-                            Timer(const Duration(seconds: 2), () {
-                              setState(() {
-                                _isLoading = false;
-                              });
-                            });
-                            }
+
+                                setState(() {
+                                  _isLoading = true;
+                                });
+                                login( _emailController.text, _passwordController.text);
+                                Timer(const Duration(seconds: 2), () {
+                                  setState(() {
+                                    _isLoading = false;
+                                  });
+                                });
+                              }
+
                           ):const CircularProgressIndicator(
                         color: MainColors.primary,
                         backgroundColor: MainColors.background,

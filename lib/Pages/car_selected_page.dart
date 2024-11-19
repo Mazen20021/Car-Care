@@ -1,14 +1,15 @@
 import 'package:carcare/Pages/car_repair_page.dart';
 import 'package:carcare/Pages/settings_page.dart';
+import 'package:carcare/PopUps/record_odometer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Components/nav_button.dart';
 import '../Config/constants.dart';
 import '../Config/repair_list_data.dart';
 import '../PopUps/edit_current_car.dart';
-import '../PopUps/popUps.dart';
 import '../Services/car_api.dart';
 import '../Services/repair_api.dart';
+import 'car_list_page.dart';
 import 'gas_tracking_page.dart';
 
 class CarSelectedPage extends StatefulWidget {
@@ -105,10 +106,6 @@ class _CarSelectedPage extends State<CarSelectedPage> {
         }
       }
     }
-  }
-  void loadChecks()
-  {
-
   }
   @override
   Widget build(BuildContext context) {
@@ -350,7 +347,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                        PopUpDialogs(
+                                        RecordOdometer(
                                           repairItems: [],
                                           upComingChecks: widget.upComingChecks,
                                           profileID: widget.profileID,
@@ -366,9 +363,7 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                           petrolName:
                                           widget.petrolName,
                                           carIndex: widget.currentIndex,
-                                          addNewCar: false,
                                           addNewRecord: true,
-                                          addNewRepair: false,
                                           hasLowerImage: false,
                                           hasLowerText: false,
                                           lowerText:  "",
@@ -548,9 +543,9 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                                         child: Column(children: [
                                           const SizedBox(height: 10),
                                           Icon(Icons.handyman_rounded,size: 50,color: MainColors.primary.withOpacity(0.7)),
-                                          Text(""),
-                                          Text(""),
-                                          Text(" Km Left")
+                                          const Text(""),
+                                          const Text(""),
+                                          const Text(" Km Left")
                                         ],)
                                     ),
                                   ],),
@@ -675,7 +670,28 @@ class _CarSelectedPage extends State<CarSelectedPage> {
                     child: NavButton(
                       hasIcon: false,
                       buttonImage: "assets/customIcons/garage.png",
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  CarList(
+                                    upComingChecks: widget.upComingChecks,
+                                    profileID: widget.profileID,
+                                    myCars: widget.myCars,
+                                    userLastName: widget.userLastName,
+                                    userEmail: widget.userEmail,
+                                    userName:widget.userName,
+                                    isSub: _isSub,
+                                    carIndex: carIndex,
+                                    costs: widget.costs,
+                                    date:widget.date ,
+                                    itemsNumber: 0,
+                                    liters: widget.liters,
+                                    petrolName: widget.petrolName, currentIndex: widget.currentIndex,
+                                  )),
+                        );
+                      },
                       title: "Car List",
                       width: 65,
                       height: 45,
@@ -760,7 +776,6 @@ class _CarSelectedPage extends State<CarSelectedPage> {
     ));
   }
 
-  // Helper method to build each car image
   Widget buildCarImage(String imagePath, Size screenSize) {
     return Container(
         width: screenSize.width, // Occupy full width

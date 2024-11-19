@@ -7,6 +7,7 @@ import '../Components/nav_button.dart';
 import '../Config/constants.dart';
 import '../Services/car_api.dart';
 import '../Services/repair_api.dart';
+import 'car_list_page.dart';
 import 'gas_tracking_page.dart';
 import 'car_selected_page.dart';
 
@@ -600,7 +601,29 @@ class _Settings extends State<Settings> {
                     child: NavButton(
                       hasIcon: false,
                       buttonImage: "assets/customIcons/garage.png",
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  CarList(
+                                    upComingChecks: widget.upComingChecks,
+                                    profileID: widget.profileID,
+                                    myCars: widget.myCars,
+                                    userLastName: widget.userLastName,
+                                    userEmail: widget.userEmail,
+                                    userName:widget.userName,
+                                    isSub: widget.isSub,
+                                    carIndex: widget.carIndex,
+                                    costs: widget.costs,
+                                    date:widget.date ,
+                                    itemsNumber: 0,
+                                    liters: widget.liters,
+                                    petrolName: widget.petrolName,
+                                    currentIndex: widget.carIndex,
+                                  )),
+                        );
+                      },
                       title: "Car List",
                       width: 65,
                       height: 45,

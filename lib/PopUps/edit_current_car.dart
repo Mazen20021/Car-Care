@@ -665,7 +665,7 @@ class _EditCars extends State<EditCars> {
                                     color: MainColors.danger,
                                     backgroundColor: MainColors.background,
                                   ),
-                            const SizedBox(height: 13),
+                            const SizedBox(height: 15),
                             Transform.translate(
                               offset: const Offset(-0.08, 0),
                               child: Center(
@@ -866,10 +866,6 @@ class _EditCars extends State<EditCars> {
                                                         ),
                                                       ),
                                                       const SizedBox(width: 5),
-                                                      const Icon(
-                                                          Icons.update_rounded,
-                                                          color:
-                                                              MainColors.white),
                                                     ],
                                                   )),
                                             ),

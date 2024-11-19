@@ -54,6 +54,9 @@ class Width {
   static double m3d() => Screen.size.width * 0.4;
   static double m4d() => Screen.size.width * 0.45;
   static double lg() => Screen.size.width * 0.5;
+  static double l1_2g() => Screen.size.width * 0.55;
+  static double l2g() => Screen.size.width * 0.6;
+  static double l2_1g() => Screen.size.width * 0.65;
   static double xl() => Screen.size.width * 0.7;
   static double x2l() => Screen.size.width * 0.75;
   static double x3l() => Screen.size.width * 0.8;
@@ -133,6 +136,10 @@ class Height {
   static double m3_1d() => Screen.size.height * 0.42;
   static double m3_2d() => Screen.size.height * 0.44;
   static double m4d() => Screen.size.height * 0.45;
+  static double m5d() => Screen.size.height * 0.46;
+  static double m6d() => Screen.size.height * 0.47;
+  static double m7d() => Screen.size.height * 0.48;
+  static double m8d() => Screen.size.height * 0.49;
   static double lg() => Screen.size.height * 0.5;
   static double xl() => Screen.size.height * 0.7;
   static double xxl() => Screen.size.height * 0.9;

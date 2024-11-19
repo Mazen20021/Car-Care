@@ -9,13 +9,13 @@ void main() {
 }
 
 class MainPage extends StatelessWidget {
-   MainPage({super.key});
+   const MainPage({super.key});
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await initLocalStorage();
       Screen.setSize(context);
     });
-    return MaterialApp(home: Login());
+    return const MaterialApp(home: Login());
   }
 }

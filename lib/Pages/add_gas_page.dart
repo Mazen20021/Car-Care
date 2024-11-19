@@ -1,4 +1,5 @@
 import 'package:carcare/Components/custom_button.dart';
+import 'package:carcare/Pages/car_list_page.dart';
 import 'package:carcare/Pages/gas_tracking_page.dart';
 import 'package:carcare/Pages/settings_page.dart';
 import 'package:flutter/material.dart';
@@ -654,7 +655,29 @@ class _CarRepairPage extends State<CarADDGasPage> {
                     child: NavButton(
                       hasIcon: false,
                       buttonImage: "assets/customIcons/garage.png",
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  CarList(
+                                    upComingChecks: widget.upComingChecks,
+                                    profileID: widget.profileID,
+                                    myCars: widget.myCars,
+                                    userLastName: widget.userLastName,
+                                    userEmail: widget.userEmail,
+                                    userName:widget.userName,
+                                    isSub: widget.isSub,
+                                    carIndex: widget.carIndex,
+                                    costs: widget.costs,
+                                    date:widget.date ,
+                                    itemsNumber: 0,
+                                    liters: widget.liters,
+                                    petrolName: widget.petrolName,
+                                    currentIndex: widget.carIndex,
+                                  )),
+                        );
+                      },
                       title: "Car List",
                       width: ButtonWidth.m2d(),
                       height: ButtonHeights.s3_1m(),
